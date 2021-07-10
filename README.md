@@ -24,37 +24,40 @@
 
 # Software
 
-| Software                                                                                            | Utility                            |
-| --------------------------------------------------------------------------------------------------- | ---------------------------------- |
-| **[networkmanager](https://wiki.archlinux.org/index.php/NetworkManager)**                           | Self explanatory                   |
-| **[network-manager-applet](https://wiki.archlinux.org/index.php/NetworkManager#nm-applet)**         | _NetworkManager_ systray           |
-| **[pulseaudio](https://wiki.archlinux.org/index.php/PulseAudio)**                                   | Self explanatory                   |
-| **[pavucontrol](https://www.archlinux.org/packages/extra/x86_64/pavucontrol/)**                     | _pulseaudio_ GUI                   |
-| **[pamixer](https://www.archlinux.org/packages/community/x86_64/pamixer/)**                         | _pulseaudio_ CLI                   |
-| **[brightnessctl](https://www.archlinux.org/packages/community/x86_64/brightnessctl/)**             | Laptop screen brightness           |
-| **[xinit](https://wiki.archlinux.org/index.php/Xinit)**                                             | Launch programs before wm starts   |
-| **[libnotify](https://wiki.archlinux.org/index.php/Desktop_notifications)**                         | Desktop notifications              |
-| **[notification-daemon](https://www.archlinux.org/packages/community/x86_64/notification-daemon/)** | Self explanatory                   |
-| **[udiskie](https://www.archlinux.org/packages/community/any/udiskie/)**                            | Automounter                        |
-| **[ntfs-3g](https://wiki.archlinux.org/index.php/NTFS-3G)**                                         | NTFS read & write                  |
-| **[arandr](https://www.archlinux.org/packages/community/any/arandr/)**                              | GUI for _xrandr_                   |
-| **[cbatticon](https://www.archlinux.org/packages/community/x86_64/cbatticon/)**                     | Battery systray                    |
-| **[volumeicon](https://www.archlinux.org/packages/community/x86_64/volumeicon/)**                   | Volume systray                     |
-| **[glib2](https://www.archlinux.org/packages/core/x86_64/glib2/)**                                  | Trash                              |
-| **[gvfs](https://www.archlinux.org/packages/extra/x86_64/gvfs/)**                                   | Trash for GUIs                     |
-| **[Alacritty](https://wiki.archlinux.org/index.php/Alacritty)**                                     | Terminal emulator                  |
-| **[Neofetch](https://archlinux.org/packages/community/any/neofetch/)**                              | A CLI system information tool      |
-| **[Thunar](https://wiki.archlinux.org/index.php/Thunar)**                                           | Graphical file explorer            |
-| **[Ranger](https://wiki.archlinux.org/index.php/Ranger)**                                           | Terminal based explorer            |
-| **[Neovim](https://wiki.archlinux.org/index.php/Neovim)**                                           | Terminal based editor              |
-| **[Rofi](https://wiki.archlinux.org/index.php/Rofi)**                                               | Menu and window switcher           |
-| **[Flameshot](https://wiki.archlinux.org/title/Flameshot)**                                         | Screenshot                         |
-| **[Redshift](https://wiki.archlinux.org/index.php/Redshift)**                                       | Blue light filter                  |
-| **[Trayer](https://www.archlinux.org/packages/extra/x86_64/trayer/)**                               | Systray                            |
-| **[Zathura](https://wiki.archlinux.org/title/Zathura)**                                             | Minimalist PDF viewer              |
-| **[exa](https://archlinux.org/packages/community/x86_64/exa/)**                                     | ls replacement                     |
-| **[Bat](https://archlinux.org/packages/community/x86_64/bat/)**                                     | Cat clone with syntax highlighting |
-| **[ZSH](https://wiki.archlinux.org/title/Zsh)**                                                     | command interpreter                |
+| Software                                                                                            | Utility                                                          |
+| --------------------------------------------------------------------------------------------------- | ----------------------------------                               |
+| **[networkmanager](https://wiki.archlinux.org/index.php/NetworkManager)**                           | Self explanatory                                                 |
+| **[network-manager-applet](https://wiki.archlinux.org/index.php/NetworkManager#nm-applet)**         | _NetworkManager_ systray                                         |
+| **[pulseaudio](https://wiki.archlinux.org/index.php/PulseAudio)**                                   | Self explanatory                                                 |
+| **[pavucontrol](https://www.archlinux.org/packages/extra/x86_64/pavucontrol/)**                     | _pulseaudio_ GUI                                                 |
+| **[pamixer](https://www.archlinux.org/packages/community/x86_64/pamixer/)**                         | _pulseaudio_ CLI                                                 |
+| **[brightnessctl](https://www.archlinux.org/packages/community/x86_64/brightnessctl/)**             | Laptop screen brightness                                         |
+| **[xinit](https://wiki.archlinux.org/index.php/Xinit)**                                             | Launch programs before wm starts                                 |
+| **[libnotify](https://wiki.archlinux.org/index.php/Desktop_notifications)**                         | Desktop notifications                                            |
+| **[notification-daemon](https://www.archlinux.org/packages/community/x86_64/notification-daemon/)** | Self explanatory                                                 |
+| **[udiskie](https://www.archlinux.org/packages/community/any/udiskie/)**                            | Automounter                                                      |
+| **[ntfs-3g](https://wiki.archlinux.org/index.php/NTFS-3G)**                                         | NTFS read & write                                                |
+| **[arandr](https://www.archlinux.org/packages/community/any/arandr/)**                              | GUI for _xrandr_                                                 |
+| **[cbatticon](https://www.archlinux.org/packages/community/x86_64/cbatticon/)**                     | Battery systray                                                  |
+| **[volumeicon](https://www.archlinux.org/packages/community/x86_64/volumeicon/)**                   | Volume systray                                                   |
+| **[glib2](https://www.archlinux.org/packages/core/x86_64/glib2/)**                                  | Trash                                                            |
+| **[gvfs](https://www.archlinux.org/packages/extra/x86_64/gvfs/)**                                   | Trash for GUIs                                                   |
+| **[Simple-MTPFS](https://aur.archlinux.org/packages/simple-mtpfs/)**                                | A FUSE filesystem that supports reading/writing from MTP devices |
+| **[Alacritty](https://wiki.archlinux.org/index.php/Alacritty)**                                     | Terminal emulator                                                |
+| **[Neofetch](https://archlinux.org/packages/community/any/neofetch/)**                              | A CLI system information tool                                    |
+| **[Thunar](https://wiki.archlinux.org/index.php/Thunar)**                                           | Graphical file explorer                                          |
+| **[Ranger](https://wiki.archlinux.org/index.php/Ranger)**                                           | Terminal based explorer                                          |
+| **[Neovim](https://wiki.archlinux.org/index.php/Neovim)**                                           | Terminal based editor                                            |
+| **[Rofi](https://wiki.archlinux.org/index.php/Rofi)**                                               | Menu and window switcher                                         |
+| **[Flameshot](https://wiki.archlinux.org/title/Flameshot)**                                         | Screenshot                                                       |
+| **[Redshift](https://wiki.archlinux.org/index.php/Redshift)**                                       | Blue light filter                                                |
+| **[Trayer](https://www.archlinux.org/packages/extra/x86_64/trayer/)**                               | Systray                                                          |
+| **[Zathura](https://wiki.archlinux.org/title/Zathura)**                                             | Minimalist PDF viewer                                            |
+| **[exa](https://archlinux.org/packages/community/x86_64/exa/)**                                     | ls replacement                                                   |
+| **[Bat](https://archlinux.org/packages/community/x86_64/bat/)**                                     | Cat clone with syntax highlighting                               |
+| **[ZSH](https://wiki.archlinux.org/title/Zsh)**                                                     | command interpreter                                              |
+| **[VLC](https://wiki.archlinux.org/title/VLC_media_player)**                                        | multimedia player                                                |
+| **[geeqie](https://archlinux.org/packages/extra/x86_64/geeqie/)**                                   | Lightweight image viewer                                         |
 
 ## Fonts, theming
 
