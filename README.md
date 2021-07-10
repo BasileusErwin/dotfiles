@@ -1,18 +1,16 @@
 # dotfiles
 
-**[Software I use](#software)**
-
 # Windows manager config
 
-## [BSPWM](https://github.com/kasisererwin/dotfiles/tree/main/.config/bspwm)
+## [BSPWM](https://github.com/KasiserErwin/dotfiles/tree/main/.config/bspwm)
 
 ![BSPWM](./screenshots/BSPWM.png)
 
-## [Xmonad](https://github.com/kasisererwin/dotfiles/tree/main/.xmonad)
+## [Xmonad](https://github.com/KasiserErwin/dotfiles/tree/main/.xmonad)
 
 ![Xmonad](./.screenshots/xmonad.png)
 
-## [Spectrwm](https://github.com/kasisererwin/dotfiles/tree/main/.config/spectrwn)
+## [Spectrwm](https://github.com/KasiserErwin/dotfiles/tree/main/.config/spectrwn)
 
 ![Spectrwm](./.screenshots/spectrwm.png)
 
