@@ -14,7 +14,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
        
 # My Neovim
-https://github.com/KaiserErwin/dotfiles
+git clone https://github.com/KaiserErwin/dotfiles.git
 cp -r dotfiles/nvim ~/.config/nvim
 ```
 
