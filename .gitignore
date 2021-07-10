@@ -1,0 +1,5 @@
+**/*/plugged
+**/*/node_modules
+**/*/alacritty/themes
+**/*/alacritty/(fonts.yaml|themes.json)
+**/.xmonad/xmonad(.hi|.errors|-*|.o)

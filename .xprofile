@@ -1,0 +1,21 @@
+#!/bin/bash
+
+export PATH=$HOME/.local/bin:$PATH
+export QT_STYLE_OVERRIDE=kvantum
+
+#wallset --video ~/Imágenes/Wallpaper/Cosmere-wallpaper-animado-sasori-cosmere-es-v1.mp4  
+
+setxkbmap latam &
+
+lxsession &
+# nitrogen --restore &
+udiskie -t &
+nm-applet &
+picom & 
+# volumeicon &
+redshift -O 2400 &
+# Java Fonts
+xsettingsd &
+# Overlay Bar
+xob-pulse-py | xob -s pulse &
+xob-brightness-js | xob -s brightness &
