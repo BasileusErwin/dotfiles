@@ -10,17 +10,17 @@
 
 ![Xmonad](./.screenshots/xmonad.png)
 
-## [Spectrwm](https://github.com/KasiserErwin/dotfiles/tree/main/.config/spectrwn)
+## [Spectrwm](https://github.com/KaiserErwin/dotfiles/tree/main/.config/spectrwn)
 
 ![Spectrwm](./.screenshots/spectrwm.png)
 
 -   My config's
-    -   [Neovim](https://github.com/KaiserErwin/dotfiles/tree/main/.config/nvim)
-    -   [Neofetch](https://github.com/KasisErerwin/dotfiles/tree/main/.config/neofetch)
+    -   [Neovim](https://github.com/KasisErerwin/dotfiles/tree/main/.config/nvim)
+    -   [Neofetch](https://github.com/KaiserErwin/dotfiles/tree/main/.config/neofetch)
     -   [Zathura](https://github.com/KasisErerwin/dotfiles/tree/main/.config/zathura)
-    -   [Ranger](https://github.com/KasisErerwin/dotfiles/tree/main/.config/ranger)
-    -   [Picom](https://github.com/KasisErerwin/dotfiles/tree/main/.config/picom)
-    -   [Bat](https://github.com/KasiserErwin/dotfiles/tree/main/.config/bat)
+    -   [Ranger](https://github.com/KaiserErwin/dotfiles/tree/main/.config/ranger)
+    -   [Picom](https://github.com/KaiserErwin/dotfiles/tree/main/.config/picom)
+    -   [Bat](https://github.com/KaiserErwin/dotfiles/tree/main/.config/bat)
 
 # Software
 
