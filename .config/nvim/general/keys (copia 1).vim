@@ -1,0 +1,47 @@
+" Remap escape
+nnoremap <C-c> <Esc>
+inoremap <nowait> ii <Esc>
+
+" Use alt + hjkl to resize windows
+nnoremap <M-k> :resize -2<CR>
+nnoremap <M-j> :resize +2<CR>
+nnoremap <M-l> :vertical resize -2<CR>
+nnoremap <M-h> :vertical resize +2<CR>
+
+" Alternate way to save
+nnoremap <C-s> :w<CR>
+nnoremap <C-M-S> :wa<CR>
+" Alternate way to quit and save
+nnoremap <C-q> :q!<CR>
+nnoremap <C-M-Q> :qa!<CR>
+
+" Close current buffer
+nnoremap <C-b> :bd<CR>
+
+" Better tabbing
+vnoremap < <gv
+vnoremap > >gv
+
+" Move selected line / block of text in visual mode
+" shift + k to move up
+" shift + j to move down
+xnoremap K :move '<-2<CR>gv-gv
+xnoremap J :move '>+1<CR>gv-gv
+
+" Better window navigation
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+
+" TAB in general mode will move to next buffer
+nnoremap <TAB> :bnext<CR>
+" SHIFT-TAB will go to prev buffer
+nnoremap <S-TAB> :bprevious<CR>
+
+if !exists('g:vscode')
+    " TAB in general mode will move to next buffer
+    nnoremap <TAB> :bnext<CR>
+    " SHIFT-TAB will go to prev buffer
+    nnoremap <S-TAB> :bprevious<CR>
+endif
