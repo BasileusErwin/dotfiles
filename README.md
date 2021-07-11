@@ -8,11 +8,11 @@
 
 ## [Xmonad](https://github.com/KasiserErwin/dotfiles/tree/main/.xmonad)
 
-![Xmonad](./.screenshots/xmonad.png)
+![Xmonad](./screenshots/xmonad.png)
 
 ## [Spectrwm](https://github.com/KaiserErwin/dotfiles/tree/main/.config/spectrwn)
 
-![Spectrwm](./.screenshots/spectrwm.png)
+![Spectrwm](./screenshots/spectrwm.png)
 
 -   My config's
     -   [Neovim](https://github.com/KasisErerwin/dotfiles/tree/main/.config/nvim)
