@@ -1,33 +1,20 @@
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="/home/kaisererwin/.deno/bin:$PATH"
+
 if [[ $USER != "root" ]]; then
-  . "$HOME/.cargo/env"
+	# Rust
+	. "$HOME/.cargo/env"
+	# Deno
+	fpath=(~/.zsh $fpath)
+	autoload -Uz compinit
+	compinit -u
 fi
 
-# --------| PowerLevel 10k |----------- 
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
-
-# HISTSIZE=1000
-# SAVEHIST=1000
-HISTFILE=~/.zsh_history
-
-autoload -Uz compinit
-compinit
-
-# source ~/powerlevel10k/powerlevel10k.zsh-theme
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-
-# ---------| Oh My ZSH|--------
-export ZSH="$HOME/.oh-my-zsh"
-source $ZSH/oh-my-zsh.sh
-source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/antigen/antigen.zsh
+export ZSH="/home/kaisererwin/.oh-my-zsh"
 
 ZSH_THEME="agnoster"
+
+source $ZSH/oh-my-zsh.sh
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
@@ -40,12 +27,14 @@ ZSH_COLORIZE_TOOL=chroma
 
 # Nice ones: arduino friendly paraiso-dark solarized-dark solarized-dark256 vim
 ZSH_COLORIZE_STYLE=vim
+ZSH_DISABLE_COMPFIX=true
 
 plugins=(
 	git
 	sudo
 	npm
 	yarn
+	deno
 	colorize
 	github
 	zsh-syntax-highlighting
@@ -68,6 +57,14 @@ alias ls="exa --group-directories-first --icons"
 alias cat="bat --style=plain --paging=never"
 alias tree="exa -T --icons"
 alias grep="grep --color=auto"
+alias ng="npm init -y && git init"
+alias nd="npm i -D $1"
+alias ns="npm i $1"
+# alias name="deno run --unstable --allow-read --allow-write ~/.local/bin/name_normalizer/name_normalizer.ts $1 $2"
+
+#-----| Configs |----#
+alias sx='nvim ~/.config/sxhkd/sxhkdrc'
+alias bs='nvim ~/.config/bspwm/bspwmrc'
 
 # ----| Directory |----
 alias dow="cd $HOME/Descargas"
@@ -75,4 +72,5 @@ alias doc="cd $HOME/Documentos"
 alias img="CD $HOME/Imágenes"
 alias dev="cd $HOME/Workspaces/"
 alias js="cd $HOME/Workspaces/JavaScript"
+
 
