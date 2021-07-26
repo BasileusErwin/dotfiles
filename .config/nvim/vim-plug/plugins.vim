@@ -24,6 +24,7 @@ call plug#begin('~/.config/nvim/plugged')
         Plug 'ryanoasis/vim-devicons'
         " Intellisense
         Plug 'neoclide/coc.nvim', {'branch': 'release'}
+        Plug 'ollykel/v-vim'
         Plug 'neoclide/jsonc.vim'
         " Tabnine
  "       Plug 'codota/tabnine-vim'

@@ -21,17 +21,12 @@
                 "hie.yaml"
             ],
             "filetypes": ["haskell", "lhaskell"]
+        },
+        "dockerfile": {
+            "command": "docker-langserver",
+            "filetypes": ["dockerfile"],
+            "args": ["--stdio"]
         }
-        // "ccls": {
-        //     "command": "ccls",
-        //     "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
-        //     "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
-        //     "initializationOptions": {
-        //         "cache": {
-        //             "directory": "/tmp/ccls"
-        //         }
-        //     }
-        // }
     },
     "java.jdt.ls.vmargs": "-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication",
     "java.home": "/usr/lib/jvm/java-8-openjdk",
@@ -39,5 +34,5 @@
     "java.trace.server": "verbose",
     "codeLens.enable": true,
     "java.referencesCodeLens.enabled": true,
-    "java.jdt.ls.vmargs": "-javaagent:/usr/local/share/lombok/lombok.jar",
+    "java.jdt.ls.vmargs": "-javaagent:/usr/local/share/lombok/lombok.jar"
 }

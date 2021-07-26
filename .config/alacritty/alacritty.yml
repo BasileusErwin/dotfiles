@@ -1,26 +1,26 @@
-background_opacity: 0.95
+background_opacity: 0.8
 colors:
   bright:
-    black: '#444444'
-    blue: '#0092ff'
-    cyan: '#67fff0'
-    green: '#abe15b'
-    magenta: '#9a5feb'
-    red: '#ff2740'
+    black: '#767676'
+    blue: '#1a8fff'
+    cyan: '#14ffff'
+    green: '#23fd00'
+    magenta: '#fd28ff'
+    red: '#f2201f'
     white: '#ffffff'
-    yellow: '#ffd242'
+    yellow: '#fffd00'
   normal:
-    black: '#232323'
-    blue: '#008df8'
-    cyan: '#00d8eb'
-    green: '#8ce10b'
-    magenta: '#6d43a6'
-    red: '#ff000f'
-    white: '#ffffff'
-    yellow: '#ffb900'
+    black: '#000000'
+    blue: '#0d73cc'
+    cyan: '#0dcdcd'
+    green: '#19cb00'
+    magenta: '#cb1ed1'
+    red: '#cc0403'
+    white: '#dddddd'
+    yellow: '#cecb00'
   primary:
-    background: '#0e1019'
-    foreground: '#fffaf4'
+    background: '#000000'
+    foreground: '#dddddd'
 font:
   bold:
     family: JetBrains Mono ExtraBold Nerd Font
@@ -29,7 +29,10 @@ font:
   normal:
     family: JetBrains Mono Medium Nerd Font
     style: Regular
-  size: 10.0
+  offset:
+    x: 0
+    y: 0
+  size: 12.0
 window:
   padding:
     x: 2

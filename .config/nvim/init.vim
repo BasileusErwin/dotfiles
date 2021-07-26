@@ -17,6 +17,7 @@ source $HOME/.config/nvim/plug-config/syntax.vim
 source $HOME/.config/nvim/plug-config/vim-comments.vim
 source $HOME/.config/nvim/plug-config/emmet.vim
 source $HOME/.config/nvim/plug-config/treesitter.vim
+source $HOME/.config/nvim/plug-config/v.vim
 
 " Themes
 source $HOME/.config/nvim/general/colors.vim
@@ -25,3 +26,5 @@ source $HOME/.config/nvim/themes/ayucolor.vim
 " source $HOME/.config/nvim/themes/onedark.vim
 " source $HOME/.config/nvim/themes/tokyonight.vim
 " source $HOME/.config/nvim/themes/oceanic.vim
+
+

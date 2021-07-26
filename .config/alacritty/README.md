@@ -5,6 +5,8 @@
 sudo pacman -S alacritty --noconfirm
 ```
 
+## Utilities
+[Pycritty](https://pypi.org/project/pycritty/)
 ## Font 
 ```sh
 

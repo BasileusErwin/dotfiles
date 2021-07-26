@@ -2,22 +2,22 @@
 
 # Windows manager config
 
-## [BSPWM](https://github.com/KasiserErwin/dotfiles/tree/main/.config/bspwm)
+## [BSPWM](https://github.com/KaiserErwin/dotfiles/tree/main/.config/bspwm)
 
 ![BSPWM](./screenshots/BSPWM.png)
 
-## [Xmonad](https://github.com/KasiserErwin/dotfiles/tree/main/.xmonad)
+## [Xmonad](https://github.com/KaiserErwin/dotfiles/tree/main/.xmonad)
 
 ![Xmonad](./screenshots/xmonad.png)
 
-## [Spectrwm](https://github.com/KaiserErwin/dotfiles/tree/main/.config/spectrwn)
+## [Spectrwm](https://github.com/KaiserErwin/dotfiles/tree/main/.config/spectrwm)
 
 ![Spectrwm](./screenshots/spectrwm.png)
 
 -   My config's
-    -   [Neovim](https://github.com/KasisErerwin/dotfiles/tree/main/.config/nvim)
+    -   [Neovim](https://github.com/KaiserErwin/dotfiles/tree/main/.config/nvim)
     -   [Neofetch](https://github.com/KaiserErwin/dotfiles/tree/main/.config/neofetch)
-    -   [Zathura](https://github.com/KasisErerwin/dotfiles/tree/main/.config/zathura)
+    -   [Zathura](https://github.com/KaiserErwin/dotfiles/tree/main/.config/zathura)
     -   [Ranger](https://github.com/KaiserErwin/dotfiles/tree/main/.config/ranger)
     -   [Picom](https://github.com/KaiserErwin/dotfiles/tree/main/.config/picom)
     -   [Bat](https://github.com/KaiserErwin/dotfiles/tree/main/.config/bat)

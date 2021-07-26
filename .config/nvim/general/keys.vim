@@ -1,6 +1,6 @@
 " Remap escape
 nnoremap <C-c> <Esc>
-inoremap <nowait> ii <Esc>
+inoremap <silent><nowait> ii <Esc>
 
 " Use alt + hjkl to resize windows
 nnoremap <M-k> :resize -2<CR>
@@ -12,7 +12,7 @@ nnoremap <M-h> :vertical resize +2<CR>
 nnoremap <C-s> :w<CR>
 nnoremap <C-M-S> :wa<CR>
 " Alternate way to quit and save
-nnoremap <C-q> :q!<CR>
+nnoremap <C-q> :q<CR>
 nnoremap <C-M-Q> :qa!<CR>
 
 " Close current buffer
@@ -39,9 +39,4 @@ nnoremap <TAB> :bnext<CR>
 " SHIFT-TAB will go to prev buffer
 nnoremap <S-TAB> :bprevious<CR>
 
-if !exists('g:vscode')
-    " TAB in general mode will move to next buffer
-    nnoremap <TAB> :bnext<CR>
-    " SHIFT-TAB will go to prev buffer
-    nnoremap <S-TAB> :bprevious<CR>
-endif
+nnoremap <F3> :set hlsearch!<CR>
