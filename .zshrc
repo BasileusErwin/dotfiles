@@ -60,7 +60,6 @@ alias grep="grep --color=auto"
 alias ng="npm init -y && git init"
 alias nd="npm i -D $1"
 alias ns="npm i $1"
-# alias name="deno run --unstable --allow-read --allow-write ~/.local/bin/name_normalizer/name_normalizer.ts $1 $2"
 
 #-----| Configs |----#
 alias sx='nvim ~/.config/sxhkd/sxhkdrc'
