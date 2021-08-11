@@ -28,6 +28,9 @@ call plug#begin('~/.config/nvim/plugged')
         Plug 'neoclide/jsonc.vim'
         " Tabnine
  "       Plug 'codota/tabnine-vim'
+ 
+        " Carbon
+        Plug 'kristijanhusak/vim-carbon-now-sh'
 
         " Git
         Plug 'tpope/vim-fugitive'
