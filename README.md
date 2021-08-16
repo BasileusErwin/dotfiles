@@ -1,5 +1,9 @@
 # dotfiles
 
+
+
+
+
 # Windows manager config
 
 ## [BSPWM](https://github.com/KaiserErwin/dotfiles/tree/main/.config/bspwm)
