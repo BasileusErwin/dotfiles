@@ -1,4 +1,4 @@
-![Neovim](../../screenshots/nvim.png)
+![Neovim](../../.screenshots/nvim.png)
 
 ```sh
 # ArchLinux
@@ -9,13 +9,14 @@ pip install neovim
 gem install neovim
 sudo npm i -g neovim
 
-# Vim-plug
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+# Packer.nvim
+git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
        
 # My Neovim
 git clone https://github.com/KaiserErwin/dotfiles.git
 cp -r dotfiles/nvim ~/.config/nvim
 ```
 
-Then execute ```:PlugInstall``` inside neovim and it should be ready.
+Then execute ```:PackerInstall``` inside neovim and it should be ready.
+

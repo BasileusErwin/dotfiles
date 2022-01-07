@@ -6,10 +6,13 @@ super + shift + {q,r}
 # -- close and kill
 super + {_,shift + }w
 	bspc node -{c,k}
-# -- alternate between the tiled and monocle layout
+
+# -- alternate between the tiled and monocle layout super + Tab bspc desktop -l 
 super + Tab 
 	bspc desktop -l next
-	# bsp-layout cycle --layouts monocle,tall,wide
+
+alt + w
+	bspc monitor -f next
 
 # -- swap the current node and the biggest window
 super + g
@@ -76,7 +79,7 @@ super + space
 	bspc node -p cancel
 
 # cancel the preselection for the focused desktop
-super  ctrl + shift + space
+super + ctrl + shift + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 # ----| move/resize |---- #
@@ -93,11 +96,13 @@ shift + alt + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-
 # ----| App Keys |----
 
 # -- terminal emulator
 super + Return
+	tilix 
+
+super + shift + Return
 	alacritty 
 
 # -- Menu
@@ -106,31 +111,35 @@ super + m
 # -- Windows
 super + shift + m
 	rofi -show
+
 # -- File Manager
-super + e
-	thunar
 super + shift + e
-	alacritty -t Ranger -e ranger
+	thunar
+super + e
+	pcmanfm
 # --
 super + Escape
 	pkill -USR1 -x sxhkd
 
 # -- Browser
 super + b 
-	firefox-developer-edition
+	firefox
+
+super + shift + b 
+	brave --process-per-site
 
 super + s 
 	speedcrunch
 
 # -- Redshift
 super + r
-	redshift -O 2400
+	redshift -O 5000
 super + ctrl + r
 	redshift -x
 
 # -- Flameshot 
 Print
-	flameshot gui
+	scrot -s 'screenshot_%Y-%m-%d-%T_$wx$h.png' -e 'mkdir -p ~/Pictures/screenshots/ | mv $f ~/Pictures/screenshots/'
 
 # ----| System |---- #
 
@@ -151,4 +160,11 @@ XF86AudioRaiseVolume
 XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
 
+XF86AudioPlay
+	playerctl play-pause
 
+XF86AudioNext
+	playerctl next
+
+XF86AudioPrev
+	playerctl previous

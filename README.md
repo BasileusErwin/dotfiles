@@ -1,37 +1,35 @@
 # dotfiles
 
-
-
-
-
 # Windows manager config
 
 ## [BSPWM](https://github.com/KaiserErwin/dotfiles/tree/main/.config/bspwm)
 
-![BSPWM](./screenshots/BSPWM.png)
+![BSPWM](./.screenshots/BSPWM.png)
 
 ## [Xmonad](https://github.com/KaiserErwin/dotfiles/tree/main/.xmonad)
 
-![Xmonad](./screenshots/xmonad.png)
+![Xmonad](./.screenshots/xmonad.png)
 
-## [Spectrwm](https://github.com/KaiserErwin/dotfiles/tree/main/.config/spectrwm)
+## [Qtile](https://github.com/KaiserErwin/dotfiles/tree/main/.config/qtile)
 
-![Spectrwm](./screenshots/spectrwm.png)
+![Qtile](./.screenshots/Qtile.png)
 
--   My config's
-    -   [Neovim](https://github.com/KaiserErwin/dotfiles/tree/main/.config/nvim)
-    -   [Neofetch](https://github.com/KaiserErwin/dotfiles/tree/main/.config/neofetch)
-    -   [Zathura](https://github.com/KaiserErwin/dotfiles/tree/main/.config/zathura)
-    -   [Ranger](https://github.com/KaiserErwin/dotfiles/tree/main/.config/ranger)
-    -   [Picom](https://github.com/KaiserErwin/dotfiles/tree/main/.config/picom)
-    -   [Bat](https://github.com/KaiserErwin/dotfiles/tree/main/.config/bat)
-    -   [Polybar](https://github.com/KaiserErwin/dotfiles/tree/main/.config/polybar)
-    -   [Alacritty](https://github.com/KaiserErwin/dotfiles/tree/main/.config/alacritty)
+- My config's
+  - [Neovim](https://github.com/KaiserErwin/dotfiles/tree/main/.config/nvim)
+  - [Neofetch](https://github.com/KaiserErwin/dotfiles/tree/main/.config/neofetch)
+  - [Zathura](https://github.com/KaiserErwin/dotfiles/tree/main/.config/zathura)
+  - [Ranger](https://github.com/KaiserErwin/dotfiles/tree/main/.config/ranger)
+  - [Picom](https://github.com/KaiserErwin/dotfiles/tree/main/.config/picom)
+  - [Bat](https://github.com/KaiserErwin/dotfiles/tree/main/.config/bat)
+  - [Polybar](https://github.com/KaiserErwin/dotfiles/tree/main/.config/polybar)
+  - [Alacritty](https://github.com/KaiserErwin/dotfiles/tree/main/.config/alacritty)
 
 # Software
 
+## Basic System Software
+
 | Software                                                                                            | Utility                                                          |
-| --------------------------------------------------------------------------------------------------- | ----------------------------------                               |
+| --------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
 | **[networkmanager](https://wiki.archlinux.org/index.php/NetworkManager)**                           | Self explanatory                                                 |
 | **[network-manager-applet](https://wiki.archlinux.org/index.php/NetworkManager#nm-applet)**         | _NetworkManager_ systray                                         |
 | **[pulseaudio](https://wiki.archlinux.org/index.php/PulseAudio)**                                   | Self explanatory                                                 |
@@ -48,8 +46,16 @@
 | **[volumeicon](https://www.archlinux.org/packages/community/x86_64/volumeicon/)**                   | Volume systray                                                   |
 | **[glib2](https://www.archlinux.org/packages/core/x86_64/glib2/)**                                  | Trash                                                            |
 | **[gvfs](https://www.archlinux.org/packages/extra/x86_64/gvfs/)**                                   | Trash for GUIs                                                   |
+| **[Trayer](https://www.archlinux.org/packages/extra/x86_64/trayer/)**                               | Systray                                                          |
 | **[Simple-MTPFS](https://aur.archlinux.org/packages/simple-mtpfs/)**                                | A FUSE filesystem that supports reading/writing from MTP devices |
+| **[paru](https://aur.archlinux.org/packages/paru/)**                                                | Feature packed AUR helper, write in Rust                         |
+
+## Software I do
+
+| Software                                                                                            | Utility                                                          |
+| --------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
 | **[Alacritty](https://wiki.archlinux.org/index.php/Alacritty)**                                     | Terminal emulator                                                |
+| **[Piper](https://archlinux.org/packages/community/any/piper)**                                     | GTK application to configure gaming mice                         |
 | **[Neofetch](https://archlinux.org/packages/community/any/neofetch/)**                              | A CLI system information tool                                    |
 | **[Thunar](https://wiki.archlinux.org/index.php/Thunar)**                                           | Graphical file explorer                                          |
 | **[Ranger](https://wiki.archlinux.org/index.php/Ranger)**                                           | Terminal based explorer                                          |
@@ -57,7 +63,6 @@
 | **[Rofi](https://wiki.archlinux.org/index.php/Rofi)**                                               | Menu and window switcher                                         |
 | **[Flameshot](https://wiki.archlinux.org/title/Flameshot)**                                         | Screenshot                                                       |
 | **[Redshift](https://wiki.archlinux.org/index.php/Redshift)**                                       | Blue light filter                                                |
-| **[Trayer](https://www.archlinux.org/packages/extra/x86_64/trayer/)**                               | Systray                                                          |
 | **[Zathura](https://wiki.archlinux.org/title/Zathura)**                                             | Minimalist PDF viewer                                            |
 | **[exa](https://archlinux.org/packages/community/x86_64/exa/)**                                     | ls replacement                                                   |
 | **[Bat](https://archlinux.org/packages/community/x86_64/bat/)**                                     | Cat clone with syntax highlighting                               |
