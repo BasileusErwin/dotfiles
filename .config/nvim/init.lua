@@ -1,8 +1,8 @@
 local core_modules = {
    "core.settings",
    "core.keys",
-   "plugins.plugins",
-   'plugins.themes'
+   "plugins",
+   'themes'
 }
 
 for _, module in ipairs(core_modules) do

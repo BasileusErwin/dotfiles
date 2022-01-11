@@ -42,8 +42,8 @@ nvim_tree.setup {
     "dashboard",
     "alpha",
   },
-  auto_close = true,
-  open_on_tab = false,
+  auto_close = false,
+  open_on_tab = true,
   hijack_cursor = false,
   update_cwd = true,
   update_to_buf_dir = {
@@ -92,7 +92,7 @@ nvim_tree.setup {
       },
     },
     number = false,
-    relativenumber = true,
+    relativenumber = false,
   },
   trash = {
     cmd = "trash",

@@ -44,7 +44,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '<Leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   --buf_set_keymap('n', '<C-j>', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', '<S-C-j>', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<C-S-j>', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap("n", "<space>p", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
@@ -62,6 +62,12 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     }
   }
 )
+
+nvim_lsp.sumneko_lua.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
   capabilities = capabilities,
