@@ -1,3 +1,5 @@
+#! /bin/sh
+
 # ----| bspwm hotkeys |---- #
 
 # -- quit/restart bspwm
@@ -123,10 +125,10 @@ super + Escape
 
 # -- Browser
 super + b 
-	firefox
+  brave --process-per-site
 
 super + shift + b 
-	brave --process-per-site
+  google-chrome-stable
 
 super + s 
 	speedcrunch

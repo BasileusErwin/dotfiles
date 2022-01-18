@@ -3,6 +3,12 @@ let g:mapleader = "\<Space>"
 set colorcolumn=81
 set completeopt=menuone,noinsert,noselect
 nmap <silent> <C-l> <Plug>(jsdoc)
+set autochdir
+syntax enable
+filetype on
+filetype indent on
+filetype plugin on
+set hlsearch!
 ]])
 
 -- Number
@@ -69,14 +75,5 @@ vim.o.conceallevel=0                      --So that I can see `` in markdown fil
 vim.o.background="dark"                     --tell vim what the background color looks like
 vim.o.showmode=false                          --We don't need to see things like -- INSERT -- anymore
 vim.o.guifont="JetBrainsMono\\ Nerd\\ Font\\ Mono:h18"
-
-vim.cmd[[
-set autochdir
-syntax enable
-filetype on
-filetype indent on
-filetype plugin on
-set hlsearch!
-]]
 
 vim.g.closetag_filetypes = 'html,xhtml,phtml,xml,javascript,typescript,javascriptreact,typescriptreact,'

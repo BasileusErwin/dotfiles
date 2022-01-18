@@ -8,7 +8,7 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch Polybar, using default config location ~/.config/polybar/config
 
-polybar main -c ~/.config/polybar/config.ini &
+polybar main -c ~/.config/polybar/material.ini &
 
 my_laptop_external_monitor=$(xrandr --query | grep 'HDMI1')
 if [[ $my_laptop_external_monitor = /^connected/ ]]; then

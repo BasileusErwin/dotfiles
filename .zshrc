@@ -4,7 +4,7 @@ if [[ $USER != "root" ]]; then
 	# Rust
 	. "$HOME/.cargo/env"
 	# Deno
-  export DENO_INSTALL="/home/kaisererwin/.deno"
+  export DENO_INSTALL="$HOME/.deno"
 
   export PATH=$HOME/bin:/usr/local/bin:$DENO_INSTALL/bin:$PATH
 	fpath=(~/.zsh $fpath)
@@ -61,21 +61,5 @@ alias la="exa --group-directories-first --icons -a"
 alias cat="bat --style=plain --paging=never"
 alias tree="exa -T --icons"
 alias grep="grep --color=auto"
-alias ng="npm init -y && git init"
-alias nd="npm i -D $1"
-alias ns="npm i $1"
 alias t="tree $1"
-# alias name="deno run --unstable --allow-read --allow-write ~/.local/bin/name_normalizer/name_normalizer.ts $1 $2"
-
-#-----| Configs |----#
-alias sx='nvim ~/.config/sxhkd/sxhkdrc'
-alias bs='nvim ~/.config/bspwm/bspwmrc'
-
-# ----| Directory |----
-alias dow="cd $HOME/Descargas"
-alias doc="cd $HOME/Documentos"
-alias img="CD $HOME/Imágenes"
-alias dev="cd $HOME/Workspaces/"
-alias js="cd $HOME/Workspaces/JavaScript"
-
-
+alias paru="paru --bottomup $1"

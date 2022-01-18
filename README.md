@@ -76,6 +76,8 @@
 | -------------------------------------------------------------------------------------- | -------------------------- |
 | **[Picom](https://wiki.archlinux.org/index.php/Picom)**                                | Compositor for Xorg        |
 | **[UbuntuMono Nerd Font](https://aur.archlinux.org/packages/nerd-fonts-ubuntu-mono/)** | Nerd Font for icons        |
+| **[JetBrains Mono Nerd Font](https://aur.archlinux.org/packages/nerd-fonts-jetbrains-mono/)** | Nerd Font for icons        |
+| **[Liberation Mono Nerd Font](https://aur.archlinux.org/packages/nerd-fonts-liberation-mono/)** | Nerd Font for icons        |
 | **[Material Black](https://www.gnome-look.org/p/1316887/)**                            | GTK theme and icons        |
 | **[Papirus Icons](https://archlinux.org/packages/community/any/papirus-icon-theme/)**  | GTK Icons                  |
 | **[lxappearance](https://www.archlinux.org/packages/community/x86_64/lxappearance/)**  | GUI for changing themes    |

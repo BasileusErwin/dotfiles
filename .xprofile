@@ -5,17 +5,18 @@ export QT_STYLE_OVERRIDE=kvantum
 
 #wallset --video ~/Imágenes/Wallpaper/Cosmere-wallpaper-animado-sasori-cosmere-es-v1.mp4  
 
-setxkbmap latam &
+# setxkbmap latam &
+setxkbmap en &
 
 lxsession &
-# nitrogen --restore &
+nitrogen --restore &
 udiskie -t &
 nm-applet &
 picom & 
 # volumeicon &
-redshift -O 2400 &
-# Java Fonts
+redshift -O 5000 &
+
 xsettingsd &
-# Overlay Bar
+
 xob-pulse-py | xob -s pulse &
 xob-brightness-js | xob -s brightness &

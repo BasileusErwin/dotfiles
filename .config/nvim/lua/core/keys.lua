@@ -12,6 +12,7 @@ map("n", "<F5>", "<cmd>Telescope commands<cr>", { noremap = true, silent = true 
 map('n', '<C-s>', ':w<CR>', { silent = true })
 map('n', '<C-S-s>', ':wa<CR>', { silent = true })
 map('n', '<C-q>', ':q<CR>', { silent = true })
+
 map('n', '<M-q>', ':bd<CR>', { silent = true })
 
 -- better window movement

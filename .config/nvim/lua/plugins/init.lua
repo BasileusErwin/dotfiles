@@ -6,8 +6,7 @@ local install_path = fn.stdpath('data')..'/site/pack/package/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
   PACKER_BOOTSTRAP = fn.system {
     "git",
-    "clone",
-    "--depth",
+    "clone", "--depth",
     "1",
     "https://github.com/wbthomason/packer.nvim",
     install_path,
@@ -39,7 +38,7 @@ packer.init {
   },
 }
 
-local LSPInstallPlug = ":LspInstall ccls hls rust-analyzer tsserver vimls vuels eslint hls bashls html jsonls sumneko_lua pyright sqls lemminx cssls zls diagnosticls clangd cmake dockerls emmet_ls gopls"
+local LSPInstallPlug = ":LspInstall ccls hls rust_analyzer tsserver vimls vuels eslint hls bashls html jsonls sumneko_lua pyright sqls lemminx cssls zls diagnosticls clangd cmake dockerls emmet_ls gopls"
 
 return packer.startup(function(use) 
   
@@ -60,12 +59,19 @@ return packer.startup(function(use)
   -- LSP
   use { 
     'neovim/nvim-lspconfig',
-    config = require('plugins.config.lsp') 
+    config = require('plugins.config.lsp')
   }
-  use { 'williamboman/nvim-lsp-installer', run = LSPInstallPlug }
+  use { 
+    'williamboman/nvim-lsp-installer',
+    config = require('plugins.config.lsp_installer'),
+    run = LSPInstallPlug 
+  }
   use 'onsails/lspkind-nvim'
   use "ray-x/lsp_signature.nvim"
-  use { 'creativenull/diagnosticls-configs-nvim' }
+  use { 
+    'creativenull/diagnosticls-configs-nvim',
+    config = require('plugins.config.diagnosticls')
+  }
   use { 
     'simrat39/rust-tools.nvim',
     config = require('plugins.config.rust_tool')
@@ -164,13 +170,18 @@ return packer.startup(function(use)
     config = require('plugins.config.icons')
   }
 
+  use {
+    'wakatime/vim-wakatime'
+  }
+
   -- Themes
-  use { 'joshdick/onedark.vim' }
-  use { 'kaicataldo/material.vim' }
+  use { 'navarasu/onedark.nvim' }
+  use { 'marko-cerovac/material.nvim' }
   use { 'tomasiser/vim-code-dark' }
   use { 'crusoexia/vim-monokai' }
   use { 'ayu-theme/ayu-vim' }
   use { 'ghifarit53/tokyonight-vim' }
+  use 'tiagovla/tokyodark.nvim'
   use { 'dracula/vim', as = 'dracula' }
   use { 'phanviet/vim-monokai-pro' }
 end)

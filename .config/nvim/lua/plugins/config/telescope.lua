@@ -91,7 +91,7 @@ telescope.setup {
         ["?"] = actions.which_key,
       },
     },
-  },  
+  },
 }
 
 map('n', '<Leader>ff', "<cmd>lua require('telescope.builtin').find_files()<cr>", { noremap = true })
