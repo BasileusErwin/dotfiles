@@ -62,7 +62,7 @@ myNormColor = "#232323" :: String
 -- Focus
 myFocusColor = "#008df8" :: String
 -- Browser
-myBrowser = "firefox-developer-edition" :: String
+myBrowser = "firefox" :: String
 
 windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset :: X(Maybe String)
 
@@ -118,33 +118,42 @@ xmobarEscape = concatMap doubleLts
 myWorspaces :: [String]
 myWorspaces = clickable . map xmobarEscape
                 --  www         dev        term        code    folder       config    image    chat        music
-                $ ["\xf269 ", "\58911 " , "\61728 ", "\61729 ", "\58879 ", "\58901 " ,"\xf7e8 ", "\62150 ", "\61884 " ]
+                $ ["\xf268 ", "\58911 " , "\61728 ", "\xf269 ", "\58879 ", "\58901 ", "\62150 ", "\61884 ", "\xf198 " ]
             where
                 clickable l = ["<action=xdotool key super+" ++ show i ++ "> " ++ ws ++ "</action>" | (i, ws) <- zip [1 .. 9] l]
 
 myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
 myManageHook = composeAll
     [ 
-      (className =? "firefox" <||> title =? "Firefox Developer Edition" ) --> doShift (head myWorspaces )
-    , (className =? "Alacritty") --> doShift (myWorspaces !! 1)
-    , className =? "Thunar" --> doShift ( myWorspaces !! 4 )
-    , className =? "Inkscape" --> doShift ( myWorspaces !! 6 )
+    -- 1
+      (className =? "Brave-browser" <||> title =? "Firefox Developer Edition" ) --> doShift (head myWorspaces )
+    -- 2
+    
+    -- 3
+
+    -- 4
+    , className =? "firefox" --> doShift ( myWorspaces !! 4 )
+    -- 5
+    , className =? "Thunar" --> doShift ( myWorspaces !! 5 )
+    -- 6
+    
+    -- 7
     , className =? "TelegramDesktop" --> doShift ( myWorspaces !! 7 )
     , className =? "WhatsappDesktop" --> doShift ( myWorspaces !! 7)
-    , title =? "Webex" --> doShift (myWorspaces !! 7) 
-    , className =? "webex" --> doShift ( myWorspaces !! 7)
     , className =? "Thunderbird" --> doShift ( myWorspaces !! 7 )
+    -- 8
     , (className =? "Spotify" <||> title =? "spotify") --> doShift ( myWorspaces !! 8 )
+    , className =? "Slack"  --> doShift ( myWorspaces !! 8 )
    
     -- Float
     , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat
+    , (className =? "Brave-browser" <&&> resource =? "Dialog") --> doFloat
     , (title =? "Firefox Developer Edition" <&&> resource =? "Dialog") --> doFloat
-    , (className =? "Steam" <&&> resource =? "Dialog") --> doFloat 
     , (className =? "Thunar" <&&> resource =? "Dialog") --> doFloat 
     , className =? "lxappearance" --> doFloat
     , className =? "SpeedCrunch" --> doFloat
     , className =? "Zathura" --> doFloat
-    -- , title =? "Vector" --> doFloat
+    , className =? "Piper" --> doFloat
     ] 
 
 myKeys :: [(String, X ())]
@@ -206,10 +215,12 @@ myKeys = -- Xmonad
         , ("M-S-m", spawn "rofi -show")
         -- Browser
         , ("M-b", spawn myBrowser)
+        -- Browser
+        , ("M-S-b", spawn "brave")
         -- Explore
         , ("M-e", spawn "thunar")
         -- Redshift
-        , ("M-r", spawn "redshift -O 2400")
+        , ("M-r", spawn "redshift -O 5000")
         , ("M-C-r", spawn "redshift -x")
         -- Terminal
         , ("M-<Return>", spawn myTerminal)
@@ -217,7 +228,7 @@ myKeys = -- Xmonad
         , ("M-s", spawn "speedcrunch")
         -- ScreenShot
         , ("M-p", spawn "flameshot gui")
-        , ("M-S-p", spawn "gnome-screenshot -a")
+        , ("M-S-p", spawn "scrot -s")
 
 
         --------------------- Hardware ---------------------
@@ -226,6 +237,9 @@ myKeys = -- Xmonad
         , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ -5%")
         , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ +5%")
         , ("<XF86AudioMute>", spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle" )
+        , ("<XF86AudioPlay>", spawn "playerctl play-pause" )
+        , ("<XF86AudioNext>", spawn "playerctl next" )
+        , ("<XF86AudioPrev>", spawn "playerctl previous" )
 
         -- Brightness
         , ("<XF86MonBrightnessUp>", spawn "brightnessctl set +10%")
@@ -237,10 +251,11 @@ main :: IO ()
 main = do 
     -- Xmobar
     xmobarLaptop <- spawnPipe "xmobar -x 0 ~/.config/xmobar/xmobarPrimary.hs"
-    xmonad $ ewmh def
-        {
-         manageHook = ( isFullscreen --> doFullFloat ) <+> myManageHook <+> manageDocks
-        , handleEventHook = docksEventHook
+    xmobarMonitor <- spawnPipe "xmobar -x 1 ~/.config/xmobar/xmobarPrimary.hs"
+    -- Xmonad
+    xmonad $ ewmh def {
+         manageHook = ( isFullscreen --> doFullFloat ) <+> myManageHook <+> manageDocks 
+        , handleEventHook = handleEventHook defaultConfig <+> docksEventHook
         , startupHook = myStartupHook
         , layoutHook = myLayoutHook
         , workspaces = myWorspaces
@@ -249,9 +264,8 @@ main = do
         , borderWidth = myBorderWidth
         , normalBorderColor = myNormColor
         , focusedBorderColor = myFocusColor
-        , logHook = workspaceHistoryHook <+> dynamicLogWithPP xmobarPP 
-            {
-              ppOutput = \x -> hPutStrLn xmobarLaptop x
+        , logHook = workspaceHistoryHook <+> dynamicLogWithPP xmobarPP {
+              ppOutput = \x -> hPutStrLn xmobarLaptop x >> hPutStrLn xmobarMonitor x
             -- Current workspace in xmonbar
             , ppCurrent  = xmobarColor "#8ce10b" "" . wrap "[" " ]"
             -- Visible but not current workspaces
