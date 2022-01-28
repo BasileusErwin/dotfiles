@@ -1,5 +1,6 @@
 local rust_tools = require('rust-tools')
 local rust_tools_inlay_hints = require('rust-tools.inlay_hints')
+local on_attach = require('plugins.config.lsp').on_attach
 
 vim.cmd([[
   let g:rust_recommended_style = 0
@@ -22,7 +23,8 @@ local opts = {
     -- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
     server = {
         -- on_attach is a callback called when the language server attachs to the buffer
-        -- on_attach = on_attach,
+        path = vim.fn.stdpath("data").."/lsp_servers/rust/rust-analyzer",
+        on_attach = on_attach,
         settings = {
             -- to enable rust-analyzer settings visit:
             -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc

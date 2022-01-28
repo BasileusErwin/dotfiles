@@ -41,7 +41,6 @@ packer.init {
 local LSPInstallPlug = ":LspInstall ccls hls rust_analyzer tsserver vimls vuels eslint hls bashls html jsonls sumneko_lua pyright sqls lemminx cssls zls diagnosticls clangd cmake dockerls emmet_ls gopls"
 
 return packer.startup(function(use) 
-  
   use 'wbthomason/packer.nvim'
 
   -- Lines
@@ -55,6 +54,10 @@ return packer.startup(function(use)
     config = require('plugins.config.bufferline')
   }
 
+  use {
+    'lukas-reineke/format.nvim',
+    config = require('plugins.config.format')
+  }
 
   -- LSP
   use { 
@@ -132,7 +135,7 @@ return packer.startup(function(use)
   }
 
   -- Autopairs
-  use { 
+  use {
     'jiangmiao/auto-pairs',
     config = require('plugins.config.autopairs')
   }
@@ -184,4 +187,5 @@ return packer.startup(function(use)
   use 'tiagovla/tokyodark.nvim'
   use { 'dracula/vim', as = 'dracula' }
   use { 'phanviet/vim-monokai-pro' }
+  use { 'arcticicestudio/nord-vim' }
 end)

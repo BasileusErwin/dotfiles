@@ -10,4 +10,3 @@ lsp_installer.settings({
     },
   install_root_dir = vim.fn.stdpath("data").."/lsp_servers" 
 })
-

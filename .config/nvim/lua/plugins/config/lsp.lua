@@ -3,6 +3,8 @@ local configs = require'lspconfig/configs'
 local protocol = require'vim.lsp.protocol'
 local dlsconfig = require 'diagnosticls-configs'
 
+local M = {}
+
 vim.g.markdown_fenced_languages = {
   "ts=typescript"
 }
@@ -100,31 +102,6 @@ nvim_lsp.pyright.setup {
   capabilities = capabilities,
 }
 
-nvim_lsp.rust_analyzer.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-   settings = {
-    ["rust-analyzer"] = {
-      assist = {
-        importMergeBehavior = "last",
-        importPrefix = "by_self",
-      },
-      diagnostics = {
-        disabled = { "unresolved-import" }
-      },
-      cargo = {
-          loadOutDirsFromCheck = true
-      },
-      procMacro = {
-          enable = true
-      },
-      checkOnSave = {
-          command = "clippy"
-      },
-    }
-  }
-}
-
 nvim_lsp.bashls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
@@ -198,4 +175,7 @@ prettier.setup({
     "yaml",
   },
 })
+M.on_attach = on_attach
+M.capabilities = capabilities
 
+return M
