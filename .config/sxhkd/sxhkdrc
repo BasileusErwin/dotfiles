@@ -139,9 +139,9 @@ super + r
 super + ctrl + r
 	redshift -x
 
-# -- Flameshot 
-Print
-	scrot -s 'screenshot_%Y-%m-%d-%T_$wx$h.png' -e 'mkdir -p ~/Pictures/screenshots/ | mv $f ~/Pictures/screenshots/'
+# --
+super + p
+  scrot -s 'screenshot_%Y-%m-%d-%T_$wx$h.png' -e 'mkdir -p ~/Pictures/screenshots/ | mv $f ~/Pictures/screenshots/'
 
 # ----| System |---- #
 

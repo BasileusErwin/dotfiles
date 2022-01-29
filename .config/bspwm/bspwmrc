@@ -84,10 +84,11 @@ bspc rule -a Thunderbird desktop='^8' focus=off follow=off
 bspc rule -a discord desktop='^8' focus=off follow=off
 bspc rule -a Webex desktop='^8' focus=off follow=off
 bspc rule -a Zoom desktop='^8' focus=off follow=off
+bspc rule -a ClickUp desktop='^8' focus=off follow=off
 # ----| 9 |----
-bspc rule -a spotify desktop='^9'
-bspc rule -a "Control de volumen" desktop='^9'
-bspc rule -a "PulseAudio Equalizer" desktop='^9'
+bspc rule -a Spotify desktop='^9'
+bspc rule -a Pavucontrol desktop='^9'
+bspc rule -a Pulseaudio-equalizer-gtk desktop='^9'
 # ----| 10 |----
 bspc rule -a Slack desktop='^10' focus=off follow=off
 
@@ -110,11 +111,10 @@ bspc rule -a firefoxdeveloperedition:Places state=floating follow=on focus=on
 bspc rule -a firefoxdeveloperedition:Dialog state=floating follow=on focus=on
 bspc rule -a Thunar:Dialog state=floating center=true
 bspc rule -a Zathura state=floating follow=on center=true
-bspc rule -a "Control de volumen" state=floating follow=on center=true
+bspc rule -a Pavucontrol state=floating follow=on center=true
 bspc rule -a Pulseaudio-equalizer-gtk state=floating follow=on center=true
-bspc rule -a "PulseAudio Equalizer" state=floating follow=on center=true
+bspc rule -a Blueman-manager state=floating follow=on center=true
 bspc rule -a Piper state=floating follow=on center=true
-bspc rule -a NordPass Password Manager state=floating follow=on center=true
 bspc rule -a NordPass state=floating follow=on center=true
 
 # ----| |----

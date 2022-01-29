@@ -1,6 +1,6 @@
 # BSPWM
 
-![bspwm](../../.screenshots/BSPWM.png)
+![bspwm](../../screenshots/BSPWM.png)
 
 ## Installation
 ```sh
