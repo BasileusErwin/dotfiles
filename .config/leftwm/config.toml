@@ -196,7 +196,7 @@ key = "m"
 
 [[keybind]]
 command = "Execute"
-value = "alacritty"
+value = "tilix"
 modifier = ["modkey"]
 key = "Return"
 
