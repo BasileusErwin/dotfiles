@@ -14,7 +14,6 @@ for _, module in ipairs(themes_config) do
    end
 end
 
-
 vim.cmd([[
 	set termguicolors
   colorscheme tokyodark

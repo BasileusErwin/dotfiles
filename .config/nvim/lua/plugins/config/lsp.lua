@@ -2,6 +2,7 @@ local nvim_lsp = require('lspconfig')
 local configs = require'lspconfig/configs'    
 local protocol = require'vim.lsp.protocol'
 local dlsconfig = require 'diagnosticls-configs'
+local prettier = require("prettier")
 
 local M = {}
 
@@ -156,7 +157,6 @@ dlsconfig.init {
   on_attach = on_attach,
   capabilities = capabilities,
 }
-local prettier = require("prettier")
 
 prettier.setup({
   bin = 'prettier', -- or `prettierd`

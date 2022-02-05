@@ -1,6 +1,5 @@
 local status_ok, comment = pcall(require, "Comment")
 
-
 comment.setup {
   pre_hook = function(ctx)
     local U = require "Comment.utils"

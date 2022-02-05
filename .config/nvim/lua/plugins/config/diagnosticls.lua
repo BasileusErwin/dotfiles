@@ -1,8 +1,27 @@
 local dlsconfig = require 'diagnosticls-configs'
+local fs =require('diagnosticls-configs.fs')
 local eslint = require 'diagnosticls-configs.linters.eslint'
-local standard = require 'diagnosticls-configs.linters.standard'
 local prettier = require 'diagnosticls-configs.formatters.prettier'
-local prettier_standard = require 'diagnosticls-configs.formatters.prettier_standard'
+local stylua = require 'diagnosticls-configs.formatters.stylua'
+
+prettier = vim.tbl_extend('force', prettier, {
+  sourceName = 'prettier',
+  command = fs.executable('prettier'),
+  args = { '--stdin', '--stdin-filepath', '%filepath' },
+  rootPatterns = {
+    '.prettierrc',
+    '.prettierrc.json',
+    '.prettierrc.toml',
+    '.prettierrc.json',
+    '.prettierrc.yml',
+    '.prettierrc.yaml',
+    '.prettierrc.json5',
+    '.prettierrc.js',
+    '.prettierrc.cjs',
+    'prettier.config.js',
+    'prettier.config.cjs',
+  },
+})
 
 dlsconfig.setup {
   ['html'] = {
@@ -16,16 +35,22 @@ dlsconfig.setup {
     formatter = prettier
   },
   ['javascriptreact'] = {
-    linter = { eslint, standard },
-    formatter = { prettier, prettier_standard }
+    linter = { eslint },
+    formatter = { prettier }
   },
   ['typescript'] = {
     linter = eslint,
     formatter = prettier
   },
   ['typescriptreact'] = {
-    linter = { eslint, standard },
-    formatter = { prettier, prettier_standard }
+    linter = { eslint },
+    formatter = { prettier }
   },
+  ['json'] = {
+    formatter = { prettier }
+  },
+  ['lua'] = {
+    formatter = { stylua }
+  }
 }
 

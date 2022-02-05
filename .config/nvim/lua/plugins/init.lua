@@ -54,11 +54,6 @@ return packer.startup(function(use)
     config = require('plugins.config.bufferline')
   }
 
-  use {
-    'lukas-reineke/format.nvim',
-    config = require('plugins.config.format')
-  }
-
   -- LSP
   use { 
     'neovim/nvim-lspconfig',
@@ -167,6 +162,10 @@ return packer.startup(function(use)
 
   -- Markdown preview
   use {"ellisonleao/glow.nvim"}
+  use {
+  'iamcco/markdown-preview.nvim',
+   run= 'cd app && yarn install'
+  }
   -- Icons
   use {
     'kyazdani42/nvim-web-devicons',

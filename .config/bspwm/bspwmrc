@@ -86,7 +86,7 @@ bspc rule -a Webex desktop='^8' focus=off follow=off
 bspc rule -a Zoom desktop='^8' focus=off follow=off
 bspc rule -a ClickUp desktop='^8' focus=off follow=off
 # ----| 9 |----
-bspc rule -a Spotify desktop='^9'
+bspc rule -a spotify desktop='^9'
 bspc rule -a Pavucontrol desktop='^9'
 bspc rule -a Pulseaudio-equalizer-gtk desktop='^9'
 # ----| 10 |----
@@ -116,6 +116,8 @@ bspc rule -a Pulseaudio-equalizer-gtk state=floating follow=on center=true
 bspc rule -a Blueman-manager state=floating follow=on center=true
 bspc rule -a Piper state=floating follow=on center=true
 bspc rule -a NordPass state=floating follow=on center=true
+bspc rule -a Arandr state=floating follow=on center=true
+bspc rule -a Postman state=floating follow=on center=true
 
 # ----| |----
 bscp rule -a polybar manage=off
