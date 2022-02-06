@@ -1,15 +1,20 @@
 export LANG="es_UY.UTF-8"
 
 if [[ $USER != "root" ]]; then
-	# Rust
-	. "$HOME/.cargo/env"
-	# Deno
-  export DENO_INSTALL="$HOME/.deno"
+  # Deno
+  export DENO_INSTALL="/home/kaisererwin/.deno"
+  # Rust
+  source "$HOME/.cargo/env"
 
   export PATH=$HOME/bin:/usr/local/bin:$DENO_INSTALL/bin:$PATH
-	fpath=(~/.zsh $fpath)
-	autoload -Uz compinit
-	compinit -u
+  fpath=(~/.zsh $fpath)
+  autoload -Uz compinit
+  compinit -u
+
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  [ -f "/home/kaisererwin/.ghcup/env" ] && source "/home/kaisererwin/.ghcup/env" # ghcup-env
 fi
 
 export ZSH="$HOME/.oh-my-zsh"
@@ -17,6 +22,12 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="agnoster"
 
 source $ZSH/oh-my-zsh.sh
+
+prompt_context() {
+  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
+  fi
+}
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
@@ -61,5 +72,8 @@ alias la="exa --group-directories-first --icons -a"
 alias cat="bat --style=plain --paging=never"
 alias tree="exa -T --icons"
 alias grep="grep --color=auto"
+alias ng="npm init -y && git init"
+alias nd="npm i -D $1"
+alias ns="npm i $1"
 alias t="tree $1"
 alias paru="paru --bottomup $1"

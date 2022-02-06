@@ -2,21 +2,19 @@
 
 export PATH=$HOME/.local/bin:$PATH
 export QT_STYLE_OVERRIDE=kvantum
-
-#wallset --video ~/Imágenes/Wallpaper/Cosmere-wallpaper-animado-sasori-cosmere-es-v1.mp4  
-
-# setxkbmap latam &
-setxkbmap en &
+export STARSHIP_CONFIG="$HOME/.config/fish/starship.toml"
 
 lxsession &
+cpupower-gui &
 nitrogen --restore &
 udiskie -t &
 nm-applet &
+blueman-adapters &
 picom & 
 # volumeicon &
 redshift -O 5000 &
-
+# Java Fonts
 xsettingsd &
-
+# Overlay Bar
 xob-pulse-py | xob -s pulse &
 xob-brightness-js | xob -s brightness &
