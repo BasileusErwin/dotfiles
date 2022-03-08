@@ -1,5 +1,5 @@
 local nvim_lsp = require('lspconfig')
-local configs = require'lspconfig/configs'    
+local configs = require'lspconfig/configs'
 local protocol = require'vim.lsp.protocol'
 local dlsconfig = require 'diagnosticls-configs'
 local prettier = require("prettier")
@@ -35,16 +35,16 @@ local on_attach = function(client, bufnr)
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   --buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  --buf_set_keymap('i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts) 
+  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts) 
+  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts) 
+  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts) 
   buf_set_keymap('n', '<Leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   --buf_set_keymap('n', '<C-j>', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', '<C-S-j>', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
@@ -53,6 +53,7 @@ local on_attach = function(client, bufnr)
 end
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- icon
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -77,6 +78,11 @@ nvim_lsp.tsserver.setup {
   filetype = { 'javascript', 'react','typescript', 'typescriptreact', 'typescript.tsx' }
 }
 
+nvim_lsp.volar.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
 -- nvim_lsp.denols.setup {
 --   on_attach = on_attach,
 --   capabilities = capabilities,
@@ -89,6 +95,7 @@ nvim_lsp.tsserver.setup {
 -- }
 
 nvim_lsp.jsonls.setup {
+  cmd = { "vscode-json-languageserver", "--stdio" },
   on_attach = on_attach,
   capabilities = capabilities,
 }
@@ -98,7 +105,7 @@ nvim_lsp.dockerls.setup {
   capabilities = capabilities,
 }
 
-nvim_lsp.pyright.setup {
+nvim_lsp.jedi_language_server.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
@@ -114,6 +121,7 @@ nvim_lsp.html.setup {
 }
 
 nvim_lsp.cssls.setup {
+  cmd = { "vscode-css-languageserver", "--stdio" },
   on_attach = on_attach,
   capabilities = capabilities,
 }
@@ -152,6 +160,35 @@ nvim_lsp.omnisharp.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
+
+nvim_lsp.phpactor.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+nvim_lsp.yamlls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+nvim_lsp.metals.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+nvim_lsp.grammarly.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+nvim_lsp.emmet_ls.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = {
+    "html",
+    "css",
+    "typescriptreact",
+    "javascriptreact",
+  },
+})
 
 dlsconfig.init {
   on_attach = on_attach,

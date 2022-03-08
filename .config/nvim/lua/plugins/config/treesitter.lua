@@ -5,7 +5,7 @@ local config = {
   sync_install = false,
 	highlight = {
     enable = true,
-    -- use_languagetree = true,
+    use_languagetree = true,
   },
   matchup = {
     enable = true
@@ -23,6 +23,8 @@ local config = {
       css = "/* %s */",
       scss = "/* %s */",
       html = "<!-- %s -->",
+      lua = '-- %s',
+      bash = '# %s'
     },
   },
   refactor = {
@@ -58,4 +60,4 @@ local config = {
 treesitter_config.setup(vim.tbl_deep_extend('force', config, {}))
 
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-parser_config.tsx.used_by = { "javascript", "javascript.jsx","typescript.tsx" }
+parser_config.tsx.filetype_to_parsername = { "javascript", "javascript.jsx","typescript.tsx" }

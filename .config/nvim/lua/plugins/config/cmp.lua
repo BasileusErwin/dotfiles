@@ -1,8 +1,5 @@
 local cmp = require'cmp'
-local nvim_lsp = require('lspconfig')
-local dlsconfig = require 'diagnosticls-configs'
 local lspkind = require('lspkind')
-local luasnip = require("luasnip")
 local tabnine = require('cmp_tabnine.config')
 
 local source_names = {
@@ -33,7 +30,7 @@ tabnine:setup({
 })
 
 lspkind.init({
-  with_text = true,
+  with_text = false,
   preset = 'codicons',
   symbol_map = {
     Text = "",

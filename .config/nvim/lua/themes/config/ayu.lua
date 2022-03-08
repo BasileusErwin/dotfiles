@@ -1,1 +1,1 @@
-vim.cmd "let ayucolor="mirage""
+vim.cmd "let ayucolor='mirage'"

@@ -6,9 +6,6 @@ map('n', '<Space>', '<NOP>', { noremap = true, silent = true })
 -- explorer
 map('n', '<Leader>n', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 
-map("n", "<F4>", "<cmd>Telescope resume<cr>", { noremap = true, silent = true })
-map("n", "<F5>", "<cmd>Telescope commands<cr>", { noremap = true, silent = true })
-
 map('n', '<C-s>', ':w<CR>', { silent = true })
 map('n', '<C-S-s>', ':wa<CR>', { silent = true })
 map('n', '<C-q>', ':q<CR>', { silent = true })
@@ -45,3 +42,8 @@ map('n', '<S-TAB>', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true 
 map('x', 'K', ':move \'<-2<CR>gv-gv', { noremap = true })
 map('x', 'J', ':move \'>+1<CR>gv-gv', { noremap = true })
 
+map('n', '<S-J>', '10<C-e>', { noremap = true })
+map('n', '<S-K>', '10<C-y>', { noremap = true })
+
+map('n', '<S-M-v>', '<C-w>v', { noremap = true })
+map('n', '<S-M-h>', '<C-w>s', { noremap = true })

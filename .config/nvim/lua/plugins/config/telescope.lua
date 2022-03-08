@@ -5,15 +5,25 @@ local map = vim.api.nvim_set_keymap
 
 telescope.setup {
   defaults = {
-    layout_config = {width = 0.75, prompt_position = "top", preview_cutoff = 120, horizontal = {mirror = false}, vertical = {mirror = false}},
+    layout_config = {
+      width = 0.75,
+      prompt_position = 'top',
+      preview_cutoff = 120,
+      horizontal = {
+        mirror = false
+      },
+      vertical = {
+        mirror = false
+      }
+    },
     find_command = {'rg', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case'},
-    prompt_prefix = " ",
-    selection_caret = " ",
-    entry_prefix = "  ",
-    initial_mode = "insert",
-    selection_strategy = "reset",
-    sorting_strategy = "descending",
-    layout_strategy = "horizontal",
+    prompt_prefix = ' ',
+    selection_caret = ' ',
+    entry_prefix = '  ',
+    initial_mode = 'insert',
+    selection_strategy = 'reset',
+    sorting_strategy = 'descending',
+    layout_strategy = 'horizontal',
     file_sorter = require'telescope.sorters'.get_fuzzy_file,
     file_ignore_patterns = {},
     generic_sorter = require'telescope.sorters'.get_generic_fuzzy_sorter,
@@ -28,73 +38,78 @@ telescope.setup {
     grep_previewer = previewers.vim_buffer_vimgrep.new,
     qflist_previewer = previewers.vim_buffer_qflist.new,
     buffer_previewer_maker = previewers.buffer_previewer_maker,
+    extensions = {
+    },
     mappings = {
       i = {
-        ["<C-n>"] = actions.cycle_history_next,
-        ["<C-p>"] = actions.cycle_history_prev,
+        ['<C-n>'] = actions.cycle_history_next,
+        ['<C-p>'] = actions.cycle_history_prev,
 
-        ["<C-j>"] = actions.move_selection_next,
-        ["<C-k>"] = actions.move_selection_previous,
+        ['<C-j>'] = actions.move_selection_next,
+        ['<C-k>'] = actions.move_selection_previous,
 
-        ["<C-c>"] = actions.close,
+        ['<M-q>'] = actions.close,
 
-        ["<Down>"] = actions.move_selection_next,
-        ["<Up>"] = actions.move_selection_previous,
+        ['<Down>'] = actions.move_selection_next,
+        ['<Up>'] = actions.move_selection_previous,
 
-        ["<CR>"] = actions.select_default,
-        ["<C-x>"] = actions.select_horizontal,
-        ["<C-v>"] = actions.select_vertical,
-        ["<C-t>"] = actions.select_tab,
+        ['<CR>'] = actions.select_default,
+        ['<C-x>'] = actions.select_horizontal,
+        ['<C-v>'] = actions.select_vertical,
+        ['<C-t>'] = actions.select_tab,
 
-        ["<C-u>"] = actions.preview_scrolling_up,
-        ["<C-d>"] = actions.preview_scrolling_down,
+        ['<C-u>'] = actions.preview_scrolling_up,
+        ['<C-d>'] = actions.preview_scrolling_down,
 
-        ["<PageUp>"] = actions.results_scrolling_up,
-        ["<PageDown>"] = actions.results_scrolling_down,
+        ['<PageUp>'] = actions.results_scrolling_up,
+        ['<PageDown>'] = actions.results_scrolling_down,
 
-        ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-        ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
-        ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
-        ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-        ["<C-l>"] = actions.complete_tag,
-        ["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
+        ['<Tab>'] = actions.toggle_selection + actions.move_selection_worse,
+        ['<S-Tab>'] = actions.toggle_selection + actions.move_selection_better,
+        ['<C-q>'] = actions.send_to_qflist + actions.open_qflist,
+        ['<C-l>'] = actions.complete_tag,
+        ['<C-_>'] = actions.which_key, -- keys from pressing <C-/>
       },
       n = {
-        ["<esc>"] = actions.close,
-        ["<CR>"] = actions.select_default,
-        ["<C-x>"] = actions.select_horizontal,
-        ["<C-v>"] = actions.select_vertical,
-        ["<C-t>"] = actions.select_tab,
+        ['<esc>'] = actions.close,
 
-        ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-        ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
-        ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
-        ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+        ['<M-q>'] = actions.close,
 
-        ["j"] = actions.move_selection_next,
-        ["k"] = actions.move_selection_previous,
-        ["H"] = actions.move_to_top,
-        ["M"] = actions.move_to_middle,
-        ["L"] = actions.move_to_bottom,
+        ['<CR>'] = actions.select_default,
+        ['<C-x>'] = actions.select_horizontal,
+        ['<C-v>'] = actions.select_vertical,
+        ['<C-t>'] = actions.select_tab,
 
-        ["<Down>"] = actions.move_selection_next,
-        ["<Up>"] = actions.move_selection_previous,
-        ["gg"] = actions.move_to_top,
-        ["G"] = actions.move_to_bottom,
+        ['<Tab>'] = actions.toggle_selection + actions.move_selection_worse,
+        ['<S-Tab>'] = actions.toggle_selection + actions.move_selection_better,
+        ['<C-q>'] = actions.send_to_qflist + actions.open_qflist,
 
-        ["<C-u>"] = actions.preview_scrolling_up,
-        ["<C-d>"] = actions.preview_scrolling_down,
+        ['j'] = actions.move_selection_next,
+        ['k'] = actions.move_selection_previous,
+        ['H'] = actions.move_to_top,
+        ['M'] = actions.move_to_middle,
+        ['L'] = actions.move_to_bottom,
 
-        ["<PageUp>"] = actions.results_scrolling_up,
-        ["<PageDown>"] = actions.results_scrolling_down,
+        ['<Down>'] = actions.move_selection_next,
+        ['<Up>'] = actions.move_selection_previous,
+        ['gg'] = actions.move_to_top,
+        ['G'] = actions.move_to_bottom,
 
-        ["?"] = actions.which_key,
+        ['<C-u>'] = actions.preview_scrolling_up,
+        ['<C-d>'] = actions.preview_scrolling_down,
+
+        ['<PageUp>'] = actions.results_scrolling_up,
+        ['<PageDown>'] = actions.results_scrolling_down,
+
+        ['?'] = actions.which_key,
       },
     },
   },
 }
 
-map('n', '<Leader>ff', "<cmd>lua require('telescope.builtin').find_files()<cr>", { noremap = true })
-map('n', '<Leader>fg', "<cmd>lua require('telescope.builtin').live_grep()<cr>", { noremap = true })
-map('n', '<Leader>fb', "<cmd>lua require('telescope.builtin').buffers()<cr>", { noremap = true })
-map('n', '<Leader>fh', "<cmd>lua require('telescope.builtin').help_tags()<cr>", { noremap = true })
+map('n', '<Leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<cr>', { noremap = true })
+map('n', '<Leader>ff', '<cmd>lua require("telescope.builtin").find_files()<cr>', { noremap = true })
+map('n', '<Leader>fb', '<cmd>lua require("telescope.builtin").buffers()<cr>', { noremap = true })
+map('n', '<Leader>fh', '<cmd>lua require("telescope.builtin").help_tags()<cr>', { noremap = true })
+map("n", "<F4>", "<cmd>Telescope resume<cr>", { noremap = true, silent = true })
+map("n", "<F5>", "<cmd>Telescope commands<cr>", { noremap = true, silent = true })

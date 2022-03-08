@@ -5,13 +5,12 @@ local install_path = fn.stdpath('data')..'/site/pack/package/start/packer.nvim'
 
 if fn.empty(fn.glob(install_path)) > 0 then
   PACKER_BOOTSTRAP = fn.system {
-    "git",
-    "clone", "--depth",
-    "1",
-    "https://github.com/wbthomason/packer.nvim",
+    'git',
+    'clone', '--depth', '1',
+    'https://github.com/wbthomason/packer.nvim',
     install_path,
   }
-  print "Installing packer close and reopen Neovim..."
+  print 'Installing packer close and reopen Neovim...'
   vim.cmd [[packadd packer.nvim]]
 end
 
@@ -22,10 +21,10 @@ vim.api.nvim_exec(
       autocmd BufWritePost plugins.lua PackerCompile
       augroup end
     ]],
-    false
+    true
 )
 
-local status_ok, packer = pcall(require, "packer")
+local status_ok, packer = pcall(require, 'packer')
 if not status_ok then
   return
 end
@@ -33,50 +32,62 @@ end
 packer.init {
   display = {
     open_fn = function()
-      return require("packer.util").float { border = "rounded" }
+      return require('packer.util').float { border = 'rounded' }
     end,
   },
 }
 
-local LSPInstallPlug = ":LspInstall ccls hls rust_analyzer tsserver vimls vuels eslint hls bashls html jsonls sumneko_lua pyright sqls lemminx cssls zls diagnosticls clangd cmake dockerls emmet_ls gopls"
+local load_config = function (package)
+   local ok, err = pcall(require, package)
+   return ok
+end
 
-return packer.startup(function(use) 
+local LSPInstallPlug = ':LspInstall intelephense ccls hls rust_analyzer tsserver vimls vuels eslint hls bashls html jsonls sumneko_lua pyright sqls lemminx cssls zls diagnosticls clangd cmake dockerls emmet_ls gopls'
+
+return packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- Lines
   use {
     'nvim-lualine/lualine.nvim',
-    config = require('plugins.config.lualine')
+    config = load_config('plugins.config.lualine')
   }
  use {
-    'akinsho/bufferline.nvim', 
+    'akinsho/bufferline.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
-    config = require('plugins.config.bufferline')
+    config = load_config('plugins.config.bufferline')
   }
-
   -- LSP
-  use { 
+  use {
     'neovim/nvim-lspconfig',
-    config = require('plugins.config.lsp')
+    config = load_config('plugins.config.lsp')
   }
-  use { 
+  use {
     'williamboman/nvim-lsp-installer',
-    config = require('plugins.config.lsp_installer'),
-    run = LSPInstallPlug 
+    config = load_config('plugins.config.lsp_installer'),
+    run = LSPInstallPlug
   }
   use 'onsails/lspkind-nvim'
-  use "ray-x/lsp_signature.nvim"
-  use { 
+  use 'ray-x/lsp_signature.nvim'
+  use {
     'creativenull/diagnosticls-configs-nvim',
-    config = require('plugins.config.diagnosticls')
+    config = load_config('plugins.config.diagnosticls')
   }
-  use { 
+  use {
     'simrat39/rust-tools.nvim',
-    config = require('plugins.config.rust_tool')
+    config = load_config('plugins.config.rust_tool')
   }
   use 'rust-lang/rust.vim'
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'MunifTanjim/prettier.nvim'
+  use {
+   'scalameta/nvim-metals',
+    requires = { 'nvim-lua/plenary.nvim' }
+  }
+
+  use {
+    'StanAngeloff/php.vim'
+  }
 
   -- CMP
   use {
@@ -88,30 +99,30 @@ return packer.startup(function(use)
       'hrsh7th/nvim-cmp',
       'hrsh7th/cmp-vsnip',
       'hrsh7th/vim-vsnip',
-      "saadparwaiz1/cmp_luasnip",
+      'saadparwaiz1/cmp_luasnip',
     },
-    config = require('plugins.config.cmp')
+    config = load_config('plugins.config.cmp')
   }
   use { 'Saecki/crates.nvim', requires = { 'nvim-lua/plenary.nvim' } }
 
   -- snippets
-  use "L3MON4D3/LuaSnip" 
-  use "rafamadriz/friendly-snippets" 
+  use 'L3MON4D3/LuaSnip'
+  use 'rafamadriz/friendly-snippets'
 
-  use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'} 
+  use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
 
   -- Treeesitter
-  use { 
-    'nvim-treesitter/nvim-treesitter', 
+  use {
+    'nvim-treesitter/nvim-treesitter',
     run = { ':TSUpdate' },
-    config = require('plugins.config.treesitter')
+    config = load_config('plugins.config.treesitter')
   }
-  use "JoosepAlviste/nvim-ts-context-commentstring"
+  use 'JoosepAlviste/nvim-ts-context-commentstring'
 
   -- Explorer
   use {
     'kyazdani42/nvim-tree.lua',
-    config = require('plugins.config.nvim_tree')
+    config = load_config('plugins.config.nvim_tree')
   }
 
   -- Autoclose tags
@@ -120,19 +131,22 @@ return packer.startup(function(use)
   -- CSS color
   use {
     'norcalli/nvim-colorizer.lua',
-    config = require('plugins.config.colorize')
+    config = load_config('plugins.config.colorize')
   }
 
   -- Commentary
   use {
-    "numToStr/Comment.nvim",
-    config = require('plugins.config.comments')
+    'numToStr/Comment.nvim',
+    config = load_config('plugins.config.comments')
   }
 
   -- Autopairs
   use {
     'jiangmiao/auto-pairs',
-    config = require('plugins.config.autopairs')
+    config = load_config('plugins.config.autopairs')
+  }
+  use {
+    'alvan/vim-closetag'
   }
 
   -- Vim-matchup
@@ -143,25 +157,29 @@ return packer.startup(function(use)
 
   -- Git integration
   use {
-    "lewis6991/gitsigns.nvim",
-    config = require('plugins.config.git')
+    'lewis6991/gitsigns.nvim',
+    config = load_config('plugins.config.git')
   }
   -- Telescope
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { 'nvim-lua/plenary.nvim' },
-    config = require('plugins.config.telescope')
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope-file-browser.nvim',
+      { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
+    },
+    config = load_config('plugins.config.telescope')
   }
 
   use {
-    "lukas-reineke/indent-blankline.nvim",
-    event = "BufRead",
-    config = require('plugins.config.indent-blankline')
+    'lukas-reineke/indent-blankline.nvim',
+    event = 'BufRead',
+    config = load_config('plugins.config.indent-blankline')
   }
   use 'mattn/emmet-vim'
 
   -- Markdown preview
-  use {"ellisonleao/glow.nvim"}
+  use {'ellisonleao/glow.nvim'}
   use {
   'iamcco/markdown-preview.nvim',
    run= 'cd app && yarn install'
@@ -169,12 +187,9 @@ return packer.startup(function(use)
   -- Icons
   use {
     'kyazdani42/nvim-web-devicons',
-    config = require('plugins.config.icons')
+    config = load_config('plugins.config.icons')
   }
-
-  use {
-    'wakatime/vim-wakatime'
-  }
+  use { 'ryanoasis/vim-devicons' }
 
   -- Themes
   use { 'navarasu/onedark.nvim' }
@@ -187,4 +202,5 @@ return packer.startup(function(use)
   use { 'dracula/vim', as = 'dracula' }
   use { 'phanviet/vim-monokai-pro' }
   use { 'arcticicestudio/nord-vim' }
+  use {"ellisonleao/carbon-now.nvim", config = function() require('carbon-now').setup() end}
 end)

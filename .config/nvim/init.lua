@@ -11,3 +11,4 @@ for _, module in ipairs(core_modules) do
       error("Error loading " .. module .. "\n\n" .. err)
    end
 end
+

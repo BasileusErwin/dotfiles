@@ -10,13 +10,13 @@ local themes_config = {
 for _, module in ipairs(themes_config) do
    local ok, err = pcall(require, module)
    if not ok then
-      error("Error loading " .. module .. "\n\n" .. err)
+    return
    end
 end
 
 vim.cmd([[
-	set termguicolors
-  colorscheme tokyodark
+  set termguicolors
+  colorscheme tokyonight
 ]])
 
 lualine_config.set_theme('auto')
