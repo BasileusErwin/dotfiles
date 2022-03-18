@@ -13,5 +13,6 @@
 !.xprofile
 !.Xresources
 !.config
-!.local/bin
 !.xmonad
+!.local
+!.zshrc
