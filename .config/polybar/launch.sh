@@ -11,8 +11,8 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 polybar main -c ~/.config/polybar/material.ini &
 ln -sf /tmp/polybar_mqueue.$! /tmp/ipc-bottom
 
-my_laptop_external_monitor=$(xrandr --query | grep 'HDMI1')
-if [[ $my_laptop_external_monitor = /^connected/ ]]; then
+my_laptop_external_monitor=$(xrandr --query | grep 'HDMI-1')
+if [[ $my_laptop_external_monitor == /^connected/ ]]; then
     polybar monitor -c ~/.config/polybar/config.ini
     ln -sf /tmp/polybar_mqueue.$! /tmp/ipc-bottom
 fi

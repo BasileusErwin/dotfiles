@@ -10,7 +10,8 @@ filetype indent on
 filetype plugin on
 set hlsearch!
 ]])
-
+-- Do not source the default filetype.vim
+vim.g.did_load_filetypes = 1
 -- Number
 vim.wo.number = true
 vim.wo.relativenumber = true

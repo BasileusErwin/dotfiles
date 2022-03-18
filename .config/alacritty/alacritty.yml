@@ -1,26 +1,25 @@
-background_opacity: 0.8
 colors:
   bright:
-    black: '#767676'
-    blue: '#1a8fff'
-    cyan: '#14ffff'
-    green: '#23fd00'
-    magenta: '#fd28ff'
-    red: '#f2201f'
-    white: '#ffffff'
-    yellow: '#fffd00'
+    black: '#282a40'
+    blue: '#a3c5ff'
+    cyan: '#98fffd'
+    green: '#e0ffad'
+    magenta: '#d6afed'
+    red: '#eb7f84'
+    white: '#FFFFFF'
+    yellow: '#ffee7e'
   normal:
-    black: '#000000'
-    blue: '#0d73cc'
-    cyan: '#0dcdcd'
-    green: '#19cb00'
-    magenta: '#cb1ed1'
-    red: '#cc0403'
-    white: '#dddddd'
-    yellow: '#cecb00'
+    black: '#181a29'
+    blue: '#93bbff'
+    cyan: '#98e4ff'
+    green: '#cdea9f'
+    magenta: '#d3a7ee'
+    red: '#F07178'
+    white: '#FFFFFF'
+    yellow: '#ffd47e'
   primary:
-    background: '#000000'
-    foreground: '#dddddd'
+    background: '#0E1019'
+    foreground: '#FFFAF4'
 font:
   bold:
     family: JetBrains Mono ExtraBold Nerd Font
@@ -32,7 +31,9 @@ font:
   offset:
     x: 0
     y: 0
-  size: 10.0
+  size: 9.0
 window:
+  opacity: 0.8
   padding:
-    x: 2
+    x: 0
+    y: 0

@@ -2,6 +2,10 @@ function commit
   git commit -m $argv
 end
 
+function nvm
+    bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
+end
+
 set fish_greeting ""
 
 # Aliases
@@ -31,13 +35,15 @@ alias gs "git status -sb"
 alias gf "git fetch --all -p"
 alias gps "git push"
 alias gpsf "git push --force"
+alias gpl "git pull"
 
 # Workspace
 alias w "cd ~/Workspace"
 alias wh "cd ~/Workspace/Houlak"
 
-alias dot "cd ~/.dotfiles"
+alias dot "git --git-dir ~/.dotfiles --work-tree ~"
 
 # Prompt
 
 starship init fish | source
+export PATH="$PATH:$HOME/.spicetify"

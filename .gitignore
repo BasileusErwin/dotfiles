@@ -1,5 +1,17 @@
-**/*/plugged
-**/*/node_modules
-**/*/alacritty/themes
-**/*/alacritty/(fonts.yaml|themes.json)
-**/.xmonad/xmonad(.hi|.errors|-*|.o)
+# Ignore everything
+/*
+!.gitignore
+!.gitmodules
+
+# Except for the files and folders we want to track
+!README.md
+!.pkgs
+!.screenshots
+!.bashrc
+!.zshrc
+!.tmux.conf.local
+!.xprofile
+!.Xresources
+!.config
+!.local/bin
+!.xmonad

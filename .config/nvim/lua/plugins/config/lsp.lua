@@ -116,6 +116,7 @@ nvim_lsp.bashls.setup {
 }
 
 nvim_lsp.html.setup {
+  cmd = { "vscode-html-languageserver", "--stdio" },
   on_attach = on_attach,
   capabilities = capabilities,
 }

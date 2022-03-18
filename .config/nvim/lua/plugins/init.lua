@@ -191,6 +191,20 @@ return packer.startup(function(use)
   }
   use { 'ryanoasis/vim-devicons' }
 
+  use {
+    "nathom/filetype.nvim",
+    config = load_config('plugins.config.filetype')
+  }
+  use {
+    "max397574/better-escape.nvim",
+    config = load_config("plugins.config.better_escape")
+  }
+
+  use {
+    'simrat39/symbols-outline.nvim',
+    config = load_config('plugins.config.simbols_outline')
+  }
+
   -- Themes
   use { 'navarasu/onedark.nvim' }
   use { 'marko-cerovac/material.nvim' }

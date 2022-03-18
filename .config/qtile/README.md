@@ -17,7 +17,7 @@ If the network widget doesn't work check ```./components/primary_widgets.py``` a
 for this line, you should find it inside a list called *primary_widgets*:
 
 ```python
-# Change interface arg, use ip address to find which one you need
+# Change interface arg, use IP address to find which one you need
  widget.Net(**base(bg='color3'), interface='wlp2s0'),
 ```
 

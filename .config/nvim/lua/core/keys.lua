@@ -29,10 +29,10 @@ map('v', '<', '<gv', { noremap = true, silent = true })
 map('v', '>', '>gv', { noremap = true, silent = true })
 
 -- I hate escape
-map('i', 'jk', '<ESC>', { noremap = true, silent = true })
-map('i', 'ii', '<ESC>', { noremap = true, silent = true, nowait = true })
-map('i', 'kj', '<ESC>', { noremap = true, silent = true })
-map('i', 'jj', '<ESC>', { noremap = true, silent = true })
+-- map('i', 'jk', '<ESC>', { noremap = true, silent = true })
+-- map('i', 'ii', '<ESC>', { noremap = true, silent = true, nowait = true })
+-- map('i', 'kj', '<ESC>', { noremap = true, silent = true })
+-- map('i', 'jj', '<ESC>', { noremap = true, silent = true })
 
 -- Tab switch buffer
 map('n', '<TAB>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
@@ -47,3 +47,4 @@ map('n', '<S-K>', '10<C-y>', { noremap = true })
 
 map('n', '<S-M-v>', '<C-w>v', { noremap = true })
 map('n', '<S-M-h>', '<C-w>s', { noremap = true })
+

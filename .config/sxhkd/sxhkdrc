@@ -1,5 +1,4 @@
-#! /bin/sh
-
+#!/bin/bash
 # ----| bspwm hotkeys |---- #
 
 # -- quit/restart bspwm
@@ -102,10 +101,10 @@ super + {Left,Down,Up,Right}
 
 # -- terminal emulator
 super + Return
-	tilix 
+  alacritty 
 
 super + shift + Return
-	alacritty 
+  tilix
 
 # -- Menu
 super + m 
@@ -125,7 +124,7 @@ super + Escape
 
 # -- Browser
 super + b 
-  brave --process-per-site
+  brave-beta --process-per-site
 
 super + shift + b 
   google-chrome-stable

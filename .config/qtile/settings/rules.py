@@ -4,10 +4,16 @@ from libqtile.config import Match
 def rules(group=[], floating=False, layout_floating={}):
 	if not floating:
 			return {
-					" ": Match(wm_class=["Brave-browser"]),
+					" ": Match(wm_class=[
+                       "Brave-browser",
+                       "Brave-browser-beta"
+                   ]),
 					" ": Match(wm_class=[""]),
 					" ": Match(wm_class=[""]),
-					" ": Match(wm_class=["firefox"]),
+					" ": Match(wm_class=[
+                       "firefox",
+                       "Google-chrome"
+                   ]),
 					" ": Match(wm_class=["Thunar", "pcmanfm"]),
 					" ": Match(wm_class=["stacer", "Zoom"]),
 					" ": Match(wm_class=[
@@ -16,7 +22,11 @@ def rules(group=[], floating=False, layout_floating={}):
 						"Thunderbird", 
 						"discord"
 						]),
-					" ": Match(wm_class=["spotify"]),
+					" ": Match(wm_class=[
+                       "spotify",
+                       "Pavucontrol",
+                       "Pulseaudio-equalizer-gtk"
+                   ]),
 					" ": Match(wm_class=["Slack"])
 			}[group]
 	elif floating:
@@ -35,10 +45,17 @@ def rules(group=[], floating=False, layout_floating={}):
 			Match(wm_class='pavucontrol'),
 			Match(wm_class='pulseaudio-equalizer-gtk'),
 			Match(wm_class='Piper'),
+			Match(wm_class='Postman'),
+			Match(wm_class='Arandr'),
+			Match(wm_class='NordPass'),
 			Match(wm_class='firefox', wm_type='Dialog'),
 			Match(wm_class='firefox', wm_type='Places'),
 			Match(wm_class='Brave-browser', wm_type='Places'),
-			Match(wm_class='Brave-browser', wm_type='Dialog'),
+			Match(wm_class='Brave-browser', wm_type='pop-up'),
+			Match(wm_class='Brave-browser-beta', wm_type='Places'),
+			Match(wm_class='Brave-browser-beta', wm_type='pop-up'),
+			Match(wm_class='Google-chrome', wm_type='Places'),
+			Match(wm_class='Google-chrome', wm_type='pop-up'),
 			Match(wm_class='Thunar', wm_type='Dialog'),
 		]
 		

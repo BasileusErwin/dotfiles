@@ -1,5 +1,0 @@
-#!/bin/bash
-
-leftwm-command "UnloadTheme"
-
-pkill polybar

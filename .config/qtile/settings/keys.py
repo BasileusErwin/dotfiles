@@ -34,9 +34,9 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
     ([mod], "comma", lazy.prev_screen()),
 
     # Restart Qtile
-    ([mod, "control"], "r", lazy.restart()),
+    ([mod, "shift"], "r", lazy.restart()),
 
-    ([mod, "control"], "q", lazy.shutdown()),
+    ([mod, "shift"], "q", lazy.shutdown()),
     ([mod], "r", lazy.spawncmd()),
 
 
@@ -44,26 +44,22 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
 
     # Menu
     ([mod], "m", lazy.spawn("rofi -show drun")),
-
-    # Window Nav
     ([mod, "shift"], "m", lazy.spawn("rofi -show")),
 
     # Browser
-    ([mod], "b", lazy.spawn("firefox")),
-    ([mod, "shift"], "b", lazy.spawn("brave")),
+    ([mod], "b", lazy.spawn("brave-beta --process-per-site")),
+    ([mod, "shift"], "b", lazy.spawn("google-chrome-stable")),
 
     # File Explorer
     ([mod], "e", lazy.spawn("pcmanfm")),
 
     # Terminal
-    ([mod], "Return", lazy.spawn("alacritty")),
+    ([mod], "Return", lazy.spawn("tilix")),
+    ([mod, "shift"], "Return", lazy.spawn("alacritty")),
 
     # Redshift
     ([mod], "r", lazy.spawn("redshift -O 5000")),
-    ([mod, "shift"], "r", lazy.spawn("redshift -x")),
-
-    # Screenshot
-    ([], "Print", lazy.spwm("flameshot gui")),
+    ([mod, "control"], "r", lazy.spawn("redshift -x")),
 
     # SpeedCrunch
     ([mod], "s", lazy.spwm("speedcrunch")),

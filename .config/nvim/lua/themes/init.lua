@@ -16,7 +16,7 @@ end
 
 vim.cmd([[
   set termguicolors
-  colorscheme tokyonight
+  colorscheme onedark
 ]])
 
 lualine_config.set_theme('auto')

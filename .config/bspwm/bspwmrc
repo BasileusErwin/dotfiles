@@ -6,10 +6,10 @@ $HOME/.config/polybar/launch.sh &
 wmname LG3D &
 
 # ----| Display |----
-my_laptop_external_monitor=$(xrandr --query | grep 'HDMI1')
+my_laptop_external_monitor=$(xrandr --query | grep 'HDMI-1')
 if [[ $my_laptop_external_monitor = /^connected/ ]]; then
-  bspc monitor eDP1 -d I II III IV V
-  bspc monitor HDMI1 -d VI VII VIII IX X
+  bspc monitor eDP-1 -d I II III IV V
+  bspc monitor HDMI-1 -d VI VII VIII IX X
 else
   bspc monitor -d I II III IV V VI VII VIII IX X
 fi
@@ -74,6 +74,7 @@ bspc rule -a Thunar desktop='^5'
 bspc rule -a pcmanfm desktop='^5'
 # ----| 6 |----
 bspc rule -a stacer desktop='^6'
+bspc rule -a DBeaver desktop='^6'
 # ----| 7 |----
 bspc rule -a Inkscape desktop='^7'
 bspc rule -a zoom desktop='^7' focus=off state=floating
@@ -118,6 +119,7 @@ bspc rule -a Piper state=floating follow=on center=true
 bspc rule -a NordPass state=floating follow=on center=true
 bspc rule -a Arandr state=floating follow=on center=true
 bspc rule -a Postman state=floating follow=on center=true
+bspc rule -a Java state=floating follow=on center=true
 
 # ----| |----
 bscp rule -a polybar manage=off
