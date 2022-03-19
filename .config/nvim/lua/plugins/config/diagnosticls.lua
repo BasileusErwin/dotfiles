@@ -1,8 +1,13 @@
 local dlsconfig = require 'diagnosticls-configs'
 local fs =require('diagnosticls-configs.fs')
+
+-- JS|TS
 local eslint = require 'diagnosticls-configs.linters.eslint'
 local prettier = require 'diagnosticls-configs.formatters.prettier'
+
+-- lua
 local stylua = require 'diagnosticls-configs.formatters.stylua'
+local luacheck = require 'diagnosticls-configs.linters.luacheck'
 
 prettier = vim.tbl_extend('force', prettier, {
   sourceName = 'prettier',
@@ -50,6 +55,7 @@ dlsconfig.setup {
     formatter = { prettier }
   },
   ['lua'] = {
+    linter = { luacheck },
     formatter = { stylua }
   }
 }

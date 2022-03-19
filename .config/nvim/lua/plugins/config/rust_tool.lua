@@ -12,10 +12,28 @@ local opts = {
         autoSetHints = true,
         hover_with_actions = true,
         inlay_hints = {
-            show_parameter_hints = false,
+            show_parameter_hints = true,
             parameter_hints_prefix = "",
             other_hints_prefix = "",
         },
+    },
+    hover_actions = {
+      -- the border that is used for the hover window
+      -- see vim.api.nvim_open_win()
+      border = {
+        { "╭", "FloatBorder" },
+        { "─", "FloatBorder" },
+        { "╮", "FloatBorder" },
+        { "│", "FloatBorder" },
+        { "╯", "FloatBorder" },
+        { "─", "FloatBorder" },
+        { "╰", "FloatBorder" },
+        { "│", "FloatBorder" },
+      },
+
+      -- whether the hover action window gets automatically focused
+      -- default: false
+      auto_focus = true,
     },
 
     -- all the opts to send to nvim-lspconfig
@@ -39,5 +57,8 @@ local opts = {
 }
 
 rust_tools.setup(opts)
+
+require('rust-tools.runnables').runnables()
+require'rust-tools.hover_actions'.hover_actions()
 
 rust_tools_inlay_hints.set_inlay_hints()

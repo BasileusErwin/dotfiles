@@ -1,7 +1,8 @@
 #!/bin/bash
 
-export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.local/bin:/usr/local/bin:$HOME/.cargo/bin:$PATH
 export QT_STYLE_OVERRIDE=kvantum
+export DENO_INSTALL="/home/kaisererwin/.deno"
 export STARSHIP_CONFIG="$HOME/.config/fish/starship.toml"
 
 lxsession &
