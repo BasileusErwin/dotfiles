@@ -1,4 +1,5 @@
 local nvim_lsp = require('lspconfig')
+local util = require 'lspconfig.util'
 local configs = require'lspconfig/configs'
 local protocol = require'vim.lsp.protocol'
 local dlsconfig = require 'diagnosticls-configs'
@@ -72,27 +73,33 @@ nvim_lsp.sumneko_lua.setup {
   capabilities = capabilities,
 }
 
+if util.root_pattern(".eslintrc.json", "tsconfig.json", "tslint.json") then
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetype = { 'javascript', 'react','typescript', 'typescriptreact', 'typescript.tsx' }
+  filetype = { 'javascript', 'react','typescript', 'typescriptreact', 'typescript.tsx' },
 }
+else
+nvim_lsp.denols.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "javascript", "typescript" },
+  cmd = { "deno", "lsp" },
+  init_options = {
+    enable = true,
+    lint = true,
+    unstable = false
+  },
+}
+vim.g.markdown_fenced_languages = {
+  "ts=typescript"
+}
+end
 
 nvim_lsp.volar.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
-
--- nvim_lsp.denols.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
---   cmd = { "deno", "lsp" },
---   init_options = {
---     enable = true,
---     lint = true,
---     unstable = false
---   },
--- }
 
 nvim_lsp.jsonls.setup {
   cmd = { "vscode-json-languageserver", "--stdio" },

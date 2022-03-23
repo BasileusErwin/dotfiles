@@ -41,10 +41,10 @@ map('n', '<S-TAB>', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true 
 -- Move selected line / block of text in visual mode
 map('x', 'K', ':move \'<-2<CR>gv-gv', { noremap = true })
 map('x', 'J', ':move \'>+1<CR>gv-gv', { noremap = true })
-
-map('n', '<S-J>', '10<C-e>', { noremap = true })
-map('n', '<S-K>', '10<C-y>', { noremap = true })
-
+--
+-- map('n', '<S-J>', '10<C-e>', { noremap = true })
+-- map('n', '<S-K>', '10<C-y>', { noremap = true })
+--
 map('n', '<S-M-v>', '<C-w>v', { noremap = true })
 map('n', '<S-M-h>', '<C-w>s', { noremap = true })
 

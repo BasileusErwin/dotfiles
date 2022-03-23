@@ -107,9 +107,8 @@ telescope.setup {
   },
 }
 
-map('n', '<Leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<cr>', { noremap = true })
-map('n', '<Leader>ff', '<cmd>lua require("telescope.builtin").find_files()<cr>', { noremap = true })
-map('n', '<Leader>fb', '<cmd>lua require("telescope.builtin").buffers()<cr>', { noremap = true })
-map('n', '<Leader>fh', '<cmd>lua require("telescope.builtin").help_tags()<cr>', { noremap = true })
-map("n", "<F4>", "<cmd>Telescope resume<cr>", { noremap = true, silent = true })
-map("n", "<F5>", "<cmd>Telescope commands<cr>", { noremap = true, silent = true })
+map('n', '<Leader>g', '<cmd>lua require("telescope.builtin").live_grep()<cr>', { noremap = true })
+map('n', '<Leader>f', '<cmd>lua require("telescope.builtin").find_files()<cr>', { noremap = true })
+map('n', '<Leader>b', '<cmd>lua require("telescope.builtin").buffers()<cr>', { noremap = true })
+map('n', '<Leader>th', '<cmd>lua require("telescope.builtin").help_tags()<cr>', { noremap = true })
+map("n", "<Leader>tc", "<cmd>Telescope commands<cr>", { noremap = true, silent = true })

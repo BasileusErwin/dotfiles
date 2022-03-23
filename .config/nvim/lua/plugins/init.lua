@@ -45,7 +45,9 @@ end
 local LSPInstallPlug = ':LspInstall intelephense ccls hls rust_analyzer tsserver vimls vuels eslint hls bashls html jsonls sumneko_lua pyright sqls lemminx cssls zls diagnosticls clangd cmake dockerls emmet_ls gopls'
 
 return packer.startup(function(use)
-  use 'wbthomason/packer.nvim'
+  use {
+    'wbthomason/packer.nvim'
+  }
 
   -- Lines
   use {
@@ -106,7 +108,10 @@ return packer.startup(function(use)
   use { 'Saecki/crates.nvim', requires = { 'nvim-lua/plenary.nvim' } }
 
   -- snippets
-  use 'L3MON4D3/LuaSnip'
+  use {
+    'L3MON4D3/LuaSnip',
+    config = load_config('plugins.config.luasnip')
+  }
   use 'rafamadriz/friendly-snippets'
 
   use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
@@ -205,6 +210,11 @@ return packer.startup(function(use)
     config = load_config('plugins.config.simbols_outline')
   }
 
+  use {
+    'karb94/neoscroll.nvim',
+    config = load_config('plugins.config.neoscroll')
+  }
+
   -- Themes
   use { 'navarasu/onedark.nvim' }
   use { 'marko-cerovac/material.nvim' }
@@ -212,9 +222,9 @@ return packer.startup(function(use)
   use { 'crusoexia/vim-monokai' }
   use { 'ayu-theme/ayu-vim' }
   use { 'ghifarit53/tokyonight-vim' }
-  use 'tiagovla/tokyodark.nvim'
+  use { 'tiagovla/tokyodark.nvim' }
   use { 'dracula/vim', as = 'dracula' }
   use { 'phanviet/vim-monokai-pro' }
   use { 'arcticicestudio/nord-vim' }
-  use {"ellisonleao/carbon-now.nvim", config = function() require('carbon-now').setup() end}
+  use { "ellisonleao/carbon-now.nvim", config = function() require('carbon-now').setup() end }
 end)
