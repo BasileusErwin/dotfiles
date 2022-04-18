@@ -158,7 +158,10 @@ return packer.startup(function(use)
   use { 'andymass/vim-matchup' }
 
   --
-  use {'tpope/vim-surround'}
+  use {
+    'ur4ltz/surround.nvim',
+    config = load_config('plugins.config.surround')
+  }
 
   -- Git integration
   use {
@@ -171,7 +174,7 @@ return packer.startup(function(use)
     requires = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope-file-browser.nvim',
-      { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
+      { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     },
     config = load_config('plugins.config.telescope')
   }
@@ -197,12 +200,12 @@ return packer.startup(function(use)
   use { 'ryanoasis/vim-devicons' }
 
   use {
-    "nathom/filetype.nvim",
+    'nathom/filetype.nvim',
     config = load_config('plugins.config.filetype')
   }
   use {
-    "max397574/better-escape.nvim",
-    config = load_config("plugins.config.better_escape")
+    'max397574/better-escape.nvim',
+    config = load_config('plugins.config.better_escape')
   }
 
   use {
@@ -213,6 +216,13 @@ return packer.startup(function(use)
   use {
     'karb94/neoscroll.nvim',
     config = load_config('plugins.config.neoscroll')
+  }
+  use {
+    'mfussenegger/nvim-jdtls',
+  }
+
+  use {
+    'jidn/vim-dbml'
   }
 
   -- Themes
@@ -226,5 +236,13 @@ return packer.startup(function(use)
   use { 'dracula/vim', as = 'dracula' }
   use { 'phanviet/vim-monokai-pro' }
   use { 'arcticicestudio/nord-vim' }
-  use { "ellisonleao/carbon-now.nvim", config = function() require('carbon-now').setup() end }
+  use {
+    'ellisonleao/carbon-now.nvim',
+    config = function()
+      require('carbon-now').setup()
+    end
+  }
+  use { 'projekt0n/github-nvim-theme' }
+  use { 'JoosepAlviste/palenightfall.nvim' }
+  use { "VDuchauffour/neodark.nvim" }
 end)

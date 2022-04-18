@@ -5,6 +5,9 @@ local themes_config = {
   'themes.config.tokyodark',
   'themes.config.tokyonight',
   'themes.config.material',
+  'themes.config.github_theme',
+  'themes.config.palenightfall',
+  'themes.config.neodark',
 }
 
 for _, module in ipairs(themes_config) do
@@ -14,9 +17,7 @@ for _, module in ipairs(themes_config) do
    end
 end
 
-vim.cmd([[
-  set termguicolors
-  colorscheme onedark
-]])
+vim.cmd 'colorscheme onedark'
+
 
 lualine_config.set_theme('auto')

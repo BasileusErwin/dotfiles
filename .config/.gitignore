@@ -15,6 +15,7 @@
 !spectrwm
 !openbox
 !tint2
+!xmonad
 !xmobar
 !xob
 !bat
@@ -25,3 +26,4 @@
 !sxhkd
 !polybar
 !neofetch
+!kitty

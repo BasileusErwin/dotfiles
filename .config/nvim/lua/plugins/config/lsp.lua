@@ -1,7 +1,5 @@
 local nvim_lsp = require('lspconfig')
 local util = require 'lspconfig.util'
-local configs = require'lspconfig/configs'
-local protocol = require'vim.lsp.protocol'
 local dlsconfig = require 'diagnosticls-configs'
 local prettier = require("prettier")
 
@@ -42,10 +40,10 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts) 
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts) 
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts) 
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts) 
+  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', '<Leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   --buf_set_keymap('n', '<C-j>', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', '<C-S-j>', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
@@ -77,7 +75,18 @@ if util.root_pattern(".eslintrc.json", "tsconfig.json", "tslint.json") then
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetype = { 'javascript', 'react','typescript', 'typescriptreact', 'typescript.tsx' },
+  filetype = {
+    'javascript',
+    'react',
+    'typescript',
+    'typescriptreact',
+    'typescript.tsx'
+  },
+  preferences = {
+    quotePreference = "single",
+    importModuleSpecifierPreference = "relative",
+    includeCompletionsForImportStatements = true
+  },
 }
 else
 nvim_lsp.denols.setup {
@@ -135,6 +144,9 @@ nvim_lsp.cssls.setup {
 }
 
 nvim_lsp.hls.setup {
+  cmd = {
+    "haskell-language-server", ""
+  },
   on_attach = on_attach,
   capabilities = capabilities,
 }
@@ -197,7 +209,6 @@ nvim_lsp.emmet_ls.setup({
     "javascriptreact",
   },
 })
-
 dlsconfig.init {
   on_attach = on_attach,
   capabilities = capabilities,

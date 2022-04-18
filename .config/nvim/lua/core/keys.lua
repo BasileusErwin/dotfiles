@@ -19,10 +19,10 @@ map('n', '<C-k>', '<C-w>k', { silent = true })
 map('n', '<C-l>', '<C-w>l', { silent = true })
 
 -- resize with arrows
-map('n', '<M-k>', ':resize -2<CR>', { noremap = true, silent = true })
-map('n', '<M-j>', ':resize +2<CR>', { noremap = true, silent = true })
-map('n', '<M-h>', ':vertical resize -2<CR>', { noremap = true, silent = true })
-map('n', '<M-l>', ':vertical resize +2<CR>', { noremap = true, silent = true })
+map('n', '<C-M-k>', ':resize -2<CR>', { noremap = true, silent = true })
+map('n', '<C-M-j>', ':resize +2<CR>', { noremap = true, silent = true })
+map('n', '<C-M-h>', ':vertical resize -2<CR>', { noremap = true, silent = true })
+map('n', '<C-M-l>', ':vertical resize +2<CR>', { noremap = true, silent = true })
 
 -- better indenting
 map('v', '<', '<gv', { noremap = true, silent = true })

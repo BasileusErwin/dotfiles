@@ -15,7 +15,7 @@ neoscroll.setup({
 })
 
 local map = {}
-map['<S-k>'] = {'scroll', {'vim.wo.scroll', 'true', '10'}}
-map['<S-j>'] = {'scroll', {'-vim.wo.scroll', 'true', '10'}}
+map['<M-j>'] = {'scroll', {'vim.wo.scroll', 'true', '10'}}
+map['<M-k>'] = {'scroll', {'-vim.wo.scroll', 'true', '10'}}
 
 config.set_mappings(map)

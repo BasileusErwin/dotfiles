@@ -16,7 +16,7 @@ telescope.setup {
         mirror = false
       }
     },
-    find_command = {'rg', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case'},
+    find_command = {'fd', '-uu'},
     prompt_prefix = ' ',
     selection_caret = ' ',
     entry_prefix = '  ',

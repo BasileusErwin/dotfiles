@@ -27,18 +27,48 @@ alias cat "bat --style=plain --paging=never"
 alias tree "exa -T --icons"
 alias grep "grep --color=auto"
 alias t "tree $1"
-alias paru "paru --bottomup $1"
+alias paru "paru --skipreview --bottomup $1"
 
 # Git
+
+# Add
 alias gaa "git add -A"
-alias gc commit
-alias gca "git add --all && git commit --amend --no-edit"
+
+# Branch
+alias gb "git branch"
+alias gba "git branch --all --verbose"
+
+# Checkout
 alias gco "git checkout"
+alias gbc "git checkout -b"
+
+# Commit
+alias gc "git commit --verbose"
+
+# Status
 alias gs "git status -sb"
+
+# Fetch
 alias gf "git fetch --all -p"
+
+# Push
 alias gps "git push"
-alias gpsf "git push --force"
+
+# Pull
 alias gpl "git pull"
+
+# Merge (m)
+alias gm 'git merge'
+
+# Rebase (r)
+alias gr 'git rebase'
+alias gra 'git rebase --abort'
+alias grc 'git rebase --continue'
+alias gri 'git rebase --interactive'
+alias grs 'git rebase --skip'
+
+# Working Copy
+alias gd "git diff --no-ext-diff --cached"
 
 # Workspace
 alias w "cd ~/Workspace"
