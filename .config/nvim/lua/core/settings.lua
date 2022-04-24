@@ -78,3 +78,5 @@ vim.o.showmode=false --We don't need to see things like -- INSERT -- anymore
 vim.o.guifont="JetBrainsMono\\ Nerd\\ Font\\ Mono:h18"
 
 vim.g.closetag_filetypes = 'html,xhtml,phtml,xml,javascript,typescript,javascriptreact,typescriptreact,'
+
+vim.opt.laststatus = 3

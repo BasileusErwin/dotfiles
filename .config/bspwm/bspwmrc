@@ -62,7 +62,7 @@ bspc desktop ^0  -l monocle
 # ----| 1 |----
 bspc rule -a Brave-browser desktop='^1'
 bspc rule -a Brave-browser-beta desktop='^1'
-bspc rule -a firefoxdeveloperedition desktop='^1'
+bspc rule -a firefox-aurora desktop='^1'
 # ----| 2 |----
 # bspc rule -a Alacritty desktop='^2' focus=off
 # ----| 3 |----
@@ -79,8 +79,6 @@ bspc rule -a DBeaver desktop='^6'
 bspc rule -a Inkscape desktop='^7'
 bspc rule -a zoom desktop='^7' focus=off state=floating
 # ----| 8 |----
-bspc rule -a TelegramDesktop desktop='^8' focus=off follow=off
-bspc rule -a whatsapp-nativefier-d40211 desktop='^8' focus=off follow=off 
 bspc rule -a Thunderbird desktop='^8' focus=off follow=off
 bspc rule -a discord desktop='^8' focus=off follow=off
 bspc rule -a Webex desktop='^8' focus=off follow=off
@@ -108,8 +106,8 @@ bspc rule -a Brave-browser-beta:Places state=floating follow=on focus=on
 bspc rule -a Brave-browser-beta:pop-up state=floating follow=on focus=on
 bspc rule -a Google-chrome:Places state=floating follow=on focus=on
 bspc rule -a Google-chrome:pop-up state=floating follow=on focus=on
-bspc rule -a firefoxdeveloperedition:Places state=floating follow=on focus=on
-bspc rule -a firefoxdeveloperedition:Dialog state=floating follow=on focus=on
+bspc rule -a firefox-aurora:Places state=floating follow=on focus=on
+bspc rule -a firefox-aurora:Dialog state=floating follow=on focus=on
 bspc rule -a Thunar:Dialog state=floating center=true
 bspc rule -a Zathura state=floating follow=on center=true
 bspc rule -a Pavucontrol state=floating follow=on center=true
@@ -120,6 +118,8 @@ bspc rule -a NordPass state=floating follow=on center=true
 bspc rule -a Arandr state=floating follow=on center=true
 bspc rule -a Postman state=floating follow=on center=true
 bspc rule -a Java state=floating follow=on center=true
+bspc rule -a TelegramDesktop state=floating follow=on center=true
+bspc rule -a whatsapp-nativefier-d40211 state=floating follow=on center=true
 
 # ----| |----
 bscp rule -a polybar manage=off

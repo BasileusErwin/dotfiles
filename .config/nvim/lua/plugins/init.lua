@@ -42,7 +42,7 @@ local load_config = function (package)
    return ok
 end
 
-local LSPInstallPlug = ':LspInstall intelephense ccls hls rust_analyzer tsserver vimls vuels eslint hls bashls html jsonls sumneko_lua pyright sqls lemminx cssls zls diagnosticls clangd cmake dockerls emmet_ls gopls'
+local LSPInstallPlug = ':LspInstall intelephense ccls hls rust_analyzer tsserver vimls volar eslint hls bashls html jsonls sumneko_lua pyright sqls lemminx cssls zls diagnosticls clangd cmake dockerls emmet_ls gopls'
 
 return packer.startup(function(use)
   use {
@@ -122,7 +122,15 @@ return packer.startup(function(use)
     run = { ':TSUpdate' },
     config = load_config('plugins.config.treesitter')
   }
+  use {
+    'nvim-treesitter/nvim-tree-docs'
+  }
   use 'JoosepAlviste/nvim-ts-context-commentstring'
+
+  use {
+    'heavenshell/vim-jsdoc',
+    run = 'make install'
+  }
 
   -- Explorer
   use {

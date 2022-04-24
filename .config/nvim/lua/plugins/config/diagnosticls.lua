@@ -51,6 +51,10 @@ dlsconfig.setup {
     linter = { eslint },
     formatter = { prettier }
   },
+  ['vue'] ={
+    linter = { eslint },
+    formatter = { prettier }
+  },
   ['json'] = {
     formatter = { prettier }
   },

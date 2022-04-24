@@ -7,6 +7,16 @@ local config = {
     enable = true,
     use_languagetree = true,
   },
+  tree_docs = {
+    enable = true,
+    spec_config = {
+      jsdoc = {
+        slots = {
+          class = {author = true}
+        }
+      }
+    }
+  },
   matchup = {
     enable = true
   },

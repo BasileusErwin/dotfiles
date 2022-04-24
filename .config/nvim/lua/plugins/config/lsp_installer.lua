@@ -8,5 +8,5 @@ lsp_installer.settings({
             server_uninstalled = "✗"
         }
     },
-  install_root_dir = vim.fn.stdpath("data").."/lsp_servers" 
+  install_root_dir = vim.fn.stdpath("data").."/lsp_servers"
 })

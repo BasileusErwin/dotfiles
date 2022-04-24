@@ -20,8 +20,8 @@ super + g
 	bspc node -s biggest.window
 
 # -- Focused desktop window gap
-super + {_, shift + }z 
-	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {-,+} 5 ))
+# super + {_, shift + }z
+#  bspc config -d focused window_gap $((`bspc config -d focused window_gap` {-,+} 5 ))
 
 # ----| state/flags |---- #
 
@@ -111,7 +111,16 @@ super + m
 	rofi -show drun
 # -- Windows
 super + shift + m
-	rofi -show
+  rofi -show
+super + alt + m
+  rofi -show run
+
+super + ctrl + m
+  rofi-zael
+
+# -- Zael --
+super + z
+  zael
 
 # -- File Manager
 super + shift + e
@@ -125,6 +134,9 @@ super + Escape
 # -- Browser
 super + b 
   brave-beta --process-per-site
+
+super + alt + b
+  firefox-dev-bin
 
 super + shift + b 
   google-chrome-stable
@@ -141,6 +153,7 @@ super + ctrl + r
 # --
 super + p
   scrot -s 'screenshot_%Y-%m-%d-%T_$wx$h.png' -e 'mkdir -p ~/Pictures/screenshots/ | mv $f ~/Pictures/screenshots/'
+
 
 # ----| System |---- #
 

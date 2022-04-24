@@ -9,6 +9,10 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 # Launch Polybar, using default config location ~/.config/polybar/config
 
 polybar main -c ~/.config/polybar/material.ini &
+polybar main-left -c ~/.config/polybar/material.ini &
+polybar main-center -c ~/.config/polybar/material.ini &
+polybar main-right -c ~/.config/polybar/material.ini &
+polybar tray -c ~/.config/polybar/material.ini &
 ln -sf /tmp/polybar_mqueue.$! /tmp/ipc-bottom
 
 my_laptop_external_monitor=$(xrandr --query | grep 'HDMI-1')

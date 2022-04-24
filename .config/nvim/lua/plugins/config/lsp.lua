@@ -1,26 +1,25 @@
 local nvim_lsp = require('lspconfig')
 local util = require 'lspconfig.util'
 local dlsconfig = require 'diagnosticls-configs'
-local prettier = require("prettier")
 
 local M = {}
 
 vim.g.markdown_fenced_languages = {
-  "ts=typescript"
+  'ts=typescript'
 }
-vim.fn.sign_define( "LspDiagnosticsSignError", { texthl = "LspDiagnosticsSignError", text = "", numhl = "LspDiagnosticsSignError" }
+vim.fn.sign_define( 'LspDiagnosticsSignError', { texthl = 'LspDiagnosticsSignError', text = '', numhl = 'LspDiagnosticsSignError' }
 )
 vim.fn.sign_define(
-  "LspDiagnosticsSignWarning",
-  { texthl = "LspDiagnosticsSignWarning", text = "", numhl = "LspDiagnosticsSignWarning" }
+  'LspDiagnosticsSignWarning',
+  { texthl = 'LspDiagnosticsSignWarning', text = '', numhl = 'LspDiagnosticsSignWarning' }
 )
 vim.fn.sign_define(
-  "LspDiagnosticsSignHint",
-  { texthl = "LspDiagnosticsSignHint", text = "", numhl = "LspDiagnosticsSignHint" }
+  'LspDiagnosticsSignHint',
+  { texthl = 'LspDiagnosticsSignHint', text = '', numhl = 'LspDiagnosticsSignHint' }
 )
 vim.fn.sign_define(
-  "LspDiagnosticsSignInformation",
-  { texthl = "LspDiagnosticsSignInformation", text = "", numhl = "LspDiagnosticsSignInformation" }
+  'LspDiagnosticsSignInformation',
+  { texthl = 'LspDiagnosticsSignInformation', text = '', numhl = 'LspDiagnosticsSignInformation' }
 )
 
 local on_attach = function(client, bufnr)
@@ -48,14 +47,14 @@ local on_attach = function(client, bufnr)
   --buf_set_keymap('n', '<C-j>', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', '<C-S-j>', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap("n", "<space>p", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  buf_set_keymap('n', '<space>p', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- icon
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     underline = true,
     -- This sets the spacing and the prefix, obviously.
@@ -71,7 +70,28 @@ nvim_lsp.sumneko_lua.setup {
   capabilities = capabilities,
 }
 
-if util.root_pattern(".eslintrc.json", "tsconfig.json", "tslint.json") then
+nvim_lsp.vuels.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+-- if util.root_pattern('.eslintrc.json', 'tsconfig.json', 'tslint.json', 'package.json') then
+--   if util.root_pattern('vite.config.js','vite.config.ts', 'src/App.vue') then
+--   else
+--   end
+-- else
+--   nvim_lsp.denols.setup {
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+--     filetypes = { 'javascript', 'typescript' },
+--     cmd = { 'deno', 'lsp' },
+--     init_options = {
+--       enable = true,
+--       lint = true,
+--       unstable = false
+--     },
+--   }
+-- end
+
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
   capabilities = capabilities,
@@ -83,35 +103,19 @@ nvim_lsp.tsserver.setup {
     'typescript.tsx'
   },
   preferences = {
-    quotePreference = "single",
-    importModuleSpecifierPreference = "relative",
+    quotePreference = 'single',
+    importModuleSpecifierPreference = 'relative',
     includeCompletionsForImportStatements = true
   },
 }
-else
-nvim_lsp.denols.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = { "javascript", "typescript" },
-  cmd = { "deno", "lsp" },
-  init_options = {
-    enable = true,
-    lint = true,
-    unstable = false
-  },
-}
-vim.g.markdown_fenced_languages = {
-  "ts=typescript"
-}
-end
 
-nvim_lsp.volar.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
+vim.g.markdown_fenced_languages = {
+  'ts=typescript'
 }
+
 
 nvim_lsp.jsonls.setup {
-  cmd = { "vscode-json-languageserver", "--stdio" },
+  cmd = { 'vscode-json-languageserver', '--stdio' },
   on_attach = on_attach,
   capabilities = capabilities,
 }
@@ -132,20 +136,20 @@ nvim_lsp.bashls.setup {
 }
 
 nvim_lsp.html.setup {
-  cmd = { "vscode-html-languageserver", "--stdio" },
+  cmd = { 'vscode-html-languageserver', '--stdio' },
   on_attach = on_attach,
   capabilities = capabilities,
 }
 
 nvim_lsp.cssls.setup {
-  cmd = { "vscode-css-languageserver", "--stdio" },
+  cmd = { 'vscode-css-languageserver', '--stdio' },
   on_attach = on_attach,
   capabilities = capabilities,
 }
 
 nvim_lsp.hls.setup {
   cmd = {
-    "haskell-language-server", ""
+    'haskell-language-server', ''
   },
   on_attach = on_attach,
   capabilities = capabilities,
@@ -190,10 +194,12 @@ nvim_lsp.yamlls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
+
 nvim_lsp.metals.setup{
   on_attach = on_attach,
   capabilities = capabilities,
 }
+
 nvim_lsp.grammarly.setup {
   on_attach = on_attach,
   capabilities = capabilities,
@@ -203,34 +209,18 @@ nvim_lsp.emmet_ls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
     filetypes = {
-    "html",
-    "css",
-    "typescriptreact",
-    "javascriptreact",
+    'html',
+    'css',
+    'typescriptreact',
+    'javascriptreact',
   },
 })
+
 dlsconfig.init {
   on_attach = on_attach,
   capabilities = capabilities,
 }
 
-prettier.setup({
-  bin = 'prettier', -- or `prettierd`
-  filetypes = {
-    "css",
-    "graphql",
-    "html",
-    "javascript",
-    "javascriptreact",
-    "json",
-    "less",
-    "markdown",
-    "scss",
-    "typescript",
-    "typescriptreact",
-    "yaml",
-  },
-})
 M.on_attach = on_attach
 M.capabilities = capabilities
 

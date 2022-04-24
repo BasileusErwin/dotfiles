@@ -17,7 +17,7 @@ for _, module in ipairs(themes_config) do
    end
 end
 
-vim.cmd 'colorscheme onedark'
+vim.cmd 'colorscheme tokyodark'
 
 
 lualine_config.set_theme('auto')
