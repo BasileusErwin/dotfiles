@@ -108,6 +108,7 @@ bspc rule -a Google-chrome:Places state=floating follow=on focus=on
 bspc rule -a Google-chrome:pop-up state=floating follow=on focus=on
 bspc rule -a firefox-aurora:Places state=floating follow=on focus=on
 bspc rule -a firefox-aurora:Dialog state=floating follow=on focus=on
+bspc rule -a firefox-aurora:Toolkit state=floating follow=on focus=on
 bspc rule -a Thunar:Dialog state=floating center=true
 bspc rule -a Zathura state=floating follow=on center=true
 bspc rule -a Pavucontrol state=floating follow=on center=true
