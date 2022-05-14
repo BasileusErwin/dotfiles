@@ -7,7 +7,7 @@ local M = {}
 vim.g.markdown_fenced_languages = {
   'ts=typescript'
 }
-vim.fn.sign_define( 'LspDiagnosticsSignError', { texthl = 'LspDiagnosticsSignError', text = '', numhl = 'LspDiagnosticsSignError' }
+vim.fn.sign_define('LspDiagnosticsSignError', { texthl = 'LspDiagnosticsSignError', text = '', numhl = 'LspDiagnosticsSignError' }
 )
 vim.fn.sign_define(
   'LspDiagnosticsSignWarning',
@@ -24,6 +24,7 @@ vim.fn.sign_define(
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -149,8 +150,13 @@ nvim_lsp.cssls.setup {
 
 nvim_lsp.hls.setup {
   cmd = {
-    'haskell-language-server', ''
+    'haskell-language-server', '--lsp'
   },
+  filetypes = {
+    "haskell",
+    "lhaskell"
+  },
+  root_dir= util.root_pattern("*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml", "*.hs"),
   on_attach = on_attach,
   capabilities = capabilities,
 }
@@ -195,7 +201,7 @@ nvim_lsp.yamlls.setup {
   capabilities = capabilities,
 }
 
-nvim_lsp.metals.setup{
+nvim_lsp.metals.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
@@ -206,15 +212,20 @@ nvim_lsp.grammarly.setup {
 }
 
 nvim_lsp.emmet_ls.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-    filetypes = {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = {
     'html',
     'css',
     'typescriptreact',
     'javascriptreact',
   },
 })
+
+nvim_lsp.csharp_ls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
 
 dlsconfig.init {
   on_attach = on_attach,

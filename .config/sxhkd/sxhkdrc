@@ -12,12 +12,12 @@ super + {_,shift + }w
 super + Tab 
 	bspc desktop -l next
 
-alt + w
-	bspc monitor -f next
+super + {_,shift + }v
+  bspc monitor -f {next,prev}
 
 # -- swap the current node and the biggest window
 super + g
-	bspc node -s biggest.window
+  bspc node -s biggest.window
 
 # -- Focused desktop window gap
 # super + {_, shift + }z
@@ -48,7 +48,7 @@ super + {_,shift + }c
 	bspc node -f {next,prev}.local.!hidden.window
 
 # focus the next/previous desktop in the current monitor
-super + bracket{left,right}
+super + {left,right}
 	bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
@@ -63,7 +63,7 @@ super + {o,i}
 
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+  bspc {desktop -f,node -d} focused:'^{1-9,10}'
 
 # ----| preselect |---- #
 
@@ -136,7 +136,7 @@ super + b
   brave-beta --process-per-site
 
 super + alt + b
-  firefox-dev-bin
+  firefox-dev
 
 super + shift + b 
   google-chrome-stable
@@ -180,5 +180,3 @@ XF86AudioPlay
 XF86AudioNext
 	playerctl next
 
-XF86AudioPrev
-	playerctl previous

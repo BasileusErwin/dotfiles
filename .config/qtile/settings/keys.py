@@ -16,7 +16,7 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
     ([mod, "shift"], "h", lazy.layout.shrink()),
 
     # Toggle floating
-    ([mod, "shift"], "f", lazy.window.toggle_floating()),
+    ([mod], "f", lazy.window.toggle_floating()),
 
     # Move windows up or down in current stack
     ([mod, "shift"], "j", lazy.layout.shuffle_down()),
@@ -47,7 +47,8 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
     ([mod, "shift"], "m", lazy.spawn("rofi -show")),
 
     # Browser
-    ([mod], "b", lazy.spawn("brave-beta --process-per-site")),
+    #([mod], "b", lazy.spawn("brave-beta --process-per-site")),
+    ([mod], "b", lazy.spawn("firefox-dev")),
     ([mod, "shift"], "b", lazy.spawn("google-chrome-stable")),
 
     # File Explorer
@@ -55,7 +56,7 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
 
     # Terminal
     ([mod], "Return", lazy.spawn("alacritty")),
-    ([mod, "shift"], "Return", lazy.spawn("tilix")),
+    ([mod, "shift"], "Return", lazy.spawn("alacritty")),
 
     # Redshift
     ([mod], "r", lazy.spawn("redshift -O 5000")),

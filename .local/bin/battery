@@ -1,14 +1,10 @@
 #!/bin/bash
 
-# If this script doesn't work look at the output of upower -e and upower -d
+BATTERY=`upower -e | grep 'battery'`
 
-bat=`upower -i /org/freedesktop/UPower/devices/battery_BAT1 |
-    grep percentage |
-    sed 's/ *percentage: *//g'`
+bat=`upower -i ${BATTERY} | grep percentage | sed 's/ *percentage: *//g'`
 
-state=`upower -i /org/freedesktop/UPower/devices/battery_BAT1 |
-    grep state |
-    sed 's/ *state: *//'`
+state=`upower -i ${BATTERY} | grep state | sed 's/ *state: *//'`
 
 if [ $state == "charging" -o $state == "fully-charged" ]; then
     echo -n " "

@@ -37,11 +37,6 @@ packer.init {
   },
 }
 
-local load_config = function (package)
-   local ok, err = pcall(require, package)
-   return ok
-end
-
 local LSPInstallPlug = ':LspInstall intelephense ccls hls rust_analyzer tsserver vimls volar eslint hls bashls html jsonls sumneko_lua pyright sqls lemminx cssls zls diagnosticls clangd cmake dockerls emmet_ls gopls'
 
 return packer.startup(function(use)
@@ -52,32 +47,32 @@ return packer.startup(function(use)
   -- Lines
   use {
     'nvim-lualine/lualine.nvim',
-    config = load_config('plugins.config.lualine')
+    config = require('plugins.config.lualine')
   }
  use {
     'akinsho/bufferline.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
-    config = load_config('plugins.config.bufferline')
+    config = require('plugins.config.bufferline')
   }
   -- LSP
   use {
     'neovim/nvim-lspconfig',
-    config = load_config('plugins.config.lsp')
+    config = require('plugins.config.lsp')
   }
   use {
     'williamboman/nvim-lsp-installer',
-    config = load_config('plugins.config.lsp_installer'),
+    config = require('plugins.config.lsp_installer'),
     run = LSPInstallPlug
   }
   use 'onsails/lspkind-nvim'
   use 'ray-x/lsp_signature.nvim'
   use {
     'creativenull/diagnosticls-configs-nvim',
-    config = load_config('plugins.config.diagnosticls')
+    config = require('plugins.config.diagnosticls')
   }
   use {
     'simrat39/rust-tools.nvim',
-    config = load_config('plugins.config.rust_tool')
+    config = require('plugins.config.rust_tool')
   }
   use 'rust-lang/rust.vim'
   use 'jose-elias-alvarez/null-ls.nvim'
@@ -103,14 +98,14 @@ return packer.startup(function(use)
       'hrsh7th/vim-vsnip',
       'saadparwaiz1/cmp_luasnip',
     },
-    config = load_config('plugins.config.cmp')
+    config = require('plugins.config.cmp')
   }
   use { 'Saecki/crates.nvim', requires = { 'nvim-lua/plenary.nvim' } }
 
   -- snippets
   use {
     'L3MON4D3/LuaSnip',
-    config = load_config('plugins.config.luasnip')
+    config = require('plugins.config.luasnip')
   }
   use 'rafamadriz/friendly-snippets'
 
@@ -120,7 +115,7 @@ return packer.startup(function(use)
   use {
     'nvim-treesitter/nvim-treesitter',
     run = { ':TSUpdate' },
-    config = load_config('plugins.config.treesitter')
+    config = require('plugins.config.treesitter')
   }
   use {
     'nvim-treesitter/nvim-tree-docs'
@@ -135,7 +130,7 @@ return packer.startup(function(use)
   -- Explorer
   use {
     'kyazdani42/nvim-tree.lua',
-    config = load_config('plugins.config.nvim_tree')
+    config = require('plugins.config.nvim_tree')
   }
 
   -- Autoclose tags
@@ -144,19 +139,19 @@ return packer.startup(function(use)
   -- CSS color
   use {
     'norcalli/nvim-colorizer.lua',
-    config = load_config('plugins.config.colorize')
+    config = require('plugins.config.colorize')
   }
 
   -- Commentary
   use {
     'numToStr/Comment.nvim',
-    config = load_config('plugins.config.comments')
+    config = require('plugins.config.comments')
   }
 
   -- Autopairs
   use {
     'jiangmiao/auto-pairs',
-    config = load_config('plugins.config.autopairs')
+    config = require('plugins.config.autopairs')
   }
   use {
     'alvan/vim-closetag'
@@ -168,13 +163,13 @@ return packer.startup(function(use)
   --
   use {
     'ur4ltz/surround.nvim',
-    config = load_config('plugins.config.surround')
+    config = require('plugins.config.surround')
   }
 
   -- Git integration
   use {
     'lewis6991/gitsigns.nvim',
-    config = load_config('plugins.config.git')
+    config = require('plugins.config.git')
   }
   -- Telescope
   use {
@@ -184,13 +179,13 @@ return packer.startup(function(use)
       'nvim-telescope/telescope-file-browser.nvim',
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     },
-    config = load_config('plugins.config.telescope')
+    config = require('plugins.config.telescope')
   }
 
   use {
     'lukas-reineke/indent-blankline.nvim',
     event = 'BufRead',
-    config = load_config('plugins.config.indent-blankline')
+    config = require('plugins.config.indent-blankline')
   }
   use 'mattn/emmet-vim'
 
@@ -203,27 +198,27 @@ return packer.startup(function(use)
   -- Icons
   use {
     'kyazdani42/nvim-web-devicons',
-    config = load_config('plugins.config.icons')
+    config = require('plugins.config.icons')
   }
   use { 'ryanoasis/vim-devicons' }
 
   use {
     'nathom/filetype.nvim',
-    config = load_config('plugins.config.filetype')
+    config = require('plugins.config.filetype')
   }
   use {
     'max397574/better-escape.nvim',
-    config = load_config('plugins.config.better_escape')
+    config = require('plugins.config.better_escape')
   }
 
   use {
     'simrat39/symbols-outline.nvim',
-    config = load_config('plugins.config.simbols_outline')
+    config = require('plugins.config.simbols_outline')
   }
 
   use {
     'karb94/neoscroll.nvim',
-    config = load_config('plugins.config.neoscroll')
+    config = require('plugins.config.neoscroll')
   }
   use {
     'mfussenegger/nvim-jdtls',

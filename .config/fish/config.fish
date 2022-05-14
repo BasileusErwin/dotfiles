@@ -6,8 +6,7 @@ function nvm
     bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
 end
 
-set -x DENO_INSTALL /home/kaisererwin/.deno
-set -x PATH $DENO_INSTALL/bin:$PATH
+set -x PATH /home/kaisererwin/.deno/bin:/home/kaisererwin/.dotnet/tools:$PATH
 
 set fish_greeting ""
 
