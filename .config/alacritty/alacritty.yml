@@ -22,16 +22,18 @@ colors:
     foreground: '#FFFAF4'
 font:
   bold:
-    family: JetBrains Mono ExtraBold Nerd Font
+    family: Hack Nerd Font
+    style: Bold
   italic:
-    family: JetBrains Mono Medium Nerd Font
+    family: Hack Nerd Font
+    style: Italic
   normal:
-    family: JetBrains Mono Medium Nerd Font
+    family: Hack Nerd Font
     style: Regular
   offset:
     x: 0
     y: 0
-  size: 15.0
+  size: 13.0
 window:
   opacity: 0.8
   padding:

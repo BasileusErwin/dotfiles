@@ -3,12 +3,12 @@
 # ----| Vars | ----
 
 # -- Laptop --
-export LAPTOP='eDP1'
+export LAPTOP='eDP-1'
 export LAPTOP_WIDTH=1920
 export LAPTOP_HEIGHT=1080
 
 # -- Monitor --
-export MONITOR='HDMI1'
+export MONITOR='HDMI-1'
 export MONITOR_WIDTH=1920
 export MONITOR_HEIGHT=1080
 
@@ -21,11 +21,11 @@ export EDITOR="nvim"
 # ----| Display |----
 hdmi=`xrandr | grep ' connected' | grep 'HDMI' | awk '{print $1}'`
 
-if [ "$hdmi" = "HDMI1" ]; then
-  xrandr --output "$MONITOR" -r 75.0 --primary --mode 1920x1080 --rotate normal --right-of eDP1 \
+if [ "$hdmi" = $MONITOR ]; then
+  xrandr --output "$MONITOR" -r 75.0 --primary --mode 1920x1080 --rotate normal --right-of "$LAPTOP" \
      --output "$LAPTOP" --mode 1920x1080 --rotate normal
 else
-  xrandr --output eDP1 --primary --mode 1920x1080 --rotate normal
+  xrandr --output "$LAPTOP" --primary --mode 1920x1080 --rotate normal
 fi
 
 lxsession &

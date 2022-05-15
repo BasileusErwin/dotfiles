@@ -239,7 +239,7 @@ myKeys =
     -- Window Nav
     ("M-S-m", spawn "rofi -show"),
     -- Browser
-    ("M-b", spawn "firefox-dev"),
+    ("M-b", spawn "firefox-developer-edition"),
     ("M-S-b", spawn "google-chrome-stable"),
     ("M-C-b", spawn "brave-beta --process-per-site"),
     -- Explore
@@ -248,8 +248,8 @@ myKeys =
     ("M-r", spawn "redshift -O 5000"),
     ("M-C-r", spawn "redshift -x"),
     -- Terminal
-    ("M-<Return>", spawn "kitty"),
-    ("M-S-<Return>", spawn "alacritty"),
+    ("M-S-<Return>", spawn "kitty"),
+    ("M-<Return>", spawn "alacritty"),
     ("M-C-<Return>", spawn "tilix"),
     -- Calculator
     ("M-s", spawn "speedcrunch"),
