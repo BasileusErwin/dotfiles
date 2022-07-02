@@ -142,7 +142,7 @@ myManageHook =
       className =? "TelegramDesktop" --> doShift (myWorspaces !! 6),
       className =? "WhatsappDesktop" --> doShift (myWorspaces !! 6),
       className =? "Thunderbird" --> doShift (myWorspaces !! 6),
-      (className =? "zoom" <||> className =? "Zoom Cloud Meetings") --> doShift (myWorspaces !! 6),
+      (className =? "zoom " <||> className =? "Zoom Cloud Meetings") --> doShift (myWorspaces !! 5),
       -- 7
       (className =? "Spotify" <||> className =? "spotify") --> doShift (myWorspaces !! 7),
       className =? "Pulseaudio-equalizer-gtk" --> doShift (myWorspaces !! 7),
@@ -157,8 +157,8 @@ myManageHook =
       className =? "Zathura" --> doFloat,
       (className =? "firefox" <&&> resource =? "Dialog") --> doFloat,
       (className =? "firefox" <&&> resource =? "Places") --> doFloat,
-      (className =? "firefox-aurora" <&&> resource =? "Dialog") --> doFloat,
-      (className =? "firefox-aurora" <&&> resource =? "Places") --> doFloat,
+      (className =? "firefoxdeveloperedition" <&&> resource =? "Dialog") --> doFloat,
+      (className =? "firefoxdeveloperedition" <&&> resource =? "Places") --> doFloat,
       (className =? "Brave-browser" <&&> resource =? "Places") --> doFloat,
       (className =? "Brave-browser" <&&> resource =? "pop-up") --> doFloat,
       (className =? "Brave-browser-beta" <&&> resource =? "Places") --> doFloat,
@@ -181,8 +181,9 @@ myManageHook =
       className =? "TelegramDesktop" --> doFloat,
       className =? "whatsapp-nativefier-d40211" --> doFloat,
       (className =? "cpupower-gui" <||> className =? "Cpupower-gui") --> doFloat,
-      (className =? "Zoom Meeting" <||> className =? "zoom") --> doFloat,
-      (className =? "Settings") --> doFloat
+      (className =? "Zoom Meeting" <||> className =? "zoom ") --> doFloat,
+      (className =? "Settings") --> doFloat,
+      (className =? "protonvpn" <||> className =? "Protonvpn") --> doFloat
     ]
 
 myKeys :: [(String, X ())]
@@ -239,9 +240,9 @@ myKeys =
     -- Window Nav
     ("M-S-m", spawn "rofi -show"),
     -- Browser
-    ("M-b", spawn "firefox-developer-edition"),
+    ("M-b", spawn "brave"),
     ("M-S-b", spawn "google-chrome-stable"),
-    ("M-C-b", spawn "brave-beta --process-per-site"),
+    ("M-C-b", spawn "firefox-developer-edition"),
     -- Explore
     ("M-e", spawn "pcmanfm"),
     -- Redshift
@@ -254,8 +255,7 @@ myKeys =
     -- Calculator
     ("M-s", spawn "speedcrunch"),
     -- ScreenShot
-    ("M-p", spawn "flameshot gui"),
-    ("M-S-p", spawn "scrot -s 'screenshot_%Y-%m-%d-%T_$wx$h.png' -e 'mkdir -p ~/Pictures/screenshots/ | mv $f ~/Pictures/screenshots/'"),
+    ("M-p", spawn "scrot -s 'screenshot_%Y-%m-%d-%T_$wx$h.png' -e 'mkdir -p ~/Pictures/screenshots/ | mv $f ~/Pictures/screenshots/'"),
     --------------------- Hardware ---------------------
 
     -- Volume

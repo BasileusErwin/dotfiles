@@ -1,5 +1,7 @@
 export LANG="es_UY.UTF-8"
 
+eval "$(starship init zsh)"
+
 if [[ $USER != "root" ]]; then
   # Deno
   export DENO_INSTALL="/home/kaisererwin/.deno"
@@ -17,18 +19,18 @@ if [[ $USER != "root" ]]; then
   [ -f "/home/kaisererwin/.ghcup/env" ] && source "/home/kaisererwin/.ghcup/env" # ghcup-env
 fi
 
-export ZSH="$HOME/.oh-my-zsh"
-
-ZSH_THEME="agnoster"
-
-source $ZSH/oh-my-zsh.sh
-
-prompt_context() {
-  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
-  fi
-}
-
+# export ZSH="$HOME/.oh-my-zsh"
+#
+# ZSH_THEME="agnoster"
+#
+# source $ZSH/oh-my-zsh.sh
+#
+# prompt_context() {
+#   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+#     prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
+#   fi
+# }
+#
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
 
@@ -41,7 +43,7 @@ ZSH_COLORIZE_TOOL=chroma
 # Nice ones: arduino friendly paraiso-dark solarized-dark solarized-dark256 vim
 ZSH_COLORIZE_STYLE=vim
 ZSH_DISABLE_COMPFIX=true
-
+#
 plugins=(
 	git
 	sudo
@@ -54,8 +56,8 @@ plugins=(
 	zsh-autosuggestions
 	git-prompt
 )
-
-# -------------| Plugins |--------------
+#
+# # -------------| Plugins |--------------
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-sudo/sudo.plugin.zsh

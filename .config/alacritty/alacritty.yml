@@ -1,41 +1,62 @@
 colors:
   bright:
-    black: '#282a40'
-    blue: '#a3c5ff'
-    cyan: '#98fffd'
-    green: '#e0ffad'
-    magenta: '#d6afed'
-    red: '#eb7f84'
-    white: '#FFFFFF'
-    yellow: '#ffee7e'
+    black: '0x4a4a4a'
+    blue: '0x82aaff'
+    cyan: '0x89ddff'
+    green: '0xc3e88d'
+    magenta: '0xc792ea'
+    red: '0xf07178'
+    white: '0xffffff'
+    yellow: '0xffcb6b'
+  cursor:
+    cursor: '0xeeffff'
+    text: '0x212121'
+  indexed_colors:
+  - color: '0xf78c6c'
+    index: 16
+  - color: '0xff5370'
+    index: 17
+  - color: '0x303030'
+    index: 18
+  - color: '0x353535'
+    index: 19
+  - color: '0xb2ccd6'
+    index: 20
+  - color: '0xeeffff'
+    index: 21
   normal:
-    black: '#181a29'
-    blue: '#93bbff'
-    cyan: '#98e4ff'
-    green: '#cdea9f'
-    magenta: '#d3a7ee'
-    red: '#F07178'
-    white: '#FFFFFF'
-    yellow: '#ffd47e'
+    black: '0x212121'
+    blue: '0x82aaff'
+    cyan: '0x89ddff'
+    green: '0xc3e88d'
+    magenta: '0xc792ea'
+    red: '0xf07178'
+    white: '0xeeffff'
+    yellow: '0xffcb6b'
   primary:
-    background: '#0E1019'
-    foreground: '#FFFAF4'
+    background: '0x181a20'
+    foreground: '0xeeffff'
+env:
+  TERM: alacritty
 font:
   bold:
-    family: Hack Nerd Font
+    family: JetBrains Mono ExtraBold Nerd Font
     style: Bold
   italic:
-    family: Hack Nerd Font
+    family: JetBrains Mono Medium Nerd Font
     style: Italic
   normal:
-    family: Hack Nerd Font
+    family: JetBrains Mono Medium Nerd Font
     style: Regular
   offset:
     x: 0
     y: 0
   size: 13.0
+live_config_reload: true
 window:
-  opacity: 0.8
+  opacity: 0.9
   padding:
-    x: 0
-    y: 0
+    decoration: none
+    dynamic_padding: true
+    x: 5
+    y: 2

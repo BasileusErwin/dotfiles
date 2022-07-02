@@ -1,4 +1,7 @@
-local neoscroll = require('neoscroll')
+local status_ok, neoscroll = pcall(require, 'neoscroll')
+if not status_ok then
+  return 
+end
 local config = require('neoscroll.config')
 
 neoscroll.setup({

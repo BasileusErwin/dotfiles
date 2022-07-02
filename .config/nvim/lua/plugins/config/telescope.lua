@@ -1,4 +1,9 @@
-local telescope = require('telescope')
+local status_ok, telescope = pcall(require, 'telescope')
+
+if not status_ok then
+  return
+end
+
 local actions = require('telescope.actions')
 local previewers = require('telescope.previewers')
 local map = vim.api.nvim_set_keymap
@@ -16,7 +21,11 @@ telescope.setup {
         mirror = false
       }
     },
-    find_command = {'fd', '-uu'},
+    pickers = {
+      find_files = {
+        find_command = { "fd", "--type", "f", "--strip-cwd-prefix" }
+      },
+    },
     prompt_prefix = ' ',
     selection_caret = ' ',
     entry_prefix = '  ',
@@ -24,21 +33,27 @@ telescope.setup {
     selection_strategy = 'reset',
     sorting_strategy = 'descending',
     layout_strategy = 'horizontal',
-    file_sorter = require'telescope.sorters'.get_fuzzy_file,
+    file_sorter = require 'telescope.sorters'.get_fuzzy_file,
     file_ignore_patterns = {},
-    generic_sorter = require'telescope.sorters'.get_generic_fuzzy_sorter,
+    generic_sorter = require 'telescope.sorters'.get_generic_fuzzy_sorter,
     path_display = {},
     winblend = 0,
     border = {},
-    borderchars = {'─', '│', '─', '│', '╭', '╮', '╯', '╰'},
+    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
     color_devicons = true,
     use_less = true,
-    set_env = {['COLORTERM'] = 'truecolor'}, -- default = nil,
+    set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
     file_previewer = previewers.vim_buffer_cat.new,
     grep_previewer = previewers.vim_buffer_vimgrep.new,
     qflist_previewer = previewers.vim_buffer_qflist.new,
     buffer_previewer_maker = previewers.buffer_previewer_maker,
     extensions = {
+      fzf = {
+        fuzzy = true,
+        override_generic_sorter = true,
+        override_file_sorter = true,
+        case_mode = "smart_case"
+      }
     },
     mappings = {
       i = {
@@ -112,3 +127,5 @@ map('n', '<Leader>f', '<cmd>lua require("telescope.builtin").find_files()<cr>', 
 map('n', '<Leader>b', '<cmd>lua require("telescope.builtin").buffers()<cr>', { noremap = true })
 map('n', '<Leader>th', '<cmd>lua require("telescope.builtin").help_tags()<cr>', { noremap = true })
 map("n", "<Leader>tc", "<cmd>Telescope commands<cr>", { noremap = true, silent = true })
+
+require('telescope').load_extension('fzf')

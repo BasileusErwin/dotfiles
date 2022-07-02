@@ -1,52 +1,50 @@
-local M = {}
-M.setup = function()
-  local status_ok, treesitter_config = pcall(require, "nvim-treesitter.configs")
-  if not status_ok then
-    return
-  end
+local status_ok, treesitter_config = pcall(require, 'nvim-treesitter.configs')
+if not status_ok then
+  return
+end
 
-  local config = {
-    ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-    sync_install = false,
-    highlight = {
-      enable = true,
-      use_languagetree = true,
-    },
-    tree_docs = {
-      enable = true,
-      spec_config = {
-        jsdoc = {
-          slots = {
-            class = { author = true }
-          }
+local config = {
+	ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  sync_install = false,
+	highlight = {
+    enable = true,
+    use_languagetree = true,
+  },
+  tree_docs = {
+    enable = true,
+    spec_config = {
+      jsdoc = {
+        slots = {
+          class = {author = true}
         }
       }
+    }
+  },
+  matchup = {
+    enable = true
+  },
+  indent = {
+    enable = true,
+  },
+  autotag = {
+    enable = true,
+  },
+  context_commentstring = {
+    enable = true,
+    config = {
+      typescript = "// %s",
+      css = "/* %s */",
+      scss = "/* %s */",
+      html = "<!-- %s -->",
+      lua = '-- %s',
+      bash = '# %s'
     },
-    matchup = {
-      enable = true
-    },
-    indent = {
-      enable = true,
-    },
-    autotag = {
-      enable = true,
-    },
-    context_commentstring = {
-      enable = true,
-      config = {
-        typescript = "// %s",
-        css = "/* %s */",
-        scss = "/* %s */",
-        html = "<!-- %s -->",
-        lua = '-- %s',
-        bash = '# %s'
-      },
-    },
-    refactor = {
-      highlight_definitions = { enable = true },
-      highlight_current_scope = { enable = false },
-    },
-    playground = {
+  },
+  refactor = {
+    highlight_definitions = { enable = true },
+    highlight_current_scope = { enable = false },
+  },
+  playground = {
       enable = false,
       disable = {},
       updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
@@ -71,10 +69,8 @@ M.setup = function()
     },
   }
 
-  treesitter_config.setup(vim.tbl_deep_extend('force', config, {}))
 
-  local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-  parser_config.tsx.filetype_to_parsername = { "javascript", "javascript.jsx", "typescript.tsx" }
-end
+treesitter_config.setup(vim.tbl_deep_extend('force', config, {}))
 
-return M
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.tsx.filetype_to_parsername = { "javascript", "javascript.jsx","typescript.tsx" }

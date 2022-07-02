@@ -31,5 +31,3 @@ onedark.setup {
         background = false,    -- use background color for virtual text
     },
 }
-
-onedark.load()

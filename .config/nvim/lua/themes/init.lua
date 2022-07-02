@@ -1,27 +1,20 @@
-local M = {}
-M.setup = function()
-  local lualine_config = require('plugins.config.lualine')
+local lualine_config = require('plugins.config.lualine')
 
-  local themes_config = {
-    'themes.config.onedark',
-    'themes.config.tokyodark',
-    'themes.config.tokyonight',
-    'themes.config.material',
-    'themes.config.github_theme',
-    'themes.config.palenightfall',
-    'themes.config.neodark',
-  }
+local themes_config = {
+  'themes.config.tokyodark',
+  'themes.config.tokyonight',
+  'themes.config.material',
+  'themes.config.github_theme',
+  'themes.config.palenightfall',
+  'themes.config.neodark',
+  'themes.config.onedark',
+  'themes.config.catppuccin',
+}
 
-  for _, module in ipairs(themes_config) do
-    local ok, err = pcall(require, module)
-    if not ok then
-      return
-    end
-  end
-
-  vim.cmd 'colorscheme tokyodark'
-
-  lualine_config.set_theme('auto')
+for _, module in ipairs(themes_config) do
+  local ok, err = pcall(require, module)
 end
 
-return M
+vim.cmd 'colorscheme tokyodark'
+
+lualine_config.set_theme('auto')

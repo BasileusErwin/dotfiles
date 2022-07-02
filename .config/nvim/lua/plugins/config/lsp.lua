@@ -1,4 +1,8 @@
-local nvim_lsp = require('lspconfig')
+local status_ok, nvim_lsp = pcall(require, 'lspconfig')
+if not status_ok then
+  return
+end
+
 local util = require 'lspconfig.util'
 local dlsconfig = require 'diagnosticls-configs'
 
@@ -7,7 +11,8 @@ local M = {}
 vim.g.markdown_fenced_languages = {
   'ts=typescript'
 }
-vim.fn.sign_define('LspDiagnosticsSignError', { texthl = 'LspDiagnosticsSignError', text = '', numhl = 'LspDiagnosticsSignError' }
+vim.fn.sign_define('LspDiagnosticsSignError',
+  { texthl = 'LspDiagnosticsSignError', text = '', numhl = 'LspDiagnosticsSignError' }
 )
 vim.fn.sign_define(
   'LspDiagnosticsSignWarning',
@@ -57,13 +62,13 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- icon
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
-    underline = true,
-    -- This sets the spacing and the prefix, obviously.
-    virtual_text = {
-      spacing = 4,
-      prefix = ''
-    }
+  underline = true,
+  -- This sets the spacing and the prefix, obviously.
+  virtual_text = {
+    spacing = 4,
+    prefix = ''
   }
+}
 )
 
 nvim_lsp.sumneko_lua.setup {
@@ -75,40 +80,35 @@ nvim_lsp.vuels.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
--- if util.root_pattern('.eslintrc.json', 'tsconfig.json', 'tslint.json', 'package.json') then
---   if util.root_pattern('vite.config.js','vite.config.ts', 'src/App.vue') then
---   else
---   end
--- else
---   nvim_lsp.denols.setup {
---     on_attach = on_attach,
---     capabilities = capabilities,
---     filetypes = { 'javascript', 'typescript' },
---     cmd = { 'deno', 'lsp' },
---     init_options = {
---       enable = true,
---       lint = true,
---       unstable = false
---     },
---   }
--- end
+-- nvim_lsp.denols.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   filetypes = { 'javascript', 'typescript' },
+--   cmd = { 'deno', 'lsp' },
+--   init_options = {
+--     enable = true,
+--     lint = true,
+--     unstable = false
+--   },
+-- }
 
-nvim_lsp.tsserver.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetype = {
-    'javascript',
-    'react',
-    'typescript',
-    'typescriptreact',
-    'typescript.tsx'
-  },
-  preferences = {
-    quotePreference = 'single',
-    importModuleSpecifierPreference = 'relative',
-    includeCompletionsForImportStatements = true
-  },
-}
+
+  nvim_lsp.tsserver.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetype = {
+      'javascript',
+      'react',
+      'typescript',
+      'typescriptreact',
+      'typescript.tsx'
+    },
+    preferences = {
+      quotePreference = 'single',
+      importModuleSpecifierPreference = 'relative',
+      includeCompletionsForImportStatements = true
+    },
+  }
 
 vim.g.markdown_fenced_languages = {
   'ts=typescript'
@@ -156,7 +156,7 @@ nvim_lsp.hls.setup {
     "haskell",
     "lhaskell"
   },
-  root_dir= util.root_pattern("*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml", "*.hs"),
+  root_dir = util.root_pattern("*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml", "*.hs", 'xmonad.hs'),
   on_attach = on_attach,
   capabilities = capabilities,
 }
@@ -182,6 +182,11 @@ nvim_lsp.sqls.setup {
 }
 
 nvim_lsp.zls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+nvim_lsp.gopls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
@@ -222,9 +227,16 @@ nvim_lsp.emmet_ls.setup({
   },
 })
 
-nvim_lsp.csharp_ls.setup {
+nvim_lsp.theme_check.setup({
   on_attach = on_attach,
   capabilities = capabilities,
+})
+
+local pid = vim.fn.getpid()
+nvim_lsp.omnisharp.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = { "omnisharp", "--languageserver", "--hostPID", tostring(pid) };
 }
 
 dlsconfig.init {

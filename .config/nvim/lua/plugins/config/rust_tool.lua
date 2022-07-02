@@ -1,4 +1,7 @@
-local rust_tools = require('rust-tools')
+local status_ok, rust_tools = pcall(require,'rust-tools')
+if not status_ok then
+  return
+end
 local rust_tools_inlay_hints = require('rust-tools.inlay_hints')
 local on_attach = require('plugins.config.lsp').on_attach
 

@@ -3,16 +3,16 @@
 # ----| Vars | ----
 
 # -- Laptop --
-export LAPTOP='eDP-1'
+export LAPTOP='eDP1'
 export LAPTOP_WIDTH=1920
 export LAPTOP_HEIGHT=1080
 
 # -- Monitor --
-export MONITOR='HDMI-1'
+export MONITOR='HDMI1'
 export MONITOR_WIDTH=1920
 export MONITOR_HEIGHT=1080
 
-export PATH=$HOME/.local/bin:/usr/local/bin:$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/.cargo/bin:$HOME/go/bin:/usr/local/bin:$PATH
 export QT_STYLE_OVERRIDE=kvantum
 export DENO_INSTALL="/home/kaisererwin/.deno"
 export STARSHIP_CONFIG="$HOME/.config/fish/starship.toml"
@@ -22,7 +22,7 @@ export EDITOR="nvim"
 hdmi=`xrandr | grep ' connected' | grep 'HDMI' | awk '{print $1}'`
 
 if [ "$hdmi" = $MONITOR ]; then
-  xrandr --output "$MONITOR" -r 75.0 --primary --mode 1920x1080 --rotate normal --right-of "$LAPTOP" \
+  xrandr --output "$MONITOR" -r 75.0 --primary --mode 1920x1080R --rotate normal --right-of "$LAPTOP" \
      --output "$LAPTOP" --mode 1920x1080 --rotate normal
 else
   xrandr --output "$LAPTOP" --primary --mode 1920x1080 --rotate normal
