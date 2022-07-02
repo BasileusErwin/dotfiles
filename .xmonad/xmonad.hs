@@ -169,7 +169,6 @@ myManageHook =
       (className =? "pcmanfm" <&&> resource =? "Dialog") --> doFloat,
       className =? "lxappearance" --> doFloat,
       className =? "SpeedCrunch" --> doFloat,
-      className =? "Zathura" --> doFloat,
       className =? "Piper" --> doFloat,
       className =? "Pulseaudio-equalizer-gtk" --> doFloat,
       className =? "Pavucontrol" --> doFloat,

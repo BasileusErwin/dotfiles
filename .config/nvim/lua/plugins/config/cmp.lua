@@ -174,7 +174,6 @@ tabnine:setup({
 })
 
 lspkind.init({
-  with_text = false,
   preset = 'codicons',
   symbol_map = {
     Text = "",

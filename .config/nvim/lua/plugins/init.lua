@@ -149,7 +149,7 @@ return packer.startup(function(use)
   use {
     'kyazdani42/nvim-tree.lua',
     config = require('plugins.config.nvim_tree'),
-    branch = 'main'
+    branch = 'master'
   }
 
   -- Autoclose tags
@@ -193,6 +193,12 @@ return packer.startup(function(use)
     'ur4ltz/surround.nvim',
     opt = false,
     config = require('plugins.config.surround').setup()
+  }
+
+  -- 
+  use {
+    'mg979/vim-visual-multi',
+    branch = 'master'
   }
 
   -- Git integration
