@@ -148,7 +148,7 @@ return packer.startup(function(use)
   -- Explorer
   use {
     'kyazdani42/nvim-tree.lua',
-    config = require('plugins.config.nvim_tree'),
+    config = require('plugins.config.nvim_tree').setup(),
     branch = 'master'
   }
 
