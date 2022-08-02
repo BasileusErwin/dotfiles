@@ -8,7 +8,11 @@ fonts:
     Hurmit: Hurmit Nerd Font Mono
     DaddyTime: DaddyTimeMono Nerd Font
     Iosevka: Iosevka NF
-    Hack: Hack NF
+    Hack: Hack Nerd Font
+    Literation:
+      normal: LiterationSans book Nerd Font
+      italic: LiterationSans italic Nerd Font
+      bold: LiterationSans bold Nerd Font
     SpaceMono: SpaceMono NF
     JetBrains:
         normal: JetBrains Mono Medium Nerd Font

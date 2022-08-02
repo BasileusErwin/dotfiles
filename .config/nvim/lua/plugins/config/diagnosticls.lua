@@ -19,6 +19,10 @@ local luacheck = require 'diagnosticls-configs.linters.luacheck'
 local golangci_lint = require 'diagnosticls-configs.linters.golangci_lint'
 local gofumpt = require 'diagnosticls-configs.formatters.gofumpt'
 
+-- Python
+local pylint = require 'diagnosticls-configs.linters.pylint'
+local black = require 'diagnosticls-configs.formatters.black'
+
 prettier = vim.tbl_extend('force', prettier, {
   sourceName = 'prettier',
   command = fs.executable('prettier'),
@@ -81,5 +85,9 @@ dlsconfig.setup {
   ['go'] = {
     linter = { golangci_lint },
     formatter = { gofumpt }
+  },
+  ['python'] = {
+    linter = { pylint },
+    formatter = { black }
   }
 }

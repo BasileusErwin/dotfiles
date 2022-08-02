@@ -4,6 +4,34 @@ if not status_ok then
 end
 
 lsp_installer.settings({
+  ensure_installed = {
+    "jdtls",
+    "intelephense",
+    "ccls",
+    "hls",
+    "rust_analyzer",
+    "tsserver",
+    "vimls",
+    "volar",
+    "eslint",
+    "hls",
+    "bashls",
+    "html",
+    "jsonls",
+    "sumneko_lua",
+    "pyright",
+    "sqls",
+    "lemminx",
+    "cssls",
+    "zls",
+    "diagnosticls",
+    "clangd",
+    "cmake",
+    "dockerls",
+    "emmet_ls",
+    "gopls",
+  },
+  automatic_installation = true,
     ui = {
         icons = {
             server_installed = "✓",

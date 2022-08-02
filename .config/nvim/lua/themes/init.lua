@@ -9,12 +9,13 @@ local themes_config = {
   'themes.config.neodark',
   'themes.config.onedark',
   'themes.config.catppuccin',
+  'themes.config.ayu'
 }
 
 for _, module in ipairs(themes_config) do
   local ok, err = pcall(require, module)
 end
 
-vim.cmd 'colorscheme tokyodark'
+vim.cmd 'colorscheme ayu'
 
 lualine_config.set_theme('auto')

@@ -1,3 +1,4 @@
+local map = vim.api.nvim_set_keymap
 local status_ok, rust_tools = pcall(require,'rust-tools')
 if not status_ok then
   return
@@ -33,7 +34,6 @@ local opts = {
         { "╰", "FloatBorder" },
         { "│", "FloatBorder" },
       },
-
       -- whether the hover action window gets automatically focused
       -- default: false
       auto_focus = true,
@@ -61,7 +61,11 @@ local opts = {
 
 rust_tools.setup(opts)
 
-require('rust-tools.runnables').runnables()
-require'rust-tools.hover_actions'.hover_actions()
-
 rust_tools_inlay_hints.set_inlay_hints()
+
+map('n', '<Leader>ra', ":lua require'rust-tools.hover_actions'.hover_actions()<CR>", { noremap = true, silent = true })
+map('n', '<Leader>rr', ":lua require('rust-tools.runnables').runnables()<CR>", { noremap = true, silent = true })
+map('n', '<Leader>rgc', ":lua require'rust-tools.open_cargo_toml'.open_cargo_toml()<CR>", { noremap = true, silent = true })
+map('n', '<Leader>rem', ":lua require'rust-tools.expand_macro'.expand_macro()<CR>", { noremap = true, silent = true })
+
+

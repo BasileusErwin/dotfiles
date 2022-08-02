@@ -34,7 +34,6 @@
 !neofetch/*
 !kitty
 !pavucontrol.ini
-!river
-!river/*
-!weston.ini
+!leftwm
+!leftwm/*
 

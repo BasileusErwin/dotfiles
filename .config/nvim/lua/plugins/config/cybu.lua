@@ -44,8 +44,8 @@ M.setup = function()
     },
   }
   )
-  vim.keymap.set("n", "[b", "<Plug>(CybuPrev)")
-  vim.keymap.set("n", "]b", "<Plug>(CybuNext)")
+  vim.keymap.set("n", ".b", "<Plug>(CybuPrev)")
+  vim.keymap.set("n", ".b", "<Plug>(CybuNext)")
 end
 
 return M

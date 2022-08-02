@@ -56,8 +56,8 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>p', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
---local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
---capabilities.textDocument.completion.completionItem.snippetSupport = true
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 
 -- icon
@@ -94,22 +94,22 @@ nvim_lsp.vuels.setup {
 -- }
 
 
-  nvim_lsp.tsserver.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    filetype = {
-      'javascript',
-      'react',
-      'typescript',
-      'typescriptreact',
-      'typescript.tsx'
-    },
-    preferences = {
-      quotePreference = 'single',
-      importModuleSpecifierPreference = 'relative',
-      includeCompletionsForImportStatements = true
-    },
-  }
+nvim_lsp.tsserver.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetype = {
+    'javascript',
+    'react',
+    'typescript',
+    'typescriptreact',
+    'typescript.tsx'
+  },
+  preferences = {
+    quotePreference = 'single',
+    importModuleSpecifierPreference = 'relative',
+    includeCompletionsForImportStatements = true
+  },
+}
 
 vim.g.markdown_fenced_languages = {
   'ts=typescript'
@@ -228,9 +228,24 @@ nvim_lsp.emmet_ls.setup({
   },
 })
 
+nvim_lsp.elixirls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = { "/home/kaisererwin/.local/share/nvim/lsp_servers/elixir/elixir-ls/language_server.sh" },
+  filetypes = { "elixir", "eelixir", "heex", "ex" }
+})
+
 nvim_lsp.theme_check.setup({
   on_attach = on_attach,
   capabilities = capabilities,
+})
+
+nvim_lsp.taplo.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = function(fname)
+    return util.root_pattern '*.toml' (fname) or util.find_git_ancestor(fname)
+  end,
 })
 
 local pid = vim.fn.getpid()
@@ -244,7 +259,6 @@ dlsconfig.init {
   on_attach = on_attach,
   capabilities = capabilities,
 }
-
 M.on_attach = on_attach
 M.capabilities = capabilities
 

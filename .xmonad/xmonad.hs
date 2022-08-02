@@ -1,4 +1,5 @@
 {-# OPTIONS_GHC -Wno-deprecations #-}
+
 -- Data
 import Data.Char (isSpace, toUpper)
 import qualified Data.Map as M
@@ -52,7 +53,7 @@ myModMask = mod4Mask :: KeyMask
 myBorderWidth = 2 :: Dimension
 
 -- Font
-myFont = "xft:UbuntuMono Nerd Font Mono:regular:size=12:antialias=true:hinting=true" :: String
+myFont = "xft:LiterationSans Nerd Font Mono:regular:size=12:antialias=true:hinting=true" :: String
 
 -- Colors
 -- Normal
@@ -68,6 +69,7 @@ myStartupHook = do
   spawnOnce "trayer --edge top  --monitor 1 --widthtype pixel --width 130 --heighttype pixel --height 18 --align right --transparent true --alpha 0 --tint 0x0e1019 --iconspacing 3 --distance 1 &"
   --spawnOnce "~/.xmonad/polybar/launch.sh"
   spawnOnce "~/.xmonad/autostart.sh"
+  -- spawn "polybar xmonad -c ~/.config/polybar/material.ini"
   setWMName "LG3D"
 
 mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
@@ -123,19 +125,19 @@ myWorspaces =
   where
     clickable l = ["<action=xdotool key super+" ++ show i ++ "> " ++ ws ++ "</action>" | (i, ws) <- zip [1 .. 9] l]
 
---myWorspaces  = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+-- myWorspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
 myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
 myManageHook =
   composeAll
     [ -- 1
-      (className =? "Brave-browser" <||> title =? "Firefox Developer Edition") --> doShift (head myWorspaces),
+      (className =? "Brave-browser" <||> title =? "Firefox Developer Edition" <||> className =? "firefox")
+        --> doShift (head myWorspaces),
       -- 2
 
       -- 3
 
       -- 4
-      className =? "firefox" --> doShift (myWorspaces !! 4),
       -- 5
       className =? "Thunar" --> doShift (myWorspaces !! 5),
       -- 6
@@ -182,8 +184,20 @@ myManageHook =
       (className =? "cpupower-gui" <||> className =? "Cpupower-gui") --> doFloat,
       (className =? "Zoom Meeting" <||> className =? "zoom ") --> doFloat,
       (className =? "Settings") --> doFloat,
-      (className =? "protonvpn" <||> className =? "Protonvpn") --> doFloat
+      (className =? "protonvpn" <||> className =? "Protonvpn") --> doFloat,
+      className =? "C++" --> doFloat
     ]
+
+xmonadKey conf@(XConfig {XMonad.modMask = myModMask}) =
+  M.fromList $
+    [ ((m .|. myModMask, k), windows $ f i)
+      | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9],
+        (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
+    ]
+      ++ [ ((m .|. myModMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
+           | (key, sc) <- zip [xK_w, xK_e, xK_r] [0 ..],
+             (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
+         ]
 
 myKeys :: [(String, X ())]
 myKeys =
@@ -239,9 +253,9 @@ myKeys =
     -- Window Nav
     ("M-S-m", spawn "rofi -show"),
     -- Browser
-    ("M-b", spawn "brave"),
+    ("M-C-b", spawn "brave"),
     ("M-S-b", spawn "google-chrome-stable"),
-    ("M-C-b", spawn "firefox-developer-edition"),
+    ("M-b", spawn "firefox"),
     -- Explore
     ("M-e", spawn "pcmanfm"),
     -- Redshift
@@ -255,6 +269,9 @@ myKeys =
     ("M-s", spawn "speedcrunch"),
     -- ScreenShot
     ("M-p", spawn "scrot -s 'screenshot_%Y-%m-%d-%T_$wx$h.png' -e 'mkdir -p ~/Pictures/screenshots/ | mv $f ~/Pictures/screenshots/'"),
+
+    -- Lock screen
+    ("M-C-=", spawn "betterlockscreen -l blur"),
     --------------------- Hardware ---------------------
 
     -- Volume
@@ -285,6 +302,7 @@ main = do
           layoutHook = myLayoutHook,
           workspaces = myWorspaces,
           modMask = myModMask,
+          -- keys = xmonadKey,
           borderWidth = myBorderWidth,
           normalBorderColor = myNormColor,
           focusedBorderColor = myFocusColor,

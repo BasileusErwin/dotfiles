@@ -1,0 +1,137 @@
+modkey = "Mod4"
+mousekey = "Mod4"
+layouts = ["Monocle", "GridHorizontal"]
+tags = [ "", "", "", "", "", "", "", "", ""]
+# tags = [ "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+Workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+
+sloppy_mouse_follows_focus = true
+
+keybind = [
+# Workspaces
+  { command = "GotoTag", value = "1", modifier = ["modkey"], key = "1" },
+  { command = "GotoTag", value = "2", modifier = ["modkey"], key = "2" },
+  { command = "GotoTag", value = "3", modifier = ["modkey"], key = "3" },
+  { command = "GotoTag", value = "4", modifier = ["modkey"], key = "4" },
+  { command = "GotoTag", value = "5", modifier = ["modkey"], key = "5" },
+  { command = "GotoTag", value = "6", modifier = ["modkey"], key = "6" },
+  { command = "GotoTag", value = "7", modifier = ["modkey"], key = "7" },
+  { command = "GotoTag", value = "8", modifier = ["modkey"], key = "8" },
+  { command = "GotoTag", value = "9", modifier = ["modkey"], key = "9" },
+
+  { command = "MoveToTag", value = "1", modifier = ["modkey", "Shift"], key = "1" },
+  { command = "MoveToTag", value = "2", modifier = ["modkey", "Shift"], key = "2" },
+  { command = "MoveToTag", value = "3", modifier = ["modkey", "Shift"], key = "3" },
+  { command = "MoveToTag", value = "4", modifier = ["modkey", "Shift"], key = "4" },
+  { command = "MoveToTag", value = "5", modifier = ["modkey", "Shift"], key = "5" },
+  { command = "MoveToTag", value = "6", modifier = ["modkey", "Shift"], key = "6" },
+  { command = "MoveToTag", value = "7", modifier = ["modkey", "Shift"], key = "7" },
+  { command = "MoveToTag", value = "8", modifier = ["modkey", "Shift"], key = "8" },
+  { command = "MoveToTag", value = "9", modifier = ["modkey", "Shift"], key = "9" },
+
+# Config
+  # Close window
+  { command = "CloseWindow", modifier = ["modkey"], key = "w" },
+  # Restore leftwm
+  { command = "SoftReload", modifier = ["modkey", "Shift"], key = "r" },
+  # Close leftwm
+  { command = "Execute", value = "pkill leftwm", modifier = ["modkey", "Shift"], key = "q" },
+  # Change floating
+  { command = "FloatingToTile", modifier = ["modkey"], key = "f" },
+  # Next layout
+  { command = "NextLayout", modifier = ["modkey"], key = "Tab" },
+  # Prev layout
+  { command = "PreviousLayout", modifier = ["modkey", "Shift"], key = "Tab" },
+  # Move Window
+  { command = "MoveWindowUp", modifier = ["modkey", "Shift"], key = "k" },
+  { command = "MoveWindowDown", modifier = ["modkey", "Shift"], key = "j" },
+  { command = "FocusWindowUp", modifier = ["modkey"], key = "k" },
+  { command = "FocusWindowDown", modifier = ["modkey"], key = "j" },
+  { command = "IncreaseMainWidth", value = "5", modifier = ["modkey"], key = "z" },
+  { command = "DecreaseMainWidth", value = "5", modifier = ["modkey", "Shift"], key = "z" },
+
+# App
+  # Menu
+  { command = "Execute", value = "rofi -show drun", modifier = ["modkey"], key = "m" },
+
+  # Windows
+  { command = "Execute", value = "rofi -show", modifier = ["modkey", "Shift"], key = "m" },
+
+  # Terminal
+  { command = "Execute", value = "alacritty", modifier = ["modkey"], key = "Return" },
+
+  # Browser
+  { command = "Execute", value = "firefox", modifier = ["modkey"], key = "b" },
+  { command = "Execute", value = "google-chrome-stable", modifier = ["modkey", "Shift"], key = "b" },
+
+  # Calculator
+  { command = "Execute", value = "speedcrunch", modifier = ["modkey"], key = "s" },
+
+  # Screenshot
+  { command = "Execute", value = "scrot -s 'screenshot_%Y-%m-%d-%T_$wx$h.png' -e 'mkdir -p ~/Pictures/screenshots/ | mv $f ~/Pictures/screenshots/'", modifier = ["modkey"], key = "p" },
+
+  # Lock screen
+  { command = "Execute", value = "betterlockscreen -l blur", modifier = ["modkey", "Control"], key = "=" },
+
+# Hardware
+  # Volume
+  { command = "Execute", value = "pactl set-sink-volume @DEFAULT_SINK@ -5%", modifier = [], key = "<XF86AudioLowerVolume>"},
+  { command = "Execute", value = "pactl set-sink-volume @DEFAULT_SINK@ +5%", modifier = [], key = "<XF86AudioRaiseVolume>"},
+  { command = "Execute", value = "pactl set-sink-mute @DEFAULT_SINK@ toggle", modifier = [], key = "<XF86AudioMute>"},
+  { command = "Execute", value = "playerctl play-pause", modifier = [], key = "<XF86AudioPlay>"},
+  { command = "Execute", value = "playerctl next", modifier = [], key = "<XF86AudioNext>"},
+  { command = "Execute", value = "playerctl play-pause", modifier = [], key = "<XF86AudioPlay>"},
+  { command = "Execute", value = "playerctl previous", modifier = [], key = "<XF86AudioPrev>"},
+  # Brightness
+  { command = "Execute", value = "brightnessctl set +10%", modifier = [], key = "<XF86MonBrightnessUp>"},
+  { command = "Execute", value = "brightnessctl set 10%-", modifier = [], key = "<XF86MonBrightnessDown>"},
+]
+
+window_rules = [
+  # Workpaces
+  # 1
+  { window_class  = "firefox", spawn_on_tag = 1 },
+  # 2
+
+  # 3
+
+  # 4
+  { window_class  = "Google-chrome", spawn_on_tag = 4 },
+  # 5
+  # { window_class  = "Thunar", spawn_on_tag = 5 },
+  # { window_class  = "PCmanfm", spawn_on_tag = 5 },
+  # 6
+  { window_class  = "TelegramDesktop", spawn_on_tag = 6 },
+  { window_class  = "Thunderbird", spawn_on_tag = 6 },
+  { window_class  = "zoom", spawn_on_tag = 6, spawn_floating = true },
+  { window_class  = "Zoom Cloud Meetings", spawn_on_tag = 6, spawn_floating = true },
+  # 7
+  { window_class  = "Spotify", spawn_on_tag = 7 },
+  { window_class  = "Pulseaudio-equalizer-gtk", spawn_on_tag = 7, spawn_floating = true },
+  { window_class  = "Pavucontrol", spawn_on_tag = 7, spawn_floating = true },
+  # 8
+  { window_class  = "Slack", spawn_on_tag = 8 },
+
+  # Floating
+  { window_class = "Lxapperance", spawn_floating = true },
+  { window_class = "Nitrogen", spawn_floating = true },
+  { window_class = "wpa_gui", spawn_floating = true },
+  { window_class = "Zathura", spawn_floating = true },
+  { window_class = "Places", spawn_floating = true },
+  { window_class = "Dialog", spawn_floating = true },
+  { window_class = "pop-up", spawn_floating = true },
+  { window_class = "Thunar", spawn_floating = true },
+  { window_class = "Pcmanfm", spawn_floating = true },
+  { window_class = "Piper", spawn_floating = true },
+  { window_class = "Blueman-manager", spawn_floating = true },
+  { window_class = "NordPass", spawn_floating = true },
+  { window_class = "Arandr", spawn_floating = true },
+  { window_class = "Java", spawn_floating = true },
+  { window_class = "TelegramDesktop", spawn_floating = true },
+  { window_class = "whatsapp-nativefier-d40211", spawn_floating = true },
+  { window_class = "Settings", spawn_floating = true },
+  { window_class = "Settings", spawn_floating = true },
+  { window_class = "protonvpn", spawn_floating = true },
+  { window_class = "Postman", spawn_floating = true },
+  { window_class = "SpeedCrunch", spawn_floating = true },
+]

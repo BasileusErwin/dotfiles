@@ -29,19 +29,24 @@ if not status_ok then
   return
 end
 
-packer.init {
+packer.init({
   display = {
     open_fn = function()
-      return require('packer.util').float { border = 'rounded' }
+      return require('packer.util').float { border = 'single' }
     end,
   },
-}
-
-local LSPInstallPlug = ':LspInstall jdtls intelephense ccls hls rust_analyzer tsserver vimls volar eslint hls bashls html jsonls sumneko_lua pyright sqls lemminx cssls zls diagnosticls clangd cmake dockerls emmet_ls gopls'
+  opt_default = false,
+  transitive_opt = true,
+  transitive_disable = true,
+})
 
 return packer.startup(function(use)
   use {
     'wbthomason/packer.nvim'
+  }
+
+  use {
+    'puremourning/vimspector'
   }
 
   -- Lines
@@ -51,19 +56,13 @@ return packer.startup(function(use)
   }
   use {
     'akinsho/bufferline.nvim',
-    requires = 'kyazdani42/nvim-web-devicons',
-    opt = false,
+    tag = "v3.*",
     event = "BufWinEnter",
     branch = "main",
+    config = require('plugins.config.bufferline').setup()
   }
-  -- use({
-  --   'noib3/nvim-cokeline',
-  --   requires = 'kyazdani42/nvim-web-devicons',
-  --   config = require('plugins.config.cokeline').setup()
-  -- })
   use {
     'stevearc/dressing.nvim',
-    opt = false,
     config = require('plugins.config.dressing').setup()
   }
   -- LSP
@@ -84,6 +83,7 @@ return packer.startup(function(use)
   }
   use {
     'simrat39/rust-tools.nvim',
+    requires = { "mfussenegger/nvim-dap" },
     config = require('plugins.config.rust_tool')
   }
   use 'rust-lang/rust.vim'
@@ -158,14 +158,12 @@ return packer.startup(function(use)
   -- CSS color
   use {
     'norcalli/nvim-colorizer.lua',
-    opt = false,
     config = require('plugins.config.colorize')
   }
 
   -- Commentary
   use {
     'numToStr/Comment.nvim',
-    opt = false,
     config = require('plugins.config.comments')
   }
 
@@ -178,7 +176,6 @@ return packer.startup(function(use)
   -- Autopairs
   use {
     'jiangmiao/auto-pairs',
-    opt = false,
     config = require('plugins.config.autopairs')
   }
   use {
@@ -191,11 +188,10 @@ return packer.startup(function(use)
   --
   use {
     'ur4ltz/surround.nvim',
-    opt = false,
     config = require('plugins.config.surround').setup()
   }
 
-  -- 
+  --
   use {
     'mg979/vim-visual-multi',
     branch = 'master'
@@ -204,16 +200,15 @@ return packer.startup(function(use)
   -- Git integration
   use {
     'lewis6991/gitsigns.nvim',
-    opt = false,
     config = require('plugins.config.git')
   }
   -- Telescope
   use {
     'nvim-telescope/telescope.nvim',
-    opt = false,
     requires = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope-file-browser.nvim',
+      'nvim-telescope/telescope-ui-select.nvim',
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     },
     config = require('plugins.config.telescope')
@@ -223,7 +218,6 @@ return packer.startup(function(use)
     'lukas-reineke/indent-blankline.nvim',
     event = 'BufRead',
     config = require('plugins.config.indent-blankline'),
-    opt = true,
   }
   use 'mattn/emmet-vim'
 
@@ -231,47 +225,39 @@ return packer.startup(function(use)
   use { 'ellisonleao/glow.nvim' }
   use {
     'iamcco/markdown-preview.nvim',
-    opt = false,
     run = 'cd app && yarn install'
   }
   -- Icons
   use {
     'kyazdani42/nvim-web-devicons',
-    opt = false,
     config = require('plugins.config.icons')
   }
   use { 'ryanoasis/vim-devicons' }
 
   use {
     'nathom/filetype.nvim',
-    opt = false,
     config = require('plugins.config.filetype')
   }
   use {
     'max397574/better-escape.nvim',
-    opt = false,
     config = require('plugins.config.better_escape')
   }
 
   use {
     'simrat39/symbols-outline.nvim',
-    opt = false,
     config = require('plugins.config.simbols_outline')
   }
 
   use {
     'karb94/neoscroll.nvim',
-    opt = false,
     config = require('plugins.config.neoscroll')
   }
   use {
     'mfussenegger/nvim-jdtls',
-    opt = false,
   }
 
   use {
     'jidn/vim-dbml',
-    opt = false,
   }
 
   use {
@@ -283,7 +269,7 @@ return packer.startup(function(use)
   use { 'marko-cerovac/material.nvim' }
   use { 'tomasiser/vim-code-dark' }
   use 'tanvirtin/monokai.nvim'
-  use { 'ayu-theme/ayu-vim' }
+  use { 'Shatur/neovim-ayu' }
   use { 'ghifarit53/tokyonight-vim' }
   use { 'tiagovla/tokyodark.nvim' }
   use { 'dracula/vim', as = 'dracula' }

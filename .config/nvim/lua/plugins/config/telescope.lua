@@ -48,6 +48,7 @@ telescope.setup {
     qflist_previewer = previewers.vim_buffer_qflist.new,
     buffer_previewer_maker = previewers.buffer_previewer_maker,
     extensions = {
+      ['ui-select'] = {},
       fzf = {
         fuzzy = true,
         override_generic_sorter = true,
@@ -129,3 +130,4 @@ map('n', '<Leader>th', '<cmd>lua require("telescope.builtin").help_tags()<cr>', 
 map("n", "<Leader>tc", "<cmd>Telescope commands<cr>", { noremap = true, silent = true })
 
 require('telescope').load_extension('fzf')
+require('telescope').load_extension('ui-select')

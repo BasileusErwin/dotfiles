@@ -5,6 +5,7 @@ end
 
 local config = {
 	ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ignore_install = { "markdown_inline", "markdown" },
   sync_install = false,
 	highlight = {
     enable = true,
