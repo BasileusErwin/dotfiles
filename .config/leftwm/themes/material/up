@@ -11,7 +11,7 @@ fi
 ln -s $SCRIPT_PATH/down /tmp/leftwm-theme-down
 
 # Set the theme.toml config
-leftwm-command "LoadTheme $SCRIPT_PATH/themes.toml"
+leftwm-command "LoadTheme $THEME_CURRENT/themes.toml"
 
 pkill polybar
 
@@ -26,3 +26,5 @@ if [[ $HDMI_CONNECTED ]]; then
   polybar monitor-center -c "$THEME_CURRENT/polybar.ini" &
   polybar monitor-right -c "$THEME_CURRENT/polybar.ini" &
 fi
+
+volumeicon &

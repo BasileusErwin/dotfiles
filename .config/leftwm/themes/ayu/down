@@ -3,3 +3,4 @@
 leftwm-command "UnloadTheme"
 
 pkill polybar
+pkill volumeicon
