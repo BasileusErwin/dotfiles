@@ -215,7 +215,14 @@ nvim_lsp.metals.setup {
 nvim_lsp.grammarly.setup {
   on_attach = on_attach,
   capabilities = capabilities,
+  root_dir = util.root_pattern('*.md', '.git')
 }
+
+nvim_lsp.prosemd_lsp.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  -- root_dir = util.root_pattern(".git", ".marksman.toml", "*.md")
+})
 
 nvim_lsp.emmet_ls.setup({
   on_attach = on_attach,

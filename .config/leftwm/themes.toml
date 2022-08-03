@@ -214,4 +214,11 @@ name = "material"
 directory = "/home/kaisererwin/.config/leftwm/themes/material"
 version = "0.0.0"
 leftwm_versions = "*"
+current = false
+
+[[repos.themes]]
+name = "ayu"
+directory = "/home/kaisererwin/.config/leftwm/themes/ayu"
+version = "0.0.0"
+leftwm_versions = "*"
 current = true

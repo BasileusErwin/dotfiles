@@ -1,11 +1,13 @@
 modkey = "Mod4"
 mousekey = "Mod4"
 layouts = ["Monocle", "GridHorizontal"]
-tags = [ "", "", "", "", "", "", "", "", ""]
+tags = ["", "", "", "", "", "", "", "", ""]
 # tags = [ "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-Workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+# Workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
 sloppy_mouse_follows_focus = true
+focus_behaviour = "Sloppy"
+focus_new_windows = true
 
 keybind = [
 # Workspaces
@@ -34,10 +36,12 @@ keybind = [
   { command = "CloseWindow", modifier = ["modkey"], key = "w" },
   # Restore leftwm
   { command = "SoftReload", modifier = ["modkey", "Shift"], key = "r" },
+  { command = "HardReload", modifier = ["modkey", "Control"], key = "r" },
   # Close leftwm
   { command = "Execute", value = "pkill leftwm", modifier = ["modkey", "Shift"], key = "q" },
   # Change floating
-  { command = "FloatingToTile", modifier = ["modkey"], key = "f" },
+  { command = "FloatingToTile", modifier = ["modkey"], key = "t" },
+  # { command = "TileToFLoating", modifier = ["modkey"], key = "f" },
   # Next layout
   { command = "NextLayout", modifier = ["modkey"], key = "Tab" },
   # Prev layout
@@ -47,8 +51,11 @@ keybind = [
   { command = "MoveWindowDown", modifier = ["modkey", "Shift"], key = "j" },
   { command = "FocusWindowUp", modifier = ["modkey"], key = "k" },
   { command = "FocusWindowDown", modifier = ["modkey"], key = "j" },
-  { command = "IncreaseMainWidth", value = "5", modifier = ["modkey"], key = "z" },
-  { command = "DecreaseMainWidth", value = "5", modifier = ["modkey", "Shift"], key = "z" },
+  { command = "SetMarginMultiplier", value = "0", modifier = ["modkey"], key = "z" },
+  { command = "SetMarginMultiplier", value = "1", modifier = ["modkey", "Shift"], key = "z" },
+  { command = "ToggleFullScreen", modifier = ["modkey"], key = "space" },
+
+
 
 # App
   # Menu
@@ -71,7 +78,7 @@ keybind = [
   { command = "Execute", value = "scrot -s 'screenshot_%Y-%m-%d-%T_$wx$h.png' -e 'mkdir -p ~/Pictures/screenshots/ | mv $f ~/Pictures/screenshots/'", modifier = ["modkey"], key = "p" },
 
   # Lock screen
-  { command = "Execute", value = "betterlockscreen -l blur", modifier = ["modkey", "Control"], key = "=" },
+  { command = "Execute", value = "betterlockscreen -l blur", modifier = ["modkey", "Control"], key = "l" },
 
 # Hardware
   # Volume
@@ -89,28 +96,30 @@ keybind = [
 
 window_rules = [
   # Workpaces
-  # 1
+  # 1 
   { window_class  = "firefox", spawn_on_tag = 1 },
-  # 2
+  # 2 
 
-  # 3
+  # 3 
 
-  # 4
+  # 4 
   { window_class  = "Google-chrome", spawn_on_tag = 4 },
-  # 5
+  # 5 
   # { window_class  = "Thunar", spawn_on_tag = 5 },
   # { window_class  = "PCmanfm", spawn_on_tag = 5 },
-  # 6
-  { window_class  = "TelegramDesktop", spawn_on_tag = 6 },
-  { window_class  = "Thunderbird", spawn_on_tag = 6 },
-  { window_class  = "zoom", spawn_on_tag = 6, spawn_floating = true },
-  { window_class  = "Zoom Cloud Meetings", spawn_on_tag = 6, spawn_floating = true },
-  # 7
-  { window_class  = "Spotify", spawn_on_tag = 7 },
-  { window_class  = "Pulseaudio-equalizer-gtk", spawn_on_tag = 7, spawn_floating = true },
-  { window_class  = "Pavucontrol", spawn_on_tag = 7, spawn_floating = true },
-  # 8
-  { window_class  = "Slack", spawn_on_tag = 8 },
+  # 6 
+
+  # 7 
+  { window_class  = "TelegramDesktop", spawn_on_tag = 7 },
+  { window_class  = "Thunderbird", spawn_on_tag = 7 },
+  { window_class  = "zoom", spawn_on_tag = 7, spawn_floating = true },
+  { window_class  = "Zoom Cloud Meetings", spawn_on_tag = 7, spawn_floating = true },
+  # 8 
+  { window_class  = "Spotify", spawn_on_tag = 8 },
+  { window_class  = "Pulseaudio-equalizer-gtk", spawn_on_tag = 8, spawn_floating = true },
+  { window_class  = "Pavucontrol", spawn_on_tag = 8, spawn_floating = true },
+  # 9 
+  { window_class  = "Slack", spawn_on_tag = 9 },
 
   # Floating
   { window_class = "Lxapperance", spawn_floating = true },
