@@ -6,6 +6,7 @@ end
 lsp_installer.settings({
   ensure_installed = {
     "jdtls",
+    "denojs",
     "intelephense",
     "ccls",
     "hls",

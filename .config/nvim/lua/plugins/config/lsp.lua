@@ -81,29 +81,23 @@ nvim_lsp.vuels.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
--- nvim_lsp.denols.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
---   filetypes = { 'javascript', 'typescript' },
---   cmd = { 'deno', 'lsp' },
---   init_options = {
---     enable = true,
---     lint = true,
---     unstable = false
---   },
--- }
-
+nvim_lsp.denols.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = { 'deno', 'lsp' },
+  root_dir = util.root_pattern('deno.json'),
+  init_options = {
+    enable = true,
+    lint = true,
+    unstable = false
+  },
+  single_file_support = false
+}
 
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetype = {
-    'javascript',
-    'react',
-    'typescript',
-    'typescriptreact',
-    'typescript.tsx'
-  },
+  root_dir = util.root_pattern('package.json'),
   preferences = {
     quotePreference = 'single',
     importModuleSpecifierPreference = 'relative',

@@ -82,16 +82,16 @@ keybind = [
 
 # Hardware
   # Volume
-  { command = "Execute", value = "pactl set-sink-volume @DEFAULT_SINK@ -5%", modifier = [], key = "<XF86AudioLowerVolume>"},
-  { command = "Execute", value = "pactl set-sink-volume @DEFAULT_SINK@ +5%", modifier = [], key = "<XF86AudioRaiseVolume>"},
-  { command = "Execute", value = "pactl set-sink-mute @DEFAULT_SINK@ toggle", modifier = [], key = "<XF86AudioMute>"},
-  { command = "Execute", value = "playerctl play-pause", modifier = [], key = "<XF86AudioPlay>"},
-  { command = "Execute", value = "playerctl next", modifier = [], key = "<XF86AudioNext>"},
-  { command = "Execute", value = "playerctl play-pause", modifier = [], key = "<XF86AudioPlay>"},
-  { command = "Execute", value = "playerctl previous", modifier = [], key = "<XF86AudioPrev>"},
+  { command = "Execute", value = "pactl set-sink-volume @DEFAULT_SINK@ -5%", modifier = [], key = "XF86XK_AudioLowerVolume"},
+  { command = "Execute", value = "pactl set-sink-volume @DEFAULT_SINK@ +5%", modifier = [], key = "XF86XK_AudioRaiseVolume"},
+  { command = "Execute", value = "pactl set-sink-mute @DEFAULT_SINK@ toggle", modifier = [], key = "XF86XK_AudioMute"},
+  { command = "Execute", value = "playerctl play-pause", modifier = [], key = "XF86XK_AudioPlay"},
+  { command = "Execute", value = "playerctl next", modifier = [], key = "XF86XK_AudioNext"},
+  { command = "Execute", value = "playerctl play-pause", modifier = [], key = "XF86XK_AudioPlay"},
+  { command = "Execute", value = "playerctl previous", modifier = [], key = "XF86XK_AudioPrev"},
   # Brightness
-  { command = "Execute", value = "brightnessctl set +10%", modifier = [], key = "<XF86MonBrightnessUp>"},
-  { command = "Execute", value = "brightnessctl set 10%-", modifier = [], key = "<XF86MonBrightnessDown>"},
+  { command = "Execute", value = "brightnessctl set +10%", modifier = [], key = "XF86XK_MonBrightnessUp"},
+  { command = "Execute", value = "brightnessctl set 10%-", modifier = [], key = "XF86XK_MonBrightnessDown"},
 ]
 
 window_rules = [
