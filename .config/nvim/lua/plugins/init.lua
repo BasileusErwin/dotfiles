@@ -54,55 +54,64 @@ return packer.startup(function(use)
     'nvim-lualine/lualine.nvim',
     config = require('plugins.config.lualine')
   }
+  -- use {
+  --   'akinsho/bufferline.nvim',
+  --   tag = "v3.*",
+  --   event = "BufWinEnter",
+  --   branch = "main",
+  --   config = require('plugins.config.bufferline').setup()
+  -- }
   use {
-    'akinsho/bufferline.nvim',
-    tag = "v3.*",
-    event = "BufWinEnter",
-    branch = "main",
-    config = require('plugins.config.bufferline').setup()
+    'romgrk/barbar.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons' },
+    config = require('plugins.config.barbar').setup()
   }
+
   use {
     'stevearc/dressing.nvim',
     config = require('plugins.config.dressing').setup()
   }
+
   -- LSP
   use {
     'neovim/nvim-lspconfig',
-    config = require('plugins.config.lsp')
+    requires = {
+      {
+        "williamboman/nvim-lsp-installer",
+        config = require('plugins.config.lsp_installer').setup(),
+      },
+      -- {
+      --   'williamboman/mason.nvim',
+      --   requires = {
+      --     'williamboman/mason-lspconfig.nvim',
+      --   },
+      --   config = require('plugins.config.mason').setup(),
+      -- },
+      'onsails/lspkind-nvim',
+      'ray-x/lsp_signature.nvim',
+      {
+        'creativenull/diagnosticls-configs-nvim',
+        config = require('plugins.config.diagnosticls')
+      }
+    },
+    config = require('plugins.config.lsp'),
   }
-  use {
-    'williamboman/nvim-lsp-installer',
-    config = require('plugins.config.lsp_installer'),
-    run = LSPInstallPlug
-  }
-  use 'onsails/lspkind-nvim'
-  use 'ray-x/lsp_signature.nvim'
-  use {
-    'creativenull/diagnosticls-configs-nvim',
-    config = require('plugins.config.diagnosticls')
-  }
+
   use {
     'simrat39/rust-tools.nvim',
     requires = { "mfussenegger/nvim-dap" },
     config = require('plugins.config.rust_tool')
   }
-  use 'rust-lang/rust.vim'
+  -- use 'rust-lang/rust.vim'
+
   use 'jose-elias-alvarez/null-ls.nvim'
+
   use 'MunifTanjim/prettier.nvim'
+
   use {
     'scalameta/nvim-metals',
     requires = { 'nvim-lua/plenary.nvim' }
   }
-
-  use {
-    'StanAngeloff/php.vim'
-  }
-
-  use({
-    "ghillb/cybu.nvim",
-    requires = { "kyazdani42/nvim-web-devicons" },
-    config = require('plugins.config.cybu').setup()
-  })
 
   -- CMP
   use {
@@ -115,6 +124,11 @@ return packer.startup(function(use)
       'hrsh7th/cmp-vsnip',
       'hrsh7th/vim-vsnip',
       'saadparwaiz1/cmp_luasnip',
+      {
+        'tzachar/cmp-tabnine',
+        run = './install.sh',
+        requires = 'hrsh7th/nvim-cmp'
+      }
     },
     config = require('plugins.config.cmp').setup()
   }
@@ -127,18 +141,20 @@ return packer.startup(function(use)
   }
   use 'rafamadriz/friendly-snippets'
 
-  use { 'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp' }
 
   -- Treeesitter
   use {
     'nvim-treesitter/nvim-treesitter',
     run = { ':TSUpdate' },
+    requires = {
+      'nvim-treesitter/nvim-tree-docs'
+    },
     config = require('plugins.config.treesitter')
   }
+
   use {
-    'nvim-treesitter/nvim-tree-docs'
+    'JoosepAlviste/nvim-ts-context-commentstring'
   }
-  use 'JoosepAlviste/nvim-ts-context-commentstring'
 
   use {
     'heavenshell/vim-jsdoc',
@@ -205,6 +221,7 @@ return packer.startup(function(use)
   -- Telescope
   use {
     'nvim-telescope/telescope.nvim',
+    tag = '0.1.x',
     requires = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope-file-browser.nvim',
@@ -222,25 +239,14 @@ return packer.startup(function(use)
   use 'mattn/emmet-vim'
 
   -- Markdown preview
-  use { 'ellisonleao/glow.nvim' }
   use {
     'iamcco/markdown-preview.nvim',
     run = 'cd app && yarn install'
   }
-  -- Icons
-  use {
-    'kyazdani42/nvim-web-devicons',
-    config = require('plugins.config.icons')
-  }
-  use { 'ryanoasis/vim-devicons' }
 
   use {
-    'nathom/filetype.nvim',
-    config = require('plugins.config.filetype')
-  }
-  use {
     'max397574/better-escape.nvim',
-    config = require('plugins.config.better_escape')
+    config = require('plugins.config.better_escape').setup()
   }
 
   use {
@@ -252,6 +258,7 @@ return packer.startup(function(use)
     'karb94/neoscroll.nvim',
     config = require('plugins.config.neoscroll')
   }
+
   use {
     'mfussenegger/nvim-jdtls',
   }
@@ -262,6 +269,17 @@ return packer.startup(function(use)
 
   use {
     'elkowar/yuck.vim'
+  }
+
+  use {
+    "akinsho/toggleterm.nvim",
+    config = require('plugins.config.toggleterm').setup()
+  }
+
+  -- Icons
+  use {
+    'kyazdani42/nvim-web-devicons',
+    config = require('plugins.config.icons')
   }
 
   -- Themes
@@ -284,8 +302,5 @@ return packer.startup(function(use)
   use { 'projekt0n/github-nvim-theme' }
   use { 'JoosepAlviste/palenightfall.nvim' }
   use { "VDuchauffour/neodark.nvim" }
-  use({
-    "catppuccin/nvim",
-    as = "catppuccin"
-  })
+  use { "catppuccin/nvim", as = "catppuccin" }
 end)

@@ -1,5 +1,4 @@
 vim.cmd([[
-    let g:mapleader = "\<Space>"
     set colorcolumn=110
     set completeopt=menuone,noinsert,noselect
     set autochdir

@@ -27,6 +27,7 @@ alias tree "exa -T --icons"
 alias grep "grep --color=auto"
 alias t "tree $1"
 alias paru "paru --skipreview --bottomup $1"
+alias c. "code ."
 
 # Git
 

@@ -1,4 +1,5 @@
 local M = {}
+
 M.setup = function()
   local status_ok, nvim_tree = pcall(require, "nvim-tree")
   if not status_ok then
@@ -131,6 +132,9 @@ M.setup = function()
       require_confirm = true,
     },
   }
+
+  local opt = { noremap = true, silent = true }
+  vim.api.nvim_set_keymap('n', '<Leader>n', ':NvimTreeToggle<CR>', opt)
 end
 
 return M

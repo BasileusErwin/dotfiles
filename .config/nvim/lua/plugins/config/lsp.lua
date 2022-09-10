@@ -121,7 +121,7 @@ nvim_lsp.dockerls.setup {
   capabilities = capabilities,
 }
 
-nvim_lsp.jedi_language_server.setup {
+nvim_lsp.pyright.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
@@ -236,6 +236,11 @@ nvim_lsp.elixirls.setup({
   filetypes = { "elixir", "eelixir", "heex", "ex" }
 })
 
+nvim_lsp.kotlin_language_server.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
 nvim_lsp.theme_check.setup({
   on_attach = on_attach,
   capabilities = capabilities,
@@ -260,6 +265,7 @@ dlsconfig.init {
   on_attach = on_attach,
   capabilities = capabilities,
 }
+
 M.on_attach = on_attach
 M.capabilities = capabilities
 

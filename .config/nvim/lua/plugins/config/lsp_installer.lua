@@ -1,3 +1,5 @@
+local M = {}
+M.setup = function ()
 local status_ok,lsp_installer = pcall(require,"nvim-lsp-installer")
 if not status_ok then
   return
@@ -42,3 +44,6 @@ lsp_installer.settings({
     },
   install_root_dir = vim.fn.stdpath("data").."/lsp_servers"
 })
+end
+
+return M

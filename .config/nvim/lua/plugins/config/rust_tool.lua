@@ -14,7 +14,7 @@ vim.cmd([[
 local opts = {
     tools = { -- rust-tools options
         autoSetHints = true,
-        hover_with_actions = true,
+        -- hover_with_actions = true,
         inlay_hints = {
             show_parameter_hints = true,
             parameter_hints_prefix = "",
@@ -61,7 +61,7 @@ local opts = {
 
 rust_tools.setup(opts)
 
-rust_tools_inlay_hints.set_inlay_hints()
+-- rust_tools_inlay_hints.set_inlay_hints()
 
 map('n', '<Leader>ra', ":lua require'rust-tools.hover_actions'.hover_actions()<CR>", { noremap = true, silent = true })
 map('n', '<Leader>rr', ":lua require('rust-tools.runnables').runnables()<CR>", { noremap = true, silent = true })
