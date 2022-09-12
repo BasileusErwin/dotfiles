@@ -36,4 +36,5 @@
 !pavucontrol.ini
 !leftwm
 !leftwm/*
-
+!dunst
+!dunst/*

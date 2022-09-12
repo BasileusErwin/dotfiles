@@ -16,7 +16,7 @@ if [[ $USER != "root" ]]; then
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-  [ -f "/home/kaisererwin/.ghcup/env" ] && source "/home/kaisererwin/.ghcup/env" # ghcup-env
+  [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 fi
 
 # export ZSH="$HOME/.oh-my-zsh"

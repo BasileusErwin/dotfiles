@@ -14,16 +14,23 @@ leftwm-command "LoadTheme $THEME_CURRENT/themes.toml"
 
 pkill polybar
 
-polybar laptop -c "$THEME_CURRENT/polybar.ini" &
-polybar laptop-left -c "$THEME_CURRENT/polybar.ini" &
-polybar laptop-center -c "$THEME_CURRENT/polybar.ini" &
-polybar laptop-right -c "$THEME_CURRENT/polybar.ini" &
 
 if [[ $HDMI_CONNECTED ]]; then
+  polybar laptop -c "$THEME_CURRENT/polybar.ini" &
+  polybar laptop-left -c "$THEME_CURRENT/polybar.ini" &
+  polybar laptop-center -c "$THEME_CURRENT/polybar.ini" &
+  polybar laptop-right -c "$THEME_CURRENT/polybar.ini" &
+
   polybar monitor -c "$THEME_CURRENT/polybar.ini" &
   polybar monitor-left -c "$THEME_CURRENT/polybar.ini" &
   polybar monitor-center -c "$THEME_CURRENT/polybar.ini" &
   polybar monitor-right -c "$THEME_CURRENT/polybar.ini" &
+else
+  polybar laptop-trayer -c "$THEME_CURRENT/polybar.ini" &
+  polybar laptop-trayer-left -c "$THEME_CURRENT/polybar.ini" &
+  polybar laptop-trayer-center -c "$THEME_CURRENT/polybar.ini" &
+  polybar laptop-trayer-right -c "$THEME_CURRENT/polybar.ini" &
+
 fi
 
 volumeicon &

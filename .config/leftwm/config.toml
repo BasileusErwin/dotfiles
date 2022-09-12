@@ -68,7 +68,7 @@ keybind = [
   { command = "Execute", value = "alacritty", modifier = ["modkey"], key = "Return" },
 
   # Browser
-  { command = "Execute", value = "firefox", modifier = ["modkey"], key = "b" },
+  { command = "Execute", value = "brave", modifier = ["modkey"], key = "b" },
   { command = "Execute", value = "google-chrome-stable", modifier = ["modkey", "Shift"], key = "b" },
 
   # Calculator
