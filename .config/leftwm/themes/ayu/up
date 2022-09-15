@@ -15,7 +15,9 @@ leftwm-command "LoadTheme $THEME_CURRENT/themes.toml"
 pkill polybar
 
 
-if [[ $HDMI_CONNECTED ]]; then
+hdmi=`xrandr | grep ' connected' | grep 'HDMI' | awk '{print $1}'`
+if [[ "$hdmi" == 'HDMI1' ]]; then
+  notify-send "Monitor connected"
   polybar laptop -c "$THEME_CURRENT/polybar.ini" &
   polybar laptop-left -c "$THEME_CURRENT/polybar.ini" &
   polybar laptop-center -c "$THEME_CURRENT/polybar.ini" &
@@ -30,7 +32,6 @@ else
   polybar laptop-trayer-left -c "$THEME_CURRENT/polybar.ini" &
   polybar laptop-trayer-center -c "$THEME_CURRENT/polybar.ini" &
   polybar laptop-trayer-right -c "$THEME_CURRENT/polybar.ini" &
-
 fi
 
 volumeicon &

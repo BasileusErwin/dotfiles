@@ -76,6 +76,8 @@ alias wh "cd ~/Workspace/Houlak"
 
 alias dot "git --git-dir ~/.dotfiles --work-tree ~"
 
+alias config "cd ~/.config"
+
 # Prompt
 
 starship init fish | source

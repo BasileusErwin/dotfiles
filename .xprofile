@@ -10,7 +10,7 @@ export MONITOR='HDMI1'
 
 export PATH=$HOME/.local/bin:$HOME/.cargo/bin:$HOME/go/bin:/usr/local/bin:$PATH
 export QT_STYLE_OVERRIDE=kvantum
-export DENO_INSTALL="/home/kaisererwin/.deno"
+export DENO_INSTALL="$HOME/.deno"
 export STARSHIP_CONFIG="$HOME/.config/fish/starship.toml"
 export EDITOR="nvim"
 

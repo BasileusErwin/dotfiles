@@ -54,8 +54,7 @@ keybind = [
   { command = "SetMarginMultiplier", value = "0", modifier = ["modkey"], key = "z" },
   { command = "SetMarginMultiplier", value = "1", modifier = ["modkey", "Shift"], key = "z" },
   { command = "ToggleFullScreen", modifier = ["modkey"], key = "space" },
-
-
+  { command = "FocusWorkspaceNext", modifier = ["modkey"], key = "x"},
 
 # App
   # Menu
