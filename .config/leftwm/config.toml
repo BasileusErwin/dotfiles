@@ -142,4 +142,5 @@ window_rules = [
   { window_class = "protonvpn", spawn_floating = true },
   { window_class = "Postman", spawn_floating = true },
   { window_class = "SpeedCrunch", spawn_floating = true },
+  { window_class = "swing-App", spawn_floating = true }
 ]

@@ -153,63 +153,65 @@ M.setup = function()
 
   local status_tabnine_ok, tabnine = pcall(require, 'cmp_tabnine.config')
 
-local source_names = {
-  buffer = "[Buffer]",
-  nvim_lsp = "[LSP]",
-  nvim_lua = "[Lua]",
-  cmp_tabnine = "[TN]",
-  path = "[Path]",
-  vsnip = "[Snippet]",
-  luasnip = "[Snippet]",
-}
+  local source_names = {
+    buffer = "[Buffer]",
+    nvim_lsp = "[LSP]",
+    nvim_lua = "[Lua]",
+    cmp_tabnine = "[TN]",
+    path = "[Path]",
+    vsnip = "[Snippet]",
+    luasnip = "[Snippet]",
+  }
 
-local duplicates = {
-  buffer = 1,
-  path = 1,
-  nvim_lsp = 0,
-  luasnip = 1,
-}
+  local duplicates = {
+    buffer = 1,
+    path = 1,
+    nvim_lsp = 0,
+    luasnip = 1,
+  }
 
-local duplicates_default = 0
+  local duplicates_default = 0
 
-tabnine:setup({
-  max_lines = 1000;
-  max_num_results = 20;
-  sort = true;
-  run_on_every_keystroke = true;
-  snippet_placeholder = '..';
-})
+  if status_tabnine_ok then
+    tabnine:setup({
+      max_lines = 1000;
+      max_num_results = 20;
+      sort = true;
+      run_on_every_keystroke = true;
+      snippet_placeholder = '..';
+    })
+  end
 
-lspkind.init({
-  preset = 'codicons',
-  symbol_map = {
-    Text = "",
-    Method = "",
-    Function = "",
-    Constructor = "",
-    Field = "ﰠ",
-    Variable = "",
-    Class = "ﴯ",
-    Interface = "",
-    Module = "",
-    Property = "ﰠ",
-    Unit = "塞",
-    Value = "",
-    Enum = "",
-    Keyword = "",
-    Snippet = "",
-    Color = "",
-    File = "",
-    Reference = "",
-    Folder = "",
-    EnumMember = "",
-    Constant = "",
-    Struct = "פּ",
-    Event = "",
-    Operator = "",
-    TypeParameter = ""
-  },
-})
+  lspkind.init({
+    preset = 'codicons',
+    symbol_map = {
+      Text = "",
+      Method = "",
+      Function = "",
+      Constructor = "",
+      Field = "ﰠ",
+      Variable = "",
+      Class = "ﴯ",
+      Interface = "",
+      Module = "",
+      Property = "ﰠ",
+      Unit = "塞",
+      Value = "",
+      Enum = "",
+      Keyword = "",
+      Snippet = "",
+      Color = "",
+      File = "",
+      Reference = "",
+      Folder = "",
+      EnumMember = "",
+      Constant = "",
+      Struct = "פּ",
+      Event = "",
+      Operator = "",
+      TypeParameter = ""
+    },
+  })
 
   cmp.setup({
     confirm_opts = {
@@ -262,7 +264,6 @@ lspkind.init({
       ["<C-j>"] = cmp.mapping.select_next_item(),
       ["<C-d>"] = cmp.mapping.scroll_docs(-4),
       ["<C-f>"] = cmp.mapping.scroll_docs(4),
-      -- TODO: potentially fix emmet nonsense
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()

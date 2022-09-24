@@ -80,13 +80,6 @@ return packer.startup(function(use)
         "williamboman/nvim-lsp-installer",
         config = require('plugins.config.lsp_installer').setup(),
       },
-      -- {
-      --   'williamboman/mason.nvim',
-      --   requires = {
-      --     'williamboman/mason-lspconfig.nvim',
-      --   },
-      --   config = require('plugins.config.mason').setup(),
-      -- },
       'onsails/lspkind-nvim',
       'ray-x/lsp_signature.nvim',
       {
@@ -127,7 +120,6 @@ return packer.startup(function(use)
       {
         'tzachar/cmp-tabnine',
         run = './install.sh',
-        requires = 'hrsh7th/nvim-cmp'
       }
     },
     config = require('plugins.config.cmp').setup()

@@ -53,7 +53,6 @@ configuration {
     show-match: true;
     max-history-size: 25;
     combi-hide-mode-prefix: false;
-    pid: "/run/user/1000/rofi.pid";
     kb-primary-paste: "Control+V,Shift+Insert";
     kb-secondary-paste: "Control+v,Insert";
     kb-clear-line: "Control+w";
