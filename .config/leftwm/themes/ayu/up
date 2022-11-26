@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# ----| Vars | ----
 export SCRIPT_PATH="$HOME/.config/leftwm"
 export THEME_CURRENT="$SCRIPT_PATH/themes/current"
 
@@ -14,9 +15,8 @@ leftwm-command "LoadTheme $THEME_CURRENT/themes.toml"
 
 pkill polybar
 
-
-hdmi=`xrandr | grep ' connected' | grep 'HDMI' | awk '{print $1}'`
-if [[ "$hdmi" == 'HDMI1' ]]; then
+# ----| Display |----
+if [[ $HDMI_CONNECTED ]]; then
   notify-send "Monitor connected"
   polybar laptop -c "$THEME_CURRENT/polybar.ini" &
   polybar laptop-left -c "$THEME_CURRENT/polybar.ini" &

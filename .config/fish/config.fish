@@ -6,6 +6,10 @@ function nvm
     bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
 end
 
+eval (ssh-agent -c)
+cat ~/.ssh/id_rsa | SSH_ASKPASS=~/.print_ssh_password ssh-add -
+clear
+
 set -x PATH $HOME/.deno/bin:$HOME/.dotnet/tools:$PATH
 
 set FREETYPE_PROPERTIES "truetype:interpreter-version=35"
