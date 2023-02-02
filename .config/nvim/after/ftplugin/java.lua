@@ -21,7 +21,7 @@ vim.opt_local.cmdheight = 2 -- more space in the neovim command line for display
 
 local HOME = os.getenv('HOME')
 local JDTLS_LOCATION = vim.fn.stdpath("data") .. "/mason/packages/jdtls"
-local WORKSPACE_PATH = HOME .. "/Workspace/Java/"
+local WORKSPACE_PATH = HOME .. "/.workspace/Java/"
 
 -- Only for Linux and Mac
 local SYSTEM = "linux"

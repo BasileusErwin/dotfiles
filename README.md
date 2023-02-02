@@ -2,27 +2,31 @@
 
 # Windows manager config
 
-## [BSPWM](https://github.com/KaiserErwin/dotfiles/tree/main/.config/bspwm)
+## [BSPWM](https://github.com/BasielusErwin/dotfiles/tree/main/.config/bspwm)
 
 ![BSPWM](./.screenshots/BSPWM.png)
 
-## [Xmonad](https://github.com/KaiserErwin/dotfiles/tree/main/.xmonad)
+## [Xmonad](https://github.com/BasielusErwin/dotfiles/tree/main/.xmonad)
 
 ![Xmonad](./.screenshots/xmonad.png)
 
-## [Qtile](https://github.com/KaiserErwin/dotfiles/tree/main/.config/qtile)
+## [Qtile](https://github.com/BasielusErwin/dotfiles/tree/main/.config/qtile)
 
 ![Qtile](./.screenshots/Qtile.png)
 
+## [Leftwm](https://github.com/BasielusErwin/dotfiles/tree/main/.config/leftwm)
+
+![Leftwm](./.screenshots/leftwm.png)
+
 - My config's
-  - [Neovim](https://github.com/KaiserErwin/dotfiles/tree/main/.config/nvim)
-  - [Neofetch](https://github.com/KaiserErwin/dotfiles/tree/main/.config/neofetch)
-  - [Zathura](https://github.com/KaiserErwin/dotfiles/tree/main/.config/zathura)
-  - [Ranger](https://github.com/KaiserErwin/dotfiles/tree/main/.config/ranger)
-  - [Picom](https://github.com/KaiserErwin/dotfiles/tree/main/.config/picom)
-  - [Bat](https://github.com/KaiserErwin/dotfiles/tree/main/.config/bat)
-  - [Polybar](https://github.com/KaiserErwin/dotfiles/tree/main/.config/polybar)
-  - [Alacritty](https://github.com/KaiserErwin/dotfiles/tree/main/.config/alacritty)
+  - [Neovim](https://github.com/BasielusErwin/dotfiles/tree/main/.config/nvim)
+  - [Neofetch](https://github.com/BasielusErwin/dotfiles/tree/main/.config/neofetch)
+  - [Zathura](https://github.com/BasielusErwin/dotfiles/tree/main/.config/zathura)
+  - [Ranger](https://github.com/BasielusErwin/dotfiles/tree/main/.config/ranger)
+  - [Picom](https://github.com/BasielusErwin/dotfiles/tree/main/.config/picom)
+  - [Bat](https://github.com/BasielusErwin/dotfiles/tree/main/.config/bat)
+  - [Polybar](https://github.com/BasielusErwin/dotfiles/tree/main/.config/polybar)
+  - [Alacritty](https://github.com/BasielusErwin/dotfiles/tree/main/.config/alacritty)
 
 # Software
 
