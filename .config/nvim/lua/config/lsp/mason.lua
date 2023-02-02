@@ -1,7 +1,7 @@
 local M = {}
 local lsp = require('config.lsp')
 
-function get_package_name()
+local get_package_name = function()
   local package_name = {}
 
   for _, server in ipairs(lsp.servers) do
@@ -33,7 +33,7 @@ M.setup = function()
   mason_tool.setup({
     ensure_installed = get_package_name(),
     run_on_start = true,
-    auto_update = true,
+    auto_update = false,
     start_delay = 3000
   })
 end

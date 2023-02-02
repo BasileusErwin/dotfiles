@@ -1,4 +1,69 @@
-vim.cmd([[
+local api = vim.api
+local g = vim.g
+local opt = vim.opt
+local wo = vim.wo
+local cmd = vim.cmd
+
+-- Remap leader and local leader to <Space>
+api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
+g.mapleader = " "
+g.maplocalleader = " "
+
+g.did_load_filetypes = 1
+opt.termguicolors = true -- Enable colors in terminal
+opt.hlsearch = true --Set highlight on search
+opt.mouse = "a" --Enable mouse mode
+opt.breakindent = true --Enable break indent
+opt.undofile = true --Save undo history
+opt.ignorecase = true --Case insensitive searching unless /C or capital in search
+opt.smartcase = true -- Smart case
+opt.updatetime = 250 --Decrease update time
+opt.signcolumn = "yes" -- Always show sign column
+opt.clipboard = "unnamedplus" -- Access system clipboard
+opt.timeoutlen = 300
+
+wo.number = true
+wo.relativenumber = true
+
+opt.laststatus = 0
+opt.autoindent = true
+opt.expandtab = true
+opt.smarttab = true
+opt.smartindent = true
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.showtabline = 2
+opt.hidden = true
+wo.wrap = false
+opt.encoding = "utf-8"
+opt.fileencoding = "utf-8"
+opt.ruler = true
+opt.cursorline = true
+opt.splitbelow = true
+opt.splitright = true
+opt.clipboard = "unnamedplus"
+opt.conceallevel = 0 --So that I can see `` in markdown files
+opt.background = "dark" --tell vim what the background color looks like
+opt.showmode = false --We don't need to see things like -- INSERT -- anymore
+g.closetag_filetypes = 'html,xhtml,phtml,xml,javascript,typescript,javascriptreact,typescriptreact,'
+opt.laststatus = 3
+
+opt.path:remove "/usr/include"
+opt.path:append "**"
+opt.wildignorecase = true
+opt.wildignore:append "**/node_modules/*"
+opt.wildignore:append "**/.git/*"
+opt.wildignore:append "**/build/*"
+
+-- Highlight on yank
+cmd([[
+  augroup YankHighlight
+    autocmd!
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+  augroup end
+]])
+
+cmd([[
     set colorcolumn=110
     set completeopt=menuone,noinsert,noselect
     set autochdir
@@ -9,72 +74,3 @@ vim.cmd([[
     set hlsearch!
   ]])
 
--- Do not source the default filetype.vim
-vim.g.did_load_filetypes = 1
--- Number
-vim.wo.number = true
-vim.wo.relativenumber = true
-
---Always display the status line
-vim.o.laststatus = 0
-
---Good auto indent
-vim.o.autoindent = true
-
--- Converts tabs to spaces
-vim.o.expandtab = true
-
---Makes tabbing smarter will realize you have 2 vs 4
-vim.o.smarttab = true
-
---Makes indenting smart
-vim.o.smartindent = true
-
---Insert 2 spaces for a tab
-vim.o.tabstop = 2
-
---Change the number of space characters inserted for indentation
-vim.o.shiftwidth = 2
-
---Always show tabs
-vim.o.showtabline = 2
-
-vim.o.formatoptions = vim.o.formatoptions .. 'cro'
-
---Required to keep multiple buffers open multiple buffers
-vim.o.hidden = true
-
---Display long lines as just one line
-vim.wo.wrap = false
-
---The encoding written to file
-vim.o.encoding = "utf-8"
-
--- The encoding displayed
-vim.o.fileencoding = "utf-8"
--- Show the cursor position all the time
-vim.o.ruler = true
-
---Enable your mouse
-vim.o.mouse = "a"
-
---Enable highlighting of the current line
-vim.o.cursorline = true
-
---Horizontal splits will automatically be below
-vim.o.splitbelow = true
-
---Vertical splits will automatically be to the right
-vim.o.splitright = true
-
---Copy paste between vim and everything else
-vim.o.clipboard = "unnamedplus"
-
-vim.o.termguicolors = true
-vim.o.conceallevel = 0 --So that I can see `` in markdown files
-vim.o.background = "dark" --tell vim what the background color looks like
-vim.o.showmode = false --We don't need to see things like -- INSERT -- anymore
-
-vim.g.closetag_filetypes = 'html,xhtml,phtml,xml,javascript,typescript,javascriptreact,typescriptreact,'
-
-vim.opt.laststatus = 3

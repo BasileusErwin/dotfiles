@@ -3,10 +3,10 @@
 # ----| Vars | ----
 
 # -- Laptop --
-export LAPTOP='eDP1'
+export LAPTOP='eDP-1'
 
 # -- Monitor --
-export MONITOR='HDMI1'
+export MONITOR='HDMI-1'
 
 export PATH=$HOME/.local/bin:$HOME/.cargo/bin:$HOME/go/bin:/usr/local/bin:$PATH
 export QT_STYLE_OVERRIDE=kvantum

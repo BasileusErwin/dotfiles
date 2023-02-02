@@ -1,6 +1,6 @@
 export ZSH="$HOME/.oh-my-zsh"
 
-# eval "$(starship init zsh)"
+eval "$(starship init zsh)"
 
 if [[ $USER != "root" ]]; then
   export PATH=$HOME/bin:/usr/local/bin:$$HOME/.deno/bin:$HOME/.cargo/bin:$HOME/.spicetify:$PATH
@@ -11,7 +11,7 @@ if [[ $USER != "root" ]]; then
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-  [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
+#  [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 fi
 
 export SPACESHIP_CONFIG="$HOME/.dotfiles/path/to/spaceship.zsh"
@@ -111,7 +111,9 @@ alias grs='git rebase --skip'
 alias gd="git diff --no-ext-diff --cached"
 
 # Workspace
-alias w="cd ~/Workspace"
-alias wh="cd ~/Workspace/Houlak"
+alias w="cd ~/.workspace"
+alias wh="cd ~/.workspace/Houlak"
 
 alias dot="git --git-dir ~/.dotfiles --work-tree ~"
+
+[ -f "/home/iperez/.ghcup/env" ] && source "/home/iperez/.ghcup/env" # ghcup-env

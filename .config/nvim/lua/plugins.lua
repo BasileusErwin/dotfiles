@@ -1,9 +1,11 @@
 local M = {}
+local fn = vim.fn
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+local packer_bootstrap = false
 
 _G.dump = function(...)
   print(vim.inspect(...))
 end
-local packer_bootstrap = false
 
 local conf = {
   display = {
@@ -16,18 +18,17 @@ local conf = {
 }
 
 local packer_init = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-
   if fn.empty(fn.glob(install_path)) > 0 then
-    PACKER_BOOTSTRAP = fn.system {
+    packer_bootstrap = true
+
+    fn.system({
       'git',
       'clone', '--depth', '1',
       'https://github.com/wbthomason/packer.nvim',
       install_path,
-    }
-    print 'Installing packer close and reopen Neovim...'
-    -- vim.cmd [[packadd packer.nvim]]
+    })
+
+    vim.cmd [[packadd packer.nvim]]
   end
 end
 
@@ -171,6 +172,10 @@ local plugins = function(use)
       {
         'tzachar/cmp-tabnine',
         run = './install.sh',
+        enable = false
+      },
+      {
+        'github/copilot.vim'
       }
     },
     config = require('config.cmp').setup()
@@ -286,6 +291,16 @@ local plugins = function(use)
   })
 
   use({
+    'simrat39/symbols-outline.nvim',
+    config = require('config.simbols_outline').setup()
+  })
+
+  use({
+    'karb94/neoscroll.nvim',
+    config = require('config.neoscroll').setup()
+  })
+
+  use({
     "ThePrimeagen/refactoring.nvim",
     requires = {
       { "nvim-lua/plenary.nvim" },
@@ -298,7 +313,7 @@ local plugins = function(use)
 
   use({
     'danymat/neogen',
-    -- config = 
+    -- config =
     cmd = { 'Neogen' },
     module = 'neogen',
   })
@@ -324,6 +339,26 @@ local plugins = function(use)
     config = require('config.toggleterm').setup()
   })
 
+  use({
+    'simrat39/rust-tools.nvim',
+    requires = { "mfussenegger/nvim-dap" },
+    config = require('config.rust').setup()
+  })
+
+  use({
+    'ron-rs/ron.vim'
+  })
+
+  use({
+      'creativenull/diagnosticls-configs-nvim',
+      tag = 'v0.1.8', -- `tag` is optional
+      requires = 'neovim/nvim-lspconfig',
+  })
+
+  use('MunifTanjim/prettier.nvim')
+
+  use({ 'elkowar/yuck.vim' })
+
   use({ 'navarasu/onedark.nvim' })
   use({ 'marko-cerovac/material.nvim' })
   use({ 'tomasiser/vim-code-dark' })
@@ -339,6 +374,18 @@ local plugins = function(use)
   use({ 'JoosepAlviste/palenightfall.nvim' })
   use({ 'VDuchauffour/neodark.nvim' })
   use({ 'catppuccin/nvim', as = 'catppuccin' })
+  use({
+    'sitiom/nvim-numbertoggle',
+    config = function()
+      local status_ok, numbertoggle = pcall(require, 'numbertoggle')
+
+      if not status_ok then
+        return
+      end
+
+      numbertoggle.setup()
+    end
+  })
 
   if packer_bootstrap then
     print('Restart Neovim required after installation')

@@ -82,6 +82,11 @@ M.servers = {
     enable = true
   },
   {
+    package_name = 'yaml-language-server',
+    server_name = 'yamlls',
+    enable = true
+  },
+  {
     package_name = 'typescript-language-server',
     server_name = 'tsserver',
     enable = true
@@ -161,6 +166,11 @@ M.servers = {
     server_name = 'gopls',
     enable = true
   },
+  {
+    package_name = 'taplo',
+    server_name = 'taplo',
+    enable = true
+  }
 }
 
 vim.g.markdown_fenced_languages = {
@@ -180,7 +190,15 @@ M.setup = function()
     capabilities = M.capabilities,
   }
 
-  require('config.lsp.null-ls').setup(M.opts)
+  local status_ok_dls, dlsconfig = pcall(require, 'diagnosticls-configs')
+  if status_ok_dls then
+    dlsconfig.init({
+      on_attach = M.on_attach,
+      capabilities = M.capabilities,
+    })
+  end
+
+  -- require('config.lsp.null_ls').setup(M.opts)
 
   for _, server in ipairs(M.servers) do
     if server.enable then

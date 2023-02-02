@@ -151,20 +151,7 @@ M.setup = function()
 
   local status_lsp_ok, lspkind = pcall(require, 'lspkind')
 
-  if not status_lsp_ok then
-    return
-  end
-
-  local status_neogen_ok, neogen = pcall(require, "neogen")
-  if not status_neogen_ok then
-    return
-  end
-
   local status_tabnine_ok, tabnine = pcall(require, 'cmp_tabnine.config')
-
-  if not status_tabnine_ok then
-    return
-  end
 
   local source_names = {
     buffer = "[Buffer]",
@@ -282,8 +269,6 @@ M.setup = function()
           cmp.select_next_item()
         elseif luasnip.expandable() then
           luasnip.expand()
-        elseif neogen.jumpable() then
-          neogen.jump_next()
         elseif jumpable() then
           luasnip.jump(1)
         elseif check_backspace() then
@@ -300,8 +285,6 @@ M.setup = function()
       ["<S-Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
-        elseif neogen.jumpable() then
-          neogen.jump_next()
         elseif jumpable(-1) then
           luasnip.jump(-1)
         else
@@ -346,6 +329,8 @@ M.setup = function()
       { name = 'cmdline' }
     })
   })
+
 end
 
 return M
+

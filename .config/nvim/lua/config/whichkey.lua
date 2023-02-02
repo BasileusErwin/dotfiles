@@ -28,8 +28,23 @@ M.code_keymap = function(whichkey)
     local keymap = nil
     if ft == 'rust' then
       keymap = {
-        name = 'Code',
-        r = { '<cmd>Cargo run<cr>', 'Run' },
+        name = 'Rust',
+        a = {
+          ':lua require("rust-tools.hover_actions").hover_actions()<CR>',
+          'Hover Actions'
+        },
+        r = {
+          ':lua require("rust-tools.runnables").runnables()<CR>',
+          'Runnables'
+        },
+        c = {
+          ':lua require("rust-tools.open_cargo_toml").open_cargo_toml()<CR>',
+          'Open cargo'
+        },
+        e = {
+          ':lua require("rust-tools.expand_macro").expand_macro()<CR>',
+          'Expand Macro'
+        }
       }
     elseif ft == 'go' then
       keymap = {
@@ -103,9 +118,11 @@ M.setup = function()
 
     t = {
       name = 'Terminal',
-      h = { '<cmd>ToggleTerm size=15 direction=horizontal<CR>', 'Open Horizontal'},
+      h = { '<cmd>ToggleTerm size=15 direction=horizontal<CR>', 'Open Horizontal' },
       f = { '<cmd>ToggleTerm size=15 direction=float<CR>', 'Open Float' }
-    }
+    },
+
+    o = { ':SymbolsOutline<CR>', 'Symbols Outline' }
   }
 
   local visual_keymap = {

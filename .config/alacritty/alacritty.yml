@@ -40,13 +40,13 @@ env:
   TERM: alacritty
 font:
   bold:
-    family: Hack Nerd Font
+    family: FiraCode Nerd Font
     style: Bold
   italic:
-    family: Hack Nerd Font
+    family: FiraCode Nerd Font
     style: Italic
   normal:
-    family: Hack Nerd Font
+    family: FiraCode Nerd Font
     style: Book
   offset:
     x: 0

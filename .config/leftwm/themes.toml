@@ -254,7 +254,7 @@ name = "ayu"
 directory = "/home/iperez/.config/leftwm/themes/ayu"
 version = "0.0.0"
 leftwm_versions = "*"
-current = true
+current = false
 
 [[repos.themes]]
 name = "material"
@@ -262,3 +262,10 @@ directory = "/home/iperez/.config/leftwm/themes/material"
 version = "0.0.0"
 leftwm_versions = "*"
 current = false
+
+[[repos.themes]]
+name = "ayu-eww"
+directory = "/home/iperez/.config/leftwm/themes/ayu-eww"
+version = "0.0.0"
+leftwm_versions = "*"
+current = true
