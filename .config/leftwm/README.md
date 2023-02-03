@@ -5,10 +5,12 @@
 ## Installation
 ```sh
 # ArchLinux
-paru -S leftwm leftwm-theme
+paru -S leftwm leftwm-theme eww polybar
 
 git clone https://github.com/KaiserErwin/dotfiles.git
 cp -r dotfiles/.config/leftwm ~/.config/bspwm/
+
+leftwm-theme applay ayu-eww
 
 cp dotfiles/.local/bin/percentage ~/.local/bin/
 cp dotfiles/.local/bin/battery ~/.local/bin/
