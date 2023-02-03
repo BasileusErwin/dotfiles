@@ -2,6 +2,10 @@
 
 # Windows manager config
 
+## [Leftwm](https://github.com/BasielusErwin/dotfiles/tree/main/.config/leftwm)
+
+![Leftwm](./.screenshots/leftwm.png)
+
 ## [BSPWM](https://github.com/BasielusErwin/dotfiles/tree/main/.config/bspwm)
 
 ![BSPWM](./.screenshots/BSPWM.png)
@@ -14,10 +18,6 @@
 
 ![Qtile](./.screenshots/Qtile.png)
 
-## [Leftwm](https://github.com/BasielusErwin/dotfiles/tree/main/.config/leftwm)
-
-![Leftwm](./.screenshots/leftwm.png)
-
 - My config's
   - [Neovim](https://github.com/BasielusErwin/dotfiles/tree/main/.config/nvim)
   - [Neofetch](https://github.com/BasielusErwin/dotfiles/tree/main/.config/neofetch)
@@ -27,6 +27,14 @@
   - [Bat](https://github.com/BasielusErwin/dotfiles/tree/main/.config/bat)
   - [Polybar](https://github.com/BasielusErwin/dotfiles/tree/main/.config/polybar)
   - [Alacritty](https://github.com/BasielusErwin/dotfiles/tree/main/.config/alacritty)
+
+
+## Use
+```sh
+  git clone --bare https://github.com/BasielusErwin/dotfiles.git .dotfiles
+  git --git-dir ./.dotfiles --work-tree=$HOME reset .
+  git --git-dir ./.dotfiles --work-tree=$HOME restore .
+```
 
 # Software
 
