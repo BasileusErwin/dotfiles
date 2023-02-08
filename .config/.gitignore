@@ -35,6 +35,6 @@
 !kitty
 !pavucontrol.ini
 !leftwm
-!leftwm/*
+!leftwm/**/*
 !dunst
 !dunst/*

@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+# ----| Vars | ----
+export SCRIPT_PATH="$HOME/.config/leftwm"
+export THEME_CURRENT="$SCRIPT_PATH/themes/current"
+
+if [ -f "/tmp/leftwm-theme-down" ]; then
+    /tmp/leftwm-theme-down
+    rm /tmp/leftwm-theme-down
+fi
+
+ln -s "$THEME_CURRENT/down" /tmp/leftwm-theme-down
+
+leftwm-command "LoadTheme $THEME_CURRENT/themes.toml"
+
+pkill polybar
+
+# ----| Display |----
+if [[ $HDMI_CONNECTED ]]; then
+  notify-send "Monitor connected"
+
+  eww -c "$THEME_CURRENT/eww" open monitor
+  eww -c "$THEME_CURRENT/eww" open laptop
+  eww -c "$THEME_CURRENT/eww" open trayer-laptop
+  eww -c "$THEME_CURRENT/eww" open trayer-monitor
+
+  trayer --edge top  --monitor 1 --widthtype pixel --width 170 \
+    --heighttype pixel --height 18 --align right --transparent true --alpha 0 --tint 0x0e1019 --iconspacing 3 --distance 1 &
+else
+  eww -c "$THEME_CURRENT/eww" open laptop
+  eww -c "$THEME_CURRENT/eww" open trayer-laptop
+
+  trayer --edge top  --monitor 0 --widthtype pixel --width 170 \
+    --heighttype pixel --height 18 --align right --transparent true --alpha 0 --tint 0x0e1019 --iconspacing 3 --distance 1 &
+fi
+
+volumeicon &
