@@ -230,6 +230,7 @@ local plugins = function(use)
     'nvim-telescope/telescope.nvim',
     opt = false,
     config = require('config.telescope').setup(),
+    tag = '0.1.1',
     cmd = { 'Telescope' },
     module = 'telescope',
     keys = { '<leader>f', '<leader>p' },
@@ -249,21 +250,6 @@ local plugins = function(use)
         run = 'make',
       }
     },
-  })
-
-  use({
-    'simrat39/rust-tools.nvim',
-    requires = { 'nvim-lua/plenary.nvim', 'rust-lang/rust.vim' },
-    module = 'rust-tools',
-    ft = { 'rust' },
-    config = function()
-      local status_ok, rust = pcall(require, 'rust-tools')
-      if not status_ok then
-        return
-      end
-
-      rust.setup()
-    end
   })
 
   use({
@@ -341,7 +327,9 @@ local plugins = function(use)
 
   use({
     'simrat39/rust-tools.nvim',
-    requires = { "mfussenegger/nvim-dap" },
+    module = 'rust-tools',
+    ft = { 'rust' },
+    requires = { "mfussenegger/nvim-dap", 'nvim-lua/plenary.nvim', 'rust-lang/rust.vim' },
     config = require('config.rust').setup()
   })
 
@@ -350,9 +338,10 @@ local plugins = function(use)
   })
 
   use({
-      'creativenull/diagnosticls-configs-nvim',
-      tag = 'v0.1.8', -- `tag` is optional
-      requires = 'neovim/nvim-lspconfig',
+    'creativenull/diagnosticls-configs-nvim',
+    tag = 'v0.1.8', -- `tag` is optional
+    requires = 'neovim/nvim-lspconfig',
+    config = require("config.diagnostics")
   })
 
   use('MunifTanjim/prettier.nvim')

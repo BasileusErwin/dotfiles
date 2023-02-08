@@ -29,9 +29,9 @@ M.sources = function(builtin)
     builtin.diagnostics.write_good,
     builtin.diagnostics.ltrs,
     builtin.diagnostics.markdownlint,
-    builtin.diagnostics.eslint,
     builtin.diagnostics.flake8,
     builtin.diagnostics.tsc,
+    builtin.diagnostics.shellcheck,
     M.with_root_file(builtin.diagnostics.selene, "selene.toml"),
     M.with_diagnostics_code(builtin.diagnostics.shellcheck),
 

@@ -15,7 +15,6 @@ M.setup = function()
   local opts = {
     tools = { -- rust-tools options
       autoSetHints = true,
-      hover_with_actions = true,
       inlay_hints = {
         auto = true,
         show_parameter_hints = true,

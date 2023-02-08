@@ -30,7 +30,7 @@ M.code_keymap = function(whichkey)
       keymap = {
         name = 'Rust',
         a = {
-          ':lua require("rust-tools.hover_actions").hover_actions()<CR>',
+          ':RustHoverActions<CR>',
           'Hover Actions'
         },
         r = {

@@ -198,7 +198,7 @@ M.setup = function()
     })
   end
 
-  -- require('config.lsp.null_ls').setup(M.opts)
+  require('config.lsp.null-ls').setup(M.opts)
 
   for _, server in ipairs(M.servers) do
     if server.enable then

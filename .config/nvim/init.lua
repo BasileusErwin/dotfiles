@@ -4,7 +4,7 @@ require("core.keymaps")
 
 if not vim.g.vscode then
   local disabled_built_ins = {
-    "2html_plugin",
+    "html_plugin",
     "getscript",
     "getscriptPlugin",
     "gzip",
