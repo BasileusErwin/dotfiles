@@ -5,7 +5,7 @@ local get_package_name = function()
   local package_name = {}
 
   for _, server in ipairs(lsp.servers) do
-    if server.enable then
+    if server.enable or server.package_name ~= nil then
       table.insert(package_name, server.package_name)
     end
   end

@@ -1,8 +1,7 @@
 local g = vim.g
-require("core.settings")
-require("core.keymaps")
 
-if not vim.g.vscode then
+if not g.vscode then
+  vim.opt.termguicolors = true -- Enable colors in terminal
   local disabled_built_ins = {
     "html_plugin",
     "getscript",
@@ -31,20 +30,20 @@ if not vim.g.vscode then
   require("plugins").setup()
 end
 
-if vim.g.neovide then
-  vim.g.neovide_cursor_animation_length = 0
-  vim.g.neovide_scroll_animation_length = 0
-  vim.g.neovide_cursor_trail_size = 0
-  vim.g.neovide_scroll_animation_length = 2
-  vim.g.neovide_no_idle = false
-  vim.g.neovide_underline_automatic_scaling = false
+if g.neovide then
+  g.neovide_cursor_animation_length = 0
+  g.neovide_scroll_animation_length = 0
+  g.neovide_cursor_trail_size = 0
+  g.neovide_scroll_animation_length = 2
+  g.neovide_no_idle = false
+  g.neovide_underline_automatic_scaling = false
 
-  vim.g.neovide_transparency = 0.8
-  vim.g.transparency = 0.8
+  g.neovide_transparency = 0.8
+  g.transparency = 0.8
 
-  vim.g.neovide_refresh_rate = 120
-  vim.g.neovide_refresh_rate_idle = 120
+  g.neovide_refresh_rate = 120
+  g.neovide_refresh_rate_idle = 120
 end
 
 
-vim.cmd([[ colorscheme ayu-mirage ]])
+vim.cmd([[ colorscheme ayu-dark ]])

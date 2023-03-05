@@ -46,6 +46,11 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
 
 M.servers = {
   {
+    package_name = nil,
+    server_name = 'metals',
+    enable = true
+  },
+  {
     package_name = 'jdtls',
     server_name = 'jdtls',
     enable = true

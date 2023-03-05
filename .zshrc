@@ -1,9 +1,12 @@
 export ZSH="$HOME/.oh-my-zsh"
 export TERM="xterm-256color"
+# export LD_LIBRARY_PATH=/usr/lib:/usr/lib64:$LD_LIBRARY_PATH
 
-eval "$(starship init zsh)"
 
 if [[ $USER != "root" ]]; then
+  export STARSHIP_CONFIG=~/.config/starship.toml
+  eval "$(starship init zsh)"
+
   export PATH=$HOME/bin:/usr/local/bin:$$HOME/.deno/bin:$HOME/.cargo/bin:$HOME/.spicetify:$PATH
   fpath=(~/.zsh $fpath)
   autoload -Uz compinit
@@ -12,28 +15,27 @@ if [[ $USER != "root" ]]; then
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-#  [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
+  [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 fi
 
-export SPACESHIP_CONFIG="$HOME/.dotfiles/path/to/spaceship.zsh"
-ZSH_THEME="spaceship"
+#ZSH_THEME="spaceship"
 
 COMPLETION_WAITING_DOTS="true"
 
 _Z_NO_RESOLVE_SYMLINKS="true"
 
 ZSH_COLORIZE_TOOL=chroma
-#
+
 ZSH_COLORIZE_STYLE=vim
 ZSH_DISABLE_COMPFIX=true
-#
+
 plugins=(
 	colorize
 	zsh-syntax-highlighting
 	zsh-autosuggestions
   zsh-interactive-cd
 )
-#
+
 source $ZSH/oh-my-zsh.sh
 
 # -------------| Alias |----------------
@@ -117,9 +119,11 @@ alias grs='git rebase --skip'
 alias gd="git diff --no-ext-diff --cached"
 
 # Workspace
-alias w="cd ~/.workspace"
-alias wh="cd ~/.workspace/Houlak"
+alias w="cd ~/Workspace"
+alias wh="cd ~/Workspace/Houlak"
 
 alias dot="git --git-dir ~/.dotfiles --work-tree ~"
 
-[ -f "/home/iperez/.ghcup/env" ] && source "/home/iperez/.ghcup/env" # ghcup-env
+alias s3="aws s3"
+
+alias aws-houlak="awsume houlak -s"

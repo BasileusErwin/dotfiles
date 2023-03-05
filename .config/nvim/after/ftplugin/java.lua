@@ -12,7 +12,6 @@ if not jdtls_ok then
   return
 end
 
-
 vim.bo.shiftwidth = 2
 vim.bo.tabstop = 2
 vim.opt_local.shiftwidth = 2
@@ -21,7 +20,7 @@ vim.opt_local.cmdheight = 2 -- more space in the neovim command line for display
 
 local HOME = os.getenv('HOME')
 local JDTLS_LOCATION = vim.fn.stdpath("data") .. "/mason/packages/jdtls"
-local WORKSPACE_PATH = HOME .. "/.workspace/Java/"
+local WORKSPACE_PATH = HOME .. "/Workspace/Java/"
 
 -- Only for Linux and Mac
 local SYSTEM = "linux"
@@ -43,18 +42,16 @@ extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
 local config = {
   cmd = {
-    "java",
-    "-Declipse.application=org.eclipse.jdt.ls.core.id1",
-    "-Dosgi.bundles.defaultStartLevel=4",
-    "-Declipse.product=org.eclipse.jdt.ls.core.product",
-    "-Dlog.protocol=true",
-    "-Dlog.level=ALL",
-    "-Xms1g",
-    "--add-modules=ALL-SYSTEM",
-    "--add-opens",
-    "java.base/java.util=ALL-UNNAMED",
-    "--add-opens",
-    "java.base/java.lang=ALL-UNNAMED",
+    'java',
+    '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+    '-Dosgi.bundles.defaultStartLevel=4',
+    '-Declipse.product=org.eclipse.jdt.ls.core.product',
+    '-Dlog.protocol=true',
+    '-Dlog.level=ALL',
+    '-Xms1g',
+    '--add-modules=ALL-SYSTEM',
+    '--add-opens', 'java.base/java.util=ALL-UNNAMED',
+    '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
     "-jar",
     vim.fn.glob(JDTLS_LOCATION .. "/plugins/org.eclipse.equinox.launcher_*.jar"),
     "-configuration",
@@ -67,9 +64,6 @@ local config = {
   capabilities = require("config.lsp").capabilities,
   root_dir = root_dir,
 
-  -- Here you can configure eclipse.jdt.ls specific settings
-  -- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
-  -- for a list of options
   settings = {
     java = {
       eclipse = {

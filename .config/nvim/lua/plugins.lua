@@ -57,12 +57,12 @@ local plugins = function(use)
   use({
     'lukas-reineke/indent-blankline.nvim',
     event = 'BufReadPre',
-    opt = false,
+    opt = true,
     config = require('config.indent_blankline').setup()
   })
 
   -- Load only when require
-  use { 'nvim-lua/plenary.nvim', module = 'plenary' }
+  use({ 'nvim-lua/plenary.nvim' })
 
   -- Better icons
   use({
@@ -174,9 +174,6 @@ local plugins = function(use)
         run = './install.sh',
         enable = false
       },
-      {
-        'github/copilot.vim'
-      }
     },
     config = require('config.cmp').setup()
   })
@@ -307,6 +304,11 @@ local plugins = function(use)
   use({
     'mfussenegger/nvim-jdtls',
     ft = { 'java' }
+  })
+
+  use({
+    'scalameta/nvim-metals',
+    requires = { "nvim-lua/plenary.nvim" }
   })
 
   use({

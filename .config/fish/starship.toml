@@ -28,7 +28,7 @@ sigint_symbol = "ﭦ"
 map_symbol = true
 
 [git_branch]
-format = "[$symbol $branch ]($style) "
+format = "[$symbol$branch]($style) "
 
 [package]
 format = "[$symbol$version]($style) "
@@ -68,8 +68,8 @@ format = "[🦕$version](green bold) "
 symbol = '[ $version](red bold) '
 
 [aws]
-format = '[$symbol $profile $region]($style) '
-style = 'bold yellow'
+format = 'on [$symbol $profile ()]($style) '
+style = 'bold organ'
 symbol = '☁️ '
 [aws.profile_aliases]
 Enterprise_Naming_Scheme-voidstars = 'void**'
