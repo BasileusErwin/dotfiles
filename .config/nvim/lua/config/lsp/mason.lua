@@ -14,26 +14,12 @@ local get_package_name = function()
 end
 
 M.setup = function()
-  local status_ok, mason = pcall(require, 'mason')
   local status_tool_ok, mason_tool = pcall(require, 'mason-tool-installer')
-
-  if not status_ok or not status_tool_ok then
-    return
-  end
-
-  mason.setup({
-    ui = {
-      icons = {
-        package_installed = "✓",
-        package_pending = "➜",
-        package_uninstalled = "✗"}
-    }
-  })
 
   mason_tool.setup({
     ensure_installed = get_package_name(),
     run_on_start = true,
-    auto_update = false,
+    auto_update = true,
     start_delay = 3000
   })
 end

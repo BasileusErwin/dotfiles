@@ -83,7 +83,7 @@ M.setup = function()
     return
   end
 
-  lualine.setup({
+  return {
     options = {
       theme = 'auto',
       icons_enabled = true,
@@ -121,7 +121,7 @@ M.setup = function()
     },
     tabline = {},
     extensions = {}
-  })
+  }
 end
 
 return M

@@ -1,6 +1,5 @@
 local M = {}
 
-
 M.opts = {
   mode = 'n', -- Normal mode
   prefix = '<leader>',
@@ -68,19 +67,12 @@ M.code_keymap = function(whichkey)
   end
 end
 
-M.setup = function()
+M.setup = function(_, conf)
   local status_ok, whichkey = pcall(require, 'which-key')
 
   if not status_ok then
     return
   end
-
-  local conf = {
-    window = {
-      border = 'single', -- none, single, double, shadow
-      position = 'bottom', -- bottom, top
-    },
-  }
 
   local mappings = {
     ['w'] = { '<cmd>update!<CR>', 'Save' },
@@ -95,25 +87,9 @@ M.setup = function()
       w = { '<Cmd>BufferLineSortByWindowNumber<CR>', 'Sort buffer by Window Number' },
     },
 
-    p = {
-      name = 'Packer',
-      c = { '<cmd>PackerCompile<CR>', 'Compile' },
-      i = { '<cmd>PackerInstall<CR>', 'Install' },
-      s = { '<cmd>PackerSync<CR>', 'Sync' },
-      S = { '<cmd>PackerStatus<CR>', 'Status' },
-      u = { '<cmd>PackerUpdate<CR>', 'Update' },
-      p = { '<cmd>PackerProfile<CR>', 'Promise' },
-    },
-
     e = {
       '<cmd>NvimTreeFindFileToggle<CR>',
       'Explorer',
-    },
-
-    c = {
-      name = 'Code',
-      g = { '<cmd>Neogen func<CR>', 'Function Doc' },
-      G = { '<cmd>Neogen class<CR>', 'Class Doc' },
     },
 
     t = {
@@ -122,7 +98,14 @@ M.setup = function()
       f = { '<cmd>ToggleTerm size=15 direction=float<CR>', 'Open Float' }
     },
 
-    o = { ':SymbolsOutline<CR>', 'Symbols Outline' }
+    o = { ':SymbolsOutline<CR>', 'Symbols Outline' },
+
+    f = {
+      name = 'Find',
+      g = { '<cmd>lua require("telescope.builtin").live_grep()<CR>', 'Live Grep' },
+      f = { '<cmd>lua require("telescope.builtin").find_files()<CR>', 'Find files' },
+      b = { '<cmd>lua require("telescope.builtin").buffers()<CR>', 'Find in buffer' },
+    },
   }
 
   local visual_keymap = {

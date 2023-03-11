@@ -6,7 +6,7 @@ M.setup = function(client, bufnr)
   local opts = { noremap = true, silent = true }
 
   -- Key mappings
-  buf_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+  buf_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
   keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
   keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
   keymap("n", "[e", "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})<CR>", opts)
@@ -20,7 +20,7 @@ M.setup = function(client, bufnr)
   end
 
   local keymap_l = {
-    l = {
+    c = {
       name = 'Code',
       r = { '<cmd>lua vim.lsp.buf.rename()<CR>', "Raname" },
       a = { '<cmd>lua vim.lsp.buf.code_action()<CR>', 'Code Action' },
@@ -30,7 +30,7 @@ M.setup = function(client, bufnr)
   }
 
   if client.server_capabilities.documentFormattingProvider then
-    keymap_l.l.f = { '<cmd>lua vim.lsp.buf.formatting()<CR>', 'Format Document' }
+    keymap_l.l.f = { '<cmd>lua vim.lsp.buf.format({ async = true })<CR>', 'Format Document' }
   end
 
   local keymap_g = {

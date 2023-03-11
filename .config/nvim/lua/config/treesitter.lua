@@ -7,7 +7,7 @@ M.setup = function()
   end
 
   local config = {
-    ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+    ensure_installed = "all",
     ignore_install = { "markdown_inline", "markdown" },
     sync_install = false,
     highlight = {

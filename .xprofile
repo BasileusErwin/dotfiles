@@ -1,45 +1,31 @@
 #!/usr/bin/env bash
 
 # ----| Vars | ----
-readarray -t DEVICES <<< "$(xrandr | grep " connected" | cut -d' ' -f1)"
 
-export HDMI_CONNECTED=true
-export LAPTOP="eDP"
-export MONITOR="HDMI-A-0"
-for DEVICE in "${DEVICES[@]}"
-do
-  case "$DEVICE" in
-    /eDP/)
-        export LAPTOP="$DEVICE"
-        export HDMI_CONNECTED=false
-      ;;
-    /HDMI/)
-        export MONITOR="$DEVICE"
-        export HDMI_CONNECTED=true
-      ;;
-  esac
-done
+# -- Laptop --
+export LAPTOP='eDP'
 
+# -- Monitor --
+export MONITOR='HDMI-A-0'
+
+HDMI_CONNECTED=$(xrandr | grep "$MONITOR connected" | awk '{print $1}')
+export HDMI_CONNECTED
 export PATH=$HOME/.local/bin:$HOME/.cargo/bin:$HOME/go/bin:/usr/local/bin:$PATH
-#export LD_LIBRARY_PATH=/usr/lib:/usr/lib32:$LD_LIBRARY_PATH
 export QT_STYLE_OVERRIDE=kvantum
 export DENO_INSTALL="$HOME/.deno"
 export STARSHIP_CONFIG="$HOME/.config/fish/starship.toml"
 export EDITOR="nvim"
 
-# ----| Display |----
-
+if [[ $HDMI_CONNECTED ]]; then
 	xrandr --newmode "1920x1080R" 138.50 1920 1968 2000 2080 1080 1083 1088 1111 +hsync -vsync
-	xrandr --addmode "$MONITOR" 1920x1080R
+	xrandr --addmode $MONITOR 1920x1080R
 	xrandr --output "$MONITOR" -r 75.0 --primary --mode 1920x1080R --rotate normal --right-of "$LAPTOP" \
 		--output "$LAPTOP" --mode 1920x1080 --rotate normal
-# if [[ $HDMI_CONNECTED ]]; then
-# else
-# 	xrandr --output "$LAPTOP" --primary --mode 1920x1080 --rotate normal
-# fi
+else
+	xrandr --output "$LAPTOP" --primary --mode 1920x1080 --rotate normal
+fi
 
 lxsession &
-#cpupower-gui &
 nitrogen --restore &
 udiskie -t &
 nm-applet &
@@ -49,4 +35,3 @@ battery &
 volumeicon &
 redshift -O 5000 &
 solaar -b regular -w hide &
-whatsdesk &

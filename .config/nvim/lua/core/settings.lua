@@ -9,7 +9,6 @@ api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
 g.mapleader = " "
 g.maplocalleader = " "
 
-g.did_load_filetypes = 1
 opt.termguicolors = true -- Enable colors in terminal
 opt.hlsearch = true --Set highlight on search
 opt.mouse = "a" --Enable mouse mode
@@ -48,13 +47,6 @@ opt.showmode = false --We don't need to see things like -- INSERT -- anymore
 g.closetag_filetypes = 'html,xhtml,phtml,xml,javascript,typescript,javascriptreact,typescriptreact,'
 opt.laststatus = 3
 
-opt.path:remove "/usr/include"
-opt.path:append "**"
-opt.wildignorecase = true
-opt.wildignore:append "**/node_modules/*"
-opt.wildignore:append "**/.git/*"
-opt.wildignore:append "**/build/*"
-
 -- Highlight on yank
 cmd([[
   augroup YankHighlight
@@ -73,4 +65,3 @@ cmd([[
     filetype plugin on
     set hlsearch!
   ]])
-

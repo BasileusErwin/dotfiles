@@ -59,11 +59,9 @@ local config = {
     "-data",
     workspace_dir,
   },
-
   on_attach = require("config.lsp").on_attach,
   capabilities = require("config.lsp").capabilities,
   root_dir = root_dir,
-
   settings = {
     java = {
       eclipse = {
@@ -138,7 +136,6 @@ local config = {
       useBlocks = true,
     },
   },
-
   flags = {
     allow_incremental_sync = true,
   },
@@ -161,4 +158,3 @@ require("jdtls.setup").add_commands()
 vim.cmd "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_compile JdtCompile lua require('jdtls').compile(<f-args>)"
 vim.cmd "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_set_runtime JdtSetRuntime lua require('jdtls').set_runtime(<f-args>)"
 vim.cmd "command! -buffer JdtUpdateConfig lua require('jdtls').update_project_config()"
-

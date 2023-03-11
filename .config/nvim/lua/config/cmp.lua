@@ -6,18 +6,6 @@ local check_backspace = function()
   return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
 end
 
-local function T(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-
----wraps vim.fn.feedkeys while replacing key codes with escape codes
----Ex: feedkeys("<CR>", "n") becomes feedkeys("^M", "n")
----@param key string
----@param mode string
-local function feedkeys(key, mode)
-  vim.fn.feedkeys(T(key), mode)
-end
-
 ---checks if emmet_ls is available and active in the buffer
 ---@return boolean true if available, false otherwise
 local is_emmet_active = function()
@@ -141,6 +129,8 @@ end
 
 M.setup = function()
   local status_cmp_ok, cmp = pcall(require, "cmp")
+  local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+
   if not status_cmp_ok then
     return
   end
@@ -149,9 +139,9 @@ M.setup = function()
     return
   end
 
-  local status_lsp_ok, lspkind = pcall(require, 'lspkind')
+  local lspkind = require('lspkind')
 
-  local status_tabnine_ok, tabnine = pcall(require, 'cmp_tabnine.config')
+  cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
 
   local source_names = {
     buffer = "[Buffer]",
@@ -171,16 +161,6 @@ M.setup = function()
   }
 
   local duplicates_default = 0
-
-  if status_tabnine_ok then
-    tabnine:setup({
-      max_lines = 1000;
-      max_num_results = 20;
-      sort = true;
-      run_on_every_keystroke = true;
-      snippet_placeholder = '..';
-    })
-  end
 
   lspkind.init({
     preset = 'codicons',
@@ -220,6 +200,7 @@ M.setup = function()
     },
     completion = {
       keyword_length = 1,
+      completeopt = "menu,menuone,noinsert",
     },
     experimental = {
       ghost_text = true,
@@ -269,9 +250,8 @@ M.setup = function()
           cmp.select_next_item()
         elseif luasnip.expandable() then
           luasnip.expand()
-        elseif jumpable() then
+        elseif jumpable(1) then
           luasnip.jump(1)
-        elseif check_backspace() then
           fallback()
         elseif is_emmet_active() then
           return vim.fn["cmp#complete"]()
@@ -299,13 +279,13 @@ M.setup = function()
       ["<C-e>"] = cmp.mapping.abort(),
       ["<CR>"] = cmp.mapping(function(fallback)
         if cmp.visible() and cmp.confirm(cmp.confirm_opts) then
-          if jumpable() then
+          if jumpable(1) then
             luasnip.jump(1)
           end
           return
         end
 
-        if jumpable() then
+        if jumpable(1) then
           if not luasnip.jump(1) then
             fallback()
           end
@@ -317,20 +297,20 @@ M.setup = function()
   })
 
   cmp.setup.cmdline('/', {
+    mapping = cmp.mapping.preset.cmdline(),
     sources = {
       { name = 'buffer' }
     }
   })
 
-  cmp.setup.cmdline(':', {
+  cmp.setup.cmdline(":", {
+    mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
-      { name = 'path' }
+      { name = "path" },
     }, {
-      { name = 'cmdline' }
-    })
+      { name = "cmdline" },
+    }),
   })
-
 end
 
 return M
-

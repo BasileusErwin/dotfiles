@@ -56,6 +56,7 @@ alias ns="npm i $1"
 alias t="tree $1"
 alias paru="paru --bottomup $1"
 alias sudo='sudo '
+alias c.='code .'
 
 alias grep="grep --color=auto"
 alias cat="bat --style=plain --paging=never"

@@ -1,12 +1,6 @@
-local M = {}
-
-M.setup = function()
-  local status_ok, surround = pcall(require, 'surround')
-  if not status_ok then
-    return
-  end
-
-  surround.setup {
+return {
+  'ur4ltz/surround.nvim',
+  opts = {
     context_offset = 100,
     load_autogroups = false,
     mappings_style = "sandwich",
@@ -21,6 +15,4 @@ M.setup = function()
       prefix = "s"
     }
   }
-end
-
-return M
+}

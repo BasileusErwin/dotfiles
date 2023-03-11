@@ -118,7 +118,7 @@ M.servers = {
   },
   {
     package_name = 'lua-language-server',
-    server_name = 'sumneko_lua',
+    server_name = 'lua_ls',
     enable = true
   },
   {
@@ -203,7 +203,8 @@ M.setup = function()
     })
   end
 
-  require('config.lsp.null-ls').setup(M.opts)
+  require('config.lsp.null_ls').setup(M.opts)
+  require('config.lsp.mason').setup()
 
   for _, server in ipairs(M.servers) do
     if server.enable then
