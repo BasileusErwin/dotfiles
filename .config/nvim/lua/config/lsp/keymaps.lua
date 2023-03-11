@@ -30,7 +30,7 @@ M.setup = function(client, bufnr)
   }
 
   if client.server_capabilities.documentFormattingProvider then
-    keymap_l.l.f = { '<cmd>lua vim.lsp.buf.format({ async = true })<CR>', 'Format Document' }
+    keymap_l.c.f = { '<cmd>lua vim.lsp.buf.format({ async = true })<CR>', 'Format Document' }
   end
 
   local keymap_g = {

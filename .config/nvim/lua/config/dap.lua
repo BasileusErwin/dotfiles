@@ -4,7 +4,6 @@ M.setup = function()
   local dap, dapui, dap_go = require("dap"), require("dapui"), require("dap-go")
 
   require("nvim-dap-virtual-text").setup({})
-  -- dap.set_log_level('TRACE')
 
   dap_go.setup()
 

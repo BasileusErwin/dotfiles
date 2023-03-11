@@ -23,11 +23,14 @@ M.sources = function(builtin)
     builtin.formatting.fixjson,
     builtin.formatting.black.with({ extra_args = { '--fast' } }),
     builtin.formatting.isort,
+    builtin.formatting.rustfmt.with({
+      extra_args = { "--edition=2021" }
+    }),
     M.with_root_file(builtin.formatting.stylua, 'stylua.toml'),
 
     -- diagnostics
     builtin.diagnostics.write_good,
-    builtin.diagnostics.ltrs,
+    -- builtin.diagnostics.ltrs,
     builtin.diagnostics.markdownlint,
     builtin.diagnostics.flake8,
     builtin.diagnostics.tsc,
