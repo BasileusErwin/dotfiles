@@ -1,8 +1,7 @@
-pcall(require, 'impatient')
+local g = vim.g
+g.config = require('utils').load_json() as Config
 
 require('core')
-
-local g = vim.g
 
 if g.neovide then
   g.neovide_cursor_animation_length = 0
@@ -18,6 +17,5 @@ if g.neovide then
   g.neovide_refresh_rate = 120
   g.neovide_refresh_rate_idle = 120
 end
-
 
 vim.cmd([[ colorscheme ayu-dark ]])

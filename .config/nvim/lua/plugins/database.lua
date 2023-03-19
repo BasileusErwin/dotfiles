@@ -1,6 +1,7 @@
 return {
   "kristijanhusak/vim-dadbod-ui",
   event = "VimEnter",
+  enabled = false,
   dependencies = {
     "tpope/vim-dadbod",
     "kristijanhusak/vim-dadbod-completion",

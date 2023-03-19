@@ -1,4 +1,5 @@
 scan_timeout = 60
+command_timeout = 10000
 add_newline = true
 
 [character]
@@ -47,6 +48,7 @@ symbol = " "
 
 [java]
 format = "[${symbol}(${version} )]($style)"
+style  = "red dimmed bold"
 symbol = " "
 
 [rust]
@@ -65,7 +67,12 @@ symbol = " "
 format = "[🦕$version](green bold) "
 
 [scala]
-symbol = '[ $version](red bold) '
+symbol = ''
+style = 'red bold'
+format = '[${symbol} (${version}) ]($style)'
+detect_extensions = ['sbt', 'scala']
+detect_folders = ['.metals']
+detect_files = ['.scalaenv', '.sbtenv', 'build.sbt']
 
 [aws]
 format = '[$symbol $profile $region]($style) '

@@ -7,7 +7,7 @@ if [[ $USER != "root" ]]; then
   export STARSHIP_CONFIG=~/.config/starship.toml
   eval "$(starship init zsh)"
 
-  export PATH=$HOME/bin:/usr/local/bin:$$HOME/.deno/bin:$HOME/.cargo/bin:$HOME/.spicetify:$PATH
+  export PATH=$HOME/bin:/usr/local/bin:$$HOME/.deno/bin:$HOME/.cargo/bin:$HOME/.spicetify:$HOME/.local/share/coursier/bin:$PATH
   fpath=(~/.zsh $fpath)
   autoload -Uz compinit
   compinit -u

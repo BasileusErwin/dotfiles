@@ -27,6 +27,7 @@ return {
     'b0o/schemastore.nvim',
     {
       "j-hui/fidget.nvim",
+      enabled = false,
       opts = {
         window = {
           blend = 0,

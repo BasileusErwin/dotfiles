@@ -10,7 +10,7 @@ export MONITOR='HDMI-A-0'
 
 HDMI_CONNECTED=$(xrandr | grep "$MONITOR connected" | awk '{print $1}')
 export HDMI_CONNECTED
-export PATH=$HOME/.local/bin:$HOME/.cargo/bin:$HOME/go/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$$HOME/.deno/bin:$HOME/.cargo/bin:$HOME/.spicetify:$HOME/.local/share/coursier/bin:$PATH
 export QT_STYLE_OVERRIDE=kvantum
 export DENO_INSTALL="$HOME/.deno"
 export STARSHIP_CONFIG="$HOME/.config/fish/starship.toml"
