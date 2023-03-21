@@ -100,6 +100,14 @@ M.setup = function(_, conf)
 
     o = { ':SymbolsOutline<CR>', 'Symbols Outline' },
 
+    n = {
+      name = 'Notes Obsidian',
+      s = { '<cmd>ObsidianSearch<CR>', 'Grep notes' },
+      n = { '<cmd>ObsidianNew<CR>', 'New note' },
+      t = { '<cmd>ObsidianToday<CR>', 'Today note' },
+      f = { '<cmd>ObsidianQuickSwitch<CR>', 'Search file note' },
+    },
+
     f = {
       name = 'Find',
       g = { '<cmd>lua require("telescope.builtin").live_grep()<CR>', 'Live Grep' },

@@ -8,27 +8,21 @@ M.setup = function()
 
   local config = {
     ensure_installed = "all",
-    ignore_install = { "markdown_inline", "markdown" },
     sync_install = false,
     highlight = {
       enable = true,
       use_languagetree = true,
+      additional_vim_regex_highlighting = { "markdown" },
     },
     tree_docs = {
       enable = true,
       spec_config = {
         jsdoc = {
           slots = {
-            class = {author = true}
+            class = { author = true }
           }
         }
       }
-    },
-    matchup = {
-      enable = true
-    },
-    indent = {
-      enable = true,
     },
     autotag = {
       enable = true,
@@ -49,49 +43,49 @@ M.setup = function()
       highlight_current_scope = { enable = false },
     },
     playground = {
-        enable = false,
-        disable = {},
-        updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-        persist_queries = false, -- Whether the query persists across vim sessions
-        keybindings = {
-          toggle_query_editor = "o",
-          toggle_hl_groups = "i",
-          toggle_injected_languages = "t",
-          toggle_anonymous_nodes = "a",
-          toggle_language_display = "I",
-          focus_language = "f",
-          unfocus_language = "F",
-          update = "R",
-          goto_node = "<cr>",
-          show_help = "?",
-        },
+      enable = false,
+      disable = {},
+      updatetime = 25,           -- Debounced time for highlighting nodes in the playground from source code
+      persist_queries = false,   -- Whether the query persists across vim sessions
+      keybindings = {
+        toggle_query_editor = "o",
+        toggle_hl_groups = "i",
+        toggle_injected_languages = "t",
+        toggle_anonymous_nodes = "a",
+        toggle_language_display = "I",
+        focus_language = "f",
+        unfocus_language = "F",
+        update = "R",
+        goto_node = "<cr>",
+        show_help = "?",
       },
-      rainbow = {
-        enable = true,
-        extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
-        max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
+    },
+    rainbow = {
+      enable = true,
+      extended_mode = true,    -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
+      max_file_lines = 1000,   -- Do not enable for files with more than 1000 lines, int
+    },
+    incremental_selection = {
+      enable = true,
+      keymaps = {
+        init_selection = "gnn",
+        node_incremental = "grn",
+        scope_incremental = "grc",
+        node_decremental = "grm",
       },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = "gnn",
-          node_incremental = "grn",
-          scope_incremental = "grc",
-          node_decremental = "grm",
-        },
-      },
-      indent = { enable = true },
-      -- vim-matchup
-      matchup = {
-        enable = true,
-      },
-    }
+    },
+    indent = { enable = true },
+    -- vim-matchup
+    matchup = {
+      enable = true,
+    },
+  }
 
 
   treesitter_config.setup(vim.tbl_deep_extend('force', config, {}))
 
   local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-  parser_config.tsx.filetype_to_parsername = { "javascript", "javascript.jsx","typescript.tsx" }
+  parser_config.tsx.filetype_to_parsername = { "javascript", "javascript.jsx", "typescript.tsx" }
 end
 
 return M

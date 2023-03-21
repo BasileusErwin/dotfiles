@@ -115,6 +115,7 @@
         (command: Execute, value: "google-chrome-stable", modifier: ["modkey", "Shift"], key: "b"),
         (command: Execute, value: "speedcrunch", modifier: ["modkey"], key: "s"),
         (command: Execute, value: "notion-app", modifier: ["modkey"], key: "n"),
+        (command: Execute, value: "obsidian", modifier: ["modkey", "Shift"], key: "n"),
         (command: Execute, value: "scrot -s \'screenshot_%Y-%m-%d-%T_$wx$h.png\' -e \'mkdir -p ~/Pictures/screenshots/ | mv $f ~/Pictures/screenshots/\'", modifier: ["modkey"], key: "p"),
         (command: Execute, value: "betterlockscreen -l blur", modifier: ["modkey", "Control"], key: "l"),
         (command: Execute, value: "pactl set-sink-volume @DEFAULT_SINK@ -5%", modifier: [], key: "XF86XK_AudioLowerVolume"),

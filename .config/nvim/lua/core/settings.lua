@@ -44,7 +44,7 @@ opt.clipboard = "unnamedplus"
 opt.conceallevel = 0 --So that I can see `` in markdown files
 opt.background = "dark" --tell vim what the background color looks like
 opt.showmode = false --We don't need to see things like -- INSERT -- anymore
-g.closetag_filetypes = 'html,xhtml,phtml,xml,javascript,typescript,javascriptreact,typescriptreact,'
+g.closetag_filetypes = 'html,xhtml,phtml,xml,javascript,typescript,javascriptreact,typescriptreact'
 opt.laststatus = 3
 
 -- Highlight on yank
