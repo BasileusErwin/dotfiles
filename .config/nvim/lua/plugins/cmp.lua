@@ -11,6 +11,8 @@ return {
     'hrsh7th/vim-vsnip',
     'saadparwaiz1/cmp_luasnip',
     'L3MON4D3/LuaSnip',
+    'David-Kunz/cmp-npm',
+    'Saecki/crates.nvim',
     'rafamadriz/friendly-snippets',
     {
       'tzachar/cmp-tabnine',

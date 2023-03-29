@@ -32,6 +32,22 @@ local diagnostics = {
   always_visible = true,
 }
 
+local lsp_client_progress = {
+  'lsp_progress',
+  display_components = { 'spinner', 'lsp_client_name', { 'percentage' } },
+  separators = {
+    component = ' ',
+    progress = ' | ',
+    message = {
+      commenced = 'In Progress',
+      completed = 'Completed',
+    },
+    percentage = { pre = '', post = '%% ' },
+    lsp_client_name = { pre = '[', post = ']' },
+  },
+  timer = { progress_enddelay = 100, spinner = 500, lsp_client_name_enddelay = 500 },
+}
+
 local function lsp_client(msg)
   msg = msg or ''
   local buf_clients = vim.lsp.buf_get_clients()
@@ -89,7 +105,7 @@ M.setup = function()
       icons_enabled = true,
       component_separators = { left = '', right = '' },
       section_separators = { left = '', right = '' },
-      disabled_filetypes = { 'NvimTree' },
+      --disabled_filetypes = { 'NvimTree' },
       always_divide_middle = true,
     },
     sections = {
@@ -106,6 +122,7 @@ M.setup = function()
         },
       },
       lualine_x = {
+        lsp_client_progress,
         { lsp_client, icon = ' ' },
       },
       lualine_y = { 'filename', 'encoding', filetype },

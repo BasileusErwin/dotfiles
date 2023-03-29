@@ -6,7 +6,6 @@ M.setup = function(client, bufnr)
   local opts = { noremap = true, silent = true }
 
   -- Key mappings
-  buf_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
   keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
   keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
   keymap("n", "[e", "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})<CR>", opts)
@@ -43,7 +42,7 @@ M.setup = function(client, bufnr)
     t = { '<cmd>lua vim.lsp.buf.type_definition()<CR>', 'Go Type Definition' },
   }
 
-  whichkey.register(keymap_l, { buffer = bufnr, prefix = '<leader>',  })
+  whichkey.register(keymap_l, { buffer = bufnr, prefix = '<leader>', })
   whichkey.register(keymap_g, { buffer = bufnr, prefix = 'g' })
 end
 

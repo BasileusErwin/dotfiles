@@ -34,7 +34,7 @@
         "${ewwDashboard} ${dashboardIsOpen ? "close" : "open"} dashboard-${monitor == 0 ? "laptop" : "monitor"} && ${eww} update dashboardIsOpen=${!dashboardIsOpen}"
         (label :class "dashboard" :text "舘"))))
 
-(defwidget workspaces [?number monitor] 
+(defwidget workspaces [?number monitor]
   (box :orientation 'v' :class "workspaces" (for tag in '${wmstate.workspaces[monitor].tags}'
          (button :orientation 'v'
                  :onclick "leftwm-command 'SendWorkpaceToTag 0 ${tag.index}'"
@@ -90,8 +90,11 @@
 
 (defwidget top [?number monitor]
   (box :orientation 'v' :valign "start" :space-evenly false
-    (dashboard :monitor monitor)
+    ;; (dashboard :monitor monitor)
     (workspaces :monitor monitor)))
+
+;; (defwidget middle []
+;;   (system-tray ))
 
 (defwidget end []
   (box :orientation 'v' :space-evenly false
@@ -101,6 +104,7 @@
 (defwidget bar [?number monitor]
   (box :class "bar" :orientation "v" :vexpand false :hexpand false  :spacing 330
     (top :monitor monitor)
+    ;; (middle)
     (end)))
 
 ; Windows

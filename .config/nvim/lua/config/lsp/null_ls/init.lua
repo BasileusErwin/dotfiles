@@ -23,6 +23,7 @@ M.sources = function(builtin)
     builtin.formatting.fixjson,
     builtin.formatting.black.with({ extra_args = { '--fast' } }),
     builtin.formatting.isort,
+    builtin.formatting.rome,
     builtin.formatting.rustfmt.with({
       extra_args = { "--edition=2021" }
     }),

@@ -69,93 +69,9 @@ M.setup = function()
   require('config.lsp.null_ls').setup(M.opts)
   require('config.lsp.mason').setup()
 
-
-  nvim_lsp.ltex.setup(
-    {
-      cmd = { "ltex-ls" },
-      filetypes = { "markdown", "text" },
-      flags = { debounce_text_changes = 300 },
-      settings = {
-        ltex = {
-          language = "auto",
-        },
-      },
-      on_attach = M.on_attach,
-      capabilities = M.capabilities,
-    }
-  )
-
   for _, server in ipairs(servers) do
     if server.enable then
-      if server.server_name == 'metals' then
-        nvim_lsp.metals.setup(
-          utils.merge_table(
-            {
-              root_dir = util.root_pattern("build.sbt", "build.sc", "build.gradle", "pom.xml", "*.scala")
-            },
-            M.opts
-          )
-        )
-      end
-      if server.server_name == 'denols' then
-        nvim_lsp.denols.setup(
-          utils.merge_table(
-            {
-              root_dir = util.root_pattern('deno.json'),
-            },
-            M.opts
-          )
-        )
-      elseif server.server_name == 'tsserver' then
-        nvim_lsp.tsserver.setup(
-          utils.merge_table(
-            {
-              root_dir = util.root_pattern('package.json'),
-              preferences = {
-                quotePreference = 'single',
-                importModuleSpecifierPreference = 'relative',
-                includeCompletionsForImportStatements = true
-              },
-            },
-            M.opts
-          )
-        )
-      elseif server.server_name == 'jsonls' then
-        local status_schmeastore_ok, schemastore = pcall(require, 'schemastore')
-        if status_schmeastore_ok then
-          nvim_lsp.jsonls.setup(
-            utils.merge_table(
-              {
-                settings = {
-                  json = {
-                    schemas = schemastore.json.schemas({
-                      select = {
-                        '.eslintrc',
-                        'package.json',
-                      },
-                    }
-                    ),
-                    validate = { enable = true }
-                  }
-                }
-              },
-              M.opts
-            )
-          )
-        end
-      elseif server.server_name == 'omnisharp' then
-        local pid = vim.fn.getpid()
-        nvim_lsp.omnisharp.setup(
-          utils.merge_table(
-            {
-              cmd = { 'omnisharp', '--languageserver', '--hostPID', tostring(pid) }
-            },
-            M.opts
-          )
-        )
-      else
-        nvim_lsp[server.server_name].setup(M.opts)
-      end
+      nvim_lsp[server.server_name].setup(server.config(M.on_attach, M.capabilities))
     end
   end
 end

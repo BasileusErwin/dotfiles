@@ -19,6 +19,7 @@ return {
       },
     },
     'williamboman/mason-lspconfig.nvim',
+    'ray-x/lsp_signature.nvim',
     {
       'WhoIsSethDaniel/mason-tool-installer.nvim',
       event = 'VeryLazy',
@@ -29,13 +30,26 @@ return {
       "j-hui/fidget.nvim",
       enabled = false,
       opts = {
+        text = {
+          spinner = "dots"
+        },
         window = {
-          blend = 0,
+          blend = 100,
+          reative = "editor",
+        },
+        fmt = {
+          leftpad = true,
+          stack_upwards = true,
+          max_width = 0,
+          -- task = function () end,
         },
         sources = {
           ["null-ls"] = {
             ignore = true,
           },
+          ['diagnostics'] = {
+            ignore = true
+          }
         },
       },
     }

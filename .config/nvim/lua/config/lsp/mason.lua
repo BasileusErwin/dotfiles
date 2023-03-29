@@ -1,12 +1,11 @@
 local M = {}
-local lsp = require('config.lsp')
 local servers = require('config.lsp.servers')
 
 local get_package_name = function()
   local package_name = {}
 
   for _, server in ipairs(servers) do
-    if server.enable or server.package_name ~= nil then
+    if server.enable or not server.package_name ~= nil then
       table.insert(package_name, server.package_name)
     end
   end
