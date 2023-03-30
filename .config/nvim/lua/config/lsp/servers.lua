@@ -35,7 +35,7 @@ return {
         flags = { debounce_text_changes = 500 },
         settings = {
           ltex = {
-            language = "auto",
+            language = "es",
           },
         },
         on_attach,

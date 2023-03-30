@@ -53,18 +53,15 @@ cmd([[
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank()
   augroup end
+  set colorcolumn=110
+  set completeopt=menuone,noinsert,noselect
+  set autochdir
+  syntax enable
+  filetype on
+  filetype indent on
+  filetype plugin on
+  set hlsearch!
 ]])
-
-cmd([[
-    set colorcolumn=110
-    set completeopt=menuone,noinsert,noselect
-    set autochdir
-    syntax enable
-    filetype on
-    filetype indent on
-    filetype plugin on
-    set hlsearch!
-  ]])
 
 if g.neovide then
   g.neovide_cursor_animation_length = 0

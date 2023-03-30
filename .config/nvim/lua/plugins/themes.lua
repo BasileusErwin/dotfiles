@@ -12,4 +12,17 @@ return {
   { 'projekt0n/github-nvim-theme' },
   { 'JoosepAlviste/palenightfall.nvim' },
   { 'VDuchauffour/neodark.nvim' },
+  {
+    'uloco/bluloco.nvim',
+    lazy = false,
+    priority = 1000,
+    dependencies = { 'rktjmp/lush.nvim' },
+    opts = {
+      style       = "dark",
+      transparent = true,
+      italics     = true,
+      terminal    = vim.fn.has("gui_running") == 1, -- bluoco colors are enabled in gui terminals per default.
+      guicursor   = true,
+    }
+  },
 }
