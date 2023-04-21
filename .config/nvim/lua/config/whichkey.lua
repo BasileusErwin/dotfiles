@@ -60,7 +60,7 @@ M.code_keymap = function(whichkey)
 
     if keymap ~= nil then
       whichkey.register(
-        { c = keymap },
+        { l = keymap },
         { mode = 'n', silent = true, noremap = true, buffer = bufnr, prefix = '<leader>' }
       )
     end

@@ -35,20 +35,20 @@ return {
           r = {
             name = 'Refactoring',
             e = {
-              name = "Extract Function",
-              "<Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>"
+              "<Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>",
+              "Extract Function",
             },
             f = {
-              name = "Extract Function To File",
-              "<Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>"
+              "<Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>",
+              "Extract Function To File",
             },
             v = {
-              name = "Extract Variable",
-              "<Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>"
+              "<Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>",
+              "Extract Variable"
             },
             i = {
-              name = "Inline Variable",
-              "<Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>"
+              "<Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>",
+              "Inline Variable",
             },
           },
         },
@@ -60,16 +60,16 @@ return {
           r = {
             name = 'Refactoring',
             b = {
-              name = "Extract Block",
-              "<Cmd>lua require('refactoring').refactor('Extract Block')<CR>"
+              "<Cmd>lua require('refactoring').refactor('Extract Block')<CR>",
+              "Extract Block",
             },
             f = {
-              name = "Extract Block To File",
-              "<Cmd>lua require('refactoring').refactor('Extract Block To File')<CR>"
+              "<Cmd>lua require('refactoring').refactor('Extract Block To File')<CR>",
+              "Extract Block To File",
             },
             i = {
-              name = "Inline Variable",
-              "<Cmd>lua require('refactoring').refactor('Inline Variable')<CR>"
+              "<Cmd>lua require('refactoring').refactor('Inline Variable')<CR>",
+              "Inline Variable",
             }
           },
         },

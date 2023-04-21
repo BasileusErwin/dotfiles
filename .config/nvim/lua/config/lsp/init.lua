@@ -1,5 +1,4 @@
 local M = {}
-local utils = require('utils')
 local servers = require('config.lsp.servers')
 
 vim.g.markdown_fenced_languages = {
@@ -46,10 +45,7 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
   })
 
 M.setup = function()
-  local status_ok, nvim_lsp = pcall(require, 'lspconfig')
-  if not status_ok then
-    return
-  end
+  local nvim_lsp = require('lspconfig')
 
   local util = require('lspconfig.util')
 
@@ -71,7 +67,7 @@ M.setup = function()
 
   for _, server in ipairs(servers) do
     if server.enable then
-      nvim_lsp[server.server_name].setup(server.config(M.on_attach, M.capabilities))
+      server.config(M.on_attach, M.capabilities)
     end
   end
 end

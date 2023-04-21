@@ -1,17 +1,70 @@
 return {
-  { 'Shatur/neovim-ayu' },
-  { 'navarasu/onedark.nvim' },
-  { 'marko-cerovac/material.nvim' },
-  { 'tomasiser/vim-code-dark' },
-  { 'tanvirtin/monokai.nvim' },
-  { 'Shatur/neovim-ayu' },
-  { 'ghifarit53/tokyonight-vim' },
-  { 'tiagovla/tokyodark.nvim' },
-  { 'phanviet/vim-monokai-pro' },
-  { 'shaunsingh/nord.nvim' },
-  { 'projekt0n/github-nvim-theme' },
-  { 'JoosepAlviste/palenightfall.nvim' },
-  { 'VDuchauffour/neodark.nvim' },
+  {
+    'Shatur/neovim-ayu',
+    lazy = true,
+    event = 'VeryLazy',
+  },
+  {
+    'navarasu/onedark.nvim',
+    lazy = true,
+    event = 'VeryLazy',
+  },
+  {
+    'marko-cerovac/material.nvim'
+    ,
+    lazy = true,
+    event = 'VeryLazy',
+  },
+  {
+    'tomasiser/vim-code-dark',
+    lazy = true,
+    event = 'VeryLazy',
+  },
+  {
+    'tanvirtin/monokai.nvim',
+    lazy = true,
+    event = 'VeryLazy',
+  },
+  {
+    'Shatur/neovim-ayu',
+    lazy = true,
+    event = 'VeryLazy',
+  },
+  {
+    'ghifarit53/tokyonight-vim',
+    lazy = true,
+    event = 'VeryLazy',
+  },
+  {
+    'tiagovla/tokyodark.nvim',
+    lazy = true,
+    event = 'VeryLazy',
+  },
+  {
+    'phanviet/vim-monokai-pro',
+    lazy = true,
+    event = 'VeryLazy',
+  },
+  {
+    'shaunsingh/nord.nvim',
+    lazy = true,
+    event = 'VeryLazy',
+  },
+  {
+    'projekt0n/github-nvim-theme',
+    lazy = true,
+    event = 'VeryLazy',
+  },
+  {
+    'JoosepAlviste/palenightfall.nvim',
+    lazy = true,
+    event = 'VeryLazy',
+  },
+  {
+    'VDuchauffour/neodark.nvim',
+    lazy = true,
+    event = 'VeryLazy',
+  },
   {
     'uloco/bluloco.nvim',
     lazy = false,

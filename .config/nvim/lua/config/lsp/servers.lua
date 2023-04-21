@@ -1,4 +1,6 @@
 local util = require('lspconfig.util')
+local utils = require('utils')
+local lspconfig = require("lspconfig")
 
 return {
   {
@@ -6,23 +8,23 @@ return {
     server_name = "prismals",
     enable = true,
     config = function(on_attach, capabilities)
-      return {
+      lspconfig.prismals.setup({
         root_dir = util.root_pattern(".git", "package.json", "*.prisma"),
         on_attach,
         capabilities,
-      }
+      })
     end
   },
   {
     package_name = 'rome',
     server_name = 'rome',
-    enable = true,
+    enable = false,
     config = function(on_attach, capabilities)
-      return {
-        root_dir = util.root_pattern('rome.json', 'node_modules/rome', 'node_modules/@rometools'),
+      lspconfig.rome.setup({
+        root_dir = util.root_pattern("rome.json"),
         on_attach,
         capabilities,
-      }
+      })
     end
   },
   {
@@ -30,7 +32,7 @@ return {
     server_name = "ltex",
     enable = true,
     config = function(on_attach, capabilities)
-      return {
+      lspconfig.ltex.setup({
         filetypes = { "markdown", "text", "gitcommit" },
         flags = { debounce_text_changes = 500 },
         settings = {
@@ -40,7 +42,7 @@ return {
         },
         on_attach,
         capabilities,
-      }
+      })
     end
   },
   {
@@ -48,10 +50,10 @@ return {
     server_name = 'teal_ls',
     enable = true,
     config = function(on_attach, capabilities)
-      return {
+      lspconfig.teal_ls.setup({
         on_attach,
         capabilities
-      }
+      })
     end
   },
   {
@@ -59,11 +61,11 @@ return {
     server_name = 'metals',
     enable = true,
     config = function(on_attach, capabilities)
-      return {
+      lspconfig.metals.setup({
         root_dir = util.root_pattern("build.sbt", "build.sc", "build.gradle", "pom.xml", "*.scala"),
         on_attach,
-        capabilities
-      }
+        capabilities,
+      })
     end
   },
   {
@@ -71,22 +73,22 @@ return {
     server_name = 'jdtls',
     enable = true,
     config = function(on_attach, capabilities)
-      return {
+      lspconfig.jdtls.setup({
         on_attach,
-        capabilities
-      }
+        capabilities,
+      })
     end
   },
   {
     package_name = 'deno',
     server_name = 'denols',
-    enable = false,
+    enable = true,
     config = function(on_attach, capabilities)
-      return {
+      lspconfig.denols.setup({
         root_dir = util.root_pattern('deno.json'),
         on_attach,
         capabilities
-      }
+      })
     end
   },
   {
@@ -94,10 +96,10 @@ return {
     server_name = 'intelephense',
     enable = true,
     config = function(on_attach, capabilities)
-      return {
+      lspconfig.intelephense.setup({
         on_attach,
         capabilities
-      }
+      })
     end
   },
   {
@@ -105,10 +107,10 @@ return {
     server_name = 'bashls',
     enable = true,
     config = function(on_attach, capabilities)
-      return {
+      lspconfig.bashls.setup({
         on_attach,
         capabilities
-      }
+      })
     end
   },
   {
@@ -116,21 +118,21 @@ return {
     server_name = 'html',
     enable = true,
     config = function(on_attach, capabilities)
-      return {
+      lspconfig.html.setup({
         on_attach,
         capabilities
-      }
+      })
     end
   },
   {
     package_name = 'haskell-language-server',
     server_name = 'hls',
-    enable = true,
+    enable = false,
     config = function(on_attach, capabilities)
-      return {
+      lspconfig.hls.setup({
         on_attach,
         capabilities
-      }
+      })
     end
   },
   {
@@ -138,10 +140,10 @@ return {
     server_name = 'rust_analyzer',
     enable = true,
     config = function(on_attach, capabilities)
-      return {
+      lspconfig.rust_analyzer.setup({
         on_attach,
         capabilities
-      }
+      })
     end
   },
   {
@@ -149,10 +151,10 @@ return {
     server_name = 'yamlls',
     enable = true,
     config = function(on_attach, capabilities)
-      return {
+      lspconfig.yamlls.setup({
         on_attach,
         capabilities
-      }
+      })
     end
   },
   {
@@ -160,7 +162,7 @@ return {
     server_name = 'tsserver',
     enable = true,
     config = function(on_attach, capabilities)
-      return {
+      lspconfig.tsserver.setup({
         root_dir = util.root_pattern('package.json'),
         preferences = {
           quotePreference = 'single',
@@ -169,7 +171,7 @@ return {
         },
         on_attach,
         capabilities,
-      }
+      })
     end
   },
   {
@@ -177,10 +179,10 @@ return {
     server_name = 'vimls',
     enable = true,
     config = function(on_attach, capabilities)
-      return {
+      lspconfig.vimls.setup({
         on_attach,
         capabilities
-      }
+      })
     end
   },
   {
@@ -188,10 +190,10 @@ return {
     server_name = 'volar',
     enable = true,
     config = function(on_attach, capabilities)
-      return {
+      lspconfig.volar.setup({
         on_attach,
         capabilities
-      }
+      })
     end
   },
   {
@@ -199,11 +201,11 @@ return {
     server_name = 'eslint',
     enable = true,
     config = function(on_attach, capabilities)
-      return {
+      lspconfig.eslint.setup({
         root_dir = util.root_pattern('.eslintrc.json'),
         on_attach,
         capabilities
-      }
+      })
     end
   },
   {
@@ -212,7 +214,7 @@ return {
     enable = true,
     config = function(on_attach, capabilities)
       local status_schmeastore_ok, schemastore = pcall(require, 'schemastore')
-      return {
+      lspconfig.jsonls.setup({
         on_attach,
         capabilities,
         settings = {
@@ -227,7 +229,7 @@ return {
             validate = { enable = true }
           }
         }
-      }
+      })
     end,
   },
   {
@@ -235,10 +237,10 @@ return {
     server_name = 'lua_ls',
     enable = true,
     config = function(on_attach, capabilities)
-      return {
+      lspconfig.lua_ls.setup({
         on_attach,
         capabilities
-      }
+      })
     end
   },
   {
@@ -246,10 +248,10 @@ return {
     server_name = 'pyright',
     enable = true,
     config = function(on_attach, capabilities)
-      return {
+      lspconfig.pyright.setup({
         on_attach,
         capabilities
-      }
+      })
     end
   },
   {
@@ -257,10 +259,10 @@ return {
     server_name = 'sqls',
     enable = true,
     config = function(on_attach, capabilities)
-      return {
+      lspconfig.sqls.setup({
         on_attach,
         capabilities
-      }
+      })
     end
   },
   {
@@ -268,10 +270,10 @@ return {
     server_name = 'cssls',
     enable = true,
     config = function(on_attach, capabilities)
-      return {
+      lspconfig.cssls.setup({
         on_attach,
         capabilities
-      }
+      })
     end
   },
   {
@@ -279,10 +281,10 @@ return {
     server_name = 'zls',
     enable = true,
     config = function(on_attach, capabilities)
-      return {
+      lspconfig.zls.setup({
         on_attach,
         capabilities
-      }
+      })
     end
   },
   {
@@ -290,10 +292,10 @@ return {
     server_name = 'diagnosticls',
     enable = true,
     config = function(on_attach, capabilities)
-      return {
+      lspconfig.diagnosticls.setup({
         on_attach,
         capabilities
-      }
+      })
     end
   },
   {
@@ -301,10 +303,10 @@ return {
     server_name = 'clangd',
     enable = true,
     config = function(on_attach, capabilities)
-      return {
+      lspconfig.clangd.setup({
         on_attach,
         capabilities
-      }
+      })
     end
   },
   {
@@ -312,10 +314,10 @@ return {
     server_name = 'cmake',
     enable = true,
     config = function(on_attach, capabilities)
-      return {
+      lspconfig.cmake.setup({
         on_attach,
         capabilities
-      }
+      })
     end
   },
   {
@@ -323,10 +325,10 @@ return {
     server_name = 'dockerls',
     enable = true,
     config = function(on_attach, capabilities)
-      return {
+      lspconfig.dockerls.setup({
         on_attach,
         capabilities
-      }
+      })
     end
   },
   {
@@ -334,10 +336,10 @@ return {
     server_name = 'emmet_ls',
     enable = true,
     config = function(on_attach, capabilities)
-      return {
+      lspconfig.emmet_ls.setup({
         on_attach,
         capabilities
-      }
+      })
     end
   },
   {
@@ -345,10 +347,10 @@ return {
     server_name = 'gopls',
     enable = true,
     config = function(on_attach, capabilities)
-      return {
+      lspconfig.gopls.setup({
         on_attach,
         capabilities
-      }
+      })
     end
   },
   {
@@ -356,10 +358,10 @@ return {
     server_name = 'taplo',
     enable = true,
     config = function(on_attach, capabilities)
-      return {
+      lspconfig.taplo.setup({
         on_attach,
         capabilities
-      }
+      })
     end
   },
   {
@@ -368,11 +370,11 @@ return {
     enable = true,
     config = function(on_attach, capabilities)
       local pid = vim.fn.getpid()
-      return {
+      lspconfig.omnisharp.setup({
         cmd = { 'omnisharp', '--languageserver', '--hostPID', tostring(pid) },
         on_attach,
         capabilities,
-      }
+      })
     end
   }
 }

@@ -1,18 +1,27 @@
 local M = {}
 
-M.setup = function()
-  local status_cmp_ok, cmp = pcall(require, "cmp")
-  local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+---checks if emmet_ls is available and active in the buffer
+---@return boolean true if available, false otherwise
+local is_emmet_active = function()
+  local clients = vim.lsp.buf_get_clients()
 
-  if not status_cmp_ok then
-    return
+  for _, client in pairs(clients) do
+    if client.name == "emmet_ls" then
+      return true
+    end
   end
+  return false
+end
+
+M.setup = function()
+  local _, cmp = pcall(require, "cmp")
+  local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+  local lspkind = require('lspkind')
+
   local status_luasnip_ok, luasnip = pcall(require, "luasnip")
   if not status_luasnip_ok then
     return
   end
-
-  local lspkind = require('lspkind')
 
   cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
 
@@ -24,20 +33,14 @@ M.setup = function()
     path = "[Path]",
     vsnip = "[Snippet]",
     luasnip = "[Snippet]",
+    copilot = "[Copilot]"
   }
-
-  local duplicates = {
-    buffer = 1,
-    path = 1,
-    nvim_lsp = 0,
-    luasnip = 1,
-  }
-
-  local duplicates_default = 0
 
   lspkind.init({
     preset = 'codicons',
     symbol_map = {
+      TabNine = "󰋙",
+      Copilot = "",
       Text = "",
       Method = "",
       Function = "",
@@ -67,9 +70,32 @@ M.setup = function()
   })
 
   cmp.setup({
+    sorting = {
+      priority_weight = 10,
+      comparators = {
+        cmp.config.compare.offset,
+        cmp.config.compare.exact,
+        cmp.config.compare.score,
+        cmp.config.compare.recently_used,
+        cmp.config.compare.locality,
+        require('cmp_tabnine.compare'),
+        cmp.config.compare.kind,
+        cmp.config.compare.sort_text,
+        cmp.config.compare.length,
+        cmp.config.compare.order,
+      },
+    },
+    snippet = {
+      expand = function(args)
+        require("luasnip").lsp_expand(args.body)
+      end,
+    },
     confirm_opts = {
       behavior = cmp.ConfirmBehavior.Replace,
       select = false,
+    },
+    view = {
+      entries = 'custom',
     },
     completion = {
       keyword_length = 1,
@@ -79,22 +105,16 @@ M.setup = function()
       ghost_text = true,
       native_menu = false,
     },
-    view = {
-      entries = 'custom'
+    native = {
+      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
     },
     formatting = {
       format = function(entry, vim_item)
-        vim_item.kind = (lspkind.presets.default[vim_item.kind] or '') .. ' ' .. vim_item.kind
+        vim_item.kind = (lspkind.symbolic(vim_item.kind, { mode = "symbol" })) .. ' ' .. vim_item.kind
         vim_item.menu = source_names[entry.source.name]
-        vim_item.dup = duplicates[entry.source.name] or duplicates_default
 
         return vim_item
-      end,
-    },
-    snippet = {
-      expand = function(args)
-        require("luasnip").lsp_expand(args.body)
-      end,
+      end
     },
     window = {
       completion = cmp.config.window.bordered(),
@@ -151,11 +171,7 @@ M.setup = function()
           return
         end
 
-        if not luasnip.jump(1) then
-          fallback()
-        else
-          fallback()
-        end
+        fallback()
       end),
     },
   })
@@ -163,7 +179,7 @@ M.setup = function()
   cmp.setup.cmdline('/', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
-      { name = 'buffer' }
+      { name = 'buffer' },
     }
   })
 

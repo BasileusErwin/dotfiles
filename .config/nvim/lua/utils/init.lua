@@ -20,4 +20,17 @@ M.load_json = function()
   return vim.json.decode(data)
 end
 
+M.root_pattern_in_root = function(...)
+  local patterns = {...}
+  local root = vim.loop.cwd()
+
+  for _, pattern in ipairs(patterns) do
+    if vim.fn.glob(root .. "/" .. pattern) ~= "" then
+      return root
+    end
+  end
+
+  return nil
+end
+
 return M

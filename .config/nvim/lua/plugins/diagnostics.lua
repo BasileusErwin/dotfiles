@@ -6,23 +6,10 @@ return {
     local dlsconfig = require('diagnosticls-configs')
 
     local fs = require('diagnosticls-configs.fs')
-    local util = require('lspconfig.util')
 
     -- JS|TS
     local eslint = require('diagnosticls-configs.linters.eslint')
     local prettier = require('diagnosticls-configs.formatters.prettier')
-
-    -- lua
-    local stylua = require('diagnosticls-configs.formatters.stylua')
-    local luacheck = require('diagnosticls-configs.linters.luacheck')
-
-    -- Go
-    local golangci_lint = require('diagnosticls-configs.linters.golangci_lint')
-    local gofumpt = require('diagnosticls-configs.formatters.gofumpt')
-
-    -- Python
-    local pylint = require('diagnosticls-configs.linters.pylint')
-    local black = require('diagnosticls-configs.formatters.black')
 
     prettier = vim.tbl_extend('force', prettier, {
       sourceName = 'prettier',
@@ -79,18 +66,6 @@ return {
       ['json'] = {
         formatter = { prettier }
       },
-      ['lua'] = {
-        linter = { luacheck },
-        formatter = { stylua }
-      },
-      ['go'] = {
-        linter = { golangci_lint },
-        formatter = { gofumpt }
-      },
-      ['python'] = {
-        linter = { pylint },
-        formatter = { black }
-      }
     }
   end
 }

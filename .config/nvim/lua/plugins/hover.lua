@@ -19,7 +19,12 @@ return {
   config = function(_, opts)
     require("hover").setup(opts)
 
-    vim.keymap.set("n", "K", require("hover").hover)
+    if vim.api.nvim_buf_get_option(vim.api.nvim_get_current_buf(), 'filetype') == 'rust' then
+      vim.keymap.set("n", "K", require("rust-tools").hover_actions.hover_actions())
+    else 
+      vim.keymap.set("n", "K", require("hover").hover)
+    end
+
     vim.keymap.set("n", "gK", require("hover").hover_select)
   end
 }

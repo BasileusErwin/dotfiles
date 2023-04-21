@@ -123,6 +123,7 @@ M.setup = function()
       },
       lualine_x = {
         lsp_client_progress,
+        'tabnine',
         { lsp_client, icon = ' ' },
       },
       lualine_y = { 'filename', 'encoding', filetype },
