@@ -1,3 +1,4 @@
+
 local g = vim.g
 
 if g.vscode then
@@ -104,7 +105,7 @@ local config = {
       format = {
         enabled = true,
         settings = {
-          url = vim.fn.stdpath("config") .. "/intellij-java-google-style.xml",
+          url = vim.fn.stdpath("config") .. "/after/ftplugin/intellij-java-google-style.xml",
           profile = "GoogleStyle",
         },
       },

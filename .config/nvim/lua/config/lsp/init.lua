@@ -45,10 +45,6 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
   })
 
 M.setup = function()
-  local nvim_lsp = require('lspconfig')
-
-  local util = require('lspconfig.util')
-
   M.opts = {
     on_attach = M.on_attach,
     capabilities = M.capabilities,
@@ -70,6 +66,13 @@ M.setup = function()
       server.config(M.on_attach, M.capabilities)
     end
   end
+
+  require('lsp-colors').setup({
+    Error = '#db4b4b',
+    Warning = '#e0af68',
+    Information = '#0db9d7',
+    Hint = '#10B981'
+  })
 end
 
 return M

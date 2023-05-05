@@ -2,9 +2,6 @@ local M = {}
 
 M.setup = function()
   local status_ok, treesitter_config = pcall(require, 'nvim-treesitter.configs')
-  if not status_ok then
-    return
-  end
 
   local config = {
     ensure_installed = "all",
@@ -84,7 +81,7 @@ M.setup = function()
 
   treesitter_config.setup(vim.tbl_deep_extend('force', config, {}))
 
-  local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+  local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
   parser_config.tsx.filetype_to_parsername = { "javascript", "javascript.jsx", "typescript.tsx" }
 end
 

@@ -1,13 +1,30 @@
 return {
-  {
-    'Shatur/neovim-ayu',
-    lazy = true,
-    event = 'VeryLazy',
-  },
+  { 'EdenEast/nightfox.nvim' },
+  { 'frenzyexists/aquarium-vim' },
+  { 'sainnhe/everforest' },
   {
     'navarasu/onedark.nvim',
     lazy = true,
     event = 'VeryLazy',
+    opts = {
+      style = vim.g.config.theme.style,
+      transparent = vim.g.config.theme.transparent,
+      code_style = {
+        comments = 'italic',
+        keywords = 'bold',
+        functions = 'bold',
+        strings = 'italic',
+        variables = 'none'
+      },
+      lualine = {
+        transparent = vim.g.config.theme.lualine.transparent,
+      },
+      diagnostics = {
+        darker = true,       -- darker colors for diagnostic
+        undercurl = true,    -- use undercurl instead of underline for diagnostics
+        background = true,   -- use background color for virtual text
+      },
+    }
   },
   {
     'marko-cerovac/material.nvim'
@@ -29,6 +46,12 @@ return {
     'Shatur/neovim-ayu',
     lazy = true,
     event = 'VeryLazy',
+    name = 'ayu',
+    config = function()
+      require('ayu').setup({
+        mirage = vim.g.config.theme.style == 'mirage',
+      })
+    end,
   },
   {
     'ghifarit53/tokyonight-vim',

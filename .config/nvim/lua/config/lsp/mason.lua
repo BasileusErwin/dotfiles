@@ -5,7 +5,7 @@ local get_package_name = function()
   local package_name = {}
 
   for _, server in ipairs(servers) do
-    if server.enable or not server.package_name ~= nil then
+    if server.enable and not server.package_name ~= nil then
       table.insert(package_name, server.package_name)
     end
   end
@@ -14,12 +14,12 @@ local get_package_name = function()
 end
 
 M.setup = function()
-  local status_tool_ok, mason_tool = pcall(require, 'mason-tool-installer')
+  local _, mason_tool = pcall(require, 'mason-tool-installer')
 
   mason_tool.setup({
     ensure_installed = get_package_name(),
     run_on_start = true,
-    auto_update = true,
+    auto_update = false,
     start_delay = 3000
   })
 end

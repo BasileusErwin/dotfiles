@@ -75,6 +75,7 @@
     (window_class: "swing-App", window_title: None, spawn_on_tag: None, spawn_on_workspace: None, spawn_floating: true, spawn_sticky: None, spawn_fullscreen: None, spawn_as_type: None),
     (window_class: "Gcr-prompter", window_title: None, spawn_on_tag: None, spawn_on_workspace: None, spawn_floating: true, spawn_sticky: None, spawn_fullscreen: None, spawn_as_type: None),
     (window_class: "Steam", window_title: None, spawn_on_tag: None, spawn_on_workspace: None, spawn_floating: true, spawn_sticky: None, spawn_fullscreen: None, spawn_as_type: None),
+    (window_class: "DBeaver", window_title: None, spawn_on_tag: 6, spawn_on_workspace: None, spawn_floating: false, spawn_sticky: None, spawn_fullscreen: None, spawn_as_type: None),
   ],
   keybind: [
     (command: GotoTag, value: "1", modifier: ["modkey"], key: "1"),

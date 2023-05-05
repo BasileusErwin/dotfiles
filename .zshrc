@@ -7,7 +7,7 @@ if [[ $USER != "root" ]]; then
   export STARSHIP_CONFIG=~/.config/starship.toml
   eval "$(starship init zsh)"
 
-  export PATH=$HOME/bin:/usr/local/bin:$$HOME/.deno/bin:$HOME/.cargo/bin:$HOME/.spicetify:$HOME/.local/share/coursier/bin:$PATH
+  export PATH=$HOME/bin:/usr/local/bin:$$HOME/.deno/bin:$HOME/.cargo/bin:$HOME/.spicetify:$HOME/.local/share/coursier/bin:$HOME/.local/bin/:$PATH
   fpath=(~/.zsh $fpath)
   autoload -Uz compinit
   compinit -u
@@ -34,6 +34,7 @@ plugins=(
 	zsh-syntax-highlighting
 	zsh-autosuggestions
   zsh-interactive-cd
+  urltools
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -42,7 +43,7 @@ source $ZSH/oh-my-zsh.sh
 
 # ----| Commands |----
 alias vi="nvim $1"
-alias v="nvim ."
+alias vim="nvim ."
 alias mk="mkdir $1"
 alias zathura="nohup zathura $1"
 alias ls="exa --group-directories-first --icons"
@@ -127,4 +128,5 @@ alias dot="git --git-dir ~/.dotfiles --work-tree ~"
 
 alias s3="aws s3"
 
-alias aws-houlak="awsume houlak -s"
+alias aws-houlak="awsume HOULAK -s"
+alias aws-my="awsume MY_AWS -s"

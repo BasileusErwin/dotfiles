@@ -100,7 +100,7 @@ M.setup = function(_, conf)
 
     o = { ':SymbolsOutline<CR>', 'Symbols Outline' },
 
-    n = {
+    i = {
       name = 'Notes Obsidian',
       s = { '<cmd>ObsidianSearch<CR>', 'Grep notes' },
       n = { '<cmd>ObsidianNew<CR>', 'New note' },

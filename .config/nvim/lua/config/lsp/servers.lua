@@ -1,11 +1,61 @@
 local util = require('lspconfig.util')
-local utils = require('utils')
 local lspconfig = require("lspconfig")
 
 return {
   {
+    package_name = 'tailwindcss-language-server',
+    enable = true,
+    config = function(on_attach, capabilities)
+      lspconfig.tailwindcss.setup({
+        on_attach,
+        capabilities,
+        filetypes = {
+          "css",
+          "scss",
+          "sass",
+          "postcss",
+          "html",
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact",
+          "svelte",
+          "vue",
+          "rust",
+        },
+        init_options = {
+          userLanguages = {
+            rust = "html",
+          },
+        },
+        root_dir = util.root_pattern('tailwind.config.js', 'tailwind.config.ts', 'postcss.config.js',
+          'postcss.config.ts', 'windi.config.ts'),
+      })
+    end
+  },
+  {
+    package_name = 'vue-language-server',
+    enable = true,
+    config = function(on_attach, capabilities)
+      lspconfig.volar.setup({
+        on_attach,
+        capabilities,
+      })
+    end
+  },
+  {
+    package_name = 'vls',
+    enable = true,
+    config = function(on_attach, capabilities)
+      lspconfig.vls.setup({
+        root_dir = util.root_pattern("v.mod", ".git"),
+        on_attach,
+        capabilities,
+      })
+    end
+  },
+  {
     package_name = "prisma-language-server",
-    server_name = "prismals",
     enable = true,
     config = function(on_attach, capabilities)
       lspconfig.prismals.setup({
@@ -17,8 +67,7 @@ return {
   },
   {
     package_name = 'rome',
-    server_name = 'rome',
-    enable = false,
+    enable = true,
     config = function(on_attach, capabilities)
       lspconfig.rome.setup({
         root_dir = util.root_pattern("rome.json"),
@@ -29,7 +78,6 @@ return {
   },
   {
     package_name = "ltex-ls",
-    server_name = "ltex",
     enable = true,
     config = function(on_attach, capabilities)
       lspconfig.ltex.setup({
@@ -47,7 +95,6 @@ return {
   },
   {
     package_name = 'teal-language-server',
-    server_name = 'teal_ls',
     enable = true,
     config = function(on_attach, capabilities)
       lspconfig.teal_ls.setup({
@@ -58,7 +105,6 @@ return {
   },
   {
     package_name = nil,
-    server_name = 'metals',
     enable = true,
     config = function(on_attach, capabilities)
       lspconfig.metals.setup({
@@ -70,7 +116,6 @@ return {
   },
   {
     package_name = 'jdtls',
-    server_name = 'jdtls',
     enable = true,
     config = function(on_attach, capabilities)
       lspconfig.jdtls.setup({
@@ -81,7 +126,6 @@ return {
   },
   {
     package_name = 'deno',
-    server_name = 'denols',
     enable = true,
     config = function(on_attach, capabilities)
       lspconfig.denols.setup({
@@ -93,7 +137,6 @@ return {
   },
   {
     package_name = 'intelephense',
-    server_name = 'intelephense',
     enable = true,
     config = function(on_attach, capabilities)
       lspconfig.intelephense.setup({
@@ -104,7 +147,6 @@ return {
   },
   {
     package_name = 'bash-language-server',
-    server_name = 'bashls',
     enable = true,
     config = function(on_attach, capabilities)
       lspconfig.bashls.setup({
@@ -115,7 +157,6 @@ return {
   },
   {
     package_name = 'html-lsp',
-    server_name = 'html',
     enable = true,
     config = function(on_attach, capabilities)
       lspconfig.html.setup({
@@ -126,7 +167,6 @@ return {
   },
   {
     package_name = 'haskell-language-server',
-    server_name = 'hls',
     enable = false,
     config = function(on_attach, capabilities)
       lspconfig.hls.setup({
@@ -137,7 +177,6 @@ return {
   },
   {
     package_name = 'rust-analyzer',
-    server_name = 'rust_analyzer',
     enable = true,
     config = function(on_attach, capabilities)
       lspconfig.rust_analyzer.setup({
@@ -148,7 +187,6 @@ return {
   },
   {
     package_name = 'yaml-language-server',
-    server_name = 'yamlls',
     enable = true,
     config = function(on_attach, capabilities)
       lspconfig.yamlls.setup({
@@ -159,7 +197,6 @@ return {
   },
   {
     package_name = 'typescript-language-server',
-    server_name = 'tsserver',
     enable = true,
     config = function(on_attach, capabilities)
       lspconfig.tsserver.setup({
@@ -176,7 +213,6 @@ return {
   },
   {
     package_name = 'vim-language-server',
-    server_name = 'vimls',
     enable = true,
     config = function(on_attach, capabilities)
       lspconfig.vimls.setup({
@@ -186,19 +222,7 @@ return {
     end
   },
   {
-    package_name = 'vetur-vls',
-    server_name = 'volar',
-    enable = true,
-    config = function(on_attach, capabilities)
-      lspconfig.volar.setup({
-        on_attach,
-        capabilities
-      })
-    end
-  },
-  {
     package_name = 'eslint-lsp',
-    server_name = 'eslint',
     enable = true,
     config = function(on_attach, capabilities)
       lspconfig.eslint.setup({
@@ -210,7 +234,6 @@ return {
   },
   {
     package_name = 'json-lsp',
-    server_name = 'jsonls',
     enable = true,
     config = function(on_attach, capabilities)
       local status_schmeastore_ok, schemastore = pcall(require, 'schemastore')
@@ -234,18 +257,23 @@ return {
   },
   {
     package_name = 'lua-language-server',
-    server_name = 'lua_ls',
     enable = true,
     config = function(on_attach, capabilities)
       lspconfig.lua_ls.setup({
         on_attach,
-        capabilities
+        capabilities,
+        settings = {
+          Lua = {
+            completion = {
+              callSnippet = "Replace"
+            }
+          }
+        }
       })
     end
   },
   {
     package_name = 'pyright',
-    server_name = 'pyright',
     enable = true,
     config = function(on_attach, capabilities)
       lspconfig.pyright.setup({
@@ -255,11 +283,10 @@ return {
     end
   },
   {
-    package_name = 'sqls',
-    server_name = 'sqls',
+    package_name = 'sqlls',
     enable = true,
     config = function(on_attach, capabilities)
-      lspconfig.sqls.setup({
+      lspconfig.sqlls.setup({
         on_attach,
         capabilities
       })
@@ -267,7 +294,6 @@ return {
   },
   {
     package_name = 'css-lsp',
-    server_name = 'cssls',
     enable = true,
     config = function(on_attach, capabilities)
       lspconfig.cssls.setup({
@@ -278,7 +304,6 @@ return {
   },
   {
     package_name = 'zls',
-    server_name = 'zls',
     enable = true,
     config = function(on_attach, capabilities)
       lspconfig.zls.setup({
@@ -289,7 +314,6 @@ return {
   },
   {
     package_name = 'diagnostic-languageserver',
-    server_name = 'diagnosticls',
     enable = true,
     config = function(on_attach, capabilities)
       lspconfig.diagnosticls.setup({
@@ -300,7 +324,6 @@ return {
   },
   {
     package_name = 'clangd',
-    server_name = 'clangd',
     enable = true,
     config = function(on_attach, capabilities)
       lspconfig.clangd.setup({
@@ -311,7 +334,6 @@ return {
   },
   {
     package_name = 'cmake-language-server',
-    server_name = 'cmake',
     enable = true,
     config = function(on_attach, capabilities)
       lspconfig.cmake.setup({
@@ -322,7 +344,6 @@ return {
   },
   {
     package_name = 'dockerfile-language-server',
-    server_name = 'dockerls',
     enable = true,
     config = function(on_attach, capabilities)
       lspconfig.dockerls.setup({
@@ -333,10 +354,29 @@ return {
   },
   {
     package_name = 'emmet-ls',
-    server_name = 'emmet_ls',
     enable = true,
     config = function(on_attach, capabilities)
       lspconfig.emmet_ls.setup({
+        filetypes = {
+          "css",
+          "eruby",
+          "html",
+          "javascript",
+          "javascriptreact",
+          "less",
+          "sass",
+          "scss",
+          "svelte",
+          "pug",
+          "typescriptreact",
+          "vue",
+          "rust",
+        },
+        init_options = {
+          userLanguages = {
+            rust = "html",
+          },
+        },
         on_attach,
         capabilities
       })
@@ -344,7 +384,6 @@ return {
   },
   {
     package_name = 'gopls',
-    server_name = 'gopls',
     enable = true,
     config = function(on_attach, capabilities)
       lspconfig.gopls.setup({
@@ -355,7 +394,6 @@ return {
   },
   {
     package_name = 'taplo',
-    server_name = 'taplo',
     enable = true,
     config = function(on_attach, capabilities)
       lspconfig.taplo.setup({
@@ -366,7 +404,6 @@ return {
   },
   {
     package_name = "omnisharp",
-    server_name = "omnisharp",
     enable = true,
     config = function(on_attach, capabilities)
       local pid = vim.fn.getpid()

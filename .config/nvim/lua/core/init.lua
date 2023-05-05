@@ -6,6 +6,4 @@ require('core.keymaps')
 require('core.settings')
 require('core.lazy')
 
-vim.cmd([[ ]] .. "colorscheme " .. g.config.theme)
-
-
+vim.cmd.colorscheme(g.config.theme.name)

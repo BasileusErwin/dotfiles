@@ -4,7 +4,7 @@
     "style": "dark",
     "transparent": true,
     "lualine": {
-      "theme": "onedark",
+      "theme": "ayu",
       "transparent": true
     }
   }

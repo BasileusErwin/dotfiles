@@ -26,6 +26,7 @@ return {
     },
     'jose-elias-alvarez/null-ls.nvim',
     'b0o/schemastore.nvim',
+    { 'folke/lsp-colors.nvim' },
     {
       "j-hui/fidget.nvim",
       enabled = false,

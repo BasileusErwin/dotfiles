@@ -101,7 +101,7 @@ M.setup = function()
 
   return {
     options = {
-      theme = 'auto',
+      theme = vim.g.config.theme.lualine.theme,
       icons_enabled = true,
       component_separators = { left = '', right = '' },
       section_separators = { left = '', right = '' },
