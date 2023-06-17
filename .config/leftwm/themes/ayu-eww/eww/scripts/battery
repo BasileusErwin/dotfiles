@@ -12,40 +12,40 @@ get_icon() {
 
   case $PERCENTAGE in
     9[0-9]|100)
-        echo ""
+        echo " "
       ;;
     8[0-9])
-        echo ""
+        echo " "
       ;;
     7[0-9])
-        echo ""
+        echo " "
       ;;
     6[0-9])
-        echo ""
+        echo " "
       ;;
     5[0-9])
-        echo ""
+        echo " "
       ;;
     4[0-9])
-        echo ""
+        echo " "
       ;;
     3[0-9])
-        echo ""
+        echo " "
       ;;
     2[0-9])
-        echo ""
+        echo " "
         notify-send -u critical "Battery Low" "Connect Charger"
       ;;
     1[0-9])
         notify-send -u critical "Battery Low" "Connect Charger"
-        echo ""
+        echo " "
       ;;
     [1-9])
         echo ""
         notify-send -u critical "Battery Low" "Connect Charger"
       ;;
     *)
-        echo ""
+        echo ""
       ;;
   esac
 }

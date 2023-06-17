@@ -20,7 +20,7 @@ if [[ $HDMI_CONNECTED ]]; then
   notify-send "Monitor connected"
 
   eww -c "$THEME_CURRENT/eww" open monitor
-  eww -c "$THEME_CURRENT/eww" open laptop
+  eww -c "$THEME_CURRENT/eww" open laptop-with-monitor
   eww -c "$THEME_CURRENT/eww" open trayer-laptop
   eww -c "$THEME_CURRENT/eww" open trayer-monitor
 

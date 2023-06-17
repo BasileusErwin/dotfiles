@@ -120,6 +120,7 @@ M.setup = function()
           navic.get_location,
           cond = navic.is_available
         },
+        require('pomodoro').statusline
       },
       lualine_x = {
         lsp_client_progress,

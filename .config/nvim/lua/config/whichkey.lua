@@ -1,19 +1,19 @@
 local M = {}
 
 M.opts = {
-  mode = 'n', -- Normal mode
+  mode = 'n',     -- Normal mode
   prefix = '<leader>',
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
+  buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true,  -- use `silent` when creating keymaps
   noremap = true, -- use `noremap` when creating keymaps
   nowait = false, -- use `nowait` when creating keymaps
 }
 
 M.v_opts = {
-  mode = "v", -- Visual mode
+  mode = "v",     -- Visual mode
   prefix = "<leader>",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
+  buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true,  -- use `silent` when creating keymaps
   noremap = true, -- use `noremap` when creating keymaps
   nowait = false, -- use `nowait` when creating keymaps
 }
@@ -23,9 +23,39 @@ M.code_keymap = function(whichkey)
 
   function CodeRunner()
     local bufnr = vim.api.nvim_get_current_buf()
-    local ft = vim.api.nvim_buf_get_option(bufnr, 'filetype')
+    local file_type = vim.api.nvim_buf_get_option(bufnr, 'filetype')
     local keymap = nil
-    if ft == 'rust' then
+    local visual_keymap = nil
+
+    if file_type == 'http' then
+      keymap = {
+        name = 'HTTP Client',
+        r = {
+          '<Plug>RestNvim<CR>',
+          'Run the request under the cursor',
+        },
+        p = {
+          '<Plug>RestNivmPreview<CR>',
+          'Preview the request cURL command',
+        },
+        l = {
+          '<Plug>RestNvimLast<CR>',
+          'Re-run the last request',
+        },
+      }
+
+      whichkey.register(
+        { l = keymap },
+        {
+          mode = "v", -- Visual mode
+          prefix = "<leader>",
+          buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+          silent = true, -- use `silent` when creating keymaps
+          noremap = true, -- use `noremap` when creating keymaps
+          nowait = false, -- use `nowait` when creating keymaps
+        }
+      )
+    elseif file_type == 'rust' then
       keymap = {
         name = 'Rust',
         a = {
@@ -45,12 +75,12 @@ M.code_keymap = function(whichkey)
           'Expand Macro'
         }
       }
-    elseif ft == 'go' then
+    elseif file_type == 'go' then
       keymap = {
         name = 'Code',
         r = { '<cmd>GoRun<cr>', 'Run' },
       }
-    elseif ft == 'jdtls' then
+    elseif file_type == 'jdtls' then
       keymap = {
         name = 'Code',
         o = { '<cmd>lua require("jdtls").organize_imports()<CR>', 'Sort Imports' },
@@ -63,6 +93,7 @@ M.code_keymap = function(whichkey)
         { l = keymap },
         { mode = 'n', silent = true, noremap = true, buffer = bufnr, prefix = '<leader>' }
       )
+    elseif visual_keymap ~= nil then
     end
   end
 end
@@ -87,10 +118,10 @@ M.setup = function(_, conf)
       w = { '<Cmd>BufferLineSortByWindowNumber<CR>', 'Sort buffer by Window Number' },
     },
 
-    e = {
-      '<cmd>NvimTreeFindFileToggle<CR>',
-      'Explorer',
-    },
+    -- e = {
+    --   '<cmd>NvimTreeFindFileToggle<CR>',
+    --   'Explorer',
+    -- },
 
     t = {
       name = 'Terminal',

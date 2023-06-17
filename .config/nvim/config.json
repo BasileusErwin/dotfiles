@@ -1,11 +1,62 @@
 {
   "theme": {
-    "name":"onedark",
+    "name": "ayu-dark",
     "style": "dark",
     "transparent": true,
     "lualine": {
-      "theme": "onedark",
+      "theme": "auto",
       "transparent": true
+    }
+  },
+  "icons": {
+    "diagnostics": {
+      "Error": "",
+      "Warn": "",
+      "Hint": "",
+      "Info": ""
+    },
+    "git": {
+      "added": "",
+      "modified": "",
+      "removed": ""
+    },
+    "kinds": {
+      "TabNine": "󰋙",
+      "Copilot": "",
+      "Array": "󰅪",
+      "Boolean": "",
+      "Class": "",
+      "Color": "",
+      "Constant": "",
+      "Constructor": "",
+      "Enum": "",
+      "EnumMember": "",
+      "Event": "",
+      "Field": "",
+      "File": "",
+      "Folder": "",
+      "Function": "",
+      "Interface": "",
+      "Key": "󰌆",
+      "Keyword": "󰌆",
+      "Method": "",
+      "Module": "",
+      "Namespace": "󰅩",
+      "Null": "",
+      "Number": "",
+      "Object": "",
+      "Operator": "",
+      "Package": "",
+      "Property": "",
+      "Reference": "",
+      "Snippet": "",
+      "String": "",
+      "Struct": "",
+      "Text": "󰦨",
+      "TypeParameter": "",
+      "Unit": "",
+      "Value": "󰎠",
+      "Variable": "󰫧"
     }
   }
 }

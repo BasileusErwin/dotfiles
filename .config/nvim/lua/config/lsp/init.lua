@@ -4,21 +4,6 @@ local servers = require('config.lsp.servers')
 vim.g.markdown_fenced_languages = {
   'ts=typescript'
 }
-vim.fn.sign_define('LspDiagnosticsSignError',
-  { texthl = 'LspDiagnosticsSignError', text = '', numhl = 'LspDiagnosticsSignError' }
-)
-vim.fn.sign_define(
-  'LspDiagnosticsSignWarning',
-  { texthl = 'LspDiagnosticsSignWarning', text = '', numhl = 'LspDiagnosticsSignWarning' }
-)
-vim.fn.sign_define(
-  'LspDiagnosticsSignHint',
-  { texthl = 'LspDiagnosticsSignHint', text = '', numhl = 'LspDiagnosticsSignHint' }
-)
-vim.fn.sign_define(
-  'LspDiagnosticsSignInformation',
-  { texthl = 'LspDiagnosticsSignInformation', text = '', numhl = 'LspDiagnosticsSignInformation' }
-)
 
 M.on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -73,6 +58,11 @@ M.setup = function()
     Information = '#0db9d7',
     Hint = '#10B981'
   })
+
+  for name, icon in pairs(vim.g.config.icons.diagnostics) do
+    name = "DiagnosticSign" .. name
+    vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
+  end
 end
 
 return M

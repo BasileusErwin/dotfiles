@@ -1,9 +1,8 @@
 return {
   'kyazdani42/nvim-tree.lua',
+  enabled = false,
   dependencies = {
-    'kyazdani42/nvim-web-devicons',
-    lazy = true,
-    opts = { default = true }
+    'nvim-tree/nvim-web-devicons'
   },
   name = 'nvim-tree',
   module = true,

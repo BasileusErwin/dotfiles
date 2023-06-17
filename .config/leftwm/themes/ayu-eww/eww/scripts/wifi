@@ -12,11 +12,11 @@ get_name() {
 
 get_icon() {
   if [[ $DEVICE == "ETHERNET" ]]; then
-    echo ""
+    echo "󰈀"
   elif [[ $DEVICE == "WIFI" ]]; then
     echo ""
   else
-    echo "睊"
+    echo "󱚵"
   fi
 }
 

@@ -7,13 +7,20 @@ return {
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-cmdline',
     'hrsh7th/nvim-cmp',
-    'L3MON4D3/LuaSnip',
+    {
+      'L3MON4D3/LuaSnip',
+      dependencies = {
+        'saadparwaiz1/cmp_luasnip',
+        'rafamadriz/friendly-snippets',
+      },
+       config = function ()
+          require("config.snip").setup()
+       end
+    },
     'hrsh7th/cmp-vsnip',
     'hrsh7th/vim-vsnip',
-    'saadparwaiz1/cmp_luasnip',
     'David-Kunz/cmp-npm',
     'Saecki/crates.nvim',
-    'rafamadriz/friendly-snippets',
     {
       'tzachar/cmp-tabnine',
       build = './install.sh',

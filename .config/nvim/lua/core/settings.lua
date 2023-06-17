@@ -1,4 +1,5 @@
 local api = vim.api
+local o = vim.o
 local g = vim.g
 local opt = vim.opt
 local wo = vim.wo
@@ -23,6 +24,11 @@ opt.timeoutlen = 300
 
 wo.number = true
 wo.relativenumber = true
+
+o.foldcolumn = '1' -- '0' is not bad
+o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+o.foldlevelstart = 99
+o.foldenable = true
 
 opt.laststatus = 0
 opt.autoindent = true
@@ -53,17 +59,11 @@ cmd([[
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank()
   augroup end
-]])
 
-cmd([[
-  set colorcolumn=110
-  set completeopt=menuone,noinsert,noselect
-  set autochdir
-  syntax enable
-  filetype on
-  filetype indent on
-  filetype plugin on
   set hlsearch!
+  setlocal foldmethod=indent
+  set nofoldenable
+  set foldlevel=99
 ]])
 
 if g.neovide then

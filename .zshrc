@@ -1,13 +1,11 @@
 export ZSH="$HOME/.oh-my-zsh"
 export TERM="xterm-256color"
-# export LD_LIBRARY_PATH=/usr/lib:/usr/lib64:$LD_LIBRARY_PATH
-
 
 if [[ $USER != "root" ]]; then
   export STARSHIP_CONFIG=~/.config/starship.toml
   eval "$(starship init zsh)"
 
-  export PATH=$HOME/bin:/usr/local/bin:$$HOME/.deno/bin:$HOME/.cargo/bin:$HOME/.spicetify:$HOME/.local/share/coursier/bin:$HOME/.local/bin/:$PATH
+  export PATH=$HOME/.nimble/bin:$HOME/bin:/usr/local/bin:$HOME/.deno/bin:$HOME/.cargo/bin:$HOME/.spicetify:$HOME/.local/share/coursier/bin:$HOME/.local/bin:$PATH
   fpath=(~/.zsh $fpath)
   autoload -Uz compinit
   compinit -u
@@ -16,9 +14,10 @@ if [[ $USER != "root" ]]; then
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
   [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
-fi
 
-#ZSH_THEME="spaceship"
+  # opam configuration
+  [[ ! -r /home/iperez/.opam/opam-init/init.zsh ]] || source /home/iperez/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+fi
 
 COMPLETION_WAITING_DOTS="true"
 
@@ -43,7 +42,7 @@ source $ZSH/oh-my-zsh.sh
 
 # ----| Commands |----
 alias vi="nvim $1"
-alias vim="nvim ."
+alias v="nvim ."
 alias mk="mkdir $1"
 alias zathura="nohup zathura $1"
 alias ls="exa --group-directories-first --icons"
@@ -61,8 +60,6 @@ alias c.='code .'
 
 alias grep="grep --color=auto"
 alias cat="bat --style=plain --paging=never"
-alias vi="nvim $1"
-alias v="nvim ."
 alias mk="mkdir $1"
 alias zathura="nohup zathura $1"
 alias ls="exa --group-directories-first --icons"
@@ -75,11 +72,14 @@ alias t="tree $1"
 alias paru="paru --skipreview --bottomup $1"
 
 alias up="docker compose up"
-alias upt="docker compose -f docker-compose.test.yml up"
+alias upt="docker compose -f docker-compose.test.yml up --abort-on-container-exit"
 alias down="docker compose down"
-alias downt="docker compose -f docker-compose.test.yml down"
+alias downt="docker compose -f docker-compose.test.yml down --abort-on-container-exit"
 
 # Git
+alias g="git"
+
+alias gclone="g clone"
 
 # Add
 alias gaa="git add -A"
@@ -120,13 +120,15 @@ alias grs='git rebase --skip'
 # Working Copy
 alias gd="git diff --no-ext-diff --cached"
 
+alias dot="g --git-dir ~/.dotfiles --work-tree ~"
+
 # Workspace
 alias w="cd ~/Workspace"
 alias wh="cd ~/Workspace/Houlak"
-
-alias dot="git --git-dir ~/.dotfiles --work-tree ~"
 
 alias s3="aws s3"
 
 alias aws-houlak="awsume HOULAK -s"
 alias aws-my="awsume MY_AWS -s"
+
+eval "$(atuin init zsh)"

@@ -1,27 +1,11 @@
 local M = {}
 
----checks if emmet_ls is available and active in the buffer
----@return boolean true if available, false otherwise
-local is_emmet_active = function()
-  local clients = vim.lsp.buf_get_clients()
-
-  for _, client in pairs(clients) do
-    if client.name == "emmet_ls" then
-      return true
-    end
-  end
-  return false
-end
-
 M.setup = function()
   local _, cmp = pcall(require, "cmp")
   local cmp_autopairs = require("nvim-autopairs.completion.cmp")
   local lspkind = require('lspkind')
 
-  local status_luasnip_ok, luasnip = pcall(require, "luasnip")
-  if not status_luasnip_ok then
-    return
-  end
+  local _, luasnip = pcall(require, "luasnip")
 
   cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
 
@@ -38,35 +22,7 @@ M.setup = function()
 
   lspkind.init({
     preset = 'codicons',
-    symbol_map = {
-      TabNine = "󰋙",
-      Copilot = "",
-      Text = "",
-      Method = "",
-      Function = "",
-      Constructor = "",
-      Field = "ﰠ",
-      Variable = "",
-      Class = "ﴯ",
-      Interface = "",
-      Module = "",
-      Property = "ﰠ",
-      Unit = "塞",
-      Value = "",
-      Enum = "",
-      Keyword = "",
-      Snippet = "",
-      Color = "",
-      File = "",
-      Reference = "",
-      Folder = "",
-      EnumMember = "",
-      Constant = "",
-      Struct = "פּ",
-      Event = "",
-      Operator = "",
-      TypeParameter = ""
-    },
+    symbol_map = vim.g.config.icons.kinds
   })
 
   cmp.setup({
@@ -97,10 +53,10 @@ M.setup = function()
     view = {
       entries = 'custom',
     },
-    completion = {
-      keyword_length = 1,
-      completeopt = "menu,menuone,noinsert",
-    },
+    -- completion = {
+    --   keyword_length = 1,
+    --   completeopt = "menu,menuone,noinsert",
+    -- },
     experimental = {
       ghost_text = true,
       native_menu = false,
@@ -121,7 +77,7 @@ M.setup = function()
       documentation = cmp.config.window.bordered(),
     },
     sources = {
-      { name = "nvim_lsp" },
+      { name = "nvim_lsp"},
       { name = "path" },
       { name = "luasnip" },
       { name = "cmp_tabnine" },
@@ -156,6 +112,8 @@ M.setup = function()
       ["<S-Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
+        elseif luasnip.jumpable(-1) then
+          luasnip.jump(-1)
         else
           fallback()
         end
@@ -163,7 +121,6 @@ M.setup = function()
         "i",
         "s",
       }),
-
       ["<C-Space>"] = cmp.mapping.complete(),
       ["<C-e>"] = cmp.mapping.abort(),
       ["<CR>"] = cmp.mapping(function(fallback)

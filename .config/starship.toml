@@ -4,8 +4,8 @@ add_newline = true
 
 [character]
 format = " \n$symbol"
-success_symbol = "[➜](bold green) "
-error_symbol = "[✗](bold red) "
+success_symbol = "[](bold green) "
+error_symbol = "[X](bold red) "
 vimcmd_symbol = "[V](bold green) "
 
 [line_break]
@@ -25,7 +25,7 @@ disabled = false
 format = "[$symbol $status]($style) "
 not_found_symbol = ""
 not_executable_symbol = ""
-sigint_symbol = "ﭦ"
+sigint_symbol = "asa"
 map_symbol = true
 
 [git_branch]
@@ -33,7 +33,7 @@ format = "[$symbol $branch ]($style) "
 
 [package]
 format = "[$symbol$version]($style) "
-symbol = " "
+symbol = "󰏗 "
 
 [python]
 format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
@@ -77,7 +77,15 @@ detect_files = ['.scalaenv', '.sbtenv', 'build.sbt']
 [aws]
 format = '[$symbol $profile $region]($style) '
 style = 'bold yellow'
-symbol = '☁️ '
+symbol = ''
 [aws.profile_aliases]
 Enterprise_Naming_Scheme-voidstars = 'void**'
+
+[crystal]
+style = 'cyan bold'
+format = '[${symbol} (${version}) ]($style)'
+symbol = ''
+
+[nim]
+symbol = ' '
 

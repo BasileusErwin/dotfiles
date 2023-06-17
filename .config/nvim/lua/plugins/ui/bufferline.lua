@@ -9,6 +9,13 @@ return {
     options = {
       offsets = {
         {
+          filetype = "neo-tree",
+          text = " File Explorer",
+          highlight = "Directory",
+          text_align = "center",
+          separator = false
+        },
+        {
           filetype = "NvimTree",
           text = " File Explorer",
           highlight = "Directory",
@@ -18,7 +25,7 @@ return {
       },
       numbers = "none",
       diagnostics = "nvim_lsp",
-      separator_style = "thin",
+      separator_style = "slope",
       show_tab_indicators = true,
       show_buffer_close_icons = false,
       show_close_icon = false,

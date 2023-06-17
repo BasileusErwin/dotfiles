@@ -20,9 +20,9 @@ return {
         transparent = vim.g.config.theme.lualine.transparent,
       },
       diagnostics = {
-        darker = true,       -- darker colors for diagnostic
-        undercurl = true,    -- use undercurl instead of underline for diagnostics
-        background = true,   -- use background color for virtual text
+        darker = true,     -- darker colors for diagnostic
+        undercurl = true,  -- use undercurl instead of underline for diagnostics
+        background = true, -- use background color for virtual text
       },
     }
   },
@@ -64,9 +64,26 @@ return {
     event = 'VeryLazy',
   },
   {
-    'phanviet/vim-monokai-pro',
+    'loctvl842/monokai-pro.nvim',
     lazy = true,
     event = 'VeryLazy',
+    config = function()
+      require('monokai-pro').setup({
+        transparent_background = vim.g.config.theme.transparent,
+        filter = vim.g.config.theme.style,
+        devicons = false,
+        styles = {
+          comment = { italic = true },
+          keyword = { bold = true, italic = true },
+          type = { bold = true },                     -- (preferred) int, long, char, etc
+          storageclass = { italic = true },           -- static, register, volatile, etc
+          structure = { bold = true, italic = true }, -- struct, union, enum, etc
+          parameter = { italic = true },              -- parameter pass in function
+          annotation = { italic = true },
+          tag_attribute = { italic = true },          -- attribute of tag in reactjs
+        },
+      })
+    end
   },
   {
     'shaunsingh/nord.nvim',

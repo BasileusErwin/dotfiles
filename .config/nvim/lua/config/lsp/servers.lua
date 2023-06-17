@@ -3,6 +3,49 @@ local lspconfig = require("lspconfig")
 
 return {
   {
+    package_name = "asm-lsp",
+    enable = true,
+    config = function (on_attach, capabilities)
+      lspconfig.asm_lsp.setup({
+        on_attach,
+        capabilities
+      })
+    end
+  },
+  {
+    package_name = "ocaml-lsp",
+    enable = true,
+    config = function (on_attach, capabilities)
+      lspconfig.ocamllsp.setup({
+        on_attach,
+        capabilities
+      })
+    end
+  },
+  {
+    package_name = 'nimlsp',
+    enable = true,
+    config = function(on_attach, capabilities)
+      vim.cmd([[set omnifunc=v:lua.vim.lsp.omnifunc]])
+
+      lspconfig.nimls.setup({
+        on_attach,
+        capabilities,
+        cmd = {"nimlsp"}
+      })
+    end
+  },
+  {
+    package_name = 'crystalline',
+    enable = true,
+    config = function(on_attach, capabilities)
+      lspconfig.crystalline.setup({
+        on_attach,
+        capabilities,
+      })
+    end
+  },
+  {
     package_name = 'tailwindcss-language-server',
     enable = true,
     config = function(on_attach, capabilities)
@@ -67,7 +110,7 @@ return {
   },
   {
     package_name = 'rome',
-    enable = true,
+    enable = false,
     config = function(on_attach, capabilities)
       lspconfig.rome.setup({
         root_dir = util.root_pattern("rome.json"),
@@ -191,7 +234,15 @@ return {
     config = function(on_attach, capabilities)
       lspconfig.yamlls.setup({
         on_attach,
-        capabilities
+        capabilities,
+        settings = {
+          yaml = {
+            schemas = {
+              ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+              ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "/docker-compose.*"
+            },
+          },
+        }
       })
     end
   },
@@ -201,6 +252,7 @@ return {
     config = function(on_attach, capabilities)
       lspconfig.tsserver.setup({
         root_dir = util.root_pattern('package.json'),
+        filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", 'vue' },
         preferences = {
           quotePreference = 'single',
           importModuleSpecifierPreference = 'relative',
@@ -236,7 +288,8 @@ return {
     package_name = 'json-lsp',
     enable = true,
     config = function(on_attach, capabilities)
-      local status_schmeastore_ok, schemastore = pcall(require, 'schemastore')
+      local _, schemastore = pcall(require, 'schemastore')
+
       lspconfig.jsonls.setup({
         on_attach,
         capabilities,
@@ -246,6 +299,8 @@ return {
               select = {
                 '.eslintrc',
                 'package.json',
+                'tsconfig.json',
+                'tslint.json',
               },
             }
             ),
@@ -323,16 +378,6 @@ return {
     end
   },
   {
-    package_name = 'clangd',
-    enable = true,
-    config = function(on_attach, capabilities)
-      lspconfig.clangd.setup({
-        on_attach,
-        capabilities
-      })
-    end
-  },
-  {
     package_name = 'cmake-language-server',
     enable = true,
     config = function(on_attach, capabilities)
@@ -354,7 +399,7 @@ return {
   },
   {
     package_name = 'emmet-ls',
-    enable = true,
+    enable = false,
     config = function(on_attach, capabilities)
       lspconfig.emmet_ls.setup({
         filetypes = {

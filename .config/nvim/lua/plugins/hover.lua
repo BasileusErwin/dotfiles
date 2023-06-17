@@ -2,7 +2,6 @@ return {
   "lewis6991/hover.nvim",
   opts = {
     init = function()
-      -- Require providers
       require("hover.providers.lsp")
       require('hover.providers.gh')
       require('hover.providers.gh_user')
@@ -21,7 +20,7 @@ return {
 
     if vim.api.nvim_buf_get_option(vim.api.nvim_get_current_buf(), 'filetype') == 'rust' then
       vim.keymap.set("n", "K", require("rust-tools").hover_actions.hover_actions())
-    else 
+    else
       vim.keymap.set("n", "K", require("hover").hover)
     end
 

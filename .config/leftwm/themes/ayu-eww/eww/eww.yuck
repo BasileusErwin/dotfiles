@@ -32,7 +32,7 @@
     (button :orientation "v"
       :onclick
         "${ewwDashboard} ${dashboardIsOpen ? "close" : "open"} dashboard-${monitor == 0 ? "laptop" : "monitor"} && ${eww} update dashboardIsOpen=${!dashboardIsOpen}"
-        (label :class "dashboard" :text "舘"))))
+        (label :class "dashboard" :text ""))))
 
 (defwidget workspaces [?number monitor]
   (box :orientation 'v' :class "workspaces" (for tag in '${wmstate.workspaces[monitor].tags}'
@@ -68,7 +68,7 @@
   (box :orientation "v" :class "date" :valign "end"
     (button :onclick "scripts/calendar.sh"
       (box :orientation "v"
-          (label :class "date-icon" :text "")
+          (label :class "date-icon" :text "")
           (label :class "time" :text "${hour}:${min}")
           (label :class "month" :text "${month} ${day},")
           (label :class "year" :text "${year}")))))
@@ -128,7 +128,13 @@
   :wm-ignore false
     (bar :monitor 1))
 
-(defwindow laptop :monitor 1
+(defwindow laptop-with-monitor :monitor 1
+  :geometry (geometry :x "5px" :y "2%" :width "4%" :height "96%")
+  :reserve (struts :distance "5%" :side "left")
+  :wm-ignore false
+    (bar :monitor 0))
+
+(defwindow laptop :monitor 0
   :geometry (geometry :x "5px" :y "2%" :width "4%" :height "96%")
   :reserve (struts :distance "5%" :side "left")
   :wm-ignore false

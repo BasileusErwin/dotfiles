@@ -22,6 +22,8 @@ M.setup = function()
     auto_update = false,
     start_delay = 3000
   })
+
+  require("mason-lspconfig").setup()
 end
 
 return M

@@ -3,7 +3,7 @@ return {
   opts = {
     presets = {
       long_message_to_split = true, -- long messages will be sent to a split
-      inc_rename = true,           -- enables an input dialog for inc-rename.nvim
+      inc_rename = true,            -- enables an input dialog for inc-rename.nvim
     },
     views = {
       cmdline_popup = {
@@ -63,15 +63,7 @@ return {
         enabled = false,
       },
       signature = {
-        enabled = true,
-        auto_open = {
-          enabled = true,
-          trigger = true,
-          luasnip = true,
-          throttle = 50,
-        },
-        view = nil,
-        opts = {},
+        enabled = false,
       },
       hover = {
         enabled = true,
@@ -95,11 +87,11 @@ return {
     messages = {
       -- NOTE: If you enable messages, then the cmdline is enabled automatically.
       -- This is a current Neovim limitation.
-      enabled = true,             -- enables the Noice messages UI
-      view = "notify",            -- default view for messages
-      view_error = "notify",      -- view for errors
-      view_warn = "notify",       -- view for warnings
-      view_history = "messages",  -- view for :messages
+      enabled = true,              -- enables the Noice messages UI
+      view = "notify",             -- default view for messages
+      view_error = "notify",       -- view for errors
+      view_warn = "notify",        -- view for warnings
+      view_history = "messages",   -- view for :messages
       view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
     },
     redirect = {
