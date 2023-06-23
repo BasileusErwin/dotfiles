@@ -74,7 +74,7 @@ alias paru="paru --skipreview --bottomup $1"
 alias up="docker compose up"
 alias upt="docker compose -f docker-compose.test.yml up --abort-on-container-exit"
 alias down="docker compose down"
-alias downt="docker compose -f docker-compose.test.yml down --abort-on-container-exit"
+alias downt="docker compose -f docker-compose.test.yml down"
 
 # Git
 alias g="git"

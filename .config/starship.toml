@@ -29,7 +29,7 @@ sigint_symbol = "asa"
 map_symbol = true
 
 [git_branch]
-format = "[$symbol $branch ]($style) "
+format = "[$symbol$branch ]($style) "
 
 [package]
 format = "[$symbol$version]($style) "

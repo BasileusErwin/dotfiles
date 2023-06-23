@@ -5,7 +5,7 @@ return {
   {
     package_name = "asm-lsp",
     enable = true,
-    config = function (on_attach, capabilities)
+    config = function(on_attach, capabilities)
       lspconfig.asm_lsp.setup({
         on_attach,
         capabilities
@@ -15,7 +15,7 @@ return {
   {
     package_name = "ocaml-lsp",
     enable = true,
-    config = function (on_attach, capabilities)
+    config = function(on_attach, capabilities)
       lspconfig.ocamllsp.setup({
         on_attach,
         capabilities
@@ -31,7 +31,7 @@ return {
       lspconfig.nimls.setup({
         on_attach,
         capabilities,
-        cmd = {"nimlsp"}
+        cmd = { "nimlsp" }
       })
     end
   },
@@ -128,7 +128,7 @@ return {
         flags = { debounce_text_changes = 500 },
         settings = {
           ltex = {
-            language = "es",
+            language = "auto",
           },
         },
         on_attach,
@@ -321,7 +321,10 @@ return {
           Lua = {
             completion = {
               callSnippet = "Replace"
-            }
+            },
+            diagnostics = {
+              globals = { 'vim' },
+            },
           }
         }
       })

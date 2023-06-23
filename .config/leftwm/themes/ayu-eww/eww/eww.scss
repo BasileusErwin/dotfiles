@@ -56,7 +56,7 @@
 
 .control {
   background-color: $grey;
-  padding: .5rem .5rem .5rem .2rem;
+  padding: .5rem .5rem .5rem .4rem;
   margin: 0 5px 0px 5px;
   border-radius: 10px;
   font-size: 1.6em;
@@ -64,7 +64,7 @@
 
 .brightness {
   color: $yellow;
-  margin: .2rem 0 .2rem .2rem;
+  margin: .2rem 0 .2rem .3rem;
   font-size: 20px;
 }
 
@@ -80,7 +80,7 @@
 }
 
 .volume {
-  margin: 0 0 .2rem .7rem;
+  margin: 0 0 .2rem .6rem;
   color: $blue;
 }
 
@@ -96,7 +96,7 @@
 }
 
 .battery {
-  margin: 0 0 .3rem .5rem;
+  margin: 0 0 .3rem .4rem;
   color: $green;
 }
 
@@ -129,7 +129,7 @@
 }
 
 .wifi {
-  margin: .2rem .1rem .2rem 0;
+  margin: .2rem .1rem .2rem -0.1rem;
   font-size: 20px;
   color: $orange;
 }
