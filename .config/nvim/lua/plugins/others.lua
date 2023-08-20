@@ -22,5 +22,12 @@ return {
       time_break_long = 20,
       timers_to_long_break = 4
     }
-  }
+  },
+  {
+    'RaafatTurki/hex.nvim',
+    config = function ()
+      require('hex').setup()
+    end
+  },
+  { 'wakatime/vim-wakatime'}
 }

@@ -79,7 +79,7 @@ M.setup = function()
   }
 
 
-  treesitter_config.setup(vim.tbl_deep_extend('force', config, {}))
+  treesitter_config.setup(config)
 
   local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
   parser_config.tsx.filetype_to_parsername = { "javascript", "javascript.jsx", "typescript.tsx" }

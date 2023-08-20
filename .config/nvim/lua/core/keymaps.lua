@@ -61,9 +61,5 @@ map('n', '<C-M-l>', ':vertical resize +2<CR>', opts)
 map('v', '<', '<gv', opts)
 map('v', '>', '>gv', opts)
 
--- Move selected line / block of text in visual mode
-map('x', 'K', ':move \'<-2<CR>gv-gv', opts)
-map('x', 'J', ':move \'>+1<CR>gv-gv', opts)
-
 map('n', '<S-M-v>', '<C-w>v', opts)
 map('n', '<S-M-h>', '<C-w>s', opts)

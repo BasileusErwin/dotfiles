@@ -91,10 +91,6 @@ return {
         use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
       },
     },
-    {
-      'jose-elias-alvarez/null-ls.nvim',
-      enabled = true,
-    },
     'b0o/schemastore.nvim',
     { 'folke/lsp-colors.nvim' },
     'SmiteshP/nvim-navic',

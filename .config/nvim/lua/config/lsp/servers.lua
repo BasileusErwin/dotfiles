@@ -3,6 +3,16 @@ local lspconfig = require("lspconfig")
 
 return {
   {
+    package_name = 'efm',
+    enable = true,
+    config = function(on_attach, capabilities)
+      lspconfig.efm.setup({
+        on_attach,
+        capabilities
+      })
+    end
+  },
+  {
     package_name = "asm-lsp",
     enable = true,
     config = function(on_attach, capabilities)
@@ -24,7 +34,7 @@ return {
   },
   {
     package_name = 'nimlsp',
-    enable = true,
+    enable = false,
     config = function(on_attach, capabilities)
       vim.cmd([[set omnifunc=v:lua.vim.lsp.omnifunc]])
 
@@ -102,7 +112,7 @@ return {
     enable = true,
     config = function(on_attach, capabilities)
       lspconfig.prismals.setup({
-        root_dir = util.root_pattern(".git", "package.json", "*.prisma"),
+        root_dir = util.root_pattern("*.prisma"),
         on_attach,
         capabilities,
       })
@@ -110,7 +120,7 @@ return {
   },
   {
     package_name = 'rome',
-    enable = false,
+    enable = util.root_pattern("rome.json")(vim.fn.expand('%:p')),
     config = function(on_attach, capabilities)
       lspconfig.rome.setup({
         root_dir = util.root_pattern("rome.json"),
@@ -248,7 +258,7 @@ return {
   },
   {
     package_name = 'typescript-language-server',
-    enable = true,
+    enable = false,
     config = function(on_attach, capabilities)
       lspconfig.tsserver.setup({
         root_dir = util.root_pattern('package.json'),
@@ -278,7 +288,7 @@ return {
     enable = true,
     config = function(on_attach, capabilities)
       lspconfig.eslint.setup({
-        root_dir = util.root_pattern('.eslintrc.json'),
+        root_dir = util.root_pattern(".eslintrc.js", ".eslintrc.cjs", ".eslintrc.yaml", ".eslintrc.yml", ".eslintrc.json", ".eslintrc"),
         on_attach,
         capabilities
       })

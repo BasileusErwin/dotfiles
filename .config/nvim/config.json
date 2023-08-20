@@ -1,12 +1,18 @@
 {
   "theme": {
-    "name": "ayu-dark",
-    "style": "dark",
+    "name": "ayu-mirage",
+    "style": "mirage",
     "transparent": true,
     "lualine": {
-      "theme": "auto",
+      "theme": "ayu",
       "transparent": true
     }
+  },
+  "telescope": {
+    "borderchars": null,
+    "prompt": ["▔", "▕", " ", "▏", "🭽", "🭾", "▕", "▏"],
+    "results": ["▔", "▕", "▁", "▏", "🭽", "🭾", "🭿", "🭼"],
+    "preview": ["▀", "▐", "▄", "▌", "▛", "▜", "▟", "▙"]
   },
   "icons": {
     "diagnostics": {

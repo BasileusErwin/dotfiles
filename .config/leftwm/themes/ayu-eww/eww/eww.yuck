@@ -36,7 +36,7 @@
 
 (defwidget workspaces [?number monitor]
   (box :orientation 'v' :class "workspaces" (for tag in '${wmstate.workspaces[monitor].tags}'
-         (button :orientation 'v'
+         (button
                  :onclick "leftwm-command 'SendWorkpaceToTag 0 ${tag.index}'"
                  :class "workspace-icon ${tag.focused ? "workspace-focused" :
                   tag.busy ? "workspace-busy":
@@ -93,8 +93,9 @@
     ;; (dashboard :monitor monitor)
     (workspaces :monitor monitor)))
 
-;; (defwidget middle []
-;;   (system-tray ))
+(defwidget middle []
+  (box :orientation "v" :class "middle"
+    (systray :pack-direction "ttb" :icon-size 20 :class "tray" :refresh "1" )))
 
 (defwidget end []
   (box :orientation 'v' :space-evenly false
@@ -102,9 +103,9 @@
     (date)))
 
 (defwidget bar [?number monitor]
-  (box :class "bar" :orientation "v" :vexpand false :hexpand false  :spacing 330
+  (box :class "bar" :orientation "v" :vexpand false :hexpand false :space-evenly false
     (top :monitor monitor)
-    ;; (middle)
+    (middle)
     (end)))
 
 ; Windows
@@ -112,15 +113,15 @@
   :geometry (geometry :x "80px" :y "80%" :width "9%" :height "80px")
   (calendarWidget))
 
-(defwindow trayer-monitor
-  :monitor 0
-  :reserve (struts :distance "2%" :side "top")
-  (box ""))
-
-(defwindow trayer-laptop
-  :monitor 1
-  :reserve (struts :distance "2%" :side "top")
-  (box ""))
+;; (defwindow trayer-monitor
+;;   :monitor 0
+;;   :reserve (struts :distance "2%" :side "top")
+;;   (box ""))
+;;
+;; (defwindow trayer-laptop
+;;   :monitor 1
+;;   :reserve (struts :distance "2%" :side "top")
+;;   (box ""))
 
 (defwindow monitor :monitor 0
   :geometry (geometry :x "5px" :y "2%" :width "4%" :height "96%")

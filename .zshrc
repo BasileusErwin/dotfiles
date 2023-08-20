@@ -5,18 +5,46 @@ if [[ $USER != "root" ]]; then
   export STARSHIP_CONFIG=~/.config/starship.toml
   eval "$(starship init zsh)"
 
-  export PATH=$HOME/.nimble/bin:$HOME/bin:/usr/local/bin:$HOME/.deno/bin:$HOME/.cargo/bin:$HOME/.spicetify:$HOME/.local/share/coursier/bin:$HOME/.local/bin:$PATH
+  export PATH=$HOME/.nimble/bin:$HOME/bin:/usr/local/bin:$HOME/.deno/bin:$HOME/.cargo/bin:$HOME/.spicetify:$HOME/.local/share/coursier/bin:$HOME/.local/bin:$HOME/.local/share/fnm:$PATH
   fpath=(~/.zsh $fpath)
   autoload -Uz compinit
   compinit -u
 
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-  [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
+  # export NVM_DIR="$HOME/.nvm"
+  # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  # [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
+
+  # fnm
+  export PATH="$PATH"
+  eval "$(fnm env --use-on-cd)"
 
   # opam configuration
   [[ ! -r /home/iperez/.opam/opam-init/init.zsh ]] || source /home/iperez/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+  #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+  export SDKMAN_DIR="$HOME/.sdkman"
+  [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+  function node_package_manager {
+      if [ -f yarn.lock ]; then
+          yarn "$@"
+      elif [ -f package-lock.json ]; then
+          npm "$@"
+      else
+          yarn "$@"
+      fi
+  }
+
+  function chpwd() {
+    if [[ -f package.json ]]; then
+      fnm use --resolve-engines > /dev/null 2> /dev/null
+    fi
+  }
+
+  # -------------| Alias |----------------
+
+  alias pm=node_package_manager
 fi
 
 COMPLETION_WAITING_DOTS="true"
@@ -37,8 +65,6 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-
-# -------------| Alias |----------------
 
 # ----| Commands |----
 alias vi="nvim $1"
@@ -127,6 +153,8 @@ alias w="cd ~/Workspace"
 alias wh="cd ~/Workspace/Houlak"
 
 alias s3="aws s3"
+
+alias tt="tt -theme ayu-dark"
 
 alias aws-houlak="awsume HOULAK -s"
 alias aws-my="awsume MY_AWS -s"
