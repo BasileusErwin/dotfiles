@@ -32,18 +32,17 @@ map("n", "<ESC>", ":nohlsearch<Bar>:echo<CR>", opts)
 map("x", "K", ":move '<-2<CR>gv-gv", opts)
 map("x", "J", ":move '>+1<CR>gv-gv", opts)
 
-
 if not vim.g.vscode then
-    map('n', '<M-j>', '10<C-e>', { noremap = true })
-    map('n', '<M-k>', '10<C-y>', { noremap = true })
+  map('n', '<C-q>', ':q<CR>', opts)
 
-    map('n', '<C-q>', ':q<CR>', opts)
+  -- better window movement
+  map('n', '<C-h>', '<C-w>h', opts)
+  map('n', '<C-j>', '<C-w>j', opts)
+  map('n', '<C-k>', '<C-w>k', opts)
+  map('n', '<C-l>', '<C-w>l', opts)
 
-    -- better window movement
-    map('n', '<C-h>', '<C-w>h', opts)
-    map('n', '<C-j>', '<C-w>j', opts)
-    map('n', '<C-k>', '<C-w>k', opts)
-    map('n', '<C-l>', '<C-w>l', opts)
+  map('n', '<M-j>', '10<C-e>', { noremap = true })
+  map('n', '<M-k>', '10<C-y>', { noremap = true })
 end
 
 map('n', '<C-s>', ':w<CR>', opts)

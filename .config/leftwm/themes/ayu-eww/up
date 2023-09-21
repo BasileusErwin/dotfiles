@@ -27,11 +27,10 @@ if [[ $HDMI_CONNECTED ]]; then
   # trayer --edge top  --monitor 1 --widthtype pixel --width 170 \
   #    --heighttype pixel --height 18 --align right --transparent true --alpha 0 --tint 0x0e1019 --iconspacing 3 --distance 1 &
 else
-  eww -c "$THEME_CURRENT/eww" open laptop
-  eww -c "$THEME_CURRENT/eww" open trayer-laptop
+  eww-stray -c "$THEME_CURRENT/eww" open laptop
 
-  trayer --edge top  --monitor 0 --widthtype pixel --width 170 \
-    --heighttype pixel --height 18 --align right --transparent true --alpha 0 --tint 0x0e1019 --iconspacing 3 --distance 1 &
+  # trayer --edge top  --monitor 0 --widthtype pixel --width 170 \
+  #   --heighttype pixel --height 18 --align right --transparent true --alpha 0 --tint 0x0e1019 --iconspacing 3 --distance 1 &
 fi
 
 volumeicon &

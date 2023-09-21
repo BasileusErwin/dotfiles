@@ -25,6 +25,8 @@ else
 	xrandr --output "$LAPTOP" --primary --mode 1920x1080 --rotate normal
 fi
 
+xinput set-prop "TPPS/2 Elan TrackPoint" "libinput Accel Speed" -0.6
+
 lxsession &
 nitrogen --restore &
 udiskie -t &

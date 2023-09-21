@@ -47,6 +47,23 @@ if [[ $USER != "root" ]]; then
   alias pm=node_package_manager
 fi
 
+function docker_connect () {
+  if docker ps >/dev/null 2>&1; then
+    container=$(docker ps | awk '{if (NR!=1) {print $NF}}' | fzf)
+    
+    if [[ -n $container ]]; then
+      container_id=$(echo "$container" | awk -F ': ' '{print $1}')
+
+      docker exec -it "$container_id" /bin/sh
+    else
+      echo "No container selected"
+    fi
+
+  else
+    echo "Docker is not running"
+  fi
+}
+
 COMPLETION_WAITING_DOTS="true"
 
 _Z_NO_RESOLVE_SYMLINKS="true"
@@ -71,8 +88,8 @@ alias vi="nvim $1"
 alias v="nvim ."
 alias mk="mkdir $1"
 alias zathura="nohup zathura $1"
-alias ls="exa --group-directories-first --icons"
-alias la="exa --group-directories-first --icons -a"
+alias ls="eza --group-directories-first --icons"
+alias la="ls --group-directories-first --icons -a"
 alias cat="bat --style=plain --paging=never"
 alias tree="exa -T --icons"
 alias grep="grep --color=auto"
@@ -101,6 +118,7 @@ alias up="docker compose up"
 alias upt="docker compose -f docker-compose.test.yml up --abort-on-container-exit"
 alias down="docker compose down"
 alias downt="docker compose -f docker-compose.test.yml down"
+alias dconnect="docker_connect"
 
 # Git
 alias g="git"
