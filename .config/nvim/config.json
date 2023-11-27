@@ -1,10 +1,10 @@
 {
   "theme": {
-    "name": "ayu-mirage",
+    "name": "gruvbox",
     "style": "mirage",
     "transparent": true,
     "lualine": {
-      "theme": "ayu",
+      "theme": "gruvbox",
       "transparent": true
     }
   },

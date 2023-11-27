@@ -16,18 +16,18 @@ leftwm-command "LoadTheme $THEME_CURRENT/themes.toml"
 pkill trayer
 
 # ----| Display |----
-if [[ $HDMI_CONNECTED ]]; then
+if [[ $HDMI_CONNECTED || $DISPLAY_PORT_CONNECTED ]]; then
   notify-send "Monitor connected"
 
-  eww-stray -c "$THEME_CURRENT/eww" open monitor
-  eww-stray -c "$THEME_CURRENT/eww" open laptop-with-monitor
+  eww -c "$THEME_CURRENT/eww" open monitor
+  eww -c "$THEME_CURRENT/eww" open laptop-with-monitor
   # eww-stray -c "$THEME_CURRENT/eww" open trayer-laptop
   # eww-stray -c "$THEME_CURRENT/eww" open trayer-monitor
 
   # trayer --edge top  --monitor 1 --widthtype pixel --width 170 \
   #    --heighttype pixel --height 18 --align right --transparent true --alpha 0 --tint 0x0e1019 --iconspacing 3 --distance 1 &
 else
-  eww-stray -c "$THEME_CURRENT/eww" open laptop
+  eww -c "$THEME_CURRENT/eww" open laptop
 
   # trayer --edge top  --monitor 0 --widthtype pixel --width 170 \
   #   --heighttype pixel --height 18 --align right --transparent true --alpha 0 --tint 0x0e1019 --iconspacing 3 --distance 1 &

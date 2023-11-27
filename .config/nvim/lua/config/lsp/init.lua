@@ -42,6 +42,7 @@ M.setup = function()
 		})
 	end
 
+	require("config.lsp.none_ls").setup(M.opts)
 	require("config.lsp.mason").setup()
 
 	for _, server in ipairs(servers) do

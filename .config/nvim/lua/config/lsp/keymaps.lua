@@ -27,9 +27,9 @@ M.setup = function(client, bufnr)
 		},
 	}
 
-	if client.server_capabilities.documentFormattingProvider then
-		keymap_l.c.f = { "<cmd>FormatWrite<CR>", "Format Document" }
-	end
+  if client.server_capabilities.documentFormattingProvider then
+    keymap_l.c.f = { '<cmd>lua vim.lsp.buf.format({ async = true, timeout_ms = 2000 })<CR>', 'Format Document' }
+  end
 
 	local keymap_g = {
 		name = "Goto",

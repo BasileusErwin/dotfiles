@@ -50,7 +50,7 @@ local lsp_client_progress = {
 
 local function lsp_client(msg)
   msg = msg or ''
-  local buf_clients = vim.lsp.buf_get_clients()
+  local buf_clients = vim.lsp.get_acctive_clients()
   if next(buf_clients) == nil then
     if type(msg) == 'boolean' or #msg == 0 then
       return ''
@@ -87,7 +87,7 @@ local function lsp_client(msg)
 end
 
 M.setup = function()
-  local status_ok, lualine = pcall(require, 'lualine')
+  local status_ok, _ = pcall(require, 'lualine')
 
   if not status_ok then
     return

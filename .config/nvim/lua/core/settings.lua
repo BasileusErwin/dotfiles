@@ -9,6 +9,7 @@ local cmd = vim.cmd
 api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
 g.mapleader = " "
 g.maplocalleader = " "
+g.norule = false
 
 opt.termguicolors = true      -- Enable colors in terminal
 opt.hlsearch = true           --Set highlight on search
@@ -26,7 +27,7 @@ wo.number = true
 wo.relativenumber = true
 
 o.foldcolumn = '1' -- '0' is not bad
-o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
 o.foldlevelstart = 99
 o.foldenable = true
 

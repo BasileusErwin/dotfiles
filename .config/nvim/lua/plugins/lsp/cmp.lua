@@ -13,29 +13,14 @@ return {
         'saadparwaiz1/cmp_luasnip',
         'rafamadriz/friendly-snippets',
       },
-       config = function ()
-          require("config.snip").setup()
-       end
+      config = function()
+        require("config.snip").setup()
+      end
     },
     'hrsh7th/cmp-vsnip',
     'hrsh7th/vim-vsnip',
     'David-Kunz/cmp-npm',
     'Saecki/crates.nvim',
-    {
-      'tzachar/cmp-tabnine',
-      build = './install.sh',
-      opts = {
-        max_lines = 1000,
-        max_num_results = 20,
-        sort = true,
-        run_on_every_keystroke = true,
-        snippet_placeholder = '..',
-      },
-      config = function(_, opts)
-        local tabnine = require('cmp_tabnine.config')
-        tabnine:setup(opts)
-      end
-    },
   },
   config = require('config.cmp').setup
 }

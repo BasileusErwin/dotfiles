@@ -10,3 +10,4 @@ if not vim.g.vscode then
   vim.cmd.colorscheme(g.config.theme.name)
 end
 
+

@@ -34,7 +34,6 @@ M.setup = function()
         cmp.config.compare.score,
         cmp.config.compare.recently_used,
         cmp.config.compare.locality,
-        require('cmp_tabnine.compare'),
         cmp.config.compare.kind,
         cmp.config.compare.sort_text,
         cmp.config.compare.length,
@@ -53,10 +52,6 @@ M.setup = function()
     view = {
       entries = 'custom',
     },
-    -- completion = {
-    --   keyword_length = 1,
-    --   completeopt = "menu,menuone,noinsert",
-    -- },
     experimental = {
       ghost_text = true,
       native_menu = false,
@@ -77,10 +72,10 @@ M.setup = function()
       documentation = cmp.config.window.bordered(),
     },
     sources = {
-      { name = "nvim_lsp"},
-      { name = "path" },
-      { name = "luasnip" },
-      { name = "cmp_tabnine" },
+      { name = "nvim_lsp",  group_index = 2 },
+      { name = "copilot",   group_index = 2 },
+      { name = "path",      group_index = 2 },
+      { name = "luasnip",   group_index = 2 },
       { name = "nvim_lua" },
       { name = "buffer" },
       { name = "calc" },

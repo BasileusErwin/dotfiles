@@ -52,6 +52,7 @@ style  = "red dimmed bold"
 symbol = " "
 
 [rust]
+symbol = " "
 format = "[$symbol($version )]($style)"
 
 [golang]

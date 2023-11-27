@@ -10,35 +10,29 @@ if [[ $USER != "root" ]]; then
   autoload -Uz compinit
   compinit -u
 
-  # export NVM_DIR="$HOME/.nvm"
-  # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-  # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-  # [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
-
   # fnm
-  export PATH="$PATH"
   eval "$(fnm env --use-on-cd)"
 
   # opam configuration
-  [[ ! -r /home/iperez/.opam/opam-init/init.zsh ]] || source /home/iperez/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+  [[ ! -r /home/iperez/.opam/opam-init/init.zsh ]] || source /home/iperez/.opam/opam-init/init.zsh >/dev/null 2>/dev/null
 
   #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
   export SDKMAN_DIR="$HOME/.sdkman"
   [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
   function node_package_manager {
-      if [ -f yarn.lock ]; then
-          yarn "$@"
-      elif [ -f package-lock.json ]; then
-          npm "$@"
-      else
-          yarn "$@"
-      fi
+    if [ -f yarn.lock ]; then
+      yarn "$@"
+    elif [ -f package-lock.json ]; then
+      npm "$@"
+    else
+      yarn "$@"
+    fi
   }
 
   function chpwd() {
     if [[ -f package.json ]]; then
-      fnm use --resolve-engines > /dev/null 2> /dev/null
+      fnm use --resolve-engines >/dev/null 2>/dev/null
     fi
   }
 
@@ -47,10 +41,10 @@ if [[ $USER != "root" ]]; then
   alias pm=node_package_manager
 fi
 
-function docker_connect () {
+function docker_connect() {
   if docker ps >/dev/null 2>&1; then
     container=$(docker ps | awk '{if (NR!=1) {print $NF}}' | fzf)
-    
+
     if [[ -n $container ]]; then
       container_id=$(echo "$container" | awk -F ': ' '{print $1}')
 
@@ -74,9 +68,9 @@ ZSH_COLORIZE_STYLE=vim
 ZSH_DISABLE_COMPFIX=true
 
 plugins=(
-	colorize
-	zsh-syntax-highlighting
-	zsh-autosuggestions
+  colorize
+  zsh-syntax-highlighting
+  zsh-autosuggestions
   zsh-interactive-cd
   urltools
 )
@@ -105,11 +99,11 @@ alias grep="grep --color=auto"
 alias cat="bat --style=plain --paging=never"
 alias mk="mkdir $1"
 alias zathura="nohup zathura $1"
-alias ls="exa --group-directories-first --icons"
-alias la="exa --group-directories-first --icons -a"
-alias ll="exa --group-directories-first --icons -l"
+alias ls="eza --group-directories-first --icons"
+alias la="eza --group-directories-first --icons -a"
+alias ll="eza --group-directories-first --icons -l"
 alias cat="bat --style=plain --paging=never"
-alias tree="exa -T --icons"
+alias tree="eza -T --icons"
 alias grep="grep --color=auto"
 alias t="tree $1"
 alias paru="paru --skipreview --bottomup $1"
@@ -167,14 +161,15 @@ alias gd="git diff --no-ext-diff --cached"
 alias dot="g --git-dir ~/.dotfiles --work-tree ~"
 
 # Workspace
-alias w="cd ~/Workspace"
-alias wh="cd ~/Workspace/Houlak"
+export WORKSPACE="~/Workspace"
+export WORKSPACE_HOULAK="~/Workspace/Houlak"
 
-alias s3="aws s3"
+alias w="cd $WORKSPACE"
+alias wh="cd $WORKSPACE_HOULAK"
 
-alias tt="tt -theme ayu-dark"
 
-alias aws-houlak="awsume HOULAK -s"
-alias aws-my="awsume MY_AWS -s"
+alias aws-houlak="awsume HOULAK"
+alias aws-my="awsume MY_AWS"
+alias aws-localstack="awsume LOCALSTACK"
 
 eval "$(atuin init zsh)"

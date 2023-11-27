@@ -24,7 +24,7 @@ return {
   },
   {
     package_name = "ocaml-lsp",
-    enable = true,
+    enable = false,
     config = function(on_attach, capabilities)
       lspconfig.ocamllsp.setup({
         on_attach,
