@@ -105,7 +105,6 @@ M.setup = function()
       icons_enabled = true,
       component_separators = { left = '', right = '' },
       section_separators = { left = '', right = '' },
-      --disabled_filetypes = { 'NvimTree' },
       always_divide_middle = true,
     },
     sections = {
@@ -120,7 +119,7 @@ M.setup = function()
           navic.get_location,
           cond = navic.is_available
         },
-        require('pomodoro').statusline
+      --  require('pomodoro').statusline
       },
       lualine_x = {
         lsp_client_progress,

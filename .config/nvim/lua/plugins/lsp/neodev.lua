@@ -1,6 +1,5 @@
 return {
   "folke/neodev.nvim",
-
   lazy = "VeryLazy",
   opts = {
     library = {

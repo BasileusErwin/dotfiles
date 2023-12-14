@@ -3,6 +3,7 @@
 !.gitignore
 
 # Except for the files and folders we want to track
+!tmux
 !alacritty
 !fish
 !starship.toml

@@ -1,18 +1,24 @@
 return {
+  {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+  },
+  {
+    'ActivityWatch/aw-watcher-vim',
+  },
   { 'elkowar/yuck.vim' },
-  { 'chaoren/vim-wordmotion' },
   { 'tweekmonster/startuptime.vim' },
   { 'jidn/vim-dbml' },
-  { 'ollykel/v-vim' },
   { 'vim-crystal/vim-crystal' },
   {
-    'prabirshrestha/asyncomplete.vim',
-    'prabirshrestha/async.vim',
-    'prabirshrestha/vim-lsp',
-    'prabirshrestha/asyncomplete-lsp.vim',
+    -- 'prabirshrestha/asyncomplete.vim',
+    -- 'prabirshrestha/async.vim',
+    -- 'prabirshrestha/vim-lsp',
+    -- 'prabirshrestha/asyncomplete-lsp.vim',
   },
   {
     'wthollingsworth/pomodoro.nvim',
+    enabled = false,
     dependecies = {
       'MunifTanjim/nui.nvim'
     },
@@ -29,5 +35,5 @@ return {
       require('hex').setup()
     end
   },
-  { 'wakatime/vim-wakatime'}
+  { 'wakatime/vim-wakatime', enabled = false}
 }

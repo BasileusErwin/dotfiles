@@ -1,6 +1,7 @@
 return {
   "epwalsh/obsidian.nvim",
   event = "VeryLazy",
+  enabled = false,
   dependencies = {
     'nvim-lua/plenary.nvim',
     'hrsh7th/nvim-cmp',

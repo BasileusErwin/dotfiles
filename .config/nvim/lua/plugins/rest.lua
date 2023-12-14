@@ -1,6 +1,7 @@
 return {
   'rest-nvim/rest.nvim',
   dependencies = { 'nvim-lua/plenary.nvim' },
+  enabled = false,
   otps = {
     -- Open request results in a horizontal split
     result_split_horizontal = false,

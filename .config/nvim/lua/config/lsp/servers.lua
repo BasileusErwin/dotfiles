@@ -3,6 +3,16 @@ local lspconfig = require("lspconfig")
 
 return {
   {
+    package_name = 'ocaml-lsp',
+    enable = true,
+    config = function(on_attach, capabilities)
+      lspconfig.ocamllsp.setup({
+        on_attach,
+        capabilities
+      })
+    end
+  },
+  {
     package_name = 'efm',
     enable = true,
     config = function(on_attach, capabilities)
@@ -17,6 +27,13 @@ return {
     enable = true,
     config = function(on_attach, capabilities)
       lspconfig.asm_lsp.setup({
+        filetypes = {
+          "asm",
+          "s",
+          "nasm",
+          "a",
+        },
+        root_dir = util.root_pattern(".git", "."),
         on_attach,
         capabilities
       })
@@ -34,7 +51,7 @@ return {
   },
   {
     package_name = 'nimlsp',
-    enable = false,
+    enable = true,
     config = function(on_attach, capabilities)
       vim.cmd([[set omnifunc=v:lua.vim.lsp.omnifunc]])
 
@@ -148,7 +165,7 @@ return {
   },
   {
     package_name = 'teal-language-server',
-    enable = true,
+    enable = false,
     config = function(on_attach, capabilities)
       lspconfig.teal_ls.setup({
         on_attach,
@@ -249,7 +266,8 @@ return {
           yaml = {
             schemas = {
               ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
-              ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "/docker-compose.*"
+              ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] =
+              "/docker-compose.*"
             },
           },
         }
@@ -266,7 +284,9 @@ return {
         preferences = {
           quotePreference = 'single',
           importModuleSpecifierPreference = 'relative',
-          includeCompletionsForImportStatements = true
+          includeCompletionsForImportStatements = true,
+          includeInlayParameterNameHints = "all",
+          allowRenameOfImportPath = true,
         },
         on_attach,
         capabilities,
@@ -288,7 +308,8 @@ return {
     enable = true,
     config = function(on_attach, capabilities)
       lspconfig.eslint.setup({
-        root_dir = util.root_pattern(".eslintrc.js", ".eslintrc.cjs", ".eslintrc.yaml", ".eslintrc.yml", ".eslintrc.json", ".eslintrc"),
+        root_dir = util.root_pattern(".eslintrc.js", ".eslintrc.cjs", ".eslintrc.yaml", ".eslintrc.yml", ".eslintrc.json",
+          ".eslintrc"),
         on_attach,
         capabilities
       })
@@ -391,12 +412,25 @@ return {
     end
   },
   {
-    package_name = 'cmake-language-server',
+    package_name = 'clangd',
     enable = true,
     config = function(on_attach, capabilities)
-      lspconfig.cmake.setup({
-        on_attach,
-        capabilities
+      capabilities.offsetEncoding =  'utf-16'
+
+      lspconfig.clangd.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+        filetypes = { "h", "c", "cpp", "cc", "objc", "objcpp" },
+        single_file_support = true,
+        root_dir = lspconfig.util.root_pattern(
+          '.clangd',
+          '.clang-tidy',
+          '.clang-format',
+          'compile_commands.json',
+          'compile_flags.txt',
+          'configure.ac',
+          '.git'
+        )
       })
     end
   },

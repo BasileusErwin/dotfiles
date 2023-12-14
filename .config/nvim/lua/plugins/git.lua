@@ -1,9 +1,5 @@
 return {
   {
-    'TimUntersberger/neogit',
-    opts = {},
-  },
-  {
     'lewis6991/gitsigns.nvim',
     event = "VeryLazy",
     dependencies = {

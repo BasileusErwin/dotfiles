@@ -1,5 +1,17 @@
 return {
-  { "nathom/filetype.nvim" },
-  { "lewis6991/impatient.nvim" },
-  { 'nvim-lua/plenary.nvim' },
+  {
+    "BasileusErwin/filetype.nvim",
+    lazy = false,
+    priority = 1000,
+  },
+  {
+    "lewis6991/impatient.nvim",
+    lazy = false,
+    priority = 1000,
+  },
+  {
+    'nvim-lua/plenary.nvim',
+    lazy = false,
+    priority = 1000,
+  },
 }

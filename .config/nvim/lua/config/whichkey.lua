@@ -47,10 +47,10 @@ M.code_keymap = function(whichkey)
       whichkey.register(
         { l = keymap },
         {
-          mode = "v", -- Visual mode
+          mode = "v",     -- Visual mode
           prefix = "<leader>",
-          buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-          silent = true, -- use `silent` when creating keymaps
+          buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
+          silent = true,  -- use `silent` when creating keymaps
           noremap = true, -- use `noremap` when creating keymaps
           nowait = false, -- use `nowait` when creating keymaps
         }
@@ -109,6 +109,14 @@ M.setup = function(_, conf)
     ['w'] = { '<cmd>update!<CR>', 'Save' },
     ['q'] = { '<cmd>q!<CR>', 'Quit' },
 
+    n = {
+      name = 'Navigation',
+      ["<C-h>"] = { "<cmd> TmuxNavigateLeft<CR>", "Window left" },
+      ["<C-l>"] = { "<cmd> TmuxNavigateRight<CR>", "Window right" },
+      ["<C-j>"] = { "<cmd> TmuxNavigateDown<CR>", "Window down" },
+      ["<C-k>"] = { "<cmd> TmuxNavigateUp<CR>", "Window up" },
+    },
+
     b = {
       name = 'Buffer',
       b = { '<Cmd>BufferLineSortByTab<CR>', 'Sort buffer by buffer number' },
@@ -123,27 +131,34 @@ M.setup = function(_, conf)
     --   'Explorer',
     -- },
 
-    t = {
-      name = 'Terminal',
-      h = { '<cmd>ToggleTerm size=15 direction=horizontal<CR>', 'Open Horizontal' },
-      f = { '<cmd>ToggleTerm size=15 direction=float<CR>', 'Open Float' }
-    },
+    -- t = {
+    --   name = 'Terminal',
+    --   h = { '<cmd>ToggleTerm size=15 direction=horizontal<CR>', 'Open Horizontal' },
+    --   f = { '<cmd>ToggleTerm size=15 direction=float<CR>', 'Open Float' }
+    -- },
 
     o = { ':SymbolsOutline<CR>', 'Symbols Outline' },
 
-    i = {
-      name = 'Notes Obsidian',
-      s = { '<cmd>ObsidianSearch<CR>', 'Grep notes' },
-      n = { '<cmd>ObsidianNew<CR>', 'New note' },
-      t = { '<cmd>ObsidianToday<CR>', 'Today note' },
-      f = { '<cmd>ObsidianQuickSwitch<CR>', 'Search file note' },
-    },
+    -- i = {
+    --   name = 'Notes Obsidian',
+    --   s = { '<cmd>ObsidianSearch<CR>', 'Grep notes' },
+    --   n = { '<cmd>ObsidianNew<CR>', 'New note' },
+    --   t = { '<cmd>ObsidianToday<CR>', 'Today note' },
+    --   f = { '<cmd>ObsidianQuickSwitch<CR>', 'Search file note' },
+    -- },
 
     f = {
       name = 'Find',
       g = { '<cmd>lua require("telescope.builtin").live_grep()<CR>', 'Live Grep' },
       f = { '<cmd>lua require("telescope.builtin").find_files()<CR>', 'Find files' },
       b = { '<cmd>lua require("telescope.builtin").buffers()<CR>', 'Find in buffer' },
+    },
+
+    d = {
+      name = 'DevDoc',
+      c = { '<cmd>DevdocsOpenCurrentFloat<CR>', 'Devdoc current' },
+      t = { '<cmd>DevdocsToggle<CR>', 'Toggle' },
+      o = { '<cmd>DevdocsOpenFloat<CR>', 'Open' }
     },
   }
 

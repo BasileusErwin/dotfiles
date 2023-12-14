@@ -7,10 +7,11 @@ export LAPTOP='eDP'
 
 # -- Monitor --
 export HDMI='HDMI-A-0'
-export DISPLAY_PORT='DisplayPort-1'
+export DISPLAY_PORT='DisplayPort-0'
 
 HDMI_CONNECTED=$(xrandr | grep "$HDMI connected" | awk '{print $1}')
 DISPLAY_PORT_CONNECTED=$(xrandr | grep "$DISPLAY_PORT connected" | awk '{print $1}')
+DISPLAY_PORT_1_CONNECTED=$(xrandr | grep "DisplayPort-1 connected" | awk '{print $1}')
 export HDMI_CONNECTED
 export DISPLAY_PORT_CONNECTED
 export PATH=$HOME/.nimble/bin:$HOME/bin:/usr/local/bin:$HOME/.deno/bin:$HOME/.cargo/bin:$HOME/.spicetify:$HOME/.local/share/coursier/bin:$HOME/.local/bin/:$PATH
@@ -20,18 +21,20 @@ export STARSHIP_CONFIG="$HOME/.config/fish/starship.toml"
 export EDITOR="nvim"
 
 function set_monitor() {
-	xrandr --newmode "1920x1080R" 138.50 1920 1968 2000 2080 1080 1083 1088 1111 +hsync -vsync
-	xrandr --addmode $1 1920x1080R
-	xrandr --output "$1" -r 75.0 --primary --mode 1920x1080R --rotate normal --right-of "$LAPTOP" \
-		--output "$LAPTOP" --mode 1920x1080 --rotate normal
+  xrandr --newmode "1920x1080R" 138.50 1920 1968 2000 2080 1080 1083 1088 1111 +hsync -vsync
+  xrandr --addmode $1 1920x1080R
+  xrandr --output "$1" -r 75.0 --primary --mode 1920x1080R --rotate normal --right-of "$LAPTOP" \
+    --output "$LAPTOP" --mode 1920x1080 --rotate normal
 }
 
 if [[ $HDMI_CONNECTED ]]; then
   set_monitor $HDMI
 elif [[ $DISPLAY_PORT_CONNECTED ]]; then
   set_monitor $DISPLAY_PORT
+elif  [[ $DISPLAY_PORT_1_CONNECTED ]]; then
+  set_monitor $DISPLAY_PORT
 else
-	xrandr --output "$LAPTOP" --primary --mode 1920x1080 --rotate normal
+  xrandr --output "$LAPTOP" --primary --mode 1920x1080 --rotate normal
 fi
 
 xinput set-prop "TPPS/2 Elan TrackPoint" "libinput Accel Speed" -0.6

@@ -39,8 +39,8 @@ return {
       auto_focus = true,
     },
     server = {
+      on_attach,
       path = vim.fn.stdpath("data") .. "/lsp_servers/rust/rust-analyzer",
-      on_attach = on_attach,
       settings = {
         ["rust-analyzer"] = {
           checkOnSave = {

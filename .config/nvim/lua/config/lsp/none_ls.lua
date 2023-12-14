@@ -35,6 +35,7 @@ M.setup = function(opts)
       builtin.formatting.fixjson,
       builtin.formatting.black.with({ extra_args = { '--fast' } }),
       builtin.formatting.isort,
+      builtin.formatting.zigfmt,
       -- M.with_root_file(builtin.formatting.rome, 'rome.json'),
       builtin.formatting.rustfmt.with({
         extra_args = { "--edition=2021" }
@@ -49,10 +50,10 @@ M.setup = function(opts)
       -- builtin.diagnostics.tsc.with({
       --   method = nls.methods.DIAGNOSTICS_ON_SAVE,
       -- }),
+      builtin.diagnostics.cppcheck,
       M.with_root_file(builtin.diagnostics.eslint.with({
         method = nls.methods.DIAGNOSTICS_ON_SAVE,
       }), '.eslintrc.json'),
-      M.with_root_file(builtin.diagnostics.selene, "selene.toml"),
       M.with_diagnostics_code(builtin.diagnostics.shellcheck),
 
       -- code actions
