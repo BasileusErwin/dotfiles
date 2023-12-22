@@ -109,14 +109,6 @@ M.setup = function(_, conf)
     ['w'] = { '<cmd>update!<CR>', 'Save' },
     ['q'] = { '<cmd>q!<CR>', 'Quit' },
 
-    n = {
-      name = 'Navigation',
-      ["<C-h>"] = { "<cmd> TmuxNavigateLeft<CR>", "Window left" },
-      ["<C-l>"] = { "<cmd> TmuxNavigateRight<CR>", "Window right" },
-      ["<C-j>"] = { "<cmd> TmuxNavigateDown<CR>", "Window down" },
-      ["<C-k>"] = { "<cmd> TmuxNavigateUp<CR>", "Window up" },
-    },
-
     b = {
       name = 'Buffer',
       b = { '<Cmd>BufferLineSortByTab<CR>', 'Sort buffer by buffer number' },

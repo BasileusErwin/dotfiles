@@ -3,18 +3,8 @@ local lspconfig = require("lspconfig")
 
 return {
   {
-    package_name = 'ocaml-lsp',
-    enable = true,
-    config = function(on_attach, capabilities)
-      lspconfig.ocamllsp.setup({
-        on_attach,
-        capabilities
-      })
-    end
-  },
-  {
     package_name = 'efm',
-    enable = true,
+    enable = false,
     config = function(on_attach, capabilities)
       lspconfig.efm.setup({
         on_attach,
@@ -51,7 +41,7 @@ return {
   },
   {
     package_name = 'nimlsp',
-    enable = true,
+    enable = false,
     config = function(on_attach, capabilities)
       vim.cmd([[set omnifunc=v:lua.vim.lsp.omnifunc]])
 
@@ -64,7 +54,7 @@ return {
   },
   {
     package_name = 'crystalline',
-    enable = true,
+    enable = false,
     config = function(on_attach, capabilities)
       lspconfig.crystalline.setup({
         on_attach,
@@ -115,7 +105,7 @@ return {
   },
   {
     package_name = 'vls',
-    enable = true,
+    enable = false,
     config = function(on_attach, capabilities)
       lspconfig.vls.setup({
         root_dir = util.root_pattern("v.mod", ".git"),
@@ -126,7 +116,7 @@ return {
   },
   {
     package_name = "prisma-language-server",
-    enable = true,
+    enable = false,
     config = function(on_attach, capabilities)
       lspconfig.prismals.setup({
         root_dir = util.root_pattern("*.prisma"),
@@ -196,7 +186,7 @@ return {
   },
   {
     package_name = 'deno',
-    enable = true,
+    enable = false,
     config = function(on_attach, capabilities)
       lspconfig.denols.setup({
         root_dir = util.root_pattern('deno.json'),
@@ -207,7 +197,7 @@ return {
   },
   {
     package_name = 'intelephense',
-    enable = true,
+    enable = false,
     config = function(on_attach, capabilities)
       lspconfig.intelephense.setup({
         on_attach,
@@ -413,7 +403,7 @@ return {
   },
   {
     package_name = 'clangd',
-    enable = true,
+    enable = false,
     config = function(on_attach, capabilities)
       capabilities.offsetEncoding =  'utf-16'
 
@@ -476,7 +466,7 @@ return {
   },
   {
     package_name = 'gopls',
-    enable = true,
+    enable = false,
     config = function(on_attach, capabilities)
       lspconfig.gopls.setup({
         on_attach,
@@ -496,7 +486,7 @@ return {
   },
   {
     package_name = "omnisharp",
-    enable = true,
+    enable = false,
     config = function(on_attach, capabilities)
       local pid = vim.fn.getpid()
       lspconfig.omnisharp.setup({

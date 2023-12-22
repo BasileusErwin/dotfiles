@@ -1,5 +1,6 @@
 export ZSH="$HOME/.oh-my-zsh"
 export TERM="xterm-256color"
+export EDITOR="nvim"
 
 if [[ $USER != "root" ]]; then
   export STARSHIP_CONFIG=~/.config/starship.toml
@@ -12,9 +13,6 @@ if [[ $USER != "root" ]]; then
 
   # fnm
   eval "$(fnm env --use-on-cd)"
-
-  # opam configuration
-  [[ ! -r /home/iperez/.opam/opam-init/init.zsh ]] || source /home/iperez/.opam/opam-init/init.zsh >/dev/null 2>/dev/null
 
   #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
   export SDKMAN_DIR="$HOME/.sdkman"
@@ -96,6 +94,7 @@ alias t="tree $1"
 alias paru="paru --bottomup $1"
 alias sudo='sudo '
 alias c.='code .'
+alias f='vifm'
 
 alias grep="grep --color=auto"
 alias cat="bat --style=plain --paging=never"
@@ -169,9 +168,9 @@ export WORKSPACE_HOULAK="~/Workspace/Houlak"
 alias w="cd $WORKSPACE"
 alias wh="cd $WORKSPACE_HOULAK"
 
-
 alias aws-houlak="awsume HOULAK"
 alias aws-my="awsume MY_AWS"
 alias aws-localstack="awsume LOCALSTACK"
 
 eval "$(atuin init zsh)"
+source $HOME/.atuin_zshrc

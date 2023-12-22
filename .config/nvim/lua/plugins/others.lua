@@ -8,6 +8,7 @@ return {
   },
   {
     'ActivityWatch/aw-watcher-vim',
+    enabled = false,
   },
   { 'elkowar/yuck.vim' },
   { 'tweekmonster/startuptime.vim' },
