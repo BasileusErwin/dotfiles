@@ -1,5 +1,8 @@
 return {
   {
+    "vifm/vifm.vim",
+  },
+  {
     "christoomey/vim-tmux-navigator",
     lazy = false,
   },
@@ -31,9 +34,17 @@ return {
   },
   {
     'RaafatTurki/hex.nvim',
-    config = function ()
+    config = function()
       require('hex').setup()
     end
   },
-  { 'wakatime/vim-wakatime', enabled = false}
+  { 'wakatime/vim-wakatime', enabled = false },
+  {
+    "jiaoshijie/undotree",
+    dependencies = "nvim-lua/plenary.nvim",
+    config = true,
+    keys = { -- load the plugin only when using it's keybinding:
+      { "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
+    },
+  }
 }

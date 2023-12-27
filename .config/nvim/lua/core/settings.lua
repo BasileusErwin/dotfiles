@@ -45,6 +45,7 @@ opt.encoding = "utf-8"
 opt.fileencoding = "utf-8"
 opt.ruler = true
 opt.cursorline = true
+opt.cursorcolumn = true
 opt.splitbelow = true
 opt.splitright = true
 opt.clipboard = "unnamedplus"

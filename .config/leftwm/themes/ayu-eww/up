@@ -14,7 +14,6 @@ ln -s "$THEME_CURRENT/down" /tmp/leftwm-theme-down
 leftwm-command "LoadTheme $THEME_CURRENT/themes.toml"
 
 pkill trayer
-
 # ----| Display |----
 if [[ $HDMI_CONNECTED || $DISPLAY_PORT_CONNECTED ]]; then
   notify-send "Monitor connected"
