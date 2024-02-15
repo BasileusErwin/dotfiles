@@ -61,7 +61,7 @@ return {
         indent_marker = "│",
         last_indent_marker = "└", -- └
         highlight = "NeoTreeIndentMarker",
-        with_expanders = true,    -- if nil and file nesting is enabled, will enable expanders
+        with_expanders = true, -- if nil and file nesting is enabled, will enable expanders
         expander_collapsed = "",
         expander_expanded = "",
         expander_highlight = "NeoTreeExpander",
@@ -137,6 +137,41 @@ return {
       },
     },
     filesystem = {
+      components = {
+        icon = function(config, node, state)
+          local highlights = require("neo-tree.ui.highlights")
+          local icon = config.default or " "
+          local padding = config.padding or " "
+          local highlight = config.highlight or highlights.FILE_ICON
+
+          if node.type == "directory" then
+            highlight = highlights.DIRECTORY_ICON
+            if node:is_expanded() then
+              icon = config.folder_open or "-"
+            else
+              icon = config.folder_closed or "+"
+            end
+          elseif node.type == "file" then
+            local success, web_devicons = pcall(require, "nvim-web-devicons")
+            if success then
+              if node.ext == 'ign' then
+                local devicon, hl = web_devicons.get_icon(node.name, node.ext)
+                icon = devicon or icon
+                highlight = hl or highlight
+              else
+                local devicon, hl = web_devicons.get_icon(node.name, node.ext)
+                icon = devicon or icon
+                highlight = hl or highlight
+              end
+            end
+          end
+
+          return {
+            text = icon .. padding,
+            highlight = highlight,
+          }
+        end,
+      },
       bind_to_cwd = true,
       filtered_items = {
         visible = false, -- when true, they will just be displayed differently than normal items

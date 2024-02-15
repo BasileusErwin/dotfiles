@@ -8,7 +8,7 @@ return {
     config = function()
       local gitsigns = require("gitsigns")
       gitsigns.setup({
-        trouble = false,
+        trouble = true,
         on_attach = function(bufnr)
           vim.keymap.set('n', '<leader>hs', gitsigns.stage_hunk, { buffer = bufnr })
           vim.keymap.set('n', '<leader>hu', gitsigns.undo_stage_hunk, { buffer = bufnr })

@@ -1,7 +1,7 @@
 local M = {}
 
 M.setup = function()
-  local status_ok, treesitter_config = pcall(require, 'nvim-treesitter.configs')
+  local _, treesitter_config = pcall(require, 'nvim-treesitter.configs')
 
   local config = {
     ensure_installed = "all",
@@ -82,6 +82,15 @@ M.setup = function()
   treesitter_config.setup(config)
 
   local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+
+  parser_config.ignis = {
+    install_info = {
+      url = "/home/iperez/Workspace/Ignis/tree-sitter-ignis",
+      files = {"src/parser.c"},
+    },
+    filetype = "ign",
+  }
+
   parser_config.tsx.filetype_to_parsername = { "javascript", "javascript.jsx", "typescript.tsx" }
 end
 

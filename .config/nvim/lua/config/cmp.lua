@@ -5,7 +5,7 @@ M.setup = function()
   local cmp_autopairs = require("nvim-autopairs.completion.cmp")
   local lspkind = require('lspkind')
 
-  local _, luasnip = pcall(require, "luasnip")
+  -- local _, luasnip = pcall(require, "luasnip")
 
   cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
 
@@ -16,7 +16,7 @@ M.setup = function()
     cmp_tabnine = "[TN]",
     path = "[Path]",
     vsnip = "[Snippet]",
-    luasnip = "[Snippet]",
+    -- luasnip = "[Snippet]",
     copilot = "[Copilot]"
   }
 
@@ -40,11 +40,11 @@ M.setup = function()
         cmp.config.compare.order,
       },
     },
-    snippet = {
-      expand = function(args)
-        require("luasnip").lsp_expand(args.body)
-      end,
-    },
+    -- snippet = {
+    --   expand = function(args)
+    --     require("luasnip").lsp_expand(args.body)
+    --   end,
+    -- },
     confirm_opts = {
       behavior = cmp.ConfirmBehavior.Replace,
       select = false,
@@ -74,7 +74,7 @@ M.setup = function()
     sources = {
       { name = "nvim_lsp" },
       { name = "copilot",   group_index = 2 },
-      { name = "luasnip",   group_index = 2 },
+      -- { name = "luasnip",   group_index = 2 },
       { name = "path",      group_index = 2 },
       { name = "nvim_lua" },
       { name = "buffer" },
@@ -94,9 +94,9 @@ M.setup = function()
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
-        elseif luasnip.expandable() then
-          luasnip.expand()
-          fallback()
+        -- elseif luasnip.expandable() then
+        --   luasnip.expand()
+        --   fallback()
         else
           fallback()
         end
@@ -107,8 +107,8 @@ M.setup = function()
       ["<S-Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
-        elseif luasnip.jumpable(-1) then
-          luasnip.jump(-1)
+        -- elseif luasnip.jumpable(-1) then
+        --   luasnip.jump(-1)
         else
           fallback()
         end

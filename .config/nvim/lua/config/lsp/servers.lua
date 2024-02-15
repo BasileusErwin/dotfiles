@@ -31,7 +31,7 @@ return {
   },
   {
     package_name = "ocaml-lsp",
-    enable = false,
+    enable = true,
     config = function(on_attach, capabilities)
       lspconfig.ocamllsp.setup({
         on_attach,
@@ -126,11 +126,11 @@ return {
     end
   },
   {
-    package_name = 'rome',
-    enable = util.root_pattern("rome.json")(vim.fn.expand('%:p')),
+    package_name = 'biome',
+    enable = util.root_pattern("biome.json")(vim.fn.expand('%:p')),
     config = function(on_attach, capabilities)
-      lspconfig.rome.setup({
-        root_dir = util.root_pattern("rome.json"),
+      lspconfig.biome.setup({
+        root_dir = util.root_pattern("biome.json"),
         on_attach,
         capabilities,
       })
@@ -237,7 +237,7 @@ return {
   },
   {
     package_name = 'rust-analyzer',
-    enable = true,
+    enable = false,
     config = function(on_attach, capabilities)
       lspconfig.rust_analyzer.setup({
         on_attach,
@@ -294,10 +294,10 @@ return {
     end
   },
   {
-    package_name = 'eslint-lsp',
-    enable = true,
+    package_name = 'eslint_d',
+    enable = false,
     config = function(on_attach, capabilities)
-      lspconfig.eslint.setup({
+      lspconfig.eslint_d.setup({
         root_dir = util.root_pattern(".eslintrc.js", ".eslintrc.cjs", ".eslintrc.yaml", ".eslintrc.yml", ".eslintrc.json",
           ".eslintrc"),
         on_attach,
@@ -403,7 +403,7 @@ return {
   },
   {
     package_name = 'clangd',
-    enable = false,
+    enable = true,
     config = function(on_attach, capabilities)
       capabilities.offsetEncoding =  'utf-16'
 

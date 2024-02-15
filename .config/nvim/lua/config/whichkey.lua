@@ -129,15 +129,13 @@ M.setup = function(_, conf)
     --   f = { '<cmd>ToggleTerm size=15 direction=float<CR>', 'Open Float' }
     -- },
 
-    o = { ':SymbolsOutline<CR>', 'Symbols Outline' },
-
-    -- i = {
-    --   name = 'Notes Obsidian',
-    --   s = { '<cmd>ObsidianSearch<CR>', 'Grep notes' },
-    --   n = { '<cmd>ObsidianNew<CR>', 'New note' },
-    --   t = { '<cmd>ObsidianToday<CR>', 'Today note' },
-    --   f = { '<cmd>ObsidianQuickSwitch<CR>', 'Search file note' },
-    -- },
+    i = {
+      name = 'Notes Obsidian',
+      s = { '<cmd>ObsidianSearch<CR>', 'Grep notes' },
+      n = { '<cmd>ObsidianNew<CR>', 'New note' },
+      t = { '<cmd>ObsidianToday<CR>', 'Today note' },
+      f = { '<cmd>ObsidianQuickSwitch<CR>', 'Search file note' },
+    },
 
     f = {
       name = 'Find',

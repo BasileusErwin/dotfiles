@@ -1,5 +1,6 @@
 return {
   'folke/noice.nvim',
+  enabled = true,
   opts = {
     presets = {
       long_message_to_split = true, -- long messages will be sent to a split

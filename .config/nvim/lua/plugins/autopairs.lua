@@ -13,7 +13,7 @@ return {
       map = "<M-e>",
       chars = { "{", "[", "(", '"', "'" },
       pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
-      offset = 0, -- Offset from pattern match
+      offset = 0,
       end_key = "$",
       keys = "qwertyuiopzxcvbnmasdfghjkl",
       check_comma = true,
@@ -21,36 +21,4 @@ return {
       highlight_grey = "LineNr",
     },
   },
-  config = function(_, opts)
-    local autopairs = require('nvim-autopairs')
-    local rule = require('nvim-autopairs.rule')
-
-    autopairs.setup(opts)
-
-    autopairs.add_rules({
-      rule(' ', ' ')
-          :with_pair(function(opts)
-            local pair = opts.line:sub(opts.col - 1, opts.col)
-            return vim.tbl_contains({ '()', '[]', '{}' }, pair)
-          end),
-      rule('( ', ' )')
-          :with_pair(function() return false end)
-          :with_move(function(opts)
-            return opts.prev_char:match('.%)') ~= nil
-          end)
-          :use_key(')'),
-      rule('{ ', ' }')
-          :with_pair(function() return false end)
-          :with_move(function(opts)
-            return opts.prev_char:match('.%}') ~= nil
-          end)
-          :use_key('}'),
-      rule('[ ', ' ]')
-          :with_pair(function() return false end)
-          :with_move(function(opts)
-            return opts.prev_char:match('.%]') ~= nil
-          end)
-          :use_key(']')
-    })
-  end,
 }

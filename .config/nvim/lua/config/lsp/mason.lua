@@ -5,7 +5,7 @@ local get_package_name = function()
   local package_name = {}
 
   for _, server in ipairs(servers) do
-    if server.enable and not server.package_name ~= nil then
+    if server.enable and not server.package_name ~= nil and not server.package_name == "clangd" then
       table.insert(package_name, server.package_name)
     end
   end

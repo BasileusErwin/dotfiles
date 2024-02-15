@@ -1,11 +1,11 @@
 {
   "theme": {
-    "name": "gruvbox",
+    "name": "tokyodark",
     "style": "mirage",
-    "transparent": true,
+    "transparent": false,
     "lualine": {
-      "theme": "gruvbox",
-      "transparent": true
+      "theme": "auto",
+      "transparent": false
     }
   },
   "telescope": {

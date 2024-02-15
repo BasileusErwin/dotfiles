@@ -1,18 +1,28 @@
 return {
-  "epwalsh/obsidian.nvim",
-  event = "VeryLazy",
-  enabled = false,
-  dependencies = {
-    'nvim-lua/plenary.nvim',
-    'hrsh7th/nvim-cmp',
-    'junegunn/fzf',
-    'junegunn/fzf.vim',
-    'ibhagwan/fzf-lua',
-  },
-  opts = {
-    dir = '~/Documents/Obsidian Vault',
-    completion = {
-      nvim_cmp = true
-    },
-  }
+	"epwalsh/obsidian.nvim",
+	version = "*",
+	lazy = false,
+	ft = "markdown",
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+	},
+	opts = {
+		workspaces = {
+			{
+				name = "personal",
+				path = "~/vaults/personal",
+			},
+			{
+				name = "work",
+				path = "~/vaults/work",
+			},
+		},
+	},
+	config = function(_, opts)
+		vim.opt_local.conceallevel = 1
+
+		local obsidian = require("obsidian")
+
+		obsidian.setup(opts)
+	end,
 }

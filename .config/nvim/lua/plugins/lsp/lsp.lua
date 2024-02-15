@@ -5,10 +5,45 @@ return {
     require('config.lsp').setup()
   end,
   dependencies = {
+    'lvimuser/lsp-inlayhints.nvim',
     {
       "nvimtools/none-ls.nvim",
       dependencies = { "nvim-lua/plenary.nvim" },
       name = 'null-ls'
+    },
+    {
+      'stevearc/conform.nvim',
+      opts = {
+        formatters_by_ft = {
+          nasm       = { "asmfmt" },
+          asm        = { "asmfmt" },
+          c          = { "clang-format" },
+          cpp        = { "clang-format" },
+          cmake      = { "cmake-format" },
+          make       = { "cmake-format" },
+          lua        = { "stylua" },
+          python     = { "isort", "black" },
+          javascript = { { "prettierd", "prettier" } },
+          typescript = { { "prettierd", "prettier" } },
+          rust       = { "rustfmt" },
+          json       = { { "prettierd", "jq" } },
+          ocaml      = { "ocamlformat" },
+          zig        = { "zigfmt" },
+          bash       = { "shellcheck" },
+          ["_"]      = { "trim_whitespace" },
+        },
+        formatters = {
+          ["clang-format"] = { }
+        }
+      },
+      config = function(_, opts)
+        opts.formatters['clang-format'] = {
+            command = "clang-format",
+            cwd = require("conform.util").root_file({ ".clang-format" })
+        }
+
+        require("conform").setup(opts)
+      end,
     },
     {
       'williamboman/mason.nvim',

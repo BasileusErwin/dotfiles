@@ -31,6 +31,8 @@ o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrea
 o.foldlevelstart = 99
 o.foldenable = true
 
+o.backup = false
+opt.swapfile = false
 opt.laststatus = 0
 opt.autoindent = true
 opt.expandtab = true

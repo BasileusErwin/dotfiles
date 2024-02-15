@@ -10,6 +10,7 @@ return {
     {
       'L3MON4D3/LuaSnip',
       version = "v2.1.1",
+      enabled = false,
       build = "make install_jsregexp",
       dependencies = {
         'saadparwaiz1/cmp_luasnip',
@@ -20,7 +21,6 @@ return {
       end
     },
     'hrsh7th/cmp-vsnip',
-    'hrsh7th/vim-vsnip',
     'David-Kunz/cmp-npm',
     'Saecki/crates.nvim',
   },

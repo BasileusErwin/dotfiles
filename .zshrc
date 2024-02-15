@@ -6,10 +6,9 @@ if [[ $USER != "root" ]]; then
   export STARSHIP_CONFIG=~/.config/starship.toml
   eval "$(starship init zsh)"
 
-  export PATH=$HOME/.nimble/bin:$HOME/bin:/usr/local/bin:$HOME/.deno/bin:$HOME/.cargo/bin:$HOME/.spicetify:$HOME/.local/share/coursier/bin:$HOME/.local/bin:$HOME/.local/share/fnm:$PATH
+  export PATH=$HOME/.local/share/nvim/mason/bin:$HOME/.nimble/bin:$HOME/bin:/usr/local/bin:$HOME/.deno/bin:$HOME/.cargo/bin:$HOME/.spicetify:$HOME/.local/share/coursier/bin:$HOME/.local/bin:$HOME/.local/share/fnm:$HOME/go/bin/:$PATH
   fpath=(~/.zsh $fpath)
-  autoload -Uz compinit
-  compinit -u
+  autoload -Uz compinit compinit -u
 
   # fnm
   eval "$(fnm env --use-on-cd)"
@@ -73,13 +72,19 @@ plugins=(
   zsh-autosuggestions
   zsh-interactive-cd
   urltools
+  taskwarrior
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # ----| Commands |----
+
+# Ubuntu
+alias apt="nala"
+alias apt-get="nala"
+
 alias vi="nvim $1"
-alias v="nvim ."
+alias v.="nvim ."
 alias mk="mkdir $1"
 alias zathura="nohup zathura $1"
 alias ls="eza --group-directories-first --icons"
@@ -174,3 +179,10 @@ alias aws-localstack="awsume LOCALSTACK"
 
 eval "$(atuin init zsh)"
 source $HOME/.atuin_zshrc
+
+# bun completions
+[ -s "/home/iperez/.bun/_bun" ] && source "/home/iperez/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

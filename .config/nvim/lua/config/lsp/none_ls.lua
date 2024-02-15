@@ -29,29 +29,16 @@ M.setup = function(opts)
     save_after_format = false,
     update_in_insert = false,
     sources = {
-      -- Formatting
-      M.with_root_file(builtin.formatting.prettier, '.prettierrc'),
-      builtin.formatting.shfmt,
-      builtin.formatting.fixjson,
-      builtin.formatting.black.with({ extra_args = { '--fast' } }),
-      builtin.formatting.isort,
-      builtin.formatting.zigfmt,
-      -- M.with_root_file(builtin.formatting.rome, 'rome.json'),
-      builtin.formatting.rustfmt.with({
-        extra_args = { "--edition=2021" }
-      }),
-      M.with_root_file(builtin.formatting.stylua, 'stylua.toml'),
-
       -- diagnostics
       builtin.diagnostics.write_good,
       builtin.diagnostics.ltrs,
       builtin.diagnostics.markdownlint,
       builtin.diagnostics.flake8,
-      -- builtin.diagnostics.tsc.with({
-      --   method = nls.methods.DIAGNOSTICS_ON_SAVE,
-      -- }),
-      builtin.diagnostics.cppcheck,
-      M.with_root_file(builtin.diagnostics.eslint.with({
+      builtin.diagnostics.clang_check,
+      builtin.diagnostics.cmake_lint,
+      builtin.diagnostics.checkmake,
+      builtin.diagnostics.cfn_lint,
+      M.with_root_file(builtin.diagnostics.eslint_d.with({
         method = nls.methods.DIAGNOSTICS_ON_SAVE,
       }), '.eslintrc.json'),
       M.with_diagnostics_code(builtin.diagnostics.shellcheck),
