@@ -1,7 +1,13 @@
 local on_attach = require('config.lsp').on_attach
+
 return {
   'mrcjkb/rustaceanvim',
-  version = '^3',
+  version = '^4',
+	event = {
+		"BufRead *.rs",
+		"BufRead *.toml",
+		"BufRead *.ron",
+	},
   ft = { 'rust' },
   name = 'rust-tools',
   dependencies = {

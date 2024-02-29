@@ -1,5 +1,7 @@
 return {
   "lewis6991/hover.nvim",
+  event = "VeryLazy",
+  lazy = true,
   opts = {
     init = function()
       require("hover.providers.lsp")

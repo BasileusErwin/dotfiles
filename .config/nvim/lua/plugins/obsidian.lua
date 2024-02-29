@@ -1,20 +1,23 @@
 return {
 	"epwalsh/obsidian.nvim",
 	version = "*",
-	lazy = false,
+	lazy = true,
 	ft = "markdown",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
 	opts = {
+		ui = {
+			enable = false,
+		},
 		workspaces = {
 			{
 				name = "personal",
-				path = "~/vaults/personal",
+				path = "~/.notes/personal",
 			},
 			{
 				name = "work",
-				path = "~/vaults/work",
+				path = "~/.notes/work",
 			},
 		},
 	},

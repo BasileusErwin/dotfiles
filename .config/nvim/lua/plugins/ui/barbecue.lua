@@ -4,6 +4,7 @@ return {
   dependencies = {
     "SmiteshP/nvim-navic",
   },
+  event = "BufEnter",
   config = function()
     -- triggers CursorHold event faster
     vim.opt.updatetime = 200

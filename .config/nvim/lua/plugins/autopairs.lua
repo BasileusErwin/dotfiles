@@ -1,6 +1,7 @@
 return {
   'windwp/nvim-autopairs',
   event = "BufEnter",
+  lazy = true,
   opts = {
     check_ts = true,
     ts_config = {

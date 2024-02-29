@@ -1,6 +1,6 @@
 return {
   'hrsh7th/cmp-nvim-lsp',
-  event = 'BufEnter',
+  event = 'VeryLazy',
   dependencies = {
     'hrsh7th/cmp-buffer',
     'onsails/lspkind-nvim',
@@ -10,7 +10,7 @@ return {
     {
       'L3MON4D3/LuaSnip',
       version = "v2.1.1",
-      enabled = false,
+      enabled = true,
       build = "make install_jsregexp",
       dependencies = {
         'saadparwaiz1/cmp_luasnip',

@@ -69,6 +69,7 @@ cmd([[
   setlocal foldmethod=indent
   set nofoldenable
   set foldlevel=99
+  set colorcolumn=120
 ]])
 
 if g.neovide then

@@ -1,9 +1,10 @@
 return {
   "folke/neodev.nvim",
-  lazy = "VeryLazy",
+  event = "VeryLazy",
+  lazy = true,
   opts = {
     library = {
-      enabled = true, -- when not enabled, neodev will not change any settings to the LSP server
+      enabled = true,
     },
     lspconfig = true,
     pathStrict = true,

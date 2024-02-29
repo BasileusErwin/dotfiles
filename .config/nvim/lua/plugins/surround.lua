@@ -1,5 +1,6 @@
 return {
   'ur4ltz/surround.nvim',
+  event = "BufRead",
   opts = {
     context_offset = 100,
     load_autogroups = false,

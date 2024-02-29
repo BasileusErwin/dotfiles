@@ -1,9 +1,47 @@
 return {
-	{ "sainnhe/everforest" },
+	{
+		"rebelot/kanagawa.nvim",
+		priority = 1000,
+		opts = {
+			commentStyle = {
+				italic = true,
+			},
+			functionStyle = {
+				bold = true,
+			},
+			keywordStyle = {
+				bold = true,
+			},
+			statementStyle = {
+				bold = true,
+			},
+			typeStyle = {
+				italic = true,
+				bold = true,
+			},
+			transparent = vim.g.config.theme.transparent,
+			theme = vim.g.config.theme.style,
+			background = {
+				dark = vim.g.config.theme.style,
+				light = vim.g.config.theme.style,
+			},
+		},
+	},
+	{
+		"neanias/everforest-nvim",
+		version = false,
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("everforest").setup({
+				background = vim.g.config.theme.style,
+				italics = true,
+			})
+		end,
+	},
 	{
 		"navarasu/onedark.nvim",
-		lazy = true,
-		event = "VeryLazy",
+		priority = 1000,
 		opts = {
 			style = vim.g.config.theme.style,
 			transparent = vim.g.config.theme.transparent,
@@ -26,13 +64,11 @@ return {
 	},
 	{
 		"marko-cerovac/material.nvim",
-		lazy = true,
-		event = "VeryLazy",
+		priority = 1000,
 	},
 	{
 		"Shatur/neovim-ayu",
-		lazy = true,
-		event = "VeryLazy",
+		priority = 1000,
 		name = "ayu",
 		config = function()
 			require("ayu").setup({
@@ -42,8 +78,7 @@ return {
 	},
 	{
 		"tiagovla/tokyodark.nvim",
-		lazy = true,
-		event = "VeryLazy",
+		priority = 1000,
 		config = function()
 			require("tokyodark").setup({
 				transparent_background = vim.g.config.theme.transparent,

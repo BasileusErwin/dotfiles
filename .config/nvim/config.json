@@ -1,11 +1,11 @@
 {
   "theme": {
-    "name": "tokyodark",
-    "style": "mirage",
+    "name": "everforest",
+    "style": "hard",
     "transparent": false,
     "lualine": {
-      "theme": "auto",
-      "transparent": false
+      "theme": "everforest",
+      "transparent": true
     }
   },
   "telescope": {
@@ -62,7 +62,8 @@
       "TypeParameter": "",
       "Unit": "",
       "Value": "󰎠",
-      "Variable": "󰫧"
+      "Variable": "󰫧",
+      "Macro": "󰅪"
     }
   }
 }

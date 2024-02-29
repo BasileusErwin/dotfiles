@@ -1,60 +1,63 @@
 local M = {}
 
 M.with_diagnostics_code = function(builtin)
-  return builtin.with({
-    diagnostics_format = '#{m} [#{c}]',
-  })
+	return builtin.with({
+		diagnostics_format = "#{m} [#{c}]",
+	})
 end
 
 M.with_root_file = function(builtin, file)
-  return builtin.with({
-    condition = function(utils)
-      return utils.root_has_file(file)
-    end
-  })
+	return builtin.with({
+		condition = function(utils)
+			return utils.root_has_file(file)
+		end,
+	})
 end
 
 M.setup = function(opts)
-  local status_ok, nls = pcall(require, 'null-ls')
+	local status_ok, nls = pcall(require, "null-ls")
 
-  if not status_ok then
-    return
-  end
+	if not status_ok then
+		return
+	end
 
-  M.nls_utils = require('null-ls.utils')
-  local builtin = nls.builtins
+	M.nls_utils = require("null-ls.utils")
+	local builtin = nls.builtins
 
-  nls.setup({
-    debounce = 10000,
-    save_after_format = false,
-    update_in_insert = false,
-    sources = {
-      -- diagnostics
-      builtin.diagnostics.write_good,
-      builtin.diagnostics.ltrs,
-      builtin.diagnostics.markdownlint,
-      builtin.diagnostics.flake8,
-      builtin.diagnostics.clang_check,
-      builtin.diagnostics.cmake_lint,
-      builtin.diagnostics.checkmake,
-      builtin.diagnostics.cfn_lint,
-      M.with_root_file(builtin.diagnostics.eslint_d.with({
-        method = nls.methods.DIAGNOSTICS_ON_SAVE,
-      }), '.eslintrc.json'),
-      M.with_diagnostics_code(builtin.diagnostics.shellcheck),
+	nls.setup({
+		debounce = 10000,
+		save_after_format = false,
+		update_in_insert = false,
+		sources = {
+			-- diagnostics
+			builtin.diagnostics.markdownlint.with({
+				args = { "--config", vim.fn.stdpath("config") .. "/.markdownlint.json" },
+				method = nls.methods.DIAGNOSTICS_ON_SAVE,
+			}),
+			require("none-ls.diagnostics.flake8"),
+			-- require("none-ls.diagnostics.clang_check").with({
+			-- 	method = nls.methods.DIAGNOSTICS_ON_SAVE,
+			-- }),
+			builtin.diagnostics.cmake_lint.with({
+				method = nls.methods.DIAGNOSTICS_ON_SAVE,
+			}),
+			builtin.diagnostics.checkmake,
+			builtin.diagnostics.cfn_lint,
+			M.with_root_file(require("none-ls.diagnostics.eslint_d"), ".eslintrc.json"),
+			M.with_diagnostics_code(require("none-ls-shellcheck.diagnostics")),
 
-      -- code actions
-      builtin.code_actions.gitsigns,
-      builtin.code_actions.gitrebase,
-      builtin.code_actions.refactoring,
-      builtin.code_actions.shellcheck,
+			-- code actions
+			builtin.code_actions.gitsigns,
+			builtin.code_actions.gitrebase,
+			builtin.code_actions.refactoring,
+			require("none-ls-shellcheck.code_actions"),
 
-      -- hover
-      builtin.hover.dictionary,
-    },
-    on_attach = opts.on_attach,
-    root_dir = M.nls_utils.root_pattern(".git"),
-  })
+			-- hover
+			builtin.hover.dictionary,
+		},
+		on_attach = opts.on_attach,
+		root_dir = M.nls_utils.root_pattern(".git"),
+	})
 end
 
 return M
