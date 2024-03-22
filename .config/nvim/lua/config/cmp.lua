@@ -2,12 +2,9 @@ local M = {}
 
 M.setup = function()
 	local _, cmp = pcall(require, "cmp")
-	local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 	local lspkind = require("lspkind")
 
 	local _, luasnip = pcall(require, "luasnip")
-
-	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
 
 	local source_names = {
 		buffer = "[Buffer]",
@@ -60,6 +57,12 @@ M.setup = function()
 			border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
 		},
 		formatting = {
+			fields = {
+        "abbr",
+				"kind",
+        "menu"
+			},
+			expandable_indicator = false,
 			format = function(entry, vim_item)
 				vim_item.kind = (lspkind.symbolic(vim_item.kind, { mode = "symbol" })) .. " " .. vim_item.kind
 				vim_item.menu = source_names[entry.source.name]

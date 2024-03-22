@@ -1,11 +1,11 @@
 {
   "theme": {
-    "name": "everforest",
-    "style": "hard",
+    "name": "ayu",
+    "style": "mirage",
     "transparent": false,
     "lualine": {
-      "theme": "everforest",
-      "transparent": true
+      "theme": "auto",
+      "transparent": false
     }
   },
   "telescope": {
@@ -41,7 +41,7 @@
       "Field": "",
       "File": "",
       "Folder": "",
-      "Function": "",
+      "Function": "󰘧",
       "Interface": "",
       "Key": "󰌆",
       "Keyword": "󰌆",

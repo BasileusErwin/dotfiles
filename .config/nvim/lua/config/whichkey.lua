@@ -75,11 +75,6 @@ M.code_keymap = function(whichkey)
           'Expand Macro'
         }
       }
-    elseif file_type == 'go' then
-      keymap = {
-        name = 'Code',
-        r = { '<cmd>GoRun<cr>', 'Run' },
-      }
     elseif file_type == 'jdtls' then
       keymap = {
         name = 'Code',
@@ -118,17 +113,6 @@ M.setup = function(_, conf)
       w = { '<Cmd>BufferLineSortByWindowNumber<CR>', 'Sort buffer by Window Number' },
     },
 
-    -- e = {
-    --   '<cmd>NvimTreeFindFileToggle<CR>',
-    --   'Explorer',
-    -- },
-
-    -- t = {
-    --   name = 'Terminal',
-    --   h = { '<cmd>ToggleTerm size=15 direction=horizontal<CR>', 'Open Horizontal' },
-    --   f = { '<cmd>ToggleTerm size=15 direction=float<CR>', 'Open Float' }
-    -- },
-
     i = {
       name = 'Notes Obsidian',
       s = { '<cmd>ObsidianSearch<CR>', 'Grep notes' },
@@ -143,37 +127,9 @@ M.setup = function(_, conf)
       f = { '<cmd>lua require("telescope.builtin").find_files()<CR>', 'Find files' },
       b = { '<cmd>lua require("telescope.builtin").buffers()<CR>', 'Find in buffer' },
     },
-
-    d = {
-      name = 'DevDoc',
-      c = { '<cmd>DevdocsOpenCurrentFloat<CR>', 'Devdoc current' },
-      t = { '<cmd>DevdocsToggle<CR>', 'Toggle' },
-      o = { '<cmd>DevdocsOpenFloat<CR>', 'Open' }
-    },
   }
 
-  local visual_keymap = {
-    g = {
-      name = "Git",
-      y = {
-        "<cmd>lua require'gitlinker'.get_buf_range_url('v', {action_callback = require'gitlinker.actions'.open_in_browser})<cr>",
-        "Link",
-      },
-    },
-
-    r = {
-      name = "Refactor",
-      e = { [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], "Extract Function" },
-      f = {
-        [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function to File')<CR>]],
-        "Extract Function to File",
-      },
-      v = { [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]], "Extract Variable" },
-      i = { [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], "Inline Variable" },
-      r = { [[ <Esc><Cmd>lua require('telescope').extensions.refactoring.refactors()<CR>]], "Refactor" },
-      V = { [[ <Esc><Cmd>lua require('refactoring').debug.print_var({})<CR>]], "Debug Print Var" },
-    },
-  }
+  local visual_keymap = {}
 
   whichkey.setup(conf)
   whichkey.register(mappings, M.opts)

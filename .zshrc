@@ -7,6 +7,9 @@ if [[ $USER != "root" ]]; then
   eval "$(starship init zsh)"
 
   export PATH=$HOME/.local/share/nvim/mason/bin:$HOME/.nimble/bin:$HOME/bin:/usr/local/bin:$HOME/.deno/bin:$HOME/.cargo/bin:$HOME/.spicetify:$HOME/.local/share/coursier/bin:$HOME/.local/bin:$HOME/.local/share/fnm:$HOME/go/bin/:$PATH
+  export PATH=/usr/lib/android-sdk/emulator/:/usr/lib/android-sdk/cmdline-tools/latest/bin:$HOME/flutter/bin:$PATH
+   
+
   fpath=(~/.zsh $fpath)
   autoload -Uz compinit compinit -u
 

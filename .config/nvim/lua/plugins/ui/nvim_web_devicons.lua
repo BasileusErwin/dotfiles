@@ -9,6 +9,11 @@ return {
 				color = "#702963",
 				name = "Ignis",
 			},
+      ["ion"] = {
+        icon = "",
+        color = "#702963",
+        name = "Ion",
+      }
 		},
 	},
 }

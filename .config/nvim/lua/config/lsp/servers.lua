@@ -3,16 +3,6 @@ local lspconfig = require("lspconfig")
 
 return {
 	{
-		package_name = "efm",
-		enable = false,
-		config = function(on_attach, capabilities)
-			lspconfig.efm.setup({
-				on_attach,
-				capabilities,
-			})
-		end,
-	},
-	{
 		package_name = "asm-lsp",
 		enable = true,
 		config = function(on_attach, capabilities)
@@ -34,29 +24,6 @@ return {
 		enable = true,
 		config = function(on_attach, capabilities)
 			lspconfig.ocamllsp.setup({
-				on_attach,
-				capabilities,
-			})
-		end,
-	},
-	{
-		package_name = "nimlsp",
-		enable = false,
-		config = function(on_attach, capabilities)
-			vim.cmd([[set omnifunc=v:lua.vim.lsp.omnifunc]])
-
-			lspconfig.nimls.setup({
-				on_attach,
-				capabilities,
-				cmd = { "nimlsp" },
-			})
-		end,
-	},
-	{
-		package_name = "crystalline",
-		enable = false,
-		config = function(on_attach, capabilities)
-			lspconfig.crystalline.setup({
 				on_attach,
 				capabilities,
 			})
@@ -99,38 +66,6 @@ return {
 		end,
 	},
 	{
-		package_name = "vue-language-server",
-		enable = true,
-		config = function(on_attach, capabilities)
-			lspconfig.volar.setup({
-				on_attach,
-				capabilities,
-			})
-		end,
-	},
-	{
-		package_name = "vls",
-		enable = false,
-		config = function(on_attach, capabilities)
-			lspconfig.vls.setup({
-				root_dir = util.root_pattern("v.mod", ".git"),
-				on_attach,
-				capabilities,
-			})
-		end,
-	},
-	{
-		package_name = "prisma-language-server",
-		enable = false,
-		config = function(on_attach, capabilities)
-			lspconfig.prismals.setup({
-				root_dir = util.root_pattern("*.prisma"),
-				on_attach,
-				capabilities,
-			})
-		end,
-	},
-	{
 		package_name = "biome",
 		enable = util.root_pattern("biome.json")(vim.fn.expand("%:p")),
 		config = function(on_attach, capabilities)
@@ -163,8 +98,8 @@ return {
 							for _, file in ipairs(vim.api.nvim_get_runtime_file("dict/*", true)) do
 								local lang = vim.fn.fnamemodify(file, ":t:r")
 								local fullpath = vim.fs.normalize(file, ":p")
-                print(lang)
-                print(fullpath)
+								print(lang)
+								print(fullpath)
 								files[lang] = { ":" .. fullpath }
 							end
 
@@ -184,16 +119,6 @@ return {
 		end,
 	},
 	{
-		package_name = "teal-language-server",
-		enable = false,
-		config = function(on_attach, capabilities)
-			lspconfig.teal_ls.setup({
-				on_attach,
-				capabilities,
-			})
-		end,
-	},
-	{
 		package_name = nil,
 		enable = true,
 		config = function(on_attach, capabilities)
@@ -209,27 +134,6 @@ return {
 		enable = true,
 		config = function(on_attach, capabilities)
 			lspconfig.jdtls.setup({
-				on_attach,
-				capabilities,
-			})
-		end,
-	},
-	{
-		package_name = "deno",
-		enable = false,
-		config = function(on_attach, capabilities)
-			lspconfig.denols.setup({
-				root_dir = util.root_pattern("deno.json"),
-				on_attach,
-				capabilities,
-			})
-		end,
-	},
-	{
-		package_name = "intelephense",
-		enable = false,
-		config = function(on_attach, capabilities)
-			lspconfig.intelephense.setup({
 				on_attach,
 				capabilities,
 			})
@@ -256,22 +160,19 @@ return {
 		end,
 	},
 	{
-		package_name = "haskell-language-server",
-		enable = false,
-		config = function(on_attach, capabilities)
-			lspconfig.hls.setup({
-				on_attach,
-				capabilities,
-			})
-		end,
-	},
-	{
 		package_name = "rust-analyzer",
 		enable = false,
 		config = function(on_attach, capabilities)
 			lspconfig.rust_analyzer.setup({
 				on_attach,
 				capabilities,
+				settings = {
+					["rust-analyzer"] = {
+						diagnostics = {
+							enable = true,
+						},
+					},
+				},
 			})
 		end,
 	},
@@ -294,54 +195,10 @@ return {
 		end,
 	},
 	{
-		package_name = "typescript-language-server",
-		enable = false,
-		config = function(on_attach, capabilities)
-			lspconfig.tsserver.setup({
-				root_dir = util.root_pattern("package.json"),
-				filetypes = {
-					"typescript",
-					"typescriptreact",
-					"typescript.tsx",
-					"javascript",
-					"javascriptreact",
-					"vue",
-				},
-				preferences = {
-					quotePreference = "single",
-					importModuleSpecifierPreference = "relative",
-					includeCompletionsForImportStatements = true,
-					includeInlayParameterNameHints = "all",
-					allowRenameOfImportPath = true,
-				},
-				on_attach,
-				capabilities,
-			})
-		end,
-	},
-	{
 		package_name = "vim-language-server",
 		enable = true,
 		config = function(on_attach, capabilities)
 			lspconfig.vimls.setup({
-				on_attach,
-				capabilities,
-			})
-		end,
-	},
-	{
-		package_name = "eslint_d",
-		enable = false,
-		config = function(on_attach, capabilities)
-			lspconfig.eslint_d.setup({
-				root_dir = util.root_pattern(
-					".eslintrc.js",
-					".eslintrc.cjs",
-					".eslintrc.yaml",
-					".eslintrc.yml",
-					".eslintrc.json",
-					".eslintrc"
-				),
 				on_attach,
 				capabilities,
 			})
@@ -476,62 +333,10 @@ return {
 		end,
 	},
 	{
-		package_name = "emmet-ls",
-		enable = false,
-		config = function(on_attach, capabilities)
-			lspconfig.emmet_ls.setup({
-				filetypes = {
-					"css",
-					"eruby",
-					"html",
-					"javascript",
-					"javascriptreact",
-					"less",
-					"sass",
-					"scss",
-					"svelte",
-					"pug",
-					"typescriptreact",
-					"vue",
-					"rust",
-				},
-				init_options = {
-					userLanguages = {
-						rust = "html",
-					},
-				},
-				on_attach,
-				capabilities,
-			})
-		end,
-	},
-	{
-		package_name = "gopls",
-		enable = false,
-		config = function(on_attach, capabilities)
-			lspconfig.gopls.setup({
-				on_attach,
-				capabilities,
-			})
-		end,
-	},
-	{
 		package_name = "taplo",
 		enable = true,
 		config = function(on_attach, capabilities)
 			lspconfig.taplo.setup({
-				on_attach,
-				capabilities,
-			})
-		end,
-	},
-	{
-		package_name = "omnisharp",
-		enable = false,
-		config = function(on_attach, capabilities)
-			local pid = vim.fn.getpid()
-			lspconfig.omnisharp.setup({
-				cmd = { "omnisharp", "--languageserver", "--hostPID", tostring(pid) },
 				on_attach,
 				capabilities,
 			})
