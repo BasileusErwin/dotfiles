@@ -5,7 +5,7 @@ M.setup = function()
 
 	local config = {
 		ensure_installed = "all",
-		sync_install = false,
+		sync_install = true,
 		highlight = {
 			enable = true,
 			use_languagetree = true,
@@ -87,8 +87,6 @@ M.setup = function()
 			url = "https://github.com/Ignis-lang/tree-sitter-ignis.git",
 			files = { "src/parser.c" },
 			branch = "main",
-			generate_requires_npm = false,
-			requires_generate_from_grammar = true,
 		},
 		filetype = "ign",
 	}
@@ -98,8 +96,6 @@ M.setup = function()
 			url = "https://github.com/Ignis-lang/tree-sitter-ion.git",
 			files = { "src/parser.c" },
 			branch = "main",
-			generate_requires_npm = true,
-			requires_generate_from_grammar = true,
 		},
 		filetype = "ion",
 	}

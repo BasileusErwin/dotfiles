@@ -35,9 +35,6 @@ M.setup = function(opts)
 				method = nls.methods.DIAGNOSTICS_ON_SAVE,
 			}),
 			require("none-ls.diagnostics.flake8"),
-			-- require("none-ls.diagnostics.clang_check").with({
-			-- 	method = nls.methods.DIAGNOSTICS_ON_SAVE,
-			-- }),
 			builtin.diagnostics.cmake_lint.with({
 				method = nls.methods.DIAGNOSTICS_ON_SAVE,
 			}),

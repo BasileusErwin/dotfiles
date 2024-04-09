@@ -51,9 +51,6 @@ M.setup = function()
       file_sorter = require("telescope.sorters").get_fuzzy_file,
       file_ignore_patterns = {},
       generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-      path_display = {},
-      winblend = 0,
-      border = {},
       borderchars = borderchars,
       color_devicons = true,
       use_less = true,
@@ -63,11 +60,6 @@ M.setup = function()
       qflist_previewer = previewers.vim_buffer_qflist.new,
       buffer_previewer_maker = previewers.buffer_previewer_maker,
       extensions = {
-        ["ui-select"] = {
-          require("telescope.themes").get_cursor({
-            -- even more opts
-          }),
-        },
         fzy_native = {
           override_generic_sorter = true,
           override_file_sorter = true,

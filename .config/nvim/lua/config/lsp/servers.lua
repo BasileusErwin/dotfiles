@@ -31,7 +31,7 @@ return {
 	},
 	{
 		package_name = "tailwindcss-language-server",
-		enable = true,
+		enable = false,
 		config = function(on_attach, capabilities)
 			lspconfig.tailwindcss.setup({
 				on_attach,

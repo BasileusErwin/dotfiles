@@ -1,29 +1,38 @@
 return {
 	{
-		"rebelot/kanagawa.nvim",
+		"gbprod/nord.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("nord").setup({
+				styles = {
+					comments = { italic = true },
+					keywords = { bold = true },
+					functions = { bold = true },
+					variables = { bold = true },
+
+					bufferline = {
+						current = { bold = true },
+						modified = { italic = true },
+					},
+				},
+			})
+		end,
+	},
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
 		priority = 1000,
 		opts = {
-			commentStyle = {
-				italic = true,
-			},
-			functionStyle = {
-				bold = true,
-			},
-			keywordStyle = {
-				bold = true,
-			},
-			statementStyle = {
-				bold = true,
-			},
-			typeStyle = {
-				italic = true,
-				bold = true,
-			},
-			transparent = vim.g.config.theme.transparent,
-			theme = vim.g.config.theme.style,
-			background = {
-				dark = vim.g.config.theme.style,
-				light = vim.g.config.theme.style,
+			style = vim.g.config.theme.style,
+			terminal_colors = true,
+			styles = {
+				comments = { italic = true },
+				keywords = { italic = true },
+				functions = { bold = true },
+				variables = { bold = true },
+				sidebars = "dark",
+				floats = "dark",
 			},
 		},
 	},

@@ -1,7 +1,7 @@
 {
   "theme": {
-    "name": "ayu",
-    "style": "mirage",
+    "name": "tokyonight",
+    "style": "night",
     "transparent": false,
     "lualine": {
       "theme": "auto",

@@ -170,8 +170,8 @@ alias gd="git diff --no-ext-diff --cached"
 alias dot="g --git-dir ~/.dotfiles --work-tree ~"
 
 # Workspace
-export WORKSPACE="~/Workspace"
-export WORKSPACE_HOULAK="~/Workspace/Houlak"
+export WORKSPACE="~/workspace/personal"
+export WORKSPACE_HOULAK="~/workspace/work/Houlak"
 
 alias w="cd $WORKSPACE"
 alias wh="cd $WORKSPACE_HOULAK"
