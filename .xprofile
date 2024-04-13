@@ -8,42 +8,85 @@ export LAPTOP='eDP'
 # -- Monitor --
 export HDMI='HDMI-A-0'
 export DISPLAY_PORT='DisplayPort-0'
+export DISPLAY_PORT_1='DisplayPort-1'
 
 HDMI_CONNECTED=$(xrandr | grep "$HDMI connected" | awk '{print $1}')
 DISPLAY_PORT_CONNECTED=$(xrandr | grep "$DISPLAY_PORT connected" | awk '{print $1}')
-DISPLAY_PORT_1_CONNECTED=$(xrandr | grep "DisplayPort-1 connected" | awk '{print $1}')
+DISPLAY_PORT_1_CONNECTED=$(xrandr | grep "$DISPLAY_PORT_1 connected" | awk '{print $1}')
+
 export HDMI_CONNECTED
 export DISPLAY_PORT_CONNECTED
+export DISPLAY_PORT_1_CONNECTED
+
 export PATH=$HOME/.nimble/bin:$HOME/bin:/usr/local/bin:$HOME/.deno/bin:$HOME/.cargo/bin:$HOME/.spicetify:$HOME/.local/share/coursier/bin:$HOME/.local/bin/:$PATH
 export QT_STYLE_OVERRIDE=kvantum
 export DENO_INSTALL="$HOME/.deno"
 export STARSHIP_CONFIG="$HOME/.config/fish/starship.toml"
 export EDITOR="nvim"
 
-function set_monitor() {
-  xrandr --newmode "1920x1080R" 138.50 1920 1968 2000 2080 1080 1083 1088 1111 +hsync -vsync
-  xrandr --addmode $1 1920x1080R
-  xrandr --output "$1" -r 75.0 --primary --mode 1920x1080R --rotate normal --right-of "$LAPTOP" \
+function set_hdmi_monitor() {
+  xrandr --addmode $HDMI 1920x1080R
+
+  if [[ $DISPLAY_PORT_CONNECTED ]];  then
+    xrandr --output "$HDMI" -r 60.0 --mode 1920x1080R --rotate normal --right-of "$DISPLAY_PORT" \
     --output "$LAPTOP" --mode 1920x1080 --rotate normal
+  else
+    xrandr --output "$HDMI" -r 60.0 --mode 1920x1080R --rotate normal --right-of "$LAPTOP" \
+    --output "$LAPTOP" --mode 1920x1080 --rotate normal
+  fi
 }
 
-if [[ $HDMI_CONNECTED ]]; then
-  set_monitor $HDMI
+function set_display_port_1_monitor() {
+  xrandr --addmode $DISPLAY_PORT_1 1920x1080R
+
+  if [[ $HDMI_CONNECTED ]]; then
+    xrandr --output "$DISPLAY_PORT_1" -r 75.0 --mode 1920x1080R --rotate normal --below "$LAPTOP" \
+    --output "$LAPTOP" --mode 1920x1080 --rotate normal
+  elif [[ $DISPLAY_PORT_CONNECTED ]]; then
+    xrandr --output "$DISPLAY_PORT_1" -r 75.0 --mode 1920x1080R --rotate normal --below "$LAPTOP" \
+    --output "$LAPTOP" --mode 1920x1080 --rotate normal
+  else
+    xrandr --output "$DISPLAY_PORT_1" -r 75.0 --mode 1920x1080R --rotate normal --right-of "$LAPTOP" \
+      --output "$LAPTOP" --mode 1920x1080 --rotate normal
+  fi
+}
+
+function set_display_port_monitor() {
+  xrandr --addmode $DISPLAY_PORT 1920x1080R
+
+  if [[ $HDMI_CONNECTED ]];  then
+    xrandr --output "$DISPLAY_PORT" -r 75.0 --mode 1920x1080R --rotate normal --left-of "$HDMI" \
+    --output "$LAPTOP" --mode 1920x1080 --rotate normal
+  elif [[ $DISPLAY_PORT_1_CONNECTED ]];  then
+    xrandr --output "$DISPLAY_PORT" -r 75.0 --mode 1920x1080R --rotate normal --left-of "$LAPTOP" \
+    --output "$LAPTOP" --mode 1920x1080 --rotate normal
+  else
+    xrandr --output "$DISPLAY_PORT" -r 75.0 --mode 1920x1080R --rotate normal --right-of "$LAPTOP" \
+    --output "$LAPTOP" --mode 1920x1080 --rotate normal
+  fi
+}
+
+function set_dual_monitor() {
+  xrandr --newmode "1920x1080R" 138.50 1920 1968 2000 2080 1080 1083 1088 1111 +hsync -vsync
+  set_display_port_1_monitor
+  set_display_port_monitor
+}
+
+if [[ $HDMI_CONNECTED && $DISPLAY_PORT_CONNECTED ]]; then
+  set_dual_monitor
+elif [[ $HDMI_CONNECTED ]]; then
+  set_hdmi_monitor
 elif [[ $DISPLAY_PORT_CONNECTED ]]; then
-  set_monitor $DISPLAY_PORT
-elif  [[ $DISPLAY_PORT_1_CONNECTED ]]; then
-  set_monitor $DISPLAY_PORT
+  set_display_port_monitor
 else
   xrandr --output "$LAPTOP" --primary --mode 1920x1080 --rotate normal
 fi
 
 xinput set-prop "TPPS/2 Elan TrackPoint" "libinput Accel Speed" -0.6
 
-if [ -z "$DISPLAY" ]; then
-  xmodmap -e "remove Lock = Caps_Lock"
-  xmodmap -e "keycode 66 = Control_L"
-  xmodmap -e "add Control = Control_L"
-fi
+xmodmap -e "remove Lock = Caps_Lock"
+xmodmap -e "keycode 66 = Control_L"
+xmodmap -e "add Control = Control_L"
 
 lxsession &
 nitrogen --restore &

@@ -31,10 +31,12 @@
     MainAndHorizontalStack
   ],
   window_rules: [
-    (window_class: "firefox", window_title: None, spawn_on_tag: 1, spawn_on_workspace: None, spawn_floating: None, spawn_sticky: None, spawn_fullscreen: None, spawn_as_type: None),
     (window_class: "firefox-nightly", window_title: None, spawn_on_tag: 1, spawn_on_workspace: None, spawn_floating: None, spawn_sticky: None, spawn_fullscreen: None, spawn_as_type: None),
     (window_class: "firefoxdeveloperedition", window_title: None, spawn_on_tag: 1, spawn_on_workspace: None, spawn_floating: None, spawn_sticky: None, spawn_fullscreen: None, spawn_as_type: None),
+    (window_class: "floorp", window_title: None, spawn_on_tag: 1, spawn_on_workspace: None, spawn_floating: None, spawn_sticky: None, spawn_fullscreen: None, spawn_as_type: None),
+    (window_class: "LibreWolf", window_title: None, spawn_on_tag: 1, spawn_on_workspace: None, spawn_floating: None, spawn_sticky: None, spawn_fullscreen: None, spawn_as_type: None),
     (window_class: "Google-chrome", window_title: None, spawn_on_tag: 4, spawn_on_workspace: None, spawn_floating: None, spawn_sticky: None, spawn_fullscreen: None, spawn_as_type: None),
+    (window_class: "firefox", window_title: None, spawn_on_tag: 4, spawn_on_workspace: None, spawn_floating: None, spawn_sticky: None, spawn_fullscreen: None, spawn_as_type: None),
     (window_class: "TelegramDesktop", window_title: None, spawn_on_tag: 7, spawn_on_workspace: None, spawn_floating: None, spawn_sticky: None, spawn_fullscreen: None, spawn_as_type: None),
     (window_class: "Thunderbird", window_title: None, spawn_on_tag: 7, spawn_on_workspace: None, spawn_floating: None, spawn_sticky: None, spawn_fullscreen: None, spawn_as_type: None),
     (window_class: "zoom", window_title: None, spawn_on_tag: 7, spawn_on_workspace: None, spawn_floating: true, spawn_sticky: None, spawn_fullscreen: None, spawn_as_type: None),
@@ -45,7 +47,7 @@
     (window_class: "Pulseaudio-equalizer-gtk", window_title: None, spawn_on_tag: 8, spawn_on_workspace: None, spawn_floating: true, spawn_sticky: None, spawn_fullscreen: None, spawn_as_type: None),
     (window_class: "Pavucontrol", window_title: None, spawn_on_tag: 8, spawn_on_workspace: None, spawn_floating: true, spawn_sticky: None, spawn_fullscreen: None, spawn_as_type: None),
     (window_class: "Slack", window_title: None, spawn_on_tag: 9, spawn_on_workspace: None, spawn_floating: None, spawn_sticky: None, spawn_fullscreen: None, spawn_as_type: None),
-
+    (window_class: "DBeaver", window_title: None, spawn_on_tag: 6, spawn_on_workspace: None, spawn_floating: false, spawn_sticky: None, spawn_fullscreen: None, spawn_as_type: None),
 
     // Float
     (window_class: "Lxapperance", window_title: None, spawn_on_tag: None, spawn_on_workspace: None, spawn_floating: true, spawn_sticky: None, spawn_fullscreen: None, spawn_as_type: None),
@@ -77,7 +79,7 @@
     (window_class: "swing-App", window_title: None, spawn_on_tag: None, spawn_on_workspace: None, spawn_floating: true, spawn_sticky: None, spawn_fullscreen: None, spawn_as_type: None),
     (window_class: "Gcr-prompter", window_title: None, spawn_on_tag: None, spawn_on_workspace: None, spawn_floating: true, spawn_sticky: None, spawn_fullscreen: None, spawn_as_type: None),
     (window_class: "Steam", window_title: None, spawn_on_tag: None, spawn_on_workspace: None, spawn_floating: true, spawn_sticky: None, spawn_fullscreen: None, spawn_as_type: None),
-    (window_class: "DBeaver", window_title: None, spawn_on_tag: 6, spawn_on_workspace: None, spawn_floating: false, spawn_sticky: None, spawn_fullscreen: None, spawn_as_type: None),
+    (window_class: "Lxpolkit", window_title: None, spawn_on_tag: None, spawn_on_workspace: None, spawn_floating: true, spawn_sticky: None, spawn_fullscreen: None, spawn_as_type: None),
   ],
   keybind: [
     (command: GotoTag, value: "1", modifier: ["modkey"], key: "1"),
@@ -118,12 +120,11 @@
     (command: Execute, value: "rofi -show drun", modifier: ["modkey"], key: "m"),
     (command: Execute, value: "rofi -show", modifier: ["modkey", "Shift"], key: "m"),
     (command: Execute, value: "alacritty", modifier: ["modkey"], key: "Return"),
-    (command: Execute, value: "firefox-developer-edition", modifier: ["modkey"], key: "b"),
-    (command: Execute, value: "google-chrome-stable", modifier: ["modkey", "Shift"], key: "b"),
+    (command: Execute, value: "librewolf", modifier: ["modkey"], key: "b"),
+    (command: Execute, value: "firefox", modifier: ["modkey", "Shift"], key: "b"),
     (command: Execute, value: "speedcrunch", modifier: ["modkey"], key: "s"),
-    (command: Execute, value: "notion-app", modifier: ["modkey"], key: "n"),
-    (command: Execute, value: "obsidian", modifier: ["modkey", "Shift"], key: "n"),
-    (command: Execute, value: "scrot -s \'screenshot_%Y-%m-%d-%T_$wx$h.png\' -e \'mkdir -p ~/Pictures/screenshots/ | mv $f ~/Pictures/screenshots/\'", modifier: ["modkey"], key: "p"),
+    (command: Execute, value: "obsidian", modifier: ["modkey"], key: "n"),
+    (command: Execute, value: "flameshot gui", modifier: ["modkey"], key: "p"),
     (command: Execute, value: "betterlockscreen -l blur", modifier: ["modkey", "Control"], key: "l"),
     (command: Execute, value: "pactl set-sink-volume @DEFAULT_SINK@ -5%", modifier: [], key: "XF86XK_AudioLowerVolume"),
     (command: Execute, value: "pactl set-sink-volume @DEFAULT_SINK@ +5%", modifier: [], key: "XF86XK_AudioRaiseVolume"),

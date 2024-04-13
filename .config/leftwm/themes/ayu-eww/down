@@ -3,5 +3,4 @@
 leftwm-command "UnloadTheme"
 
 pkill eww
-pkill trayer
 pkill volumeicon
