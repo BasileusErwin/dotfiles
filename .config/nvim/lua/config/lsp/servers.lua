@@ -3,6 +3,42 @@ local lspconfig = require("lspconfig")
 
 return {
 	{
+		package_name = "nimlsp",
+		enable = true,
+		config = function(on_attach, capabilities)
+			lspconfig.nimls.setup({
+				on_attach,
+				capabilities,
+			})
+		end,
+	},
+	{
+		package_name = "typescript-language-server",
+		enable = true,
+		config = function(on_attach, capabilities)
+			lspconfig.tsserver.setup({
+				root_dir = util.root_pattern("package.json"),
+				filetypes = {
+					"typescript",
+					"typescriptreact",
+					"typescript.tsx",
+					"javascript",
+					"javascriptreact",
+					"vue",
+				},
+				preferences = {
+					quotePreference = "single",
+					importModuleSpecifierPreference = "relative",
+					includeCompletionsForImportStatements = true,
+					includeInlayParameterNameHints = "all",
+					allowRenameOfImportPath = true,
+				},
+				on_attach,
+				capabilities,
+			})
+		end,
+	},
+	{
 		package_name = "asm-lsp",
 		enable = true,
 		config = function(on_attach, capabilities)

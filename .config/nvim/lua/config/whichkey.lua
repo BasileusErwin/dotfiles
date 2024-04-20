@@ -81,6 +81,29 @@ M.setup = function(_, conf)
 		["w"] = { "<cmd>update!<CR>", "Save" },
 		["q"] = { "<cmd>q!<CR>", "Quit" },
 
+		d = {
+			"DAP",
+			r = { '<cmd>lua require("dap").eval<CR>', "Eval" },
+			R = { '<cmd>lua require("dap").run_to_cursor<CR>', "Run to cursor" },
+			c = { "<cmd>DapContinue<CR>", "Continue" },
+			s = { "<cmd>DapStepOver<CR>", "Step Over" },
+			i = { "<cmd>DapStepInto<CR>", "Step Into" },
+			o = { '<cmd>lua require("dap").step_out<CR>', "Step Out" },
+			b = { "<cmd>DapToggleBreakpoint<CR>", "Toggle Breakpoint" },
+			B = {
+				'<cmd>lua require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>',
+				"Set Breakpoint",
+			},
+			x = {
+				function()
+					require("dap").terminate()
+					require("dap").clear_breakpoints()
+					require("dapui").close()
+				end,
+				"Disconnect",
+			},
+		},
+
 		b = {
 			name = "Buffer",
 			b = { "<Cmd>BufferLineSortByTab<CR>", "Sort buffer by buffer number" },
@@ -129,19 +152,19 @@ M.setup = function(_, conf)
 					name = "Preview",
 					'<Cmd>lua require("gitsigns").preview_hunk()<CR>',
 				},
-        d = {
-          name = "Diff",
-          '<Cmd>lua require("gitsigns").diffthis()<CR>',
-        },
-        D = {
-          name = "Diff all",
-          '<Cmd>lua require("gitsigns").diffthis("~")<CR>',
-        },
+				d = {
+					name = "Diff",
+					'<Cmd>lua require("gitsigns").diffthis()<CR>',
+				},
+				D = {
+					name = "Diff all",
+					'<Cmd>lua require("gitsigns").diffthis("~")<CR>',
+				},
 			},
-      t = {
-        name = "Toggle line blame",
-        '<Cmd>lua require("gitsigns").toggle_line_blame()<CR>',
-      },
+			t = {
+				name = "Toggle line blame",
+				'<Cmd>lua require("gitsigns").toggle_line_blame()<CR>',
+			},
 			c = {
 				name = "Commit",
 				'<Cmd>lua require("tinygit").smartCommit()<CR>',

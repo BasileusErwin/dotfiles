@@ -5,6 +5,7 @@ export EDITOR="nvim"
 if [[ $USER != "root" ]]; then
   export STARSHIP_CONFIG=~/.config/starship.toml
   eval "$(starship init zsh)"
+  export GPG_TTY=$(tty)
 
   export PATH=$HOME/.local/share/nvim/mason/bin:$HOME/.nimble/bin:$HOME/bin:/usr/local/bin:$HOME/.deno/bin:$HOME/.cargo/bin:$HOME/.spicetify:$HOME/.local/share/coursier/bin:$HOME/.local/bin:$HOME/.local/share/fnm:$HOME/go/bin/:$PATH
   export PATH=/usr/lib/android-sdk/emulator/:/usr/lib/android-sdk/cmdline-tools/latest/bin:$HOME/flutter/bin:$PATH
@@ -35,6 +36,13 @@ if [[ $USER != "root" ]]; then
       fnm use --resolve-engines >/dev/null 2>/dev/null
     fi
   }
+
+  # bun completions
+  [ -s "/home/iperez/.bun/_bun" ] && source "/home/iperez/.bun/_bun"
+
+  # bun
+  export BUN_INSTALL="$HOME/.bun"
+  export PATH="$BUN_INSTALL/bin:$PATH"
 
   # -------------| Alias |----------------
 
@@ -168,22 +176,13 @@ alias gd="git diff --no-ext-diff --cached"
 alias dot="g --git-dir ~/.dotfiles --work-tree ~"
 
 # Workspace
-export WORKSPACE="~/workspace/personal"
-export WORKSPACE_HOULAK="~/workspace/work/Houlak"
+export DEV="~/dev/personal"
+export DEV_HOULAK="~/dev/work/Houlak"
 
-alias w="cd $WORKSPACE"
-alias wh="cd $WORKSPACE_HOULAK"
+alias dv="cd $DEV"
+alias dh="cd $DEV_HOULAK"
 
 alias aws-houlak="awsume HOULAK"
-alias aws-my="awsume MY_AWS"
-alias aws-localstack="awsume LOCALSTACK"
 
 eval "$(atuin init zsh)"
 source $HOME/.atuin_zshrc
-
-# bun completions
-[ -s "/home/iperez/.bun/_bun" ] && source "/home/iperez/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"

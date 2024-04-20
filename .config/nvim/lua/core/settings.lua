@@ -86,3 +86,10 @@ if g.neovide then
   g.neovide_refresh_rate = 120
   g.neovide_refresh_rate_idle = 120
 end
+
+vim.filetype.add({
+  extension = {
+    ign = 'ignis',
+    ion = 'ion',
+  },
+})

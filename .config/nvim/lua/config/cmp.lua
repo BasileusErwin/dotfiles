@@ -58,9 +58,9 @@ M.setup = function()
 		},
 		formatting = {
 			fields = {
-        "abbr",
+				"abbr",
 				"kind",
-        "menu"
+				"menu",
 			},
 			expandable_indicator = false,
 			format = function(entry, vim_item)
@@ -145,6 +145,16 @@ M.setup = function()
 			{ name = "path" },
 		}, {
 			{ name = "cmdline" },
+		}),
+	})
+
+	cmp.setup.filetype({
+		"dap-repl",
+		"dapui_watches",
+	}, {
+		sources = cmp.config.sources({
+			{ name = "dap" },
+			{ name = "buffer" },
 		}),
 	})
 end

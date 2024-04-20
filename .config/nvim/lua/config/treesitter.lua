@@ -88,7 +88,7 @@ M.setup = function()
 			files = { "src/parser.c" },
 			branch = "main",
 		},
-		filetype = "ign",
+		filetype = {'Ignis', 'ignis'},
 	}
 
 	parser_config["ion"] = {
