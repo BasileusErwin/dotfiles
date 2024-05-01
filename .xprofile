@@ -96,5 +96,5 @@ blueman-adapters &
 picom &
 battery &
 volumeicon &
-redshift -O 5000 &
+redshift -O 4000 &
 solaar -b regular -w hide &
