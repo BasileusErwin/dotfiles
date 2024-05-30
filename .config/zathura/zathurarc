@@ -7,8 +7,12 @@ set window-title-basename "true"
 set adjust-open width
 set recolor true
 
-# Dracula color theme for Zathura
-# Swaps Foreground for Background to get a light version if the user prefers
+set font "FiraCode Nerd Font 12"
+
+map <C-+> zoom in
+map <C-=> zoom in
+
+map <C--> zoom out
 
 #
 # Dracula color theme
@@ -54,4 +58,3 @@ set render-loading-bg           "#f8f8f2" # Foreground
 
 set recolor-lightcolor          "#282a36" # Background
 set recolor-darkcolor           "#f8f8f2" # Foreground
-

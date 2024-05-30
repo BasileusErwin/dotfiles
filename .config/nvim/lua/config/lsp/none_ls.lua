@@ -34,12 +34,13 @@ M.setup = function(opts)
 				args = { "--config", vim.fn.stdpath("config") .. "/.markdownlint.json" },
 				method = nls.methods.DIAGNOSTICS_ON_SAVE,
 			}),
-			require("none-ls.diagnostics.flake8"),
+-- 			require("none-ls.diagnostics.flake8"),
 			builtin.diagnostics.cmake_lint.with({
 				method = nls.methods.DIAGNOSTICS_ON_SAVE,
 			}),
 			builtin.diagnostics.checkmake,
 			builtin.diagnostics.cfn_lint,
+      builtin.diagnostics.golangci_lint,
 			M.with_root_file(require("none-ls.diagnostics.eslint_d"), ".eslintrc.json"),
 			M.with_diagnostics_code(require("none-ls-shellcheck.diagnostics")),
 
@@ -47,6 +48,7 @@ M.setup = function(opts)
 			builtin.code_actions.gitsigns,
 			builtin.code_actions.gitrebase,
 			builtin.code_actions.refactoring,
+      builtin.code_actions.gomodifytags,
 			require("none-ls-shellcheck.code_actions"),
 
 			-- hover

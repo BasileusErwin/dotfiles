@@ -6,6 +6,7 @@ return {
 	dependencies = {
 		{
 			"vigoux/ltex-ls.nvim",
+      commit = "c8139ea6b7f3d71adcff121e16ee8726037ffebd"
 		},
 		{
 			"nvimtools/none-ls.nvim",
@@ -37,6 +38,7 @@ return {
 					bash = { "shellcheck" },
 					markdown = { "prettierd" },
 					dart = { "dart format" },
+          go = { "gofmt" },
 					["_"] = { "trim_whitespace" },
 				},
 				formatters = {

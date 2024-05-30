@@ -179,3 +179,14 @@ symbol = ''
 
 [nim]
 symbol = ' '
+
+[directory.substitutions]
+"Downloads" = " "
+"Documents" = " "
+"Desktop" = " "
+"Music" = " "
+"Pictures" = " "
+"Videos" = " "
+"dev" = " "
+".notes" = " "
+".config" = " "

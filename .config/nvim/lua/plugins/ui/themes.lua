@@ -1,5 +1,27 @@
 return {
 	{
+		"rebelot/kanagawa.nvim",
+		otps = {
+			compile = true,
+			undercurl = true,
+			commentStyle = { italic = true },
+			functionStyle = {
+				italic = true,
+				bold = true,
+			},
+			keywordStyle = { italic = true },
+			statementStyle = {
+				bold = true,
+			},
+			typeStyle = {
+				italic = true,
+				bold = true,
+			},
+			transparent = vim.g.config.theme.transparent,
+			theme = vim.g.config.theme.style,
+		},
+	},
+	{
 		"gbprod/nord.nvim",
 		lazy = false,
 		priority = 1000,

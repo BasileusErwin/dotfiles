@@ -31,15 +31,15 @@ M.code_keymap = function(whichkey)
 			keymap = {
 				name = "HTTP Client",
 				r = {
-					"<Plug>RestNvim<CR>",
+					"<cmd>Rest run<CR>",
 					"Run the request under the cursor",
 				},
-				p = {
-					"<Plug>RestNivmPreview<CR>",
-					"Preview the request cURL command",
+				o = {
+					"<cmd>Rest logs<CR>",
+					"Show rest logs",
 				},
 				l = {
-					"<Plug>RestNvimLast<CR>",
+					"<cmd>Rest last<CR>",
 					"Re-run the last request",
 				},
 			}
@@ -105,12 +105,13 @@ M.setup = function(_, conf)
 		},
 
 		b = {
-			name = "Buffer",
-			b = { "<Cmd>BufferLineSortByTab<CR>", "Sort buffer by buffer number" },
-			d = { "<Cmd>BufferLineSortByDirectory<CR>", "Sort buffer by directory" },
-			r = { "<Cmd>BufferLineSortByRelativeDirectory<CR>", "Sort buffer by relative directory" },
-			l = { "<Cmd>BufferLineSortByExtension<CR>", "Sort buffer by extension" },
-			w = { "<Cmd>BufferLineSortByWindowNumber<CR>", "Sort buffer by Window Number" },
+			name = "Database client",
+			o = {
+				"<cmd>Dbee open<CR>",
+				"Open",
+			},
+			r = { "<CMD>Dbee execute<CR>", "Execute SQL" },
+			c = { "<CMD>Dbee close<CR>", "Close Database client" },
 		},
 
 		i = {
@@ -123,9 +124,9 @@ M.setup = function(_, conf)
 
 		f = {
 			name = "Find",
-			g = { '<cmd>lua require("telescope.builtin").live_grep()<CR>', "Live Grep" },
-			f = { '<cmd>lua require("telescope.builtin").find_files()<CR>', "Find files" },
-			b = { '<cmd>lua require("telescope.builtin").buffers()<CR>', "Find in buffer" },
+			g = { '<cmd>Telescope live_grep<CR>', "Live Grep" },
+			f = { "<cmd>Telescope find_files<CR>", "Find files" },
+			b = { '<cmd>Telescope buffers<CR>', "Find in buffer" },
 		},
 
 		G = {

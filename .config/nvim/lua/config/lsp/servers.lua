@@ -2,6 +2,16 @@ local util = require("lspconfig.util")
 local lspconfig = require("lspconfig")
 
 return {
+  {
+    package_name = "gopls",
+    enable = true,
+		config = function(on_attach, capabilities)
+			lspconfig.gopls.setup({
+				on_attach,
+				capabilities,
+			})
+		end,
+  },
 	{
 		package_name = "nimlsp",
 		enable = true,
@@ -125,17 +135,10 @@ return {
 						enabled = { "latex", "tex", "bib", "markdown", "gitcommit", "text", "org", "norg" },
 						language = "auto",
 						dictionary = (function()
-							-- For dictionary, search for files in the runtime to have
-							-- and include them as externals the format for them is
-							-- dict/{LANG}.txt
-							--
-							-- Also add dict/default.txt to all of them
 							local files = {}
 							for _, file in ipairs(vim.api.nvim_get_runtime_file("dict/*", true)) do
 								local lang = vim.fn.fnamemodify(file, ":t:r")
-								local fullpath = vim.fs.normalize(file, ":p")
-								print(lang)
-								print(fullpath)
+								local fullpath = vim.fn.fnamemodify(file, ":p")
 								files[lang] = { ":" .. fullpath }
 							end
 
@@ -287,7 +290,7 @@ return {
 	},
 	{
 		package_name = "pyright",
-		enable = true,
+		enable = false,
 		config = function(on_attach, capabilities)
 			lspconfig.pyright.setup({
 				on_attach,

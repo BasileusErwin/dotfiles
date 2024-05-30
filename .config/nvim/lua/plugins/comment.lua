@@ -8,6 +8,6 @@ return {
 
     local ft = require('Comment.ft')
 
-    ft({ 'ign' }, ft.get('c'))
+    ft({ 'ignis' }, ft.get('c'))
   end
 }

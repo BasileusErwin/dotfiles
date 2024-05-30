@@ -1,7 +1,7 @@
 {
   "theme": {
-    "name": "tokyonight",
-    "style": "night",
+    "name": "kanagawa",
+    "style": "wave",
     "transparent": false,
     "lualine": {
       "theme": "auto",

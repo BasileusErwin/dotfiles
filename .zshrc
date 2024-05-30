@@ -7,7 +7,7 @@ if [[ $USER != "root" ]]; then
   eval "$(starship init zsh)"
   export GPG_TTY=$(tty)
 
-  export PATH=$HOME/.local/share/nvim/mason/bin:$HOME/.nimble/bin:$HOME/bin:/usr/local/bin:$HOME/.deno/bin:$HOME/.cargo/bin:$HOME/.spicetify:$HOME/.local/share/coursier/bin:$HOME/.local/bin:$HOME/.local/share/fnm:$HOME/go/bin/:$PATH
+  export PATH=$HOME/.local/share/nvim/mason/bin:$HOME/.nimble/bin:$HOME/bin:/usr/local/bin:$HOME/.deno/bin:$HOME/.cargo/bin:$HOME/.spicetify:$HOME/.local/share/coursier/bin:$HOME/.local/bin:$HOME/.local/share/fnm:$HOME/go/bin/:/usr/local/go/bin:$PATH
   export PATH=/usr/lib/android-sdk/emulator/:/usr/lib/android-sdk/cmdline-tools/latest/bin:$HOME/flutter/bin:$PATH
   fpath=(~/.zsh $fpath)
   autoload -Uz compinit compinit -u
@@ -96,7 +96,7 @@ alias vi="nvim $1"
 alias v.="nvim ."
 alias mk="mkdir $1"
 alias zathura="nohup zathura $1"
-alias ls="eza --group-directories-first --icons"
+alias ls="exa --group-directories-first --icons"
 alias la="ls --group-directories-first --icons -a"
 alias cat="bat --style=plain --paging=never"
 alias tree="exa -T --icons"
@@ -109,6 +109,7 @@ alias paru="paru --bottomup $1"
 alias sudo='sudo '
 alias c.='code .'
 alias f='vifm'
+alias rm='rm -i'
 
 alias grep="grep --color=auto"
 alias cat="bat --style=plain --paging=never"

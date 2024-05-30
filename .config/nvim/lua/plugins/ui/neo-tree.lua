@@ -18,27 +18,14 @@ return {
 			remap = true,
 		},
 	},
-	init = function()
-		vim.g.neo_tree_remove_legacy_commands = 1
-		if vim.fn.argc() == 1 then
-			local stat = vim.loop.fs_stat(vim.fn.argv(0))
-			if stat and stat.type == "directory" then
-				require("neo-tree")
-			end
-		end
-	end,
 	opts = {
-		close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
+		close_if_last_window = false,
 		enable_git_status = true,
 		enable_diagnostics = true,
-		sources = {
-			"filesystem",
-			"git_status",
-			"diagnostics",
-		},
+		sources = { "filesystem" },
 		source_selector = {
 			winbar = true,
-			statusline = false, -- toggle to show selector on statusline
+			statusline = true, -- toggle to show selector on statusline
 			content_layout = "center",
 			tabs_layout = "equal",
 			tab_labels = {
@@ -53,12 +40,12 @@ return {
 			},
 			indent = {
 				indent_size = 2,
-				padding = 1, -- extra padding on left hand side
+				padding = 1,
 				with_markers = true,
 				indent_marker = "│",
-				last_indent_marker = "└", -- └
+				last_indent_marker = "└",
 				highlight = "NeoTreeIndentMarker",
-				with_expanders = true, -- if nil and file nesting is enabled, will enable expanders
+				with_expanders = true,
 				expander_collapsed = "",
 				expander_expanded = "",
 				expander_highlight = "NeoTreeExpander",
@@ -75,19 +62,16 @@ return {
 				highlight = "NeoTreeModified",
 			},
 			name = {
-				trailing_slash = false,
+				trailing_slash = true,
 				use_git_status_colors = true,
 				highlight = "NeoTreeFileName",
 			},
 			git_status = {
 				symbols = {
-					-- Change type
-					renamed = "󰑕", -- this can only be used in the git_status source
-					-- Status type
+					renamed = "󰑕",
 					untracked = "",
 					ignored = "",
-					-- unstaged = "",
-					unstaged = "U",
+					unstaged = "",
 					staged = "",
 					conflict = "",
 				},
@@ -108,14 +92,11 @@ return {
 				["h"] = "close_node",
 				["S"] = "open_split",
 				["s"] = "open_vsplit",
-				-- ["S"] = "split_with_window_picker",
-				-- ["s"] = "vsplit_with_window_picker",
 				["t"] = "open_tabnew",
 				["w"] = "open_with_window_picker",
 				["C"] = "close_node",
 				["a"] = {
 					"add",
-					-- some commands may take optional config options, see `:h neo-tree-mappings` for details
 					config = {
 						show_path = "none", -- "none", "relative", "absolute"
 					},
@@ -151,15 +132,9 @@ return {
 					elseif node.type == "file" then
 						local success, web_devicons = pcall(require, "nvim-web-devicons")
 						if success then
-							if node.ext == "ign" then
-								local devicon, hl = web_devicons.get_icon(node.name, node.ext)
-								icon = devicon or icon
-								highlight = hl or highlight
-							else
-								local devicon, hl = web_devicons.get_icon(node.name, node.ext)
-								icon = devicon or icon
-								highlight = hl or highlight
-							end
+							local devicon, hl = web_devicons.get_icon(node.name, node.ext)
+							icon = devicon or icon
+							highlight = hl or highlight
 						end
 					end
 
@@ -169,32 +144,18 @@ return {
 					}
 				end,
 			},
-			bind_to_cwd = true,
+			bind_to_cwd = false,
 			filtered_items = {
-				visible = false, -- when true, they will just be displayed differently than normal items
+				visible = false,
 				hide_dotfiles = false,
 				hide_gitignored = false,
-				hide_by_name = {
-					--"node_modules"
-				},
-				hide_by_pattern = { -- uses glob style patterns
-					--"*.meta"
-				},
-				never_show = { -- remains hidden even if visible is toggled to true
-					--".DS_Store",
-					--"thumbs.db"
-				},
+				hide_by_name = {},
+				hide_by_pattern = {},
+				never_show = {},
 			},
-			follow_current_file = true, -- This will find and focus the file in the active buffer every
-			-- time the current file is changed while the tree is open.
-			group_empty_dirs = false, -- when true, empty folders will be grouped together
-			hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
-			-- in whatever position is specified in window.position
-			-- "open_current",  -- netrw disabled, opening a directory opens within the
-			-- window like netrw would, regardless of window.position
-			-- "disabled",    -- netrw left alone, neo-tree does not handle opening dirs
-			use_libuv_file_watcher = true, -- This will use the OS level file watchers to detect changes
-			-- instead of relying on nvim autocmd events.
+			follow_current_file = false,
+			group_empty_dirs = false,
+			use_libuv_file_watcher = true,
 			window = {
 				mappings = {
 					["H"] = "navigate_up",
@@ -205,33 +166,6 @@ return {
 					["<c-x>"] = "clear_filter",
 					["[g"] = "prev_git_modified",
 					["]g"] = "next_git_modified",
-				},
-			},
-		},
-		buffers = {
-			follow_current_file = true, -- This will find and focus the file in the active buffer every
-			-- time the current file is changed while the tree is open.
-			group_empty_dirs = true, -- when true, empty folders will be grouped together
-			show_unloaded = true,
-			window = {
-				mappings = {
-					["bd"] = "buffer_delete",
-					["<bs>"] = "navigate_up",
-					["."] = "set_root",
-				},
-			},
-		},
-		git_status = {
-			window = {
-				position = "float",
-				mappings = {
-					["A"] = "git_add_all",
-					["gu"] = "git_unstage_file",
-					["ga"] = "git_add_file",
-					["gr"] = "git_revert_file",
-					["gc"] = "git_commit",
-					["gp"] = "git_push",
-					["gg"] = "git_commit_and_push",
 				},
 			},
 		},
@@ -290,11 +224,6 @@ return {
 							"name",
 							zindex = 10,
 						},
-						-- {
-						--   "symlink_target",
-						--   zindex = 10,
-						--   highlight = "NeoTreeSymbolicLinkTarget",
-						-- },
 						{ "clipboard", zindex = 10 },
 						{ "bufnr", zindex = 10 },
 						{ "modified", zindex = 20, align = "right" },
