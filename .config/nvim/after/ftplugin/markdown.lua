@@ -1,5 +1,5 @@
 vim.g.colorcolumn = 120
-vim.g.markdown_fenced_languages = { "html", "python", "bash=sh", "rust", "javascript", "java", "typescript" }
+vim.g.markdown_fenced_languages = { "html", "python", "bash=sh", "rust", "javascript", "java", "typescript", "ignis=typescript" }
 vim.opt_local.shiftwidth = 2
 vim.opt_local.tabstop = 2
 vim.opt_local.expandtab = true

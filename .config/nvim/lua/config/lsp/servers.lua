@@ -170,7 +170,7 @@ return {
 	},
 	{
 		package_name = "jdtls",
-		enable = true,
+		enable = false,
 		config = function(on_attach, capabilities)
 			lspconfig.jdtls.setup({
 				on_attach,

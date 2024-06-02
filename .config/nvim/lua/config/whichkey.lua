@@ -94,6 +94,7 @@ M.setup = function(_, conf)
 				'<cmd>lua require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>',
 				"Set Breakpoint",
 			},
+      u = { "<cmd> lua require('dapui').toggle()<CR>", "Toggle UI" },
 			x = {
 				function()
 					require("dap").terminate()

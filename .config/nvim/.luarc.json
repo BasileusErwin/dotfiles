@@ -83,5 +83,8 @@
     "/home/iperez/.config/nvim/lua",
     "${3rd}/luv/library",
     "${3rd}/luassert/library"
-  ]
+  ],
+    "diagnostics.disable": [
+        "missing-fields"
+    ]
 }

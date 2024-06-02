@@ -31,7 +31,6 @@ return {
 						"scopes",
 						"breakpoints",
 						"stacks",
-						"watches",
 					},
 					size = 80,
 					position = "right",
@@ -150,6 +149,25 @@ return {
 				},
 			}
 		end
+
+		dap.configurations.java = {
+			{
+				name = "Java",
+				javaExec = "java",
+				request = "launch",
+				type = "java",
+				mainClass = function()
+					return vim.fn.input("Main class: ")
+				end,
+			},
+			{
+				type = "java",
+				request = "attach",
+				name = "Debug (Attach) - Remote",
+				hostName = "127.0.0.1",
+				port = 5005,
+			},
+		}
 
 		local telescope_status, telescope = pcall(require, "telescope")
 
