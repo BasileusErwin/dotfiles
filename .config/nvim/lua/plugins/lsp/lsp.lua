@@ -5,8 +5,11 @@ return {
 	end,
 	dependencies = {
 		{
+			"j-hui/fidget.nvim",
+		},
+		{
 			"vigoux/ltex-ls.nvim",
-      commit = "c8139ea6b7f3d71adcff121e16ee8726037ffebd"
+			commit = "c8139ea6b7f3d71adcff121e16ee8726037ffebd",
 		},
 		{
 			"nvimtools/none-ls.nvim",
@@ -21,7 +24,7 @@ return {
 			"stevearc/conform.nvim",
 			opts = {
 				formatters_by_ft = {
-          java = { "google-java-format" },
+					java = { "google-java-format" },
 					nasm = { "asmfmt" },
 					asm = { "asmfmt" },
 					c = { "clang-format" },
@@ -39,7 +42,8 @@ return {
 					bash = { "shellcheck" },
 					markdown = { "prettierd" },
 					dart = { "dart format" },
-          go = { "gofmt" },
+					go = { "gofmt" },
+					ignis = { "trim_whitespace" },
 					["_"] = { "trim_whitespace" },
 				},
 				formatters = {

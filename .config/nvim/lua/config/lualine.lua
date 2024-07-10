@@ -119,15 +119,11 @@ M.setup = function()
 					navic.get_location,
 					cond = navic.is_available,
 				},
-				--  require('pomodoro').statusline
 			},
 			lualine_x = {
-				lsp_client_progress,
-				{ lsp_client, icon = " " },
 				{
-					"rest",
-					icon = "",
-					fg = "#428890",
+					require("pomodoro").statusline,
+          fg = "#f7768e",
 				},
 			},
 			lualine_y = { "filename", "encoding", filetype },

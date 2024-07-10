@@ -1,11 +1,11 @@
 {
   "theme": {
-    "name": "kanagawa",
-    "style": "wave",
-    "transparent": false,
+    "name": "tokyodark",
+    "style": "mirage",
+    "transparent": true,
     "lualine": {
       "theme": "auto",
-      "transparent": false
+      "transparent": true
     }
   },
   "telescope": {

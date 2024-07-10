@@ -20,7 +20,6 @@ return {
       end
     },
     'hrsh7th/cmp-vsnip',
-    'David-Kunz/cmp-npm',
     'Saecki/crates.nvim',
   },
   config = require('config.cmp').setup

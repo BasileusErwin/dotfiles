@@ -1,5 +1,37 @@
 return {
 	{
+		"stevearc/oil.nvim",
+		dependencies = { "echasnovski/mini.icons" },
+		opts = {
+			delete_to_trash = true,
+			view_options = {
+				show_hidden = true,
+			},
+      float = {
+        padding = 10,
+        max_width = 100,
+        max_height = 100,
+      }
+		},
+	},
+	{
+		"BasileusErwin/pomodoro.nvim",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+		},
+		opts = {
+			time_work = 25,
+			time_break_short = 5,
+			time_break_long = 20,
+			timers_to_long_break = 4,
+			stopped_icon = " ",
+		},
+	},
+	{
+		"ribelo/taskwarrior.nvim",
+		config = true,
+	},
+	{
 		"ellisonleao/glow.nvim",
 		event = "BufRead *.md",
 		opts = {
@@ -12,11 +44,6 @@ return {
 		cmd = "Glow",
 	},
 	{
-		-- NOTE: This plugin is temporary and will be removed once the issue is resolved.
-		"samsaga2/vim-z80",
-		event = "BufRead *.z80",
-	},
-	{
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {},
@@ -25,13 +52,7 @@ return {
 		"christoomey/vim-tmux-navigator",
 		lazy = false,
 	},
-	{
-		"ActivityWatch/aw-watcher-vim",
-		enabled = false,
-	},
 	{ "elkowar/yuck.vim", event = "BufRead *.yuck" },
-	{ "tweekmonster/startuptime.vim" },
-	{ "jidn/vim-dbml", event = "BufRead *.dbml" },
 	{
 		"RaafatTurki/hex.nvim",
 		config = function()

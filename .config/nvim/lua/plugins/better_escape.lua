@@ -1,5 +1,6 @@
 return {
   'max397574/better-escape.nvim',
+  enabled = false,
   event = 'InsertEnter',
   opts = {
     mapping = { "jk", "jj", "kk", "kj" },     -- a table with mappings to use

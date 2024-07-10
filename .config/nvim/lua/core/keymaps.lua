@@ -2,14 +2,6 @@ local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 local expr_opts = { noremap = true, expr = true, silent = true }
 
--- Better escape using jk in insert and terminal mode
-map("i", "jk", "<ESC>", opts)
-map("t", "jk", "<C-\\><C-n>", opts)
-
--- Center search results
-map("n", "n", "nzz", opts)
-map("n", "N", "Nzz", opts)
-
 -- Visual line wraps
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", expr_opts)
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", expr_opts)
@@ -44,7 +36,7 @@ map('n', '<M-j>', '10<C-e>', { noremap = true })
 map('n', '<M-k>', '10<C-y>', { noremap = true })
 
 map('n', '<C-s>', ':w<CR>', opts)
-map('n', '<C-S-s>', ':wa<CR>', opts)
+map('n', '<C-S>', ':wa<CR>', opts)
 
 map('n', '<M-q>', ':bd<CR>', opts)
 

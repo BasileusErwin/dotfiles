@@ -81,6 +81,16 @@ M.setup = function(_, conf)
 		["w"] = { "<cmd>update!<CR>", "Save" },
 		["q"] = { "<cmd>q!<CR>", "Quit" },
 
+		e = {
+			require("oil").open_float,
+			"Explorer",
+		},
+
+		a = {
+			"<cmd>AerialToggle!<CR>",
+			"Aerial",
+		},
+
 		d = {
 			"DAP",
 			r = { '<cmd>lua require("dap").eval<CR>', "Eval" },
@@ -94,7 +104,7 @@ M.setup = function(_, conf)
 				'<cmd>lua require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>',
 				"Set Breakpoint",
 			},
-      u = { "<cmd> lua require('dapui').toggle()<CR>", "Toggle UI" },
+			u = { "<cmd> lua require('dapui').toggle()<CR>", "Toggle UI" },
 			x = {
 				function()
 					require("dap").terminate()
@@ -105,94 +115,24 @@ M.setup = function(_, conf)
 			},
 		},
 
-		b = {
-			name = "Database client",
-			o = {
-				"<cmd>Dbee open<CR>",
-				"Open",
-			},
-			r = { "<CMD>Dbee execute<CR>", "Execute SQL" },
-			c = { "<CMD>Dbee close<CR>", "Close Database client" },
-		},
-
-		i = {
-			name = "Notes Obsidian",
-			s = { "<cmd>ObsidianSearch<CR>", "Grep notes" },
-			n = { "<cmd>ObsidianNew<CR>", "New note" },
-			t = { "<cmd>ObsidianToday<CR>", "Today note" },
-			f = { "<cmd>ObsidianQuickSwitch<CR>", "Search file note" },
-		},
-
 		f = {
 			name = "Find",
-			g = { '<cmd>Telescope live_grep<CR>', "Live Grep" },
-			f = { "<cmd>Telescope find_files<CR>", "Find files" },
-			b = { '<cmd>Telescope buffers<CR>', "Find in buffer" },
-		},
-
-		G = {
-			name = "Git",
-			h = {
-				name = "Hunk",
-				s = {
-					name = "Stage",
-					'<Cmd>lua require("gitsigns").stage_hunk()<CR>',
-				},
-				S = {
-					name = "Stage Buffer",
-					'<Cmd>lua require("gitsigns").stage_buffer()<CR>',
-				},
-				u = {
-					name = "Undo",
-					'<Cmd>lua require("gitsigns").undo_stage_hunk()<CR>',
-				},
-				r = {
-					name = "Reset",
-					'<Cmd>lua require("gitsigns").stage_hunk(gs.reset_hunk {vim.fn.line("."), vim.fn.line("v")})<CR>',
-				},
-				p = {
-					name = "Preview",
-					'<Cmd>lua require("gitsigns").preview_hunk()<CR>',
-				},
-				d = {
-					name = "Diff",
-					'<Cmd>lua require("gitsigns").diffthis()<CR>',
-				},
-				D = {
-					name = "Diff all",
-					'<Cmd>lua require("gitsigns").diffthis("~")<CR>',
-				},
+			g = { "<cmd>FzfLua grep<CR>", "Live Grep" },
+			f = { "<cmd>FzfLua files<CR>", "Find files" },
+			b = { "<cmd>FzfLua buffers<CR>", "Find in buffer" },
+			G = {
+				name = "Git",
+				s = { "<cmd>FzfLua git_status<CR>", "Git status" },
+				r = { "<cmd>FzfLua <CR>", "Reset hunk" },
+				p = { '<cmd>lua require("gitsigns").preview_hunk()<CR>', "Preview hunk" },
 			},
-			t = {
-				name = "Toggle line blame",
-				'<Cmd>lua require("gitsigns").toggle_line_blame()<CR>',
-			},
-			c = {
-				name = "Commit",
-				'<Cmd>lua require("tinygit").smartCommit()<CR>',
-			},
-			p = {
-				name = "Push",
-				'<Cmd>lua require("tinygit").push()<CR>',
-			},
-			r = {
-				name = "Github PR",
-				'<Cmd>lua require("tinygit").ceateGithubPr()<CR>',
-			},
-			s = {
-				name = "Status",
-				'<Cmd>lua require("tinygit").status()<CR>',
-			},
-			S = {
-				name = "Stash",
-				p = {
-					name = "Push",
-					'<Cmd>lua require("tinygit").stashPop()<CR>',
-				},
-				P = {
-					name = "Pop",
-					'<Cmd>lua require("tinygit").stashPop()<CR>',
-				},
+			l = {
+				name = "LSP",
+				i = { "<cmd>FzfLua lsp_implementations<CR>", "lsp_implementations" },
+				t = { "<cmd>FzfLua lsp_type_definitions<CR>", "Type Definitions" },
+				d = { "<cmd>FzfLua lsp_definitions<CR>", "Definitions" },
+				r = { "<cmd>FzfLua lsp_references<CR>", "References" },
+				D = { "<cmd>FzfLua lsp_declarations", "Declarations" },
 			},
 		},
 	}

@@ -185,5 +185,8 @@ alias dh="cd $DEV_HOULAK"
 
 alias aws-houlak="awsume HOULAK"
 
+alias note="cd ~/.notes"
+alias vn="nvim ~/.notes"
+
 eval "$(atuin init zsh)"
 source $HOME/.atuin_zshrc

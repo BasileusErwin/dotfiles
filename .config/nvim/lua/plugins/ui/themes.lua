@@ -42,23 +42,6 @@ return {
 		end,
 	},
 	{
-		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = {
-			style = vim.g.config.theme.style,
-			terminal_colors = true,
-			styles = {
-				comments = { italic = true },
-				keywords = { italic = true },
-				functions = { bold = true },
-				variables = { bold = true },
-				sidebars = "dark",
-				floats = "dark",
-			},
-		},
-	},
-	{
 		"neanias/everforest-nvim",
 		version = false,
 		lazy = false,
@@ -69,33 +52,6 @@ return {
 				italics = true,
 			})
 		end,
-	},
-	{
-		"navarasu/onedark.nvim",
-		priority = 1000,
-		opts = {
-			style = vim.g.config.theme.style,
-			transparent = vim.g.config.theme.transparent,
-			code_style = {
-				comments = "italic",
-				keywords = "bold",
-				functions = "bold",
-				strings = "italic",
-				variables = "none",
-			},
-			lualine = {
-				transparent = vim.g.config.theme.lualine.transparent,
-			},
-			diagnostics = {
-				darker = true, -- darker colors for diagnostic
-				undercurl = true, -- use undercurl instead of underline for diagnostics
-				background = true, -- use background color for virtual text
-			},
-		},
-	},
-	{
-		"marko-cerovac/material.nvim",
-		priority = 1000,
 	},
 	{
 		"Shatur/neovim-ayu",
@@ -116,7 +72,7 @@ return {
 				gamma = 1.00,
 				styles = {
 					comments = { italic = true },
-					keywords = { italic = true },
+					keywords = { italic = true, bold = true },
 					identifiers = { italic = true },
 					functions = { bold = true, italic = true },
 					variables = { bold = true },

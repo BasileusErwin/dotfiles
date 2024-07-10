@@ -18,3 +18,5 @@
 !.xmonad
 !.screenshots/*
 !.config/tmux
+!.taskrc
+!.task
